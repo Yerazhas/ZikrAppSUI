@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6009F9572975CCD70096EC40 /* duas.json in Resources */ = {isa = PBXBuildFile; fileRef = 6009F9562975CCD60096EC40 /* duas.json */; };
+		6009F959297655250096EC40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009F958297655250096EC40 /* SceneDelegate.swift */; };
+		6009F95B297656420096EC40 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009F95A297656420096EC40 /* RootCoordinator.swift */; };
+		6009F95E2976566D0096EC40 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009F95D2976566D0096EC40 /* RootRouter.swift */; };
+		6009F96229765A600096EC40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009F96129765A600096EC40 /* MainView.swift */; };
+		6009F969297674580096EC40 /* ZikrTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009F968297674580096EC40 /* ZikrTapViewModel.swift */; };
+		601D2DBC2976DCDA00AE6687 /* Wird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DBB2976DCDA00AE6687 /* Wird.swift */; };
+		601D2DBE2976F43800AE6687 /* wirds.json in Resources */ = {isa = PBXBuildFile; fileRef = 601D2DBD2976F43800AE6687 /* wirds.json */; };
+		601D2DC02977328000AE6687 /* WirdTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DBF2977328000AE6687 /* WirdTapView.swift */; };
+		601D2DC22977328B00AE6687 /* WirdTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DC12977328B00AE6687 /* WirdTapViewModel.swift */; };
+		601D2DC4297B076600AE6687 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601D2DC3297B076600AE6687 /* Launch Screen.storyboard */; };
+		601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */; };
+		601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */; };
+		605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8129A2177D00E0CBA7 /* AddNewView.swift */; };
+		605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */; };
+		60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60896D202974503200FC3A7E /* ZikrTapView.swift */; };
+		60896D2329745FD100FC3A7E /* ZikrContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60896D2229745FD100FC3A7E /* ZikrContentView.swift */; };
+		60896D252974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */; };
+		608D091529768B8600671A71 /* WirdsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608D091429768B8600671A71 /* WirdsView.swift */; };
+		608D091729768D5E00671A71 /* WirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608D091629768D5E00671A71 /* WirdView.swift */; };
+		6095488E2971EDC600E3A899 /* ZikrsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6095488D2971EDC600E3A899 /* ZikrsView.swift */; };
+		609548902971EDC800E3A899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6095488F2971EDC800E3A899 /* Assets.xcassets */; };
+		609548932971EDC800E3A899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609548922971EDC800E3A899 /* Preview Assets.xcassets */; };
+		6095489D2973D2AC00E3A899 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6095489C2973D2AC00E3A899 /* CounterView.swift */; };
+		6095489F2973F6B300E3A899 /* ZikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6095489E2973F6B300E3A899 /* ZikrView.swift */; };
+		609548A12973FDE200E3A899 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548A02973FDE200E3A899 /* Palette.swift */; };
+		609548A42974101900E3A899 /* DuasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548A32974101900E3A899 /* DuasView.swift */; };
+		609548A8297413AD00E3A899 /* ZikrsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548A7297413AD00E3A899 /* ZikrsContainerView.swift */; };
+		609548AA29741AA400E3A899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548A929741AA400E3A899 /* AppDelegate.swift */; };
+		609548AC29742E0300E3A899 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548AB29742E0300E3A899 /* Extensions.swift */; };
+		609548AF297432F500E3A899 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548AE297432F500E3A899 /* SettingsView.swift */; };
+		60A5BCF4298E900C006E9FBE /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5BCF3298E900C006E9FBE /* ReviewService.swift */; };
+		60A5BCF6298E90A3006E9FBE /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5BCF5298E90A3006E9FBE /* LocalizationService.swift */; };
+		60A6CC67297598450037C083 /* zikrs.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A6CC66297598450037C083 /* zikrs.json */; };
+		60A6CC6A29759B4A0037C083 /* ZikrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6CC6929759B4A0037C083 /* ZikrService.swift */; };
+		60A6CC6D29759B960037C083 /* Zikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6CC6C29759B960037C083 /* Zikr.swift */; };
+		60A6CC722975ABB00037C083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60A6CC742975ABB00037C083 /* Localizable.strings */; };
+		60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6CC792975CAC60037C083 /* Dua.swift */; };
+		60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */; };
+		FF1723E7D7CFAA778F5FFDAC /* Pods_ZikrAppSUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AAE1DB3AAD1AC265E317E9 /* Pods_ZikrAppSUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		52AAE1DB3AAD1AC265E317E9 /* Pods_ZikrAppSUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZikrAppSUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6009F9562975CCD60096EC40 /* duas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = duas.json; sourceTree = "<group>"; };
+		6009F958297655250096EC40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6009F95A297656420096EC40 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		6009F95D2976566D0096EC40 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		6009F96129765A600096EC40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6009F968297674580096EC40 /* ZikrTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrTapViewModel.swift; sourceTree = "<group>"; };
+		601D2DBB2976DCDA00AE6687 /* Wird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wird.swift; sourceTree = "<group>"; };
+		601D2DBD2976F43800AE6687 /* wirds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wirds.json; sourceTree = "<group>"; };
+		601D2DBF2977328000AE6687 /* WirdTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirdTapView.swift; sourceTree = "<group>"; };
+		601D2DC12977328B00AE6687 /* WirdTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirdTapViewModel.swift; sourceTree = "<group>"; };
+		601D2DC3297B076600AE6687 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		605ADC8129A2177D00E0CBA7 /* AddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewView.swift; sourceTree = "<group>"; };
+		605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		60896D202974503200FC3A7E /* ZikrTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrTapView.swift; sourceTree = "<group>"; };
+		60896D2229745FD100FC3A7E /* ZikrContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrContentView.swift; sourceTree = "<group>"; };
+		60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KFGQPC Uthmanic Script HAFS Regular.otf"; sourceTree = "<group>"; };
+		60896D26297462FD00FC3A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		608D091429768B8600671A71 /* WirdsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirdsView.swift; sourceTree = "<group>"; };
+		608D091629768D5E00671A71 /* WirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirdView.swift; sourceTree = "<group>"; };
+		609548882971EDC600E3A899 /* ZikrAppSUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZikrAppSUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6095488D2971EDC600E3A899 /* ZikrsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrsView.swift; sourceTree = "<group>"; };
+		6095488F2971EDC800E3A899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		609548922971EDC800E3A899 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6095489C2973D2AC00E3A899 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		6095489E2973F6B300E3A899 /* ZikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrView.swift; sourceTree = "<group>"; };
+		609548A02973FDE200E3A899 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		609548A32974101900E3A899 /* DuasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuasView.swift; sourceTree = "<group>"; };
+		609548A7297413AD00E3A899 /* ZikrsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrsContainerView.swift; sourceTree = "<group>"; };
+		609548A929741AA400E3A899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		609548AB29742E0300E3A899 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		609548AE297432F500E3A899 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		60A5BCF3298E900C006E9FBE /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		60A5BCF5298E90A3006E9FBE /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
+		60A6CC66297598450037C083 /* zikrs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zikrs.json; sourceTree = "<group>"; };
+		60A6CC6929759B4A0037C083 /* ZikrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrService.swift; sourceTree = "<group>"; };
+		60A6CC6C29759B960037C083 /* Zikr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zikr.swift; sourceTree = "<group>"; };
+		60A6CC732975ABB00037C083 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		60A6CC752975ABB70037C083 /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		60A6CC762975ABB90037C083 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		60A6CC792975CAC60037C083 /* Dua.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dua.swift; sourceTree = "<group>"; };
+		60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
+		7E1C4223CD928EFA78E4B938 /* Pods-ZikrAppSUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZikrAppSUI.debug.xcconfig"; path = "Target Support Files/Pods-ZikrAppSUI/Pods-ZikrAppSUI.debug.xcconfig"; sourceTree = "<group>"; };
+		EBF70AE7E92CFCDDB5368FC5 /* Pods-ZikrAppSUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZikrAppSUI.release.xcconfig"; path = "Target Support Files/Pods-ZikrAppSUI/Pods-ZikrAppSUI.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		609548852971EDC600E3A899 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF1723E7D7CFAA778F5FFDAC /* Pods_ZikrAppSUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50FB31A31E78090258E57015 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52AAE1DB3AAD1AC265E317E9 /* Pods_ZikrAppSUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6009F95C2976565E0096EC40 /* RootCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6009F95A297656420096EC40 /* RootCoordinator.swift */,
+				6009F95D2976566D0096EC40 /* RootRouter.swift */,
+			);
+			path = RootCoordinator;
+			sourceTree = "<group>";
+		};
+		6009F96329765A8E0096EC40 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6009F965297664400096EC40 /* Main */,
+				6095489B2973D29E00E3A899 /* Counter */,
+				6009F9672976646C0096EC40 /* ZIkrs */,
+				605ADC8029A2152800E0CBA7 /* AddNew */,
+				609548AD297432E400E3A899 /* Settings */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		6009F96429765AA30096EC40 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				609548A02973FDE200E3A899 /* Palette.swift */,
+				609548AB29742E0300E3A899 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6009F965297664400096EC40 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6009F96129765A600096EC40 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6009F9672976646C0096EC40 /* ZIkrs */ = {
+			isa = PBXGroup;
+			children = (
+				609548A7297413AD00E3A899 /* ZikrsContainerView.swift */,
+				609548992971EDD700E3A899 /* Zikrs */,
+				609548A229740FF600E3A899 /* Duas */,
+				608D091329768B7800671A71 /* Wirds */,
+			);
+			path = ZIkrs;
+			sourceTree = "<group>";
+		};
+		605ADC8029A2152800E0CBA7 /* AddNew */ = {
+			isa = PBXGroup;
+			children = (
+				605ADC8129A2177D00E0CBA7 /* AddNewView.swift */,
+			);
+			path = AddNew;
+			sourceTree = "<group>";
+		};
+		608D091329768B7800671A71 /* Wirds */ = {
+			isa = PBXGroup;
+			children = (
+				608D091429768B8600671A71 /* WirdsView.swift */,
+				608D091629768D5E00671A71 /* WirdView.swift */,
+				601D2DBF2977328000AE6687 /* WirdTapView.swift */,
+				601D2DC12977328B00AE6687 /* WirdTapViewModel.swift */,
+			);
+			path = Wirds;
+			sourceTree = "<group>";
+		};
+		6095487F2971EDC600E3A899 = {
+			isa = PBXGroup;
+			children = (
+				6095488A2971EDC600E3A899 /* ZikrAppSUI */,
+				609548892971EDC600E3A899 /* Products */,
+				F9FDDE82A2C9B44737F2118E /* Pods */,
+				50FB31A31E78090258E57015 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		609548892971EDC600E3A899 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				609548882971EDC600E3A899 /* ZikrAppSUI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6095488A2971EDC600E3A899 /* ZikrAppSUI */ = {
+			isa = PBXGroup;
+			children = (
+				609548A929741AA400E3A899 /* AppDelegate.swift */,
+				6009F958297655250096EC40 /* SceneDelegate.swift */,
+				6009F95C2976565E0096EC40 /* RootCoordinator */,
+				6009F96329765A8E0096EC40 /* Modules */,
+				60A6CC6829759B3A0037C083 /* Services */,
+				60A6CC6B29759B8D0037C083 /* Model */,
+				6095489A2971EDE500E3A899 /* Resources */,
+				6009F96429765AA30096EC40 /* Helpers */,
+				609548912971EDC800E3A899 /* Preview Content */,
+				601D2DC3297B076600AE6687 /* Launch Screen.storyboard */,
+			);
+			path = ZikrAppSUI;
+			sourceTree = "<group>";
+		};
+		609548912971EDC800E3A899 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				609548922971EDC800E3A899 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		609548992971EDD700E3A899 /* Zikrs */ = {
+			isa = PBXGroup;
+			children = (
+				6095488D2971EDC600E3A899 /* ZikrsView.swift */,
+				6095489E2973F6B300E3A899 /* ZikrView.swift */,
+				60896D202974503200FC3A7E /* ZikrTapView.swift */,
+				60896D2229745FD100FC3A7E /* ZikrContentView.swift */,
+				6009F968297674580096EC40 /* ZikrTapViewModel.swift */,
+			);
+			path = Zikrs;
+			sourceTree = "<group>";
+		};
+		6095489A2971EDE500E3A899 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				60896D26297462FD00FC3A7E /* Info.plist */,
+				60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */,
+				601D2DBD2976F43800AE6687 /* wirds.json */,
+				6009F9562975CCD60096EC40 /* duas.json */,
+				60A6CC66297598450037C083 /* zikrs.json */,
+				6095488F2971EDC800E3A899 /* Assets.xcassets */,
+				60A6CC742975ABB00037C083 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6095489B2973D29E00E3A899 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */,
+				6095489C2973D2AC00E3A899 /* CounterView.swift */,
+			);
+			path = Counter;
+			sourceTree = "<group>";
+		};
+		609548A229740FF600E3A899 /* Duas */ = {
+			isa = PBXGroup;
+			children = (
+				609548A32974101900E3A899 /* DuasView.swift */,
+			);
+			path = Duas;
+			sourceTree = "<group>";
+		};
+		609548AD297432E400E3A899 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				609548AE297432F500E3A899 /* SettingsView.swift */,
+				601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */,
+				601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		60A6CC6829759B3A0037C083 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				60A6CC6929759B4A0037C083 /* ZikrService.swift */,
+				60A5BCF5298E90A3006E9FBE /* LocalizationService.swift */,
+				60A5BCF3298E900C006E9FBE /* ReviewService.swift */,
+				605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		60A6CC6B29759B8D0037C083 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60A6CC6C29759B960037C083 /* Zikr.swift */,
+				60A6CC792975CAC60037C083 /* Dua.swift */,
+				601D2DBB2976DCDA00AE6687 /* Wird.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9FDDE82A2C9B44737F2118E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E1C4223CD928EFA78E4B938 /* Pods-ZikrAppSUI.debug.xcconfig */,
+				EBF70AE7E92CFCDDB5368FC5 /* Pods-ZikrAppSUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		609548872971EDC600E3A899 /* ZikrAppSUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 609548962971EDC800E3A899 /* Build configuration list for PBXNativeTarget "ZikrAppSUI" */;
+			buildPhases = (
+				785C30DE305316444F823F8A /* [CP] Check Pods Manifest.lock */,
+				609548842971EDC600E3A899 /* Sources */,
+				609548852971EDC600E3A899 /* Frameworks */,
+				609548862971EDC600E3A899 /* Resources */,
+				F23D99E13D77594F9978AD55 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZikrAppSUI;
+			productName = ZikrAppSUI;
+			productReference = 609548882971EDC600E3A899 /* ZikrAppSUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		609548802971EDC600E3A899 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					609548872971EDC600E3A899 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 609548832971EDC600E3A899 /* Build configuration list for PBXProject "ZikrAppSUI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ru,
+				"kk-KZ",
+			);
+			mainGroup = 6095487F2971EDC600E3A899;
+			productRefGroup = 609548892971EDC600E3A899 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				609548872971EDC600E3A899 /* ZikrAppSUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		609548862971EDC600E3A899 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60A6CC722975ABB00037C083 /* Localizable.strings in Resources */,
+				601D2DBE2976F43800AE6687 /* wirds.json in Resources */,
+				601D2DC4297B076600AE6687 /* Launch Screen.storyboard in Resources */,
+				609548932971EDC800E3A899 /* Preview Assets.xcassets in Resources */,
+				60A6CC67297598450037C083 /* zikrs.json in Resources */,
+				60896D252974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf in Resources */,
+				6009F9572975CCD70096EC40 /* duas.json in Resources */,
+				609548902971EDC800E3A899 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		785C30DE305316444F823F8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZikrAppSUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F23D99E13D77594F9978AD55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZikrAppSUI/Pods-ZikrAppSUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZikrAppSUI/Pods-ZikrAppSUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZikrAppSUI/Pods-ZikrAppSUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		609548842971EDC600E3A899 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */,
+				60A5BCF4298E900C006E9FBE /* ReviewService.swift in Sources */,
+				60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */,
+				601D2DC02977328000AE6687 /* WirdTapView.swift in Sources */,
+				6009F95E2976566D0096EC40 /* RootRouter.swift in Sources */,
+				60A5BCF6298E90A3006E9FBE /* LocalizationService.swift in Sources */,
+				6095489F2973F6B300E3A899 /* ZikrView.swift in Sources */,
+				605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */,
+				601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */,
+				6095489D2973D2AC00E3A899 /* CounterView.swift in Sources */,
+				601D2DBC2976DCDA00AE6687 /* Wird.swift in Sources */,
+				608D091529768B8600671A71 /* WirdsView.swift in Sources */,
+				60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */,
+				6009F969297674580096EC40 /* ZikrTapViewModel.swift in Sources */,
+				609548A12973FDE200E3A899 /* Palette.swift in Sources */,
+				60A6CC6D29759B960037C083 /* Zikr.swift in Sources */,
+				609548AA29741AA400E3A899 /* AppDelegate.swift in Sources */,
+				60A6CC6A29759B4A0037C083 /* ZikrService.swift in Sources */,
+				60896D2329745FD100FC3A7E /* ZikrContentView.swift in Sources */,
+				609548A42974101900E3A899 /* DuasView.swift in Sources */,
+				608D091729768D5E00671A71 /* WirdView.swift in Sources */,
+				6009F959297655250096EC40 /* SceneDelegate.swift in Sources */,
+				605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */,
+				6009F96229765A600096EC40 /* MainView.swift in Sources */,
+				609548AC29742E0300E3A899 /* Extensions.swift in Sources */,
+				609548A8297413AD00E3A899 /* ZikrsContainerView.swift in Sources */,
+				6095488E2971EDC600E3A899 /* ZikrsView.swift in Sources */,
+				601D2DC22977328B00AE6687 /* WirdTapViewModel.swift in Sources */,
+				6009F95B297656420096EC40 /* RootCoordinator.swift in Sources */,
+				609548AF297432F500E3A899 /* SettingsView.swift in Sources */,
+				601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		60A6CC742975ABB00037C083 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60A6CC732975ABB00037C083 /* en */,
+				60A6CC752975ABB70037C083 /* kk-KZ */,
+				60A6CC762975ABB90037C083 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		609548942971EDC800E3A899 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		609548952971EDC800E3A899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		609548972971EDC800E3A899 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E1C4223CD928EFA78E4B938 /* Pods-ZikrAppSUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
+				DEVELOPMENT_TEAM = W7XBRGS6CR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZikrAppSUI/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Zikr App";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		609548982971EDC800E3A899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBF70AE7E92CFCDDB5368FC5 /* Pods-ZikrAppSUI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
+				DEVELOPMENT_TEAM = W7XBRGS6CR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZikrAppSUI/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Zikr App";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		609548832971EDC600E3A899 /* Build configuration list for PBXProject "ZikrAppSUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				609548942971EDC800E3A899 /* Debug */,
+				609548952971EDC800E3A899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		609548962971EDC800E3A899 /* Build configuration list for PBXNativeTarget "ZikrAppSUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				609548972971EDC800E3A899 /* Debug */,
+				609548982971EDC800E3A899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 609548802971EDC600E3A899 /* Project object */;
+}

@@ -1,0 +1,85 @@
+[
+    {
+        "id": "tasbihAfterSalah",
+        "title": "tasbihAfterSalah",
+        "repeatTimes": null,
+        "zikrs": [
+            {
+                "zikrId": "subhanallah",
+                "zikrType": "zikr",
+                "targetCount": 33
+            },
+            {
+                "zikrId": "alhamdulillah",
+                "zikrType": "zikr",
+                "targetCount": 33
+            },
+            {
+                "zikrId": "Allahuakbar",
+                "zikrType": "zikr",
+                "targetCount": 33
+            }
+        ]
+    },
+    {
+        "id": "morningEveningProtection",
+        "title": "morningEveningProtection",
+        "repeatTimes": null,
+        "zikrs": [
+            {
+                "zikrId": "bismillahilladhi",
+                "zikrType": "zikr",
+                "targetCount": 3
+            },
+            {
+                "zikrId": "a'udhubikalimatillahi",
+                "zikrType": "zikr",
+                "targetCount": 3
+            },
+            {
+                "zikrId": "hasbiyallahu",
+                "zikrType": "dua",
+                "targetCount": 7
+            }
+        ]
+    },
+    {
+        "id": "surahsBeforeSleep",
+        "title": "surahsBeforeSleep",
+        "repeatTimes": 3,
+        "zikrs": [
+            {
+                "zikrId": "al-ikhlas",
+                "zikrType": "dua",
+                "targetCount": 1
+            },
+            {
+                "zikrId": "al-falaq",
+                "zikrType": "dua",
+                "targetCount": 1
+            },
+            {
+                "zikrId": "an-nas",
+                "zikrType": "dua",
+                "targetCount": 1
+            }
+        ]
+    },
+    {
+        "id": "increaseBarakahZikrs",
+        "title": "increaseBarakahZikrs",
+        "repeatTimes": null,
+        "zikrs": [
+            {
+                "zikrId": "subhanallahWalhamdulillah",
+                "zikrType": "zikr",
+                "targetCount": 33
+            },
+            {
+                "zikrId": "lailahaillaantalMalikulHaqqulMubin",
+                "zikrType": "zikr",
+                "targetCount": 100
+            }
+        ]
+    }
+]

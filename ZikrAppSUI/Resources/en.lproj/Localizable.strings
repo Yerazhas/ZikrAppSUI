@@ -1,0 +1,227 @@
+/* 
+  Localizable.strings
+  ZikrAppSUI
+
+  Created by Yerassyl Zhassuzakhov on 16.01.2023.
+  
+*/
+
+"cancel" = "Cancel";
+"start" = "Start";
+"enterZikrAmount" = "Enter zikr amount";
+"zikrAmount" = "Zikr amount";
+"actions" = "Actions";
+"chooseAction" = "Choose an action";
+"createWird" = "Create a wird";
+"downloadNow" = "Download Now";
+
+"info.description" = "We are a group of enthusiastic people, software developers, designers who want to help the muslim ummah by creating high-quality apps which solve specific, actual problems.\n\nWe will continue to develop, and you can try our other apps to support the project. And we will be always grateful if you share them with family and friends.";
+
+"title" = "Title";
+"arabic" = "Arabic";
+"transcription" = "Transcription";
+"translation" = "Translation";
+"add" = "Add";
+
+"zikrs" = "Zikrs";
+"settings" = "Settings";
+
+"hideTotalCount" = "Hide zikr total count";
+
+"share" = "Share";
+"aboutUs" = "About us";
+"rateApp" = "Rate app";
+
+"wird" = "wird";
+"zikr" = "zikr";
+"countingZikr" = "Counter";
+
+// zikr
+
+"kalima" = "Kalima Tawheed";
+"kalima.transcription" = "La ilaha illallah Muhammadur rasulullah";
+"kalima.translation" = "There is no god but Allah. Muhammad is the messenger of Allah";
+
+"istighfar" = "Istighfar";
+"istighfar.transcription" = "Astaghfirullah";
+"istighfar.translation" = "I seek forgiveness of Allah";
+
+"salawat" = "Salawat";
+"salawat.transcription" = "Allahumma salli 'ala Muhammad";
+"salawat.translation" = "O Allah, let Your Peace come upon Muhammad";
+
+"duaForParents" = "Dua for parents";
+"duaForParents.transcription" = "Rabbi-rhamhumaa kamaa rabbayanee sogheeraa";
+"duaForParents.translation" = "My Lord! Be merciful to them as they raised me when I was young";
+
+"laHawla" = "La hawla wa la quwata illa billah";
+"laHawla.transcription" = "La hawla wa la quwata illa billah";
+"laHawla.translation" = "There is no Might or Power except with Allah";
+
+"innakaAfuun" = "Dua on Laylatul Qadr";
+"innakaAfuun.transcription" = "Allahumma innaka 'afuwwun tuhibbul-'afwa, fa'fu 'anni";
+"innakaAfuun.translation" = "O Allah, You are Forgiving and love forgiveness, so forgive me";
+
+"hasbunallahu" = "Hasbunallahu wa ni'mal wakeel";
+"hasbunallahu.transcription" = "Hasbunallahu wa ni'mal wakeel";
+"hasbunallahu.translation" = "Allah is Sufficient for us, and He is the Best Disposer of affairs";
+
+"duaOfYunus" = "La ilaha illa anta subhanaka inni kuntu minaz zalimeen";
+"duaOfYunus.transcription" = "La ilaha illa anta subhanaka inni kuntu minaz zalimeen";
+"duaOfYunus.translation" = "None has the right to be worshipped but You, GLorified(and Exalted) are You. Truly, I have been of the wrong-doers";
+
+"subhanallahWalhamdulillah" = "Subhanallah walhamdulillah";
+"subhanallahWalhamdulillah.transcription" = "Subhanallah, walhamdulillah, wa la ilaha illallahu, wallahu akbar";
+"subhanallahWalhamdulillah.translation" = "Glory be to Allah, All Praise is for Allah, There is no god but Allah, Allah is the Greatest";
+
+"wahdahuLaSharikaLah" = "La ilaha illallahu wahdahu la sharika lah, lahulmulku wa lahulhamdu wa huwa 'ala kulli shay`in Qadir";
+"wahdahuLaSharikaLah.transcription" = "La ilaha illallahu wahdahu la sharika lah, lahulmulku wa lahulhamdu wa huwa 'ala kulli shay`in Qadir";
+"wahdahuLaSharikaLah.translation" = "There is no true god except Allah. He is One and He has no partner with Him. His is the sovereignty and His is the praise, and He is Omnipotent";
+
+"rabbanaAteena" = "Rabbana ateena";
+"rabbanaAteena.transcription" = "Rabbana ateena fid-dunya hasanatan wa fil akhirati hasanatan waqina 'adhaban-nar";
+"rabbanaAteena.translation" = "Our Lord! Grant us god in this world and good in the hereafter, and save us from the punishment of the fire";
+
+"ainniAlaDhikrika" = "Allahumma a'inni 'ala dhikrika";
+"ainniAlaDhikrika.transcription" = "Allahumma a'inni 'ala dhikrika wa shukrika wa husni 'ibadatik";
+"ainniAlaDhikrika.translation" = "O Allah! Assist me in remembering You, in thanking you, and in worshipping You in the best of manners";
+
+// dua
+
+"sayyidulIstighfar" = "Sayyidul Istighfar";
+"sayyidulIstighfar.transcription" = "Allahumma anta rabbi laa ilaaha illa ant, kholaqtanee wa ana 'abduk, wa ana 'alaa 'ahdika wa wa'dika mastato't, a'udhu bika min sharri ma sona't, aboou laka bini'matika 'alayy, wa aboou laka bidhanbi faghfirli, fainnahu la yaghfirudh-dhunuba illa ant.";
+"sayyidulIstighfar.translation" = "O Allah! You are my Lord! There is no god (worthy of worship) but You. You created me and I am Your slave, and I am faithful to my covenant and my promise given to You, as much as I can. I seek refuge with You from the evil I have done. I acknowledge before You the blessing You have bestowed upon me and I confess to You my sin. So I entreat You to forgive my sins, for nobody can forgive sins except You.";
+
+"astaghfirullahal-'adhim" = "Astaghfirullahal-'adhim";
+"astaghfirullahal-'adhim.transcription" = "Astaghfirullahal-'adhim alladhi la ilaha illa huwal hayyul qoyyum, wa atubu ilayh.";
+"astaghfirullahal-'adhim.translation" = "I seek the forgiveness of Allah the Mighty, Whom there is no god (worthy of worship) but Him, The Living, The All-Sustaining and I repent unto Him.";
+
+"ayatul-Kursi" = "Ayat al-Kursi";
+"ayatul-Kursi.transcription" = "Allahu laaa ilaaha illaa huwal haiyul qai-yoom; laa taakhuzuhoo sinatunw wa laa nawm; lahoo maa fissamaawaati wa maa fil ard; man zallazee yashfa'u indahooo illaa be iznih; ya'lamu maa baina aideehim wa maa khalfahum; wa laa yuheetoona beshai 'immin 'ilmihee illa be maa shaaaa; wasi'a kursiyyuhus samaa waati wal arda wa la ya'ooduho hifzuhumaa; wa huwal aliyyul 'azeem";
+"ayatul-Kursi.translation" = "Allah! There is no god ˹worthy of worship˺ except Him, the Ever-Living, All-Sustaining. Neither drowsiness nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who could possibly intercede with Him without His permission? He ˹fully˺ knows what is ahead of them and what is behind them, but no one can grasp any of His knowledge—except what He wills ˹to reveal˺. His Seat encompasses the heavens and the earth, and the preservation of both does not tire Him. For He is the Most High, the Greatest.";
+
+"tasbihAfterSalah" = "Tasbih after salah";
+"morningEveningProtection" = "Morning and evening zikrs for protection";
+
+"subhanallah" = "Subhaanallah";
+"subhanallah.transcription" = "Subhanallah";
+"subhanallah.translation" = "Exalted is Allah";
+
+"alhamdulillah" = "Alhamdulillah";
+"alhamdulillah.transcription" = "Alhamdulillah";
+"alhamdulillah.translation" = "Praise be to Allah";
+
+"Allahuakbar" = "Allahu Akbar";
+"Allahuakbar.transcription" = "Allahu Akbar";
+"Allahuakbar.translation" = "Allah is Great";
+
+"bismillahilladhi" = "Bismillahil ladhi";
+"bismillahilladhi.transcription" = "Bismillahil ladhi la yadurru ma'asmihi shai un fil ardi wa lafis-sama i, wa Huwas-Sami'ul-Alim.";
+"bismillahilladhi.translation" = "In the Name of Allah, Who with His Name nothing can cause harm in the earth nor in the heavens, and He is the All-Hearing, the All-Knowing.";
+
+"a'udhubikalimatillahi" = "A'udhu bi kalimatillaahi at-taammaati min sharri ma khalaq.";
+"a'udhubikalimatillahi.transcription" = "A'udhu bi kalimatillaahi at-taammaati min sharri ma khalaq.";
+"a'udhubikalimatillahi.translation" = "I seek refuge in the Perfect Words of Allah from the evil of what He has created.";
+
+"hasbiyallahu" = "Hasbiyallahu";
+"hasbiyallahu.transcription" = "HasbiyAllahu laa ilaaha illa huwa alayhi tawakkaltu wa huwa Rabbul arshil adheem.";
+"hasbiyallahu.translation" = "Allah is sufficient for me. There is none worthy of worship but Him. I have placed my trust in Him. He is the Lord of the Majestic throne.";
+
+"al-fatiha" = "Al-Fatiha";
+"al-fatiha.transcription" = "Alhamdu lillaahi Rabbil ‘aalameen Ar-Rahmaanir-Raheem Maaliki Yawmid-Deen Iyyaaka na’budu wa lyyaaka nasta’een Ihdinas-Siraatal-Mustaqeem Siraatal-lazeena an’amta ‘alaihim ghayril-maghdoobi ‘alaihim wa lad-daaalleen";
+"al-fatiha.translation" = "[All] praise is [due] to Allah, Lord of the worlds – The Most Merciful, the Especially Merciful, Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path – The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.";
+
+"al-ikhlas" = "Al-Ikhlas";
+"al-ikhlas.transcription" = "qul huwa-llaahu aḥad allaahuṣ-ṣamad lam yalid wa lam yoolad wa lam yakul-lahuۥ kufuwan aḥad";
+"al-ikhlas.translation" = "He is Allâh, (the) One.(1) Allâh the Self-Sufficient Master, Whom all creatures need. (2) He begets not, nor was He begotten. (3) And there is none co-equal or comparable unto Him.";
+
+"al-falaq" = "Al-Falaq";
+"al-falaq.transcription" = "qul a‛oodhu birabbil-falaq min sharri maa khalaq wa min sharri ghaasiqin idhaa waqab wa min sharrin-naffaathaati fil-‛uqad wa min sharri ḥaasidin idhaa ḥasad";
+"al-falaq.translation" = "Say: \"I seek refuge with (Allâh) the Lord of the daybreak, From the evil of what He has created; And from the evil of the darkening (night) as it comes with its darkness; (or the moon as it sets or goes away) And from the evil of those who practice witchcrafts when they blow in the knots, And from the evil of the envier when he envies.\"";
+
+"an-nas" = "An-Nas";
+"an-nas.transcription" = "qul a‛oodh-u birabbin-naas malikin-naas ilaahin-naas min sharril-waswaasil-khannaas alladhee yuwaswisu fee ṣudoorin-naas minal-jinnati wan-naas";
+"an-nas.translation" = "Say: \"I seek refuge with (Allâh) the Lord of mankind, The King of mankind (2) The Ilâh (God) of mankind, From the evil of the whisperer (devil who whispers evil in the hearts of men) who withdraws (from his whispering in one's heart after one remembers Allâh), Who whispers in the breasts of mankind, Of jinn and men.\"";
+
+"lailahaillaantalMalikulHaqqulMubin" = "La ilaaha illa antal Malikul Haqqul Mubin";
+"lailahaillaantalMalikulHaqqulMubin.transcription" = "La ilaaha illa antal Malikul Haqqul Mubin";
+"lailahaillaantalMalikulHaqqulMubin.translation" = "There is no god but Almighty Allah, the King, the Clear Truth.";
+
+"duaAfterAdhan" = "Dua after adhan";
+"duaAfterAdhan.transcription" = "Allahumma Rabba hadhihi-dda' watit-tammah, was-salatil qa imah, ati
+Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adtahu, innaka la tukhliful mii'aad";
+"duaAfterAdhan.translation" = "O Allah, Lord of this most perfect call, and of the Prayer that is about to be established, grant our Master Muhammad (ﷺ) the intercession and favor and the highest rank, and exalt him to a position of glory that You have promised him. Verily You do not neglect promises";
+
+"surahsBeforeSleep" = "Surahs to read before going to bed at night";
+"increaseBarakahZikrs" = "Morning and evening zikrs to increase barakah and rizq";
+"repeat" = "Repeat %@ times";
+"hideZikrNumbers" = "Should hide zikr numbers";
+"notifications" = "Notifications";
+"followInstagram" = "Follow us on instagram";
+"appInfo" = "Version %@\n© Zikr App by salam.apps";
+"firstDate" = "First notification";
+"secondDate" = "Second notification";
+"selectFirstDate" = "Select time for first notification";
+"selectSecondDate" = "Select time for second notification";
+"notificationTitle" = "Daily reminder";
+"notificationSubtitle" = "Don't forget to perform zikr";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"" = "";
+".transcription" = "";
+".translation" = "";
+
+"dua" = "Dua";
+"zikr" = "Zikr";
+"wird" = "Wird";
+
+"duas" = "Duas";
+"zikrs" = "Zikrs";
+"wirds" = "Wirds";
+
+"changeLanguage" = "Change language";
+"selectLanguage" = "Select language";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";

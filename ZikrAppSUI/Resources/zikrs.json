@@ -1,0 +1,94 @@
+[
+    {
+        "id": "kalima",
+        "title": "kalima",
+        "arabicTitle": "لَا إِلٰهَ إِلَّا الله مُحَمَّدٌ رَسُولُ الله"
+    },
+    {
+        "id": "istighfar",
+        "title": "istighfar",
+        "arabicTitle": "أَسْتَغْفِرُ ٱللَّٰهَ"
+    },
+    {
+        "id": "salawat",
+        "title": "salawat",
+        "arabicTitle": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ"
+    },
+    {
+        "id": "duaForParents",
+        "title": "duaForParents",
+        "arabicTitle": "رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا "
+    },
+    {
+        "id": "laHawla",
+        "title": "laHawla",
+        "arabicTitle": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ‎ "
+    },
+    {
+        "id": "innakaAfuun",
+        "title": "innakaAfuun",
+        "arabicTitle": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي"
+    },
+    {
+        "id": "hasbunallahu",
+        "title": "hasbunallahu",
+        "arabicTitle": "حَسْبُنَا اللَّهُ وَ نِعْمَ الْوَ كِيلُ"
+    },
+    {
+        "id": "duaOfYunus",
+        "title": "duaOfYunus",
+        "arabicTitle": "حَسْبُنَا اللَّهُ وَ نِعْمَ الْوَ كِيلُ"
+    },
+    {
+        "id": "subhanallahWalhamdulillah",
+        "title": "subhanallahWalhamdulillah",
+        "arabicTitle": "سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلاَ إِلَهَ إِلاَّ اللَّهُ وَاللَّهُ أَكْبَرُ",
+        "type": "zikr"
+    },
+    {
+        "id": "wahdahuLaSharikaLah",
+        "title": "wahdahuLaSharikaLah",
+        "arabicTitle": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ، وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ"
+    },
+    {
+        "id": "rabbanaAteena",
+        "title": "rabbanaAteena",
+        "arabicTitle": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ"
+    },
+    {
+        "id": "ainniAlaDhikrika",
+        "title": "ainniAlaDhikrika",
+        "arabicTitle": "اللَّهُمَّ أَعِنِّيْ عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ"
+    },
+    {
+        "id": "subhanallah",
+        "title": "subhanallah",
+        "arabicTitle": "سُبْحَانَ ٱللَّٰهِ"
+    },
+    {
+        "id": "alhamdulillah",
+        "title": "alhamdulillah",
+        "arabicTitle": "ٱلْحَمْدُ لِلَّٰهِ"
+    },
+    {
+        "id": "Allahuakbar",
+        "title": "Allahuakbar",
+        "arabicTitle": "ٱللَّٰهُ أَكْبَرُ"
+    },
+    {
+        "id": "bismillahilladhi",
+        "title": "bismillahilladhi",
+        "arabicTitle": "بِسْمِ اللهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ"
+    },
+    {
+        "id": "a'udhubikalimatillahi",
+        "title": "a'udhubikalimatillahi",
+        "arabicTitle": "أَعـوذُبِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق"
+    }
+    ,
+    {
+        "id": "lailahaillaantalMalikulHaqqulMubin",
+        "title": "lailahaillaantalMalikulHaqqulMubin",
+        "arabicTitle": "لَااِلٰهَ اِلاَّالله اَلْمَلِكُ الْحَقُّ الْمُبِينُ"
+    }
+]
