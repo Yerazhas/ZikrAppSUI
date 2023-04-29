@@ -20,6 +20,9 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
         self.zikr = zikr
         self.out = out
         totalCount = zikr.totalDoneCount
+        NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification, object: nil, queue: .main) { _ in
+            self.willDisappear()
+        }
     }
 
     func zikrDidTap() {

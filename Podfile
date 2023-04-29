@@ -7,7 +7,7 @@ target 'ZikrAppSUI' do
   pod 'RealmSwift', '~>10'
   pod "Haptica"
   pod 'Amplitude', '~> 8.8.0'
-  pod 'Factory'
+  pod 'Factory', '1.3.7'
   # Pods for ZikrAppSUI
 
 end
