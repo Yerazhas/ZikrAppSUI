@@ -24,8 +24,10 @@ struct ZikrContentView: View {
                         .font(.uthmanicArabic(size: 30))
                         .fixedSize(horizontal: false, vertical: true)
                     Text("\(zikr.title).transcription".localized(language))
+//                    Text(zikr.getTranscription(language: language))
                         .foregroundColor(.secondary)
                     Text("\(zikr.title).translation".localized(language))
+//                    Text(zikr.getTranslation(language: language))
                         .foregroundColor(.secondary)
                     Spacer()
                 }

@@ -19,6 +19,12 @@ struct TargetedZikr: Hashable {
     }
 }
 
+typealias WirdTapOut = (WirdTapOutCmd) -> Void
+enum WirdTapOutCmd {
+    case close
+    case delete(() -> Void)
+}
+
 final class WirdTapViewModel: ObservableObject, Hapticable {
     @Published var currentIndex: Int = 0 {
         didSet {
@@ -27,16 +33,16 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
     }
     @Published private(set) var count: Int = 0
     @Injected(Container.analyticsService) private var analyticsService
-    private let wird: Wird
+    let wird: Wird
     private var totalDoneCount: Int
     private var isFinished: Bool = false
     private let zikrService = ZikrService()
-    private let out: () -> Void
+    private let out: WirdTapOut
     let targetedZikrs: [TargetedZikr]
 
     @Published private(set) var currentTargetedZikr: TargetedZikr
 
-    init(wird: Wird, out: @escaping () -> Void) {
+    init(wird: Wird, out: @escaping WirdTapOut) {
         self.wird = wird
         self.totalDoneCount = wird.totalDoneCount
         self.out = out
@@ -93,12 +99,31 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
     }
 
     func willDisappear() {
+        hapticLight()
         analyticsService.trackCloseWird(wird: wird, count: isFinished ? totalDoneCount + 1 : totalDoneCount)
-        out()
+        out(.close)
+    }
+
+    func deleteWird() {
+        hapticLight()
+        out(.delete(delete))
+    }
+
+    private func delete() {
+        let realm = try! Realm()
+        do {
+            guard let wird = realm.objects(Wird.self).where({ $0.id == wird.id }).first else { return }
+            try realm.write {
+                realm.delete(wird)
+                out(.close)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
-protocol Hapticable: AnyObject {
+protocol Hapticable {
     func hapticLight()
     func hapticStrong()
 }
@@ -109,6 +134,6 @@ extension Hapticable {
     }
 
     func hapticStrong() {
-        Haptic.notification(.warning).generate()
+        Haptic.notification(.error).generate()
     }
 }

@@ -27,35 +27,7 @@ struct ZikrsContainerView: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 10) {
-                Spacer()
-                Button {
-                    out(.openSettings)
-                } label: {
-                    Image(systemName: "gear")
-                }
-                .schemeAdapted(colorScheme: colorScheme)
-                Picker(selection: $contentType) {
-                    Text("zikrs".localized(language))
-                        .tag(ZikrType.zikr)
-                    Text("duas".localized(language))
-                        .tag(ZikrType.dua)
-                    Text("wirds".localized(language))
-                        .tag(ZikrType.wird)
-                } label: {
-                    EmptyView()
-                }
-                .pickerStyle(.segmented)
-                .padding()
-                Button {
-                    out(.openAddNew)
-                } label: {
-                    Image(systemName: "plus")
-                }
-                .opacity(0)
-                .schemeAdapted(colorScheme: colorScheme)
-                Spacer()
-            }
+            headerView
             switch contentType {
             case .zikr:
                 ZikrsView { zikr in
@@ -82,7 +54,47 @@ struct ZikrsContainerView: View {
         }
         .animation(.none)
     }
+
+    private var headerView: some View {
+        HStack(spacing: 10) {
+            Spacer()
+            Button {
+                hapticLight()
+                out(.openSettings)
+            } label: {
+                Image("ic-menu")
+                    .renderingMode(.template)
+                    .foregroundColor(.secondary)
+            }
+            .schemeAdapted(colorScheme: colorScheme)
+            Picker(selection: $contentType) {
+                Text("zikrs".localized(language))
+                    .tag(ZikrType.zikr)
+                Text("duas".localized(language))
+                    .tag(ZikrType.dua)
+                Text("wirds".localized(language))
+                    .tag(ZikrType.wird)
+            } label: {
+                EmptyView()
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            Button {
+                hapticLight()
+                out(.openAddNew)
+            } label: {
+                Image("ic-add")
+                    .renderingMode(.template)
+                    .foregroundColor(.secondary)
+            }
+            .schemeAdapted(colorScheme: colorScheme)
+            Spacer()
+        }
+        .navigationBarHidden(true)
+    }
 }
+
+extension ZikrsContainerView: Hapticable {}
 
 struct ZikrsContainerView_Previews: PreviewProvider {
     static var previews: some View {

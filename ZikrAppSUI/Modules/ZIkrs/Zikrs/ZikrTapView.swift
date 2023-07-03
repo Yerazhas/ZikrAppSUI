@@ -41,10 +41,11 @@ struct ZikrTapView: View {
             Button {
                 viewModel.willDisappear()
             } label: {
-                Image(systemName: "xmark.circle")
+                Image(systemName: "xmark.circle.fill")
+                    .renderingMode(.template)
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(.textGray)
+                    .foregroundColor(.secondary)
             }
             .padding(.horizontal)
         }
@@ -60,7 +61,7 @@ struct ZikrTapView: View {
                     .tag(0)
             }
             .cornerRadius(10)
-            .tabViewStyle(.page(indexDisplayMode: .always))
+            .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(height: getHeights(gr).0)
         }
     }
@@ -83,6 +84,7 @@ struct ZikrTapView: View {
                 .schemeAdapted(colorScheme: colorScheme)
                 Button {} label: {
                     Image(systemName: "arrow.counterclockwise")
+                        .renderingMode(.template)
                         .schemeAdapted(colorScheme: colorScheme)
                         .frame(width: 48, height: 48)
                         .padding(.top, 10)

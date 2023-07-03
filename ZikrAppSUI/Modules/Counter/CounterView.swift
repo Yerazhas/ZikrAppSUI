@@ -28,6 +28,7 @@ struct CounterView: View {
                     .fixedSize()
                 Button {} label: {
                     Image(systemName: "arrow.counterclockwise")
+                        .renderingMode(.template)
                         .schemeAdapted(colorScheme: colorScheme)
                         .frame(width: 48, height: 48)
                         .padding(.top, 10)
@@ -45,6 +46,7 @@ struct CounterView: View {
         }
         .onAppear(perform: viewModel.onAppear)
         .onDisappear(perform: viewModel.onDisappear)
+        .navigationBarHidden(true)
     }
 }
 

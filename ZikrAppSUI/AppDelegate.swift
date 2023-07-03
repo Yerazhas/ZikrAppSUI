@@ -8,6 +8,7 @@
 import UIKit
 import Amplitude
 import Factory
+import RealmSwift
 
 @main
 final class AppDelegate: NSObject, UIApplicationDelegate {
@@ -18,6 +19,10 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
         transferDataToRealmIfNeeded()
+        UIPageControl.appearance().isUserInteractionEnabled = false
+        UIPageControl.appearance().currentPageIndicatorTintColor = .black
+//        let config = Realm.Configuration(schemaVersion: 3)
+//        Realm.Configuration.defaultConfiguration = config
         configureAmplitude()
         return true
     }
@@ -31,8 +36,15 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
     private func transferDataToRealmIfNeeded() {
-        guard !UserDefaults.standard.bool(forKey: .didTransferZikrs) else { return }
         let service = ZikrService()
+        guard !UserDefaults.standard.bool(forKey: .didTransferZikrs) else {
+//            if !UserDefaults.standard.bool(forKey: .didTransferZikrs1) {
+//                service.transferZikrsFromJson1()
+//                service.transferDuasFromJson1()
+////                service.transferWirdsFromJson1()
+//            }
+            return
+        }
         service.transferZikrsFromJson()
         service.transferDuasFromJson()
         service.transferWirdsFromJson()

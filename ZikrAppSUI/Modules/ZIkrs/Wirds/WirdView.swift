@@ -30,7 +30,7 @@ struct WirdView: View {
                         Text(wird.title.localized(language))
                         Text(wird.getSubtitle(language: language))
                             .foregroundColor(.secondary)
-                            .font(.subheadline)
+                            .font(.footnote)
                         if let repeatTimes = wird.repeatTimes {
                             Text(
                                 "repeat".localized(language, args: String(repeatTimes))

@@ -6,15 +6,81 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AddNewView: View {
+    @AppStorage("language") private var language = LocalizationService.shared.language
+    @StateObject private var viewModel: AddNewViewModel
+    private let columns = [
+        GridItem(.flexible(minimum: 100))
+    ]
+
+    public init(out: @escaping AddNewOut) {
+        self._viewModel = StateObject(wrappedValue: AddNewViewModel(out: out))
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Picker(selection: $viewModel.contentType) {
+                Text("zikr".localized(language))
+                    .tag(ZikrType.zikr)
+                Text("dua".localized(language))
+                    .tag(ZikrType.dua)
+                Text("wird".localized(language))
+                    .tag(ZikrType.wird)
+            } label: {
+                EmptyView()
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            VStack(alignment: .leading, spacing: 14) {
+                ValidatedTextField(viewModel: viewModel.titleViewModel, keyboardType: .alphabet)
+                    .padding(.horizontal)
+                if viewModel.contentType == .wird {
+                    Text("selectZikrs".localized(language))
+                        .font(.headline)
+                        .padding(.horizontal)
+                    addWirdView
+                } else {
+                    Group {
+                        ValidatedTextField(viewModel: viewModel.arabicViewModel, keyboardType: .alphabet)
+                        ValidatedTextField(viewModel: viewModel.transcriptionViewModel, keyboardType: .alphabet)
+                        ValidatedTextField(viewModel: viewModel.translationViewModel, keyboardType: .alphabet)
+                    }
+                    .padding(.horizontal)
+                }
+            }
+            Spacer()
+        }
+        .navigationBarHidden(false)
+        .navigationTitle("addNew".localized(language))
+        .navigationBarItems(
+            trailing: Button(
+                "add".localized(language),
+                action: {
+                    viewModel.didPressAdd()
+                }
+            )
+            .foregroundColor(.systemGreen)
+        )
+    }
+
+    private var addWirdView: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(viewModel.zikrViewModels) { zikr in
+                    AddNewZikrView(viewModel: zikr)
+                        .frame(height: 100)
+                }
+            }
+            .animation(.none)
+            .padding(.vertical, 10)
+        }
     }
 }
 
 struct AddNewView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewView()
+        AddNewView { _ in }
     }
 }

@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let rootVC = UINavigationController()
-        rootVC.navigationBar.isHidden = true
+        rootVC.navigationBar.tintColor = .systemGreen
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         let coordinator = RootCoordinator(nc: rootVC)

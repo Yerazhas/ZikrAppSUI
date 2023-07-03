@@ -40,9 +40,14 @@ struct MainView: View {
                 }
             }
                 .tag(1)
+            ProfileView { _ in
+                
+            }
+            .tag(2)
         }
         .animation(.default)
         .tabViewStyle(.page(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .onAppear {
             guard !isOnboarded else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

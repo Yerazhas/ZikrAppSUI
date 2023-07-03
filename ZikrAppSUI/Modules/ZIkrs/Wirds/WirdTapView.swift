@@ -11,7 +11,7 @@ struct WirdTapView: View {
     @StateObject private var viewModel: WirdTapViewModel
     @Environment(\.colorScheme) private var colorScheme
 
-    init(wird: Wird, out: @escaping () -> Void) {
+    init(wird: Wird, out: @escaping WirdTapOut) {
         _viewModel = StateObject(wrappedValue: .init(wird: wird, out: out))
     }
 
@@ -33,17 +33,30 @@ struct WirdTapView: View {
     }
 
     private var headerView: some View {
-        HStack {
+        HStack(spacing: 15) {
+            if viewModel.wird.isDeletable {
+                Button {
+                    viewModel.deleteWird()
+                } label: {
+                    Image(systemName: "trash.circle.fill")
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.leading)
+            }
             Spacer()
             Button {
                 viewModel.willDisappear()
             } label: {
-                Image(systemName: "xmark.circle")
+                Image(systemName: "xmark.circle.fill")
+                    .renderingMode(.template)
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(.textGray)
+                    .foregroundColor(.secondary)
             }
-            .padding(.horizontal)
+            .padding(.trailing)
         }
     }
 
@@ -60,6 +73,7 @@ struct WirdTapView: View {
             }
             .cornerRadius(10)
             .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
             .frame(height: getHeights(gr).0)
             .animation(.default)
         }
@@ -108,6 +122,6 @@ struct WirdTapView: View {
 
 struct WirdTapView_Previews: PreviewProvider {
     static var previews: some View {
-        WirdTapView(wird: .init()) {}
+        WirdTapView(wird: .init()) { _ in }
     }
 }

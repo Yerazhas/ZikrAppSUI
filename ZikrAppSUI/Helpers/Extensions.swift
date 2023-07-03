@@ -21,6 +21,7 @@ extension Font {
 
 extension String {
     static let didTransferZikrs = "didTransferZikrs"
+    static let didTransferZikrs1 = "didTransferZikrs1" // add localized fields on zikr, like translation, transcription (KZ, RU, EN)
     static let didSetAppLang = "didSetAppLang"
 }
 

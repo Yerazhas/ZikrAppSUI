@@ -14,12 +14,15 @@ protocol RootRouter: AnyObject {
 
     func openZikr(_ zikr: Zikr,  _ out: @escaping () -> Void)
     func openDua(_ dua: Dua,  _ out: @escaping () -> Void)
-    func openWird(_ wird: Wird,  _ out: @escaping () -> Void)
+    func openWird(_ wird: Wird,  _ out: @escaping WirdTapOut)
     func openSettings()
     func openLanguageSetupAlert()
-    func openAddNew()
+    func openAddNew(out: @escaping AddNewOut)
 
     func dismissPresentedVC()
+    func showInfoAlert(message: String)
+    func popToRoot()
+    func showAlert(message: String, action: @escaping () -> Void)
 }
 
 final class RootRouterImpl: RootRouter {
@@ -50,7 +53,7 @@ final class RootRouterImpl: RootRouter {
         nc?.present(vc, animated: true)
     }
 
-    func openWird(_ wird: Wird,  _ out: @escaping () -> Void) {
+    func openWird(_ wird: Wird,  _ out: @escaping WirdTapOut) {
         let view = WirdTapView(wird: wird, out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
@@ -88,13 +91,38 @@ final class RootRouterImpl: RootRouter {
         nc?.present(alertVC, animated: true)
     }
 
-    func openAddNew() {
-        let view = AddNewView()
+    func openAddNew(out: @escaping AddNewOut) {
+        let view = AddNewView(out: out)
         let vc = UIHostingController(rootView: view)
-        nc?.present(vc, animated: true)
+//        nc?.present(vc, animated: true)
+        nc?.pushViewController(vc, animated: true)
     }
 
     func dismissPresentedVC() {
         nc?.presentedViewController?.dismiss(animated: true)
+    }
+
+    func showInfoAlert(message: String) {
+        let language = localizationService.language
+        let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok".localized(language), style: .default)
+        alertVC.addAction(okAction)
+        nc?.present(alertVC, animated: true)
+    }
+
+    func popToRoot() {
+        nc?.popViewController(animated: true)
+    }
+
+    func showAlert(message: String, action: @escaping () -> Void) {
+        let language = localizationService.language
+        let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok".localized(language), style: .default) { _ in
+            action()
+        }
+        let cancelAction = UIAlertAction(title: "cancel".localized(language), style: .cancel)
+        alertVC.addAction(okAction)
+        alertVC.addAction(cancelAction)
+        nc?.presentedViewController?.present(alertVC, animated: true)
     }
  }

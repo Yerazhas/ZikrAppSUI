@@ -14,9 +14,43 @@ final class ZikrService {
         do {
             let data = try Data(contentsOf: jsonUrl)
             let zikrs = try JSONDecoder().decode([Zikr].self, from: data)
-            let realm = try! Realm()
+            let realm = try Realm()
             try realm.write {
+//                for zikr in zikrs {
+//                    zikr.translationKZ = "\(zikr.title).translation".localized(.kz)
+//                    zikr.translationRU = "\(zikr.title).translation".localized(.ru)
+//                    zikr.translationEN = "\(zikr.title).translation".localized(.en)
+//
+//                    zikr.transcriptionKZ = "\(zikr.title).transcription".localized(.kz)
+//                    zikr.transcriptionRU = "\(zikr.title).transcription".localized(.ru)
+//                    zikr.transcriptionEN = "\(zikr.title).transcription".localized(.en)
+//
+//                    realm.add(zikr)
+//                }
                 zikrs.forEach { realm.add($0) }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+
+    func transferZikrsFromJson1() {
+        do {
+            let realm = try Realm()
+            let zikrs = realm.objects(Zikr.self)
+            try realm.write {
+                for zikr in zikrs {
+//                    zikr.translationKZ = "\(zikr.title).translation".localized(.kz)
+//                    zikr.translationRU = "\(zikr.title).translation".localized(.ru)
+//                    zikr.translationEN = "\(zikr.title).translation".localized(.en)
+//
+//                    zikr.transcriptionKZ = "\(zikr.title).transcription".localized(.kz)
+//                    zikr.transcriptionRU = "\(zikr.title).transcription".localized(.ru)
+//                    zikr.transcriptionEN = "\(zikr.title).transcription".localized(.en)
+                    
+                    realm.add(zikr)
+                }
             }
         } catch {
             print(error.localizedDescription)
@@ -28,10 +62,43 @@ final class ZikrService {
         let jsonUrl = Bundle.main.url(forResource: "duas", withExtension: "json")!
         do {
             let data = try Data(contentsOf: jsonUrl)
-            let zikrs = try JSONDecoder().decode([Dua].self, from: data)
-            let realm = try! Realm()
+            let duas = try JSONDecoder().decode([Dua].self, from: data)
+            let realm = try Realm()
             try realm.write {
-                zikrs.forEach { realm.add($0) }
+//                for dua in duas {
+//                    dua.translationKZ = "\(dua.title).translation".localized(.kz)
+//                    dua.translationRU = "\(dua.title).translation".localized(.ru)
+//                    dua.translationEN = "\(dua.title).translation".localized(.en)
+//
+//                    dua.transcriptionKZ = "\(dua.title).transcription".localized(.kz)
+//                    dua.transcriptionRU = "\(dua.title).transcription".localized(.ru)
+//                    dua.transcriptionEN = "\(dua.title).transcription".localized(.en)
+//
+//                    realm.add(dua)
+//                }
+                duas.forEach { realm.add($0) }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func transferDuasFromJson1() {
+        do {
+            let realm = try Realm()
+            let duas = realm.objects(Dua.self)
+            try realm.write {
+                for dua in duas {
+//                    dua.translationKZ = "\(dua.title).translation".localized(.kz)
+//                    dua.translationRU = "\(dua.title).translation".localized(.ru)
+//                    dua.translationEN = "\(dua.title).translation".localized(.en)
+//                    
+//                    dua.transcriptionKZ = "\(dua.title).transcription".localized(.kz)
+//                    dua.transcriptionRU = "\(dua.title).transcription".localized(.ru)
+//                    dua.transcriptionEN = "\(dua.title).transcription".localized(.en)
+                    
+                    realm.add(dua)
+                }
             }
         } catch {
             print(error.localizedDescription)
@@ -43,7 +110,7 @@ final class ZikrService {
         do {
             let data = try Data(contentsOf: jsonUrl)
             let zikrs = try JSONDecoder().decode([Wird].self, from: data)
-            let realm = try! Realm()
+            let realm = try Realm()
             try realm.write {
                 zikrs.forEach { realm.add($0) }
             }
@@ -51,6 +118,20 @@ final class ZikrService {
             print(error.localizedDescription)
         }
     }
+
+//    func transferWirdsFromJson1() {
+//        let jsonUrl = Bundle.main.url(forResource: "wirds", withExtension: "json")!
+//        do {
+//            let data = try Data(contentsOf: jsonUrl)
+//            let zikrs = try JSONDecoder().decode([Wird].self, from: data)
+//            let realm = try! Realm()
+//            try realm.write {
+//                zikrs.forEach { realm.add($0) }
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
 
     func updateZikrTotalCount(type: ZikrType, id: String, totalCount: Int) {
         let realm = try! Realm()

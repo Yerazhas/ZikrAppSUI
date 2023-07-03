@@ -20,6 +20,17 @@
 		601D2DC4297B076600AE6687 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601D2DC3297B076600AE6687 /* Launch Screen.storyboard */; };
 		601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */; };
 		601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */; };
+		603CF25E2A47B25300179C6C /* NewMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF25D2A47B25300179C6C /* NewMainView.swift */; };
+		603CF2602A47B29500179C6C /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF25F2A47B29500179C6C /* MainCategoryView.swift */; };
+		603CF2622A47B2A000179C6C /* MainCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF2612A47B2A000179C6C /* MainCategory.swift */; };
+		603CF2642A481DEC00179C6C /* MainStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF2632A481DEC00179C6C /* MainStatisticsView.swift */; };
+		603CF2662A481EFE00179C6C /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF2652A481EFE00179C6C /* BlurredView.swift */; };
+		603DFAB92A500F3D0065572F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFAB82A500F3D0065572F /* ProfileView.swift */; };
+		603DFABC2A505D0B0065572F /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFABA2A505D0B0065572F /* ValidatedTextField.swift */; };
+		603DFABD2A505D0B0065572F /* ValidatedTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFABB2A505D0B0065572F /* ValidatedTextFieldViewModel.swift */; };
+		603DFABF2A505E030065572F /* AddNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFABE2A505E030065572F /* AddNewViewModel.swift */; };
+		603DFAC12A50FBC00065572F /* AddNewZikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFAC02A50FBC00065572F /* AddNewZikrView.swift */; };
+		603DFAC32A51083B0065572F /* AddNewZikrViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFAC22A51083B0065572F /* AddNewZikrViewModel.swift */; };
 		605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8129A2177D00E0CBA7 /* AddNewView.swift */; };
 		605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */; };
 		60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60896D202974503200FC3A7E /* ZikrTapView.swift */; };
@@ -64,6 +75,17 @@
 		601D2DC3297B076600AE6687 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		603CF25D2A47B25300179C6C /* NewMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainView.swift; sourceTree = "<group>"; };
+		603CF25F2A47B29500179C6C /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
+		603CF2612A47B2A000179C6C /* MainCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategory.swift; sourceTree = "<group>"; };
+		603CF2632A481DEC00179C6C /* MainStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatisticsView.swift; sourceTree = "<group>"; };
+		603CF2652A481EFE00179C6C /* BlurredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredView.swift; sourceTree = "<group>"; };
+		603DFAB82A500F3D0065572F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		603DFABA2A505D0B0065572F /* ValidatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
+		603DFABB2A505D0B0065572F /* ValidatedTextFieldViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatedTextFieldViewModel.swift; sourceTree = "<group>"; };
+		603DFABE2A505E030065572F /* AddNewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewModel.swift; sourceTree = "<group>"; };
+		603DFAC02A50FBC00065572F /* AddNewZikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewZikrView.swift; sourceTree = "<group>"; };
+		603DFAC22A51083B0065572F /* AddNewZikrViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewZikrViewModel.swift; sourceTree = "<group>"; };
 		605ADC8129A2177D00E0CBA7 /* AddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewView.swift; sourceTree = "<group>"; };
 		605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		60896D202974503200FC3A7E /* ZikrTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrTapView.swift; sourceTree = "<group>"; };
@@ -130,8 +152,9 @@
 		6009F96329765A8E0096EC40 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				6009F965297664400096EC40 /* Main */,
 				6095489B2973D29E00E3A899 /* Counter */,
+				6009F965297664400096EC40 /* Main */,
+				603DFAB72A500F300065572F /* Profile */,
 				6009F9672976646C0096EC40 /* ZIkrs */,
 				605ADC8029A2152800E0CBA7 /* AddNew */,
 				609548AD297432E400E3A899 /* Settings */,
@@ -144,6 +167,7 @@
 			children = (
 				609548A02973FDE200E3A899 /* Palette.swift */,
 				609548AB29742E0300E3A899 /* Extensions.swift */,
+				603CF2652A481EFE00179C6C /* BlurredView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -152,6 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				6009F96129765A600096EC40 /* MainView.swift */,
+				603CF25D2A47B25300179C6C /* NewMainView.swift */,
+				603CF25F2A47B29500179C6C /* MainCategoryView.swift */,
+				603CF2632A481DEC00179C6C /* MainStatisticsView.swift */,
+				603CF2612A47B2A000179C6C /* MainCategory.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -167,10 +195,23 @@
 			path = ZIkrs;
 			sourceTree = "<group>";
 		};
+		603DFAB72A500F300065572F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				603DFAB82A500F3D0065572F /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		605ADC8029A2152800E0CBA7 /* AddNew */ = {
 			isa = PBXGroup;
 			children = (
 				605ADC8129A2177D00E0CBA7 /* AddNewView.swift */,
+				603DFABE2A505E030065572F /* AddNewViewModel.swift */,
+				603DFABA2A505D0B0065572F /* ValidatedTextField.swift */,
+				603DFABB2A505D0B0065572F /* ValidatedTextFieldViewModel.swift */,
+				603DFAC02A50FBC00065572F /* AddNewZikrView.swift */,
+				603DFAC22A51083B0065572F /* AddNewZikrViewModel.swift */,
 			);
 			path = AddNew;
 			sourceTree = "<group>";
@@ -435,27 +476,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */,
+				603DFAC12A50FBC00065572F /* AddNewZikrView.swift in Sources */,
 				60A5BCF4298E900C006E9FBE /* ReviewService.swift in Sources */,
 				60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */,
 				601D2DC02977328000AE6687 /* WirdTapView.swift in Sources */,
+				603CF2622A47B2A000179C6C /* MainCategory.swift in Sources */,
 				6009F95E2976566D0096EC40 /* RootRouter.swift in Sources */,
+				603DFAB92A500F3D0065572F /* ProfileView.swift in Sources */,
 				60A5BCF6298E90A3006E9FBE /* LocalizationService.swift in Sources */,
 				6095489F2973F6B300E3A899 /* ZikrView.swift in Sources */,
 				605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */,
 				601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */,
 				6095489D2973D2AC00E3A899 /* CounterView.swift in Sources */,
+				603CF2662A481EFE00179C6C /* BlurredView.swift in Sources */,
 				601D2DBC2976DCDA00AE6687 /* Wird.swift in Sources */,
 				608D091529768B8600671A71 /* WirdsView.swift in Sources */,
+				603DFABF2A505E030065572F /* AddNewViewModel.swift in Sources */,
 				60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */,
 				6009F969297674580096EC40 /* ZikrTapViewModel.swift in Sources */,
+				603DFAC32A51083B0065572F /* AddNewZikrViewModel.swift in Sources */,
 				609548A12973FDE200E3A899 /* Palette.swift in Sources */,
 				60A6CC6D29759B960037C083 /* Zikr.swift in Sources */,
 				609548AA29741AA400E3A899 /* AppDelegate.swift in Sources */,
+				603CF2642A481DEC00179C6C /* MainStatisticsView.swift in Sources */,
 				60A6CC6A29759B4A0037C083 /* ZikrService.swift in Sources */,
 				60896D2329745FD100FC3A7E /* ZikrContentView.swift in Sources */,
 				609548A42974101900E3A899 /* DuasView.swift in Sources */,
 				608D091729768D5E00671A71 /* WirdView.swift in Sources */,
 				6009F959297655250096EC40 /* SceneDelegate.swift in Sources */,
+				603DFABC2A505D0B0065572F /* ValidatedTextField.swift in Sources */,
+				603DFABD2A505D0B0065572F /* ValidatedTextFieldViewModel.swift in Sources */,
+				603CF25E2A47B25300179C6C /* NewMainView.swift in Sources */,
 				605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */,
 				6009F96229765A600096EC40 /* MainView.swift in Sources */,
 				609548AC29742E0300E3A899 /* Extensions.swift in Sources */,
@@ -465,6 +516,7 @@
 				6009F95B297656420096EC40 /* RootCoordinator.swift in Sources */,
 				609548AF297432F500E3A899 /* SettingsView.swift in Sources */,
 				601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */,
+				603CF2602A47B29500179C6C /* MainCategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,13 +668,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
+				MARKETING_VERSION = 1.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -651,13 +703,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
+				MARKETING_VERSION = 1.8;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

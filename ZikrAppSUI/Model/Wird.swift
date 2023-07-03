@@ -54,7 +54,7 @@ class Wird: Object, Decodable, Identifiable {
 class WirdZikr: Object, Decodable {
     @Persisted var zikrId: String
     @Persisted var targetCount: Int
-    @Persisted private var zikrType: String
+    @Persisted var zikrType: String
     var type: ZikrType {
         ZikrType(rawValue: zikrType) ?? .zikr
     }
