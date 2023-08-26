@@ -9,20 +9,25 @@ import UIKit
 import Amplitude
 import Factory
 import RealmSwift
+import Qonversion
 
 @main
 final class AppDelegate: NSObject, UIApplicationDelegate {
     @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.purchasesService) private var purchasesService
+    @Injected(Container.subscriptionSyncService) private var subscriptionService
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
+        let config = Realm.Configuration(schemaVersion: 2)
+        Realm.Configuration.defaultConfiguration = config
+        setupQonversion()
+        checkSubscriptions()
         transferDataToRealmIfNeeded()
         UIPageControl.appearance().isUserInteractionEnabled = false
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
-//        let config = Realm.Configuration(schemaVersion: 3)
-//        Realm.Configuration.defaultConfiguration = config
         configureAmplitude()
         return true
     }
@@ -35,14 +40,32 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         UISceneConfiguration(name: "asd", sessionRole: connectingSceneSession.role)
     }
 
+    private func setupQonversion() {
+        let config = Qonversion.Configuration(projectKey: "BNHjF_H9A61rSvb3gTHFzzWINg1znf-n", launchMode: .subscriptionManagement)
+        Qonversion.initWithConfig(config)
+    }
+
+    private func checkSubscriptions() {
+        Task {
+            do {
+                let isSubscribed = try await purchasesService.checkSubscription()
+                subscriptionService.updateSubscriptionStatus(to: isSubscribed)
+            } catch {
+//                subscriptionService.updateSubscriptionStatus(to: false)
+                print(error)
+            }
+        }
+    }
+
     private func transferDataToRealmIfNeeded() {
         let service = ZikrService()
         guard !UserDefaults.standard.bool(forKey: .didTransferZikrs) else {
-//            if !UserDefaults.standard.bool(forKey: .didTransferZikrs1) {
-//                service.transferZikrsFromJson1()
-//                service.transferDuasFromJson1()
-////                service.transferWirdsFromJson1()
-//            }
+            if !UserDefaults.standard.bool(forKey: .didTransferZikrs1) {
+                service.transferZikrsFromJson1()
+                service.transferDuasFromJson1()
+//                service.transferWirdsFromJson1()
+            }
+            UserDefaults.standard.set(true, forKey: .didTransferZikrs1)
             return
         }
         service.transferZikrsFromJson()

@@ -25,13 +25,15 @@ final class SettingsViewModel: ObservableObject {
     @AppStorage(.firstNotificationDate) var firstNotificationDate: Data?
     @AppStorage(.secondNotificationDate) var secondNotificationDate: Data?
     @Injected(Container.analyticsService) private var analyticsService
+    let out: SettingsOut
     private var cancellables = Set<AnyCancellable>()
     private var firstNotificationIds: [String] = []
     private var secondNotificationIds: [String] = []
     private var firstDateString: String?
     private var secondDateString: String?
 
-    init() {
+    init(out: @escaping SettingsOut) {
+        self.out = out
         if let firstNotificationDate, let time = try? JSONDecoder().decode(NotificationTime.self, from: firstNotificationDate) {
             var dateComponents = DateComponents()
             dateComponents.hour = time.hour
@@ -92,6 +94,10 @@ final class SettingsViewModel: ObservableObject {
 
     func onAppear() {
         analyticsService.trackOpenSettings()
+    }
+
+    func openPaywall() {
+        out(.openPaywall)
     }
 
     private func scheduleNotification(_ dateComponents: DateComponents, isFirst: Bool) {

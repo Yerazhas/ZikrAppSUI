@@ -10,6 +10,8 @@ import SwiftUI
 struct CounterView: View {
     @StateObject private var viewModel: CounterViewModel
     @Environment(\.colorScheme) private var colorScheme
+    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
+    @AppStorage("themeSecondColor") private var themeSecondColor: String?
 
     init() {
         _viewModel = StateObject(wrappedValue: .init())
@@ -17,9 +19,9 @@ struct CounterView: View {
 
     var body: some View {
         ZStack {
-            Color.systemGreen
-                .cornerRadius(10)
-                .padding()
+            makeLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
+                    .cornerRadius(10)
+                    .padding()
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
                 Text("\(viewModel.count)")

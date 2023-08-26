@@ -26,8 +26,9 @@ struct ZikrsContainerView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             headerView
+            Divider()
             switch contentType {
             case .zikr:
                 ZikrsView { zikr in
@@ -53,6 +54,10 @@ struct ZikrsContainerView: View {
             }
         }
         .animation(.none)
+        .navigationBarHidden(true)
+        .onChange(of: contentType) { _ in
+            hapticLight()
+        }
     }
 
     private var headerView: some View {
@@ -90,7 +95,6 @@ struct ZikrsContainerView: View {
             .schemeAdapted(colorScheme: colorScheme)
             Spacer()
         }
-        .navigationBarHidden(true)
     }
 }
 

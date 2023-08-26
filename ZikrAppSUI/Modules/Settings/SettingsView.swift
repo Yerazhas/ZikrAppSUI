@@ -9,6 +9,11 @@ import SwiftUI
 import UIKit
 import Factory
 
+typealias SettingsOut = (SettingsOutCmd) -> Void
+enum SettingsOutCmd {
+    case openPaywall
+}
+
 struct SettingsView: View {
     @AppStorage("isNotificationEnabled") private var isNotificationEnabled: Bool = false
     @AppStorage("shouldHideZikrAmount") private var shouldHideZikrAmount: Bool = false
@@ -18,9 +23,10 @@ struct SettingsView: View {
     @StateObject private var viewModel: SettingsViewModel
     @State private var isPresentingShareSheet: Bool = false
     @State private var isPresentingLanguageSheet: Bool = false
+    @State private var isThemePresented: Bool = false
 
-    init() {
-        _viewModel = StateObject(wrappedValue: .init())
+    init(out: @escaping SettingsOut) {
+        _viewModel = StateObject(wrappedValue: .init(out: out))
     }
 
     var body: some View {
@@ -79,6 +85,12 @@ struct SettingsView: View {
                         Text("changeLanguage".localized(language))
                             .foregroundColor(.primary)
                     }
+                    Button(action: {
+                        isThemePresented = true
+                    }) {
+                        Text("theme".localized(language))
+                            .foregroundColor(.primary)
+                    }
                     Toggle(isOn: $shouldHideZikrAmount) {
                         Text("hideZikrNumbers".localized(language))
                     }
@@ -95,6 +107,11 @@ struct SettingsView: View {
                         Text("followInstagram".localized(language))
                     }
                     Button(action: {
+                        openTelegram()
+                    }) {
+                        Text("contactMe".localized(language))
+                    }
+                    Button(action: {
                         rateApp()
                     }) {
                         Text("rateApp".localized(language))
@@ -105,11 +122,24 @@ struct SettingsView: View {
                 isPresented: $isPresentingShareSheet, content: {
                     ShareSheet(
                         activityItems: [
-                            "https://apps.apple.com/kz/app/zikrapp-dhikr-dua-tasbih/id1590270292"
+                            "shareText".localized(language, args: "https://apps.apple.com/kz/app/zikrapp-dhikr-dua-tasbih/id1590270292")
                         ]
                     )
                 }
             )
+            .sheet(isPresented: $isThemePresented) {
+                if #available(iOS 16.0, *) {
+                    ThemeView {
+                        viewModel.openPaywall()
+                    }
+                        .presentationDetents([.height(250)])
+                        .presentationDragIndicator(.visible)
+                } else {
+                    ThemeView {
+                        viewModel.openPaywall()
+                    }
+                }
+            }
             .actionSheet(isPresented: $isPresentingLanguageSheet) {
                 ActionSheet(
                     title: Text("changeLanguage".localized(language)),
@@ -151,6 +181,11 @@ struct SettingsView: View {
         UIApplication.shared.open(url)
     }
 
+    private func openTelegram() {
+        guard let url = URL(string: "https://t.me/yera_zhas") else { return }
+        UIApplication.shared.open(url)
+    }
+
     private func rateApp() {
         analyticsService.trackRateApp()
         let url = URL(string: "https://apps.apple.com/kz/app/zikrapp-dhikr-dua-tasbih/id1590270292")!
@@ -160,7 +195,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView { _ in }
     }
 }
 

@@ -12,17 +12,26 @@ import Factory
 protocol RootRouter: AnyObject {
     func openMain(out: @escaping MainOut)
 
-    func openZikr(_ zikr: Zikr,  _ out: @escaping () -> Void)
-    func openDua(_ dua: Dua,  _ out: @escaping () -> Void)
+    func openZikr(_ zikr: Zikr,  _ out: @escaping ZikrTapOut)
+    func openDua(_ dua: Dua,  _ out: @escaping ZikrTapOut)
     func openWird(_ wird: Wird,  _ out: @escaping WirdTapOut)
-    func openSettings()
+    func openSettings(out: @escaping SettingsOut)
     func openLanguageSetupAlert()
     func openAddNew(out: @escaping AddNewOut)
+    func openPaywall(out: @escaping PaywallViewOut)
+    func openWhatsNew(out: @escaping () -> Void)
+    func openOnboarding(out: @escaping () -> Void)
 
-    func dismissPresentedVC()
+    func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?)
     func showInfoAlert(message: String)
     func popToRoot()
     func showAlert(message: String, action: @escaping () -> Void)
+}
+
+extension RootRouter {
+    func dismissPresentedVC(onlyPresentedVC: Bool = true, _ completion: (() -> Void)?) {
+        dismissPresentedVC(onlyPresentedVC: onlyPresentedVC, completion)
+    }
 }
 
 final class RootRouterImpl: RootRouter {
@@ -39,14 +48,14 @@ final class RootRouterImpl: RootRouter {
         nc?.set(suiView: view, animated: false)
     }
 
-    func openZikr(_ zikr: Zikr, _ out: @escaping () -> Void) {
+    func openZikr(_ zikr: Zikr, _ out: @escaping ZikrTapOut) {
         let view = ZikrTapView(zikr: zikr, out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
         nc?.present(vc, animated: true)
     }
 
-    func openDua(_ dua: Dua,  _ out: @escaping () -> Void) {
+    func openDua(_ dua: Dua,  _ out: @escaping ZikrTapOut) {
         let view = ZikrTapView(zikr: dua, out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
@@ -60,8 +69,8 @@ final class RootRouterImpl: RootRouter {
         nc?.present(vc, animated: true)
     }
 
-    func openSettings() {
-        let view = SettingsView()
+    func openSettings(out: @escaping SettingsOut) {
+        let view = SettingsView(out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .pageSheet
         nc?.present(vc, animated: true)
@@ -94,12 +103,38 @@ final class RootRouterImpl: RootRouter {
     func openAddNew(out: @escaping AddNewOut) {
         let view = AddNewView(out: out)
         let vc = UIHostingController(rootView: view)
-//        nc?.present(vc, animated: true)
-        nc?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .pageSheet
+        nc?.present(vc, animated: true)
     }
 
-    func dismissPresentedVC() {
-        nc?.presentedViewController?.dismiss(animated: true)
+    func openPaywall(out: @escaping PaywallViewOut) {
+        let vc = UIHostingController(rootView: PaywallView(out: out))
+        vc.modalPresentationStyle = .fullScreen
+        if nc?.presentedViewController != nil {
+            nc?.presentedViewController?.present(vc, animated: true)
+        } else {
+            nc?.present(vc, animated: true)
+        }
+    }
+
+    func openWhatsNew(out: @escaping () -> Void) {
+        let vc = UIHostingController(rootView: WhatsNewView(completion: out))
+        vc.modalPresentationStyle = .pageSheet
+        nc?.present(vc, animated: true)
+    }
+
+    func openOnboarding(out: @escaping () -> Void) {
+        let vc = UIHostingController(rootView: OnboardingView(completion: out))
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+    }
+
+    func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?) {
+        if onlyPresentedVC {
+            nc?.presentedViewController?.dismiss(animated: true, completion: completion)
+        } else {
+            nc?.dismiss(animated: true, completion: completion)
+        }
     }
 
     func showInfoAlert(message: String) {
@@ -107,7 +142,7 @@ final class RootRouterImpl: RootRouter {
         let alertVC = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "ok".localized(language), style: .default)
         alertVC.addAction(okAction)
-        nc?.present(alertVC, animated: true)
+        nc?.presentedViewController?.present(alertVC, animated: true)
     }
 
     func popToRoot() {

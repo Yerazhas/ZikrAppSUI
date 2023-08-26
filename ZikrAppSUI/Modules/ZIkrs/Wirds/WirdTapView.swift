@@ -9,6 +9,13 @@ import SwiftUI
 
 struct WirdTapView: View {
     @StateObject private var viewModel: WirdTapViewModel
+    @State private var isPresented: Bool = false
+    @State private var isAmountAlertPresented: Bool = false
+    @AppStorage("language") private var language = LocalizationService.shared.language
+    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
+    @AppStorage("themeSecondColor") private var themeSecondColor: String?
+    @State private var image: UIImage?
+    @State private var isPresentingShareSheet = false
     @Environment(\.colorScheme) private var colorScheme
 
     init(wird: Wird, out: @escaping WirdTapOut) {
@@ -23,30 +30,82 @@ struct WirdTapView: View {
                 VStack(spacing: 15) {
                     headerView
                     .padding(.top, 5)
-                    zikrContentView(gr)
-                    .padding(.horizontal)
+                    if !viewModel.isTapViewExpanded {
+                        zikrContentView(gr)
+                        .padding(.horizontal)
+                    }
                     zikrTapView(gr)
-                    .frame(height: getHeights(gr).1)
+                        .frame(
+                            height: viewModel.isTapViewExpanded ? getExpandedHeight(gr) : getHeights(gr).1
+                        )
                 }
             }
+            .alert(
+                "Enter everyday zikr amount".localized(language),
+                isPresented: $isAmountAlertPresented
+            ) {
+                TextField("For example, 33", text: $viewModel.dailyAmount)
+                    .keyboardType(.decimalPad)
+                Button("OK", action: {
+                    viewModel.setAmount()
+                })
+            } message: {}
+            .confirmationDialog(
+                "",
+                isPresented: $isPresented
+            ) {
+                if viewModel.wird.isDeletable {
+                    Button("delete".localized(language)) {
+                        viewModel.deleteWird()
+                    }
+                }
+                Button("share".localized(language)) {
+                    hapticLight()
+                    renderShareContent(gr: gr)
+                }
+            } message: {}
+                .sheet(isPresented: $isPresentingShareSheet) {
+                    if #available(iOS 16.0, *) {
+                        ZikrSharePreviewView(image: image!)
+                            .presentationDetents([.large])
+                            .presentationDragIndicator(.visible)
+                    } else {
+                        ZikrSharePreviewView(image: image!)
+                    }
+                }
+            
         }
+        .ignoresSafeArea(.keyboard)
     }
 
     private var headerView: some View {
         HStack(spacing: 15) {
-            if viewModel.wird.isDeletable {
-                Button {
-                    viewModel.deleteWird()
-                } label: {
-                    Image(systemName: "trash.circle.fill")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.secondary)
-                }
-                .padding(.leading)
+            Button {
+                hapticLight()
+//                viewModel.deleteZikr()
+                isAmountAlertPresented = true
+            } label: {
+                Image(systemName: "calendar")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.secondary)
             }
+            .padding(.leading)
+            Text(viewModel.dailyAmountStatusString)
+                .padding(.leading)
             Spacer()
+            Button {
+                hapticLight()
+                isPresented = true
+            } label: {
+                Image(systemName: "ellipsis.circle.fill")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.trailing)
             Button {
                 viewModel.willDisappear()
             } label: {
@@ -58,6 +117,11 @@ struct WirdTapView: View {
             }
             .padding(.trailing)
         }
+    }
+
+    private func renderShareContent(gr: GeometryProxy) {
+        self.image = WirdShareView(wird: viewModel.wird, gr: gr).asImage
+        isPresentingShareSheet = true
     }
 
     private func zikrContentView(_ gr: GeometryProxy) -> some View {
@@ -81,11 +145,21 @@ struct WirdTapView: View {
 
     private func zikrTapView(_ gr: GeometryProxy) -> some View {
         ZStack {
-            Color.systemGreen
+            makeLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
                 .cornerRadius(10)
                 .padding(.horizontal)
                 .padding(.bottom, 10)
             VStack(spacing: 0) {
+                HStack {
+                    Spacer()
+                    Button {
+                        viewModel.expandIfPossible()
+                    } label: {
+                        makeExpandButtonImage()
+                    }
+                    .padding(.trailing, 30)
+                    .padding(.top)
+                }
                 Spacer()
                 Group {
                     Text("\(viewModel.count)")
@@ -104,6 +178,10 @@ struct WirdTapView: View {
                 }
 
                 Spacer()
+                if viewModel.isTapViewExpanded {
+                    PageControl(currentPageIndex: viewModel.currentIndex, numberOfPages: viewModel.targetedZikrs.count)
+                        .padding(.bottom)
+                }
             }
         }
         .onTapGesture {
@@ -112,13 +190,33 @@ struct WirdTapView: View {
         .onAppear(perform: viewModel.onAppear)
     }
 
+    @ViewBuilder
+    private func makeExpandButtonImage() -> some View {
+        let systemName: String
+        if viewModel.isTapViewExpanded {
+            systemName = "arrow.down.right.and.arrow.up.left"
+        } else {
+            systemName = "arrow.up.left.and.arrow.down.right"
+        }
+        return Image(systemName: systemName)
+            .renderingMode(.template)
+            .schemeAdapted(colorScheme: colorScheme)
+    }
+
     private func getHeights(_ gr: GeometryProxy) -> (CGFloat, CGFloat) {
         let availableHeight = gr.size.height - 24 - 15 - 30
         let upperContainerHeight = availableHeight * 3 / 5
         let lowerContainerHeight = availableHeight * 2 / 5
         return (upperContainerHeight, lowerContainerHeight)
     }
+
+    private func getExpandedHeight(_ gr: GeometryProxy) -> CGFloat {
+        let availableHeight = gr.size.height - 24 - 15 - 5
+        return availableHeight
+    }
 }
+
+extension WirdTapView: Hapticable {}
 
 struct WirdTapView_Previews: PreviewProvider {
     static var previews: some View {

@@ -10,6 +10,8 @@ import SwiftUI
 struct WirdView: View {
     @AppStorage("shouldHideZikrAmount") private var shouldHideZikrAmount: Bool = false
     @AppStorage("language") private var language = LocalizationService.shared.language
+    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
+    @AppStorage("themeSecondColor") private var themeSecondColor: String?
     let wird: Wird
 
     var body: some View {
@@ -22,7 +24,7 @@ struct WirdView: View {
                     HStack {
                         Text(wird.type.rawValue.localized(language))
                             .font(.headline)
-                            .foregroundColor(.systemGreen)
+                            .foregroundLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
                         Spacer()
                     }
                     .padding(.bottom, 7)
@@ -35,19 +37,20 @@ struct WirdView: View {
                             Text(
                                 "repeat".localized(language, args: String(repeatTimes))
                             )
+                            .foregroundLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
                             .padding(.top, 7)
-                            .foregroundColor(.systemGreen)
                             .font(.subheadline)
                         }
                     }
                     .multilineTextAlignment(.leading)
                     Spacer()
                 }
+
                 if !shouldHideZikrAmount {
                     Text("\(wird.totalDoneCount)")
                         .font(.system(size: 40))
+                        .foregroundLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(.systemGreen)
                         .padding()
                 }
             }
@@ -62,3 +65,4 @@ struct WirdView_Previews: PreviewProvider {
         WirdView(wird: .init())
     }
 }
+

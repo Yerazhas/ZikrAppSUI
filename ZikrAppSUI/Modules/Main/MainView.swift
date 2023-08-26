@@ -14,6 +14,7 @@ enum MainOutCmd {
     case openWird(Wird)
     case openSettings
     case openAddNew
+    case openPaywall
 }
 
 struct MainView: View {
@@ -24,6 +25,7 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $currentIndex) {
             CounterView()
+                .animation(.none)
                 .tag(0)
             ZikrsContainerView { outCmd in
                 switch outCmd {
@@ -39,11 +41,18 @@ struct MainView: View {
                     out(.openAddNew)
                 }
             }
-                .tag(1)
-            ProfileView { _ in
-                
+            .tag(1)
+            TrackerView(tabSelection: $currentIndex) { outCmd in
+                switch outCmd {
+                case .openZikr(let zikr):
+                    out(.openZikr(zikr))
+                case .openWird(let wird):
+                    out(.openWird(wird))
+                case .openPaywall:
+                    out(.openPaywall)
+                }
             }
-            .tag(2)
+                .tag(2)
         }
         .animation(.default)
         .tabViewStyle(.page(indexDisplayMode: .always))

@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import Haptica
 import Factory
+import SwiftUI
 
 struct TargetedZikr: Hashable {
     let zikr: Zikr
@@ -23,6 +24,7 @@ typealias WirdTapOut = (WirdTapOutCmd) -> Void
 enum WirdTapOutCmd {
     case close
     case delete(() -> Void)
+    case openPaywall
 }
 
 final class WirdTapViewModel: ObservableObject, Hapticable {
@@ -33,14 +35,22 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
     }
     @Published private(set) var count: Int = 0
     @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.subscriptionSyncService) private var subscriptionService
+    @Injected(Container.appStatsService) private var appStatsService
     let wird: Wird
     private var totalDoneCount: Int
+    private var finishedCount: Int = 0
+
+    @Published var dailyAmount: String = ""
+    @Published var dailyAmountStatusString: String = ""
+
     private var isFinished: Bool = false
     private let zikrService = ZikrService()
     private let out: WirdTapOut
     let targetedZikrs: [TargetedZikr]
 
     @Published private(set) var currentTargetedZikr: TargetedZikr
+    @Published var isTapViewExpanded: Bool = false
 
     init(wird: Wird, out: @escaping WirdTapOut) {
         self.wird = wird
@@ -63,6 +73,7 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         }
         targetedZikrs = tempTargetedZikrs
         currentTargetedZikr = targetedZikrs[0]
+        self.makeStatusString()
     }
 
     func zikrDidTap() {
@@ -72,9 +83,18 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         }
 
         if currentIndex == self.targetedZikrs.count - 1 && count == currentTargetedZikr.targetAmount {
-            isFinished = true
-            zikrService.updateZikrTotalCount(type: .wird, id: wird.id, totalCount: totalDoneCount + 1)
-                hapticStrong()
+            hapticStrong()
+            if !isFinished {
+                zikrService.updateZikrTotalCount(
+                    type: .wird,
+                    id: wird.id,
+                    currentlyDoneCount: 1,
+                    internalDoneCount: 0, // doesnt affect anything
+                    totallyDoneCount: totalDoneCount + 1
+                )
+                isFinished = true
+                finishedCount += 1
+            }
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -84,6 +104,7 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
                 self.count = 0
             }
         }
+        makeStatusString()
     }
 
     func reset() {
@@ -92,6 +113,19 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         currentIndex = 0
         hapticStrong()
         count = 0
+    }
+
+    func expandIfPossible() {
+        if subscriptionService.isSubscrtibed || appStatsService.canExpand {
+            hapticLight()
+            appStatsService.didExpand()
+            withAnimation(.linear(duration: 0.2)) {
+                isTapViewExpanded.toggle()
+            }
+        } else {
+            hapticStrong()
+            out(.openPaywall)
+        }
     }
 
     func onAppear() {
@@ -109,6 +143,20 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         out(.delete(delete))
     }
 
+    func setAmount() {
+        let realm = try! Realm()
+        guard let amount = Int(dailyAmount) else {
+            return
+        }
+        guard let wird = realm.objects(Wird.self).where({ $0.id == wird.id }).first else {
+            return
+        }
+        try! realm.write {
+            wird.dailyTargetAmountAmount = amount
+        }
+        makeStatusString()
+    }
+
     private func delete() {
         let realm = try! Realm()
         do {
@@ -119,6 +167,18 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
             }
         } catch {
             print(error.localizedDescription)
+        }
+    }
+
+    private func makeStatusString() {
+        if wird.dailyTargetAmountAmount == 0 {
+            dailyAmountStatusString = ""
+        } else {
+            let progress = wird.getCurrentProgress(for: .init())
+            let currentAmount = (progress?.0 ?? 0) + finishedCount
+            let targetAmount = progress?.1 ?? 0
+            let remainingAmount = targetAmount - currentAmount
+            dailyAmountStatusString = remainingAmount <= 0 ? "Daily amount done!" : "Remaining: \(remainingAmount)"
         }
     }
 }

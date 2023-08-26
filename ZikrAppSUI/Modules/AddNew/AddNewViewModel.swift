@@ -7,6 +7,7 @@
 
 import Combine
 import RealmSwift
+import Factory
 
 public typealias AddNewOut = (AddNewOutCmd) -> Void
 public enum AddNewOutCmd {
@@ -15,6 +16,7 @@ public enum AddNewOutCmd {
 }
 
 final class AddNewViewModel: ObservableObject {
+    @Injected(Container.appStatsService) private var appStatsService
     @Published var zikrViewModels: [AddNewZikrViewModel] = []
     @Published var contentType: ZikrType = .zikr
     private let language = LocalizationService.shared.language
@@ -98,14 +100,63 @@ final class AddNewViewModel: ObservableObject {
             let zikr = Zikr()
             zikr.id = UUID().uuidString
             zikr.title = titleViewModel.value
+            zikr.isDeletable = true
             if arabicViewModel.state == .valid {
                 zikr.arabicTitle = arabicViewModel.value
             }
             if transcriptionViewModel.state == .valid {
-//                zikr.transcription = transcriptionViewModel.value
+                zikr.transcriptionKZ = transcriptionViewModel.value
+                zikr.transcriptionRU = transcriptionViewModel.value
+                zikr.transcriptionEN = transcriptionViewModel.value
+            }
+            if translationViewModel.state == .valid {
+                zikr.translationKZ = translationViewModel.value
+                zikr.translationRU = translationViewModel.value
+                zikr.translationEN = translationViewModel.value
+            }
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    realm.add(zikr)
+                    appStatsService.setDidAddZikr()
+                    out(.success)
+                }
+            } catch {
+                print(error.localizedDescription)
             }
         case .dua:
-            print()
+            guard titleViewModel.state == .valid else {
+                hapticStrong()
+                out(.error("fillFieldsCorrectly".localized(language)))
+                return
+            }
+            let dua = Dua()
+            dua.id = UUID().uuidString
+            dua.title = titleViewModel.value
+            dua.isDeletable = true
+            if arabicViewModel.state == .valid {
+                dua.arabicTitle = arabicViewModel.value
+            }
+            if transcriptionViewModel.state == .valid {
+                dua.transcriptionKZ = transcriptionViewModel.value
+                dua.transcriptionRU = transcriptionViewModel.value
+                dua.transcriptionEN = transcriptionViewModel.value
+            }
+            if translationViewModel.state == .valid {
+                dua.translationKZ = translationViewModel.value
+                dua.translationRU = translationViewModel.value
+                dua.translationEN = translationViewModel.value
+            }
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    realm.add(dua)
+                    appStatsService.setDidAddZikr()
+                    out(.success)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
         case .wird:
             let language = LocalizationService.shared.language
             guard titleViewModel.state == .valid, !zikrViewModels.filter { $0.isSelected }.isEmpty else {
@@ -127,6 +178,7 @@ final class AddNewViewModel: ObservableObject {
                 }
                 try realm.write {
                     realm.add(wird)
+                    appStatsService.setDidAddZikr()
                     out(.success)
                 }
             } catch {

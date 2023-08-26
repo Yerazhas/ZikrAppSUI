@@ -10,6 +10,9 @@ import RealmSwift
 
 struct AddNewView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
+    @Environment(\.colorScheme) private var colorScheme
+    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
+    @AppStorage("themeSecondColor") private var themeSecondColor: String?
     @StateObject private var viewModel: AddNewViewModel
     private let columns = [
         GridItem(.flexible(minimum: 100))
@@ -20,57 +23,82 @@ struct AddNewView: View {
     }
 
     var body: some View {
-        VStack {
-            Picker(selection: $viewModel.contentType) {
-                Text("zikr".localized(language))
-                    .tag(ZikrType.zikr)
-                Text("dua".localized(language))
-                    .tag(ZikrType.dua)
-                Text("wird".localized(language))
-                    .tag(ZikrType.wird)
-            } label: {
-                EmptyView()
-            }
-            .pickerStyle(.segmented)
-            .padding()
-            VStack(alignment: .leading, spacing: 14) {
-                ValidatedTextField(viewModel: viewModel.titleViewModel, keyboardType: .alphabet)
-                    .padding(.horizontal)
-                if viewModel.contentType == .wird {
-                    Text("selectZikrs".localized(language))
-                        .font(.headline)
-                        .padding(.horizontal)
-                    addWirdView
-                } else {
-                    Group {
-                        ValidatedTextField(viewModel: viewModel.arabicViewModel, keyboardType: .alphabet)
-                        ValidatedTextField(viewModel: viewModel.transcriptionViewModel, keyboardType: .alphabet)
-                        ValidatedTextField(viewModel: viewModel.translationViewModel, keyboardType: .alphabet)
+        ZStack {
+//            Color(.systemBackground)
+            colorScheme == .dark ? Color.black : Color.white
+            VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Text("Add new zikr")
+                            .bold()
+                            .padding(.top)
+                        Spacer()
                     }
+                    HStack {
+                        Spacer()
+                        Button {
+                            viewModel.didPressAdd()
+                        } label: {
+                            Text("add".localized(language))
+                                .foregroundLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
+                        }
+                        
+                    }
+                    .padding(.top)
                     .padding(.horizontal)
                 }
-            }
-            Spacer()
-        }
-        .navigationBarHidden(false)
-        .navigationTitle("addNew".localized(language))
-        .navigationBarItems(
-            trailing: Button(
-                "add".localized(language),
-                action: {
-                    viewModel.didPressAdd()
+                Picker(selection: $viewModel.contentType) {
+                    Text("zikr".localized(language))
+                        .tag(ZikrType.zikr)
+                    Text("dua".localized(language))
+                        .tag(ZikrType.dua)
+                    Text("wird".localized(language))
+                        .tag(ZikrType.wird)
+                } label: {
+                    EmptyView()
                 }
-            )
-            .foregroundColor(.systemGreen)
-        )
+                .pickerStyle(.segmented)
+                .padding()
+                VStack(alignment: .leading, spacing: 14) {
+                    ValidatedTextField(viewModel: viewModel.titleViewModel, keyboardType: .alphabet)
+                        .padding(.horizontal)
+                    if viewModel.contentType == .wird {
+                        Text("selectZikrs".localized(language))
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Divider()
+                        addWirdView
+                    } else {
+                        Group {
+                            ValidatedTextField(viewModel: viewModel.arabicViewModel, keyboardType: .alphabet)
+                                .font(.uthmanicArabic(size: 18))
+                            ValidatedTextField(viewModel: viewModel.transcriptionViewModel, keyboardType: .alphabet)
+                            ValidatedTextField(viewModel: viewModel.translationViewModel, keyboardType: .alphabet)
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                Spacer()
+            }
+            
+    //        .navigationBarHidden(false)
+    //        .navigationTitle("addNew".localized(language))
+            .onChange(of: viewModel.contentType) { _ in
+                hapticLight()
+            }
+        }
     }
 
     private var addWirdView: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(viewModel.zikrViewModels) { zikr in
-                    AddNewZikrView(viewModel: zikr)
-                        .frame(height: 100)
+                    VStack {
+                        AddNewZikrView(viewModel: zikr)
+                            .frame(height: 100)
+                        Divider()
+                    }
                 }
             }
             .animation(.none)
@@ -78,6 +106,8 @@ struct AddNewView: View {
         }
     }
 }
+
+extension AddNewView: Hapticable {}
 
 struct AddNewView_Previews: PreviewProvider {
     static var previews: some View {

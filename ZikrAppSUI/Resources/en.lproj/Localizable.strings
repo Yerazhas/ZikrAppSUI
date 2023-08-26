@@ -12,7 +12,7 @@
 "zikrAmount" = "Zikr amount";
 "actions" = "Actions";
 "chooseAction" = "Choose an action";
-"createWird" = "Create a wird";
+"createWird" = "Create a collection";
 "downloadNow" = "Download Now";
 
 "info.description" = "We are a group of enthusiastic people, software developers, designers who want to help the muslim ummah by creating high-quality apps which solve specific, actual problems.\n\nWe will continue to develop, and you can try our other apps to support the project. And we will be always grateful if you share them with family and friends.";
@@ -32,7 +32,7 @@
 "aboutUs" = "About us";
 "rateApp" = "Rate app";
 
-"wird" = "wird";
+"wird" = "collection";
 "zikr" = "zikr";
 "countingZikr" = "Counter";
 
@@ -204,11 +204,11 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 "dua" = "Dua";
 "zikr" = "Zikr";
-"wird" = "Wird";
+"wird" = "Collection";
 
 "duas" = "Duas";
 "zikrs" = "Zikrs";
-"wirds" = "Wirds";
+"wirds" = "Collections";
 
 "changeLanguage" = "Change language";
 "selectLanguage" = "Select language";
@@ -225,12 +225,18 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "arabicText" = "Arabic text";
 "transcription" = "Transcription";
 "translation" = "Translation";
-"deleteWird" = "Are you sure to delete wird?";
+"deleteWird" = "Are you sure to delete collection?";
 "ok" = "Yes";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"deleteZikr" = "Are you sure to delete zikr?";
+"deleteDua" = "Are you sure to delete dua?";
+
+"shareText" = "Assalamu aleykum! I`m using zikr.app to perform dhikrs. Highly recommend this app to you as well! %@";
+
+// Onboarding
+
+"onboarding_title_1" = "Welcome to ZikrApp! Embark on a transformative journey of spiritual growth and self-discovery. Elevate your practice with unlimited zikrs and duas.";
+"onboarding_title_2" = "Form lasting habits effortlessly. Track your daily progress, stay motivated, and witness your devotion flourish. Our tools help you stay committed to your spiritual journey.";
+"onboarding_title_3" = "Unveil insights, statistics tracking your spiritual journey. Customize your experience with reminders, and resources. Begin a journey of lifelong transformation today.";
 "" = "";
 "" = "";
 "" = "";
