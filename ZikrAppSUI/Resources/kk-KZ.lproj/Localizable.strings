@@ -333,6 +333,13 @@
 "setDailyAmount" = "Күнделікті мөлшерді енгізу";
 "seeStatistics" = "Статистиканы қарау";
 
+"monthly" = "Айлық";
+"yearly" = "Жылдық";
+"lifetime" = "Өмір бойына";
+"oneTimePayment" = "Бірреттік төлем";
+"autoRenewingMonthly" = "Ай сайынғы автоматты түрдегі төлем";
+"autoRenewingYearly" = "Жыл сайынғы автоматты түрдегі төлем";
+
 "" = "";
 "" = "";
 "" = "";

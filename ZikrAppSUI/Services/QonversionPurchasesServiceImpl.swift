@@ -173,7 +173,7 @@ public enum PurchasesError: Error {
 extension Qonversion.Product {
     var localizedPeriod: String? {
         if type == .oneTime {
-            return "Lifetime"
+            return "lifetime".localized(LocalizationService.shared.language)
         } else {
             return skProduct?.subscriptionPeriod?.periodString
         }
@@ -181,7 +181,7 @@ extension Qonversion.Product {
 
     var subscriptionDescription: String? {
         if type == .oneTime {
-            return "One-time payment"
+            return "oneTimePayment".localized(LocalizationService.shared.language)
         } else {
             return skProduct?.subscriptionPeriod?.subscriptionDescription
         }

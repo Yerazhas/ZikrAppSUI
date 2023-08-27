@@ -203,9 +203,9 @@ extension SKProductSubscriptionPeriod {
         let string: String
         switch unit {
         case .month:
-            string = "monthly"
+            string = "monthly".localized(LocalizationService.shared.language)
         case .year:
-            string = "yearly"
+            string = "yearly".localized(LocalizationService.shared.language)
         @unknown default:
             string = ""
         }
@@ -216,9 +216,9 @@ extension SKProductSubscriptionPeriod {
         let string: String
         switch unit {
         case .month:
-            string = "Auto-renewing subscription charged monthly"
+            string = "autoRenewingMonthly".localized(LocalizationService.shared.language)
         case .year:
-            string = "Auto-renewing subscription charged yearly"
+            string = "autoRenewingYearly".localized(LocalizationService.shared.language)
         @unknown default:
             string = ""
         }

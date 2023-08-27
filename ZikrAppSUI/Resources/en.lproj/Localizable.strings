@@ -305,12 +305,13 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 "setDailyAmount" = "Set daily amount";
 "seeStatistics" = "See statistics";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+
+"monthly" = "Monthly";
+"yearly" = "Yearly";
+"lifetime" = "Lifetime";
+"oneTimePayment" = "One-time payment";
+"autoRenewingMonthly" = "Auto-renewing subscription charged monthly";
+"autoRenewingYearly" = "Auto-renewing subscription charged yearly";
 "" = "";
 "" = "";
 "" = "";
