@@ -5,7 +5,7 @@
 //  Created by Yerassyl Zhassuzakhov on 03.08.2023.
 //
 
-import Foundation
+import Combine
 import RealmSwift
 import Factory
 
@@ -22,10 +22,22 @@ final class StatisticsViewModel: ObservableObject {
     @Published var showsSubscribeButton: Bool = false
     @Injected(Container.subscriptionSyncService) private var subscriptionService
     let completion: () -> Void
+    private var cancellable: AnyCancellable?
 
     init(completion: @escaping () -> Void) {
         self.completion = completion
-        if subscriptionService.isSubscrtibed {
+        setupBasedOnSubscription(subscriptionService.isSubscribed)
+        cancellable = subscriptionService.isSubscribedPublisher.sink { [weak self] isSubscribed in
+            self?.setupBasedOnSubscription(isSubscribed)
+        }
+    }
+
+    deinit {
+        cancellable = nil
+    }
+
+    private func setupBasedOnSubscription(_ isSubscribed: Bool) {
+        if isSubscribed {
             getYearTraction()
             getTotalAmounts()
             getIdealDays()
@@ -36,7 +48,7 @@ final class StatisticsViewModel: ObservableObject {
             duasAmount = 439
             collectionsAmount = 137
             idealDaysCount = 250
-            mockDataWarningText = "This data is only for demonstration. To use this functionality please subscribe to ZikrApp Premium"
+            mockDataWarningText = "dataForDemo"
             getMockYearTraction()
             isLoading = false
             showsSubscribeButton = true
@@ -44,6 +56,10 @@ final class StatisticsViewModel: ObservableObject {
     }
 
     func getYearTraction() {
+        zikrProgresses.removeAll()
+        duaProgresses.removeAll()
+        wirdProgresses.removeAll()
+
         let realm = try! Realm()
         let trackedZikrs = realm.objects(Zikr.self).where({ $0.dailyTargetAmountAmount > 0 })
         let trackedDuas = realm.objects(Dua.self).where({ $0.dailyTargetAmountAmount > 0 })
@@ -98,6 +114,7 @@ final class StatisticsViewModel: ObservableObject {
     }
 
     func getMockYearTraction() {
+        zikrProgresses.removeAll()
         let dates = datesForCurrentYear()
         let zikrs = ["salawat", "istighfar", "hasbunallahu", "duaOfYunus"]
         for zikr in zikrs {

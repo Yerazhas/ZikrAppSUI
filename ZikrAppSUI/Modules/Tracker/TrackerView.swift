@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import Factory
 
 struct TrackerView: View {
     @StateObject private var viewModel: TrackerViewModel
@@ -14,16 +15,21 @@ struct TrackerView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
     @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
     @AppStorage("themeSecondColor") private var themeSecondColor: String?
+    @Injected(Container.appStatsService) private var appStatsService
     @Binding var tabSelection: Int
     @State private var isSupportPaywallPresented: Bool = false
     @State private var isStatisticsPresented: Bool = false
+    @State private var isStatisticsToolTipVisible: Bool = false
     private let columns = [
         GridItem(.flexible(minimum: 100))
     ]
+    private var tooltipConfig = DefaultTooltipConfig()
 
     init(tabSelection: Binding<Int>, out: @escaping TrackerViewOut) {
         self._tabSelection = tabSelection
         _viewModel = .init(wrappedValue: .init(out: out))
+        tooltipConfig.defaultConfig()
+        _isStatisticsToolTipVisible = .init(initialValue: !appStatsService.didSeeStatisticsToolTip)
     }
 
     var body: some View {
@@ -124,10 +130,23 @@ struct TrackerView: View {
                 Button {
                     viewModel.hapticLight()
                     isStatisticsPresented = true
+                    appStatsService.didSeeStatisticsToolTipPage()
+                    isStatisticsToolTipVisible = false
                 } label: {
                     Image(systemName: "chart.xyaxis.line")
                         .renderingMode(.template)
                         .foregroundColor(.primary)
+                        .tooltip(
+                            isStatisticsToolTipVisible,
+                            side: .bottom,
+                            config: tooltipConfig
+                        ) {
+                            ZStack {
+                                Text("seeStatistics".localized(language))
+                                    .font(.caption)
+                                    .foregroundColor(colorScheme == .dark ? .black : .white)
+                            }
+                        }
                 }
                 .frame(width: 50, height: 50)
                 Button {
@@ -141,6 +160,7 @@ struct TrackerView: View {
                 .frame(width: 50, height: 50)
 
             }
+            .zIndex(1)
             
             /// Week Slider
             TabView(selection: $viewModel.currentWeekIndex) {

@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import Factory
 
 typealias TrackerViewOut = (TrackerViewOutCmd) -> Void
 enum TrackerViewOutCmd {
@@ -24,6 +25,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     @Published var currentWeekIndex: Int = 1
     @Published var createWeek: Bool = false
     @Published var currentDayIdentificator: String
+    @Injected(Container.subscriptionSyncService) private var subscriptionService
     let out: TrackerViewOut
 
     init(out: @escaping TrackerViewOut) {
@@ -194,13 +196,23 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     func openZikr(_ zikr: Zikr) {
         hapticLight()
         guard currentDate.isToday else { return }
-        out(.openZikr(zikr))
+        openPaywallIfFreeProgressTrackingEnded(else: { self.out(.openZikr(zikr)) })
     }
 
     func openWird(_ wird: Wird) {
         hapticLight()
         guard currentDate.isToday else { return }
-        out(.openWird(wird))
+        openPaywallIfFreeProgressTrackingEnded(else: { self.out(.openWird(wird)) })
+    }
+
+    private func openPaywallIfFreeProgressTrackingEnded(else completion: @escaping () -> Void) {
+        let realm = try! Realm()
+        let progressesCount = realm.objects(DailyZikrProgress.self).where { $0.amountDone == $0.targetAmount }.count
+        if !subscriptionService.isSubscribed && progressesCount >= 12 {
+            out(.openPaywall)
+        } else {
+            completion()
+        }
     }
 }
 

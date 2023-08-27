@@ -136,6 +136,7 @@ final class ZikrService {
     func updateZikrTotalCount(
         type: ZikrType,
         id: String,
+        isSubscribed: Bool,
         currentlyDoneCount: Int,
         internalDoneCount: Int,
         totallyDoneCount: Int
@@ -147,6 +148,7 @@ final class ZikrService {
             try! realm.write {
                 zikr.totalDoneCount = totallyDoneCount
                 zikr.currentDoneCount = currentlyDoneCount
+                guard isSubscribed else { return }
                 if zikr.dailyTargetAmountAmount > 0 {
                     if var todayProgressDate = zikr.dailyProgress.first(where: { $0.date.isToday }) {
                         let tempCurrentlyDoneCount = min(todayProgressDate.amountDone + internalDoneCount, zikr.dailyTargetAmountAmount)
@@ -164,6 +166,7 @@ final class ZikrService {
             try! realm.write {
                 dua.totalDoneCount = totallyDoneCount
                 dua.currentDoneCount = currentlyDoneCount
+                guard isSubscribed else { return }
                 if dua.dailyTargetAmountAmount > 0 {
                     if var todayProgressDate = dua.dailyProgress.first(where: { $0.date.isToday }) {
                         let tempCurrentlyDoneCount = min(todayProgressDate.amountDone + internalDoneCount, dua.dailyTargetAmountAmount)
@@ -180,6 +183,7 @@ final class ZikrService {
             guard let wird = realm.objects(Wird.self).first(where: { $0.id == id }) else { return }
             try! realm.write {
                 wird.totalDoneCount = totallyDoneCount
+                guard isSubscribed else { return }
                 if wird.dailyTargetAmountAmount > 0 {
                     if var todayProgressDate = wird.dailyProgress.first(where: { $0.date.isToday }) {
                         let tempCurrentlyDoneCount = min(todayProgressDate.amountDone + currentlyDoneCount, wird.dailyTargetAmountAmount)

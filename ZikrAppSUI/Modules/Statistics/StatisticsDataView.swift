@@ -25,6 +25,9 @@ struct StatisticsDataView: View {
                 Text(subtitle)
                     .foregroundColor(.secondary)
                     .font(.callout)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.5)
             }
             .padding()
         }

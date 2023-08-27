@@ -87,7 +87,7 @@ final class RootCoordinator {
                     }
                 }
             case .openAddNew:
-                if self.subscriptionsService.isSubscrtibed {
+                if self.subscriptionsService.isSubscribed {
                     self.router.openAddNew { cmd in
                         switch cmd {
                         case .success:
@@ -128,33 +128,31 @@ final class RootCoordinator {
             }
         }
 
-        let didSeeWhatsNew = UserDefaults.standard.bool(forKey: .didSeeWhatsNew)
-        if !didSeeWhatsNew {
+        if !appStatsService.didSeeWhatsNew {
             router.openWhatsNew {
-                self.router.dismissPresentedVC(nil)
-                self.openPaywallIfNeeded()
+                self.router.dismissPresentedVC {
+                    self.openPaywallIfNeeded()
+                }
             }
-            UserDefaults.standard.set(true, forKey: .didSeeWhatsNew)
+            appStatsService.didSeeWhatsNewPage()
         } else {
-            let didSeeOnboarding = UserDefaults.standard.bool(forKey: .didSeeOnboarding)
-            if didSeeOnboarding {
+            if !appStatsService.didSeeOnboarding {
                 router.openOnboarding {
                     self.router.dismissPresentedVC {
                         self.openPaywallIfNeeded()
                     }
                 }
-                UserDefaults.standard.set(true, forKey: .didSeeOnboarding)
+                appStatsService.didSeeOnboardingPage()
             }
         }
-        
-        let didSetAppLang = UserDefaults.standard.bool(forKey: .didSetAppLang)
-        if !didSetAppLang {
+
+        if !appStatsService.didSetAppLang {
             router.openLanguageSetupAlert()
         }
     }
 
     private func openPaywallIfNeeded() {
-        guard !subscriptionsService.isSubscrtibed else { return }
+        guard !subscriptionsService.isSubscribed else { return }
         self.router.openPaywall { cmd in
             switch cmd {
             case .close:

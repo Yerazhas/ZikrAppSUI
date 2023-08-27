@@ -35,7 +35,7 @@ struct ThemeView: View {
                             )
                             .padding(.vertical)
                             .onTapGesture {
-                                if subscriptionService.isSubscrtibed {
+                                if subscriptionService.isSubscribed {
                                     hapticLight()
                                     themeService.setThemeColor(to: theme)
                                 } else {

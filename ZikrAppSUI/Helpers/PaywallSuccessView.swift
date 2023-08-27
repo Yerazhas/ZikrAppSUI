@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PaywallSuccessView: View {
+    @AppStorage("language") private var language = LocalizationService.shared.language
     let closeAction: () -> Void
 
     var body: some View {
@@ -25,7 +26,7 @@ struct PaywallSuccessView: View {
             Image("img-blossom-cherry")
                 .frame(width: 250, height: 250)
                 .padding(.top, 50)
-            Text("Вы успешно подписались на ZikrApp premium, ползуйтесь всеми полезными фичами приложения!")
+            Text("successfullSubscription".localized(language))
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)

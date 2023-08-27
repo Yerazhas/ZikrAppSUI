@@ -10,20 +10,20 @@ import SwiftUI
 struct WhatsNewView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
     private let benefits: [String] = [
-        "Доступна платная ZikrApp Premium подписка, купив которую, вы можете:",
-        "Добавлять неограниченное количество зикров, дуа для духовного роста",
-        "Установить ежедневное количество зикров, формировать привычки, отслеживать прогресс",
-        "Смотреть инсайты, статистику на вашем духовном пути и многое другое."
+        "whatsnewBenefitsTitle",
+        "whatsnewBenefits1",
+        "whatsnewBenefits2",
+        "whatsnewBenefits3"
     ]
     let completion: () -> Void
 
     var body: some View {
         VStack {
-            Text("What's New in ZikrApp")
+            Text("whatsNew".localized(language))
                 .font(.largeTitle)
                 .bold()
             ForEach(benefits, id: \.self) { benefit in
-                IconTitleView(title: benefit)
+                IconTitleView(title: benefit.localized(language))
                     .padding(.top, 10)
             }
             .padding(.leading, 40)

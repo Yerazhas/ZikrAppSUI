@@ -88,6 +88,7 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
                 zikrService.updateZikrTotalCount(
                     type: .wird,
                     id: wird.id,
+                    isSubscribed: subscriptionService.isSubscribed || isFreeProgressTrackingAvailable(),
                     currentlyDoneCount: 1,
                     internalDoneCount: 0, // doesnt affect anything
                     totallyDoneCount: totalDoneCount + 1
@@ -116,7 +117,7 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
     }
 
     func expandIfPossible() {
-        if subscriptionService.isSubscrtibed || appStatsService.canExpand {
+        if subscriptionService.isSubscribed || appStatsService.canExpand {
             hapticLight()
             appStatsService.didExpand()
             withAnimation(.linear(duration: 0.2)) {
@@ -157,6 +158,12 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         makeStatusString()
     }
 
+    private func isFreeProgressTrackingAvailable() -> Bool {
+        let realm = try! Realm()
+        let progressesCount = realm.objects(DailyZikrProgress.self).where { $0.targetAmount == $0.amountDone }.count
+        return progressesCount < 12
+    }
+
     private func delete() {
         let realm = try! Realm()
         do {
@@ -174,8 +181,10 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         if wird.dailyTargetAmountAmount == 0 {
             dailyAmountStatusString = ""
         } else {
-            let progress = wird.getCurrentProgress(for: .init())
-            let currentAmount = (progress?.0 ?? 0) + finishedCount
+            let realm = try! Realm()
+            guard let tempWird = realm.objects(Wird.self).first(where: { $0.id == wird.id }) else { return }
+            let progress = tempWird.getCurrentProgress(for: .init())
+            let currentAmount = (progress?.0 ?? 0)
             let targetAmount = progress?.1 ?? 0
             let remainingAmount = targetAmount - currentAmount
             dailyAmountStatusString = remainingAmount <= 0 ? "Daily amount done!" : "Remaining: \(remainingAmount)"

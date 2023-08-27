@@ -50,6 +50,7 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
         zikrService.updateZikrTotalCount(
             type: zikr.type,
             id: zikr.id,
+            isSubscribed: subscriptionService.isSubscribed || isFreeProgressTrackingAvailable(),
             currentlyDoneCount: count,
             internalDoneCount: 1,
             totallyDoneCount: totalCount
@@ -65,6 +66,7 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
         zikrService.updateZikrTotalCount(
             type: zikr.type,
             id: zikr.id,
+            isSubscribed: subscriptionService.isSubscribed || isFreeProgressTrackingAvailable(),
             currentlyDoneCount: count,
             internalDoneCount: internalCount,
             totallyDoneCount: totalCount
@@ -72,7 +74,7 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
     }
 
     func openPaywallIfNeeded() {
-        if subscriptionService.isSubscrtibed || appStatsService.canExpand {
+        if subscriptionService.isSubscribed || appStatsService.canExpand {
             hapticLight()
             appStatsService.didExpand()
             withAnimation(.linear(duration: 0.2)) {
@@ -127,6 +129,12 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
         makeStatusString()
     }
 
+    private func isFreeProgressTrackingAvailable() -> Bool {
+        let realm = try! Realm()
+        let progressesCount = realm.objects(DailyZikrProgress.self).where { $0.targetAmount == $0.amountDone }.count
+        return progressesCount < 12
+    }
+
     private func delete() {
         let realm = try! Realm()
         do {
@@ -158,7 +166,7 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
             let currentAmount = (progress?.0 ?? 0)
             let targetAmount = progress?.1 ?? 0
             let remainingAmount = targetAmount - currentAmount
-            dailyAmountStatusString = remainingAmount <= 0 ? "Daily amount done!" : "Remaining: \(remainingAmount)"
+            dailyAmountStatusString = remainingAmount <= 0 ? "dailyAmountDone".localized(LocalizationService.shared.language) : "remaining".localized(LocalizationService.shared.language, args: String(remainingAmount))
         }
     }
 }

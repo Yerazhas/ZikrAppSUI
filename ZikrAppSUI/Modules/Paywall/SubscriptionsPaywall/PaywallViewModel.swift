@@ -31,9 +31,9 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
     @Injected(Container.subscriptionSyncService) private var subscriptionsService
 
     let benefits: [String] = [
-        "Добавляй неограниченное количество зикров",
-        "Составь ежедневный объем зикров и следи за прогрессом",
-        "Смотри статистику и многое другое"
+        "paywallBenefits1",
+        "paywallBenefits2",
+        "paywallBenefits3"
     ]
     let out: PaywallViewOut
 

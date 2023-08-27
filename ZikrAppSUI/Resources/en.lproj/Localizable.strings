@@ -234,42 +234,77 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Onboarding
 
-"onboarding_title_1" = "Welcome to ZikrApp! Embark on a transformative journey of spiritual growth and self-discovery. Elevate your practice with unlimited zikrs and duas.";
-"onboarding_title_2" = "Form lasting habits effortlessly. Track your daily progress, stay motivated, and witness your devotion flourish. Our tools help you stay committed to your spiritual journey.";
-"onboarding_title_3" = "Unveil insights, statistics tracking your spiritual journey. Customize your experience with reminders, and resources. Begin a journey of lifelong transformation today.";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"onboarding_title_1" = "Welcome to ZikrApp! Form daily habits from zikrs and duas with our app.";
+"onboarding_title_2" = "Watch everyday progress, form long-lasting habits";
+"onboarding_title_3" = "Set notifications, see yearly statistics.";
+"skip" = "Skip";
+
+// What's New
+
+"whatsNew" = "What's New in ZikrApp";
+"whatsnewBenefitsTitle" = "ZikrApp Premium subscription is available with which you can:";
+"whatsnewBenefits1" = "Add unlimited amount of zikrs, duas for spiritual growth";
+"whatsnewBenefits2" = "Set daily amouny of zikrs, form habits, track progress";
+"whatsnewBenefits3" = "See insights, statistics and a lot more.";
+"continue" = "Continue";
+
+// Tracker
+
+"noZikrs" = "You have no zikrs";
+"addZikrs" = "Add zikrs";
+
+// Statistics
+
+"dataForDemo" = "This data is only for demonstration. To use this functionality please subscribe to ZikrApp Premium";
+"subscribe" = "Subscribe";
+"idealDays" = "Ideal days";
+
+// Paywall
+
+"paywallBenefits1" = "Add unlimited amount of zikrs";
+"paywallBenefits2" = "Set daily amount of zikrs and duas and track progress";
+"paywallBenefits3" = "Watch statistics and a lot more";
+"restore" = "Restore";
+"termsOfUse" = "Terms of use";
+"privacyPolicy" = "Privacy policy";
+"purchase" = "Purchase";
+
+// Support Paywall
+
+"mission" = "Our mission is to help ummah by doing great, useful products, not only apps. You can help us on this way bt making a donation.";
+"donate" = "Donate";
+
+// Zikrs
+
+"dailyAmountDone" = "Daily amount done!";
+"remaining" = "Remaining: %@";
+"delete" = "Delete";
+"enterDailyZikrAmount" = "Enter daily zikr amount";
+"dailyZikrPlaceholder" = "For example, 33";
+
+// Add New Zikr
+
+"addNewZikr" = "Add new zikr";
+
+// Settings
+
+"contactMe" = "Contact developer";
+"theme" = "Change color theme";
+
+// Error View
+
+"unableToConnect" = "Unable to connect";
+"errorOccured" = "An error occured while loading this page. Try again or restart the app";
+"tryAgain" = "Try again";
+
+// Paywall Success View
+
+"successfullSubscription" = "You have successfully subscribed to ZikrApp Premium! Use it's all useful features!";
+
+// ToolTip
+
+"setDailyAmount" = "Set daily amount";
+"seeStatistics" = "See statistics";
 "" = "";
 "" = "";
 "" = "";

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ErrorView: View {
+    @AppStorage("language") private var language = LocalizationService.shared.language
     let closeAction: () -> Void
     let retryAction: () -> Void
 
@@ -31,15 +32,15 @@ struct ErrorView: View {
             errorAnimation
                 .frame(width: animationViewSide, height: animationViewSide)
             Spacer()
-            Text("Unable to connect")
+            Text("unableToConnect".localized(language))
                 .font(.title2)
                 .bold()
                 .multilineTextAlignment(.center)
-            Text("An error occured while loading this page. try again or restart the app")
+            Text("errorOccured".localized(language))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             Spacer()
-            PrimaryButtonView(title: "Try again", action: retryAction)
+            PrimaryButtonView(title: "tryAgain".localized(language), action: retryAction)
                 .padding(.top, -15)
         }
         .padding()

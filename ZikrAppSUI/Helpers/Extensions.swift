@@ -26,6 +26,8 @@ extension String {
     static let didSetAppLang = "didSetAppLang"
     static let didSeeWhatsNew = "didSeenWhatsNew"
     static let didSeeOnboarding = "didSeeOnboarding"
+    static let didSeeDailyAmountToolTip = "didSeeDailyAmountToolTip"
+    static let didSeeStatisticsToolTip = "didSeeStatisticsToolTip"
 
     // AppStats
     static let didAddNewZikr = "didAddNewZikr"

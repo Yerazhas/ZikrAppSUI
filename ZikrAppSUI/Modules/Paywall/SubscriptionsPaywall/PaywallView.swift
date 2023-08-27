@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PaywallView: View {
+    @AppStorage("language") private var language = LocalizationService.shared.language
     @StateObject private var viewModel: PaywallViewModel
     @State private var isPrivacyPolicyPresented: Bool = false
     @State private var isUserAgreementPresented: Bool = false
@@ -42,7 +43,7 @@ struct PaywallView: View {
                             Image("premium-logo")
                             VStack {
                                 ForEach(viewModel.benefits, id: \.self) { benefit in
-                                    IconTitleView(title: benefit)
+                                    IconTitleView(title: benefit.localized(language))
                                         .padding(.top, 10)
                                 }
                             }
@@ -84,13 +85,13 @@ struct PaywallView: View {
 
     private var restorePrivacyButtons: some View {
         HStack(spacing: 20) {
-            Button("Restore") {
+            Button("restore".localized(language)) {
                 viewModel.restorePurchases()
             }
-            Button("Terms of use") {
+            Button("termsOfUse".localized(language)) {
                 isUserAgreementPresented = true
             }
-            Button("Privacy policy") {
+            Button("privacyPolicy".localized(language)) {
                 isPrivacyPolicyPresented = true
             }
         }
@@ -113,7 +114,7 @@ struct PaywallView: View {
             )
             .frame(maxHeight: 80)
             PrimaryButtonView(
-                title: "Purchase",
+                title: "purchase".localized(language),
                 isLoading: viewModel.isButtonLoading,
                 action: {
                 viewModel.purchase()

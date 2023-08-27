@@ -16,7 +16,7 @@ struct TrackerEmptyView: View {
         VStack(spacing: 50) {
             Spacer()
             Image("ic-empty-zikrs")
-            Text("You have no zikrs")
+            Text("noZikrs".localized(language))
                 .foregroundColor(.secondary)
             if isToday {
                 Button {
@@ -25,7 +25,7 @@ struct TrackerEmptyView: View {
                     ZStack {
                         Color.blue
                             .cornerRadius(20)
-                        Text("Add zikrs".localized(language))
+                        Text("addZikrs".localized(language))
                     }
                 }
                 .frame(width: 200, height: 60)

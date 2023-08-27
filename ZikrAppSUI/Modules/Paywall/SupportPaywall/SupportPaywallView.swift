@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SupportPaywallView: View {
+    @AppStorage("language") private var language = LocalizationService.shared.language
     @StateObject private var viewModel: SupportPaywallViewModel
     
     init(completion: @escaping () -> Void) {
@@ -24,7 +25,7 @@ struct SupportPaywallView: View {
                     .progressViewStyle(.circular)
             case .loaded:
                 VStack(spacing: 25) {
-                    Text("Our mission is to help ummah by doing great, useful products, not only apps. You can help us on this way bt making a donation.")
+                    Text("mission".localized(language))
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
 //                        .font(.title2)/
@@ -58,7 +59,7 @@ struct SupportPaywallView: View {
         ZStack {
             let gradientColor = Color.paleGray
             PrimaryButtonView(
-                title: "Donate",
+                title: "donate".localized(language),
                 isLoading: viewModel.isButtonLoading,
                 action: {
                 viewModel.purchase()

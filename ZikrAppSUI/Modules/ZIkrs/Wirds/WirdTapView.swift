@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Factory
 
 struct WirdTapView: View {
     @StateObject private var viewModel: WirdTapViewModel
@@ -14,12 +15,17 @@ struct WirdTapView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
     @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
     @AppStorage("themeSecondColor") private var themeSecondColor: String?
+    @Environment(\.colorScheme) private var colorScheme
+    @Injected(Container.appStatsService) private var appStatsService
     @State private var image: UIImage?
     @State private var isPresentingShareSheet = false
-    @Environment(\.colorScheme) private var colorScheme
+    @State private var isDailyAmountToolTipVisible: Bool = false
+    private var tooltipConfig = DefaultTooltipConfig()
 
     init(wird: Wird, out: @escaping WirdTapOut) {
         _viewModel = StateObject(wrappedValue: .init(wird: wird, out: out))
+        tooltipConfig.defaultConfig()
+        _isDailyAmountToolTipVisible = .init(initialValue: !appStatsService.didSeeDailyAmountToolTip)
     }
 
     var body: some View {
@@ -30,6 +36,7 @@ struct WirdTapView: View {
                 VStack(spacing: 15) {
                     headerView
                     .padding(.top, 5)
+                    .zIndex(1)
                     if !viewModel.isTapViewExpanded {
                         zikrContentView(gr)
                         .padding(.horizontal)
@@ -41,12 +48,12 @@ struct WirdTapView: View {
                 }
             }
             .alert(
-                "Enter everyday zikr amount".localized(language),
+                "enterDailyZikrAmount".localized(language),
                 isPresented: $isAmountAlertPresented
             ) {
-                TextField("For example, 33", text: $viewModel.dailyAmount)
+                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
                     .keyboardType(.decimalPad)
-                Button("OK", action: {
+                Button("ok".localized(language), action: {
                     viewModel.setAmount()
                 })
             } message: {}
@@ -82,17 +89,31 @@ struct WirdTapView: View {
         HStack(spacing: 15) {
             Button {
                 hapticLight()
-//                viewModel.deleteZikr()
                 isAmountAlertPresented = true
+                appStatsService.didSeeDailyAmountToolTipPage()
+                isDailyAmountToolTipVisible = false
             } label: {
                 Image(systemName: "calendar")
                     .renderingMode(.template)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(.secondary)
+                    .tooltip(
+                        isDailyAmountToolTipVisible,
+                        side: .right,
+                        config: tooltipConfig
+                    ) {
+                        ZStack {
+                            Text("setDailyAmount".localized(language))
+                                .font(.caption)
+                                .foregroundColor(colorScheme == .dark ? .black : .white)
+                        }
+                    }
             }
             .padding(.leading)
             Text(viewModel.dailyAmountStatusString)
+                .font(.footnote)
+                .bold()
                 .padding(.leading)
             Spacer()
             Button {

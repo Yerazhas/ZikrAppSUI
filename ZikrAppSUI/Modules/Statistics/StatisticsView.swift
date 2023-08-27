@@ -36,7 +36,7 @@ struct StatisticsView: View {
                 ScrollView {
                     VStack {
                         if let warningText = viewModel.mockDataWarningText {
-                            Text(warningText)
+                            Text(warningText.localized(language))
                                 .padding()
                                 .fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
@@ -59,13 +59,13 @@ struct StatisticsView: View {
                             .padding(.bottom)
                         }
                         HStack {
-                            StatisticsDataView(title: "\(viewModel.zikrsAmount)", subtitle: "Zikrs")
-                            StatisticsDataView(title: "\(viewModel.duasAmount)", subtitle: "Duas")
-                            StatisticsDataView(title: "\(viewModel.collectionsAmount)", subtitle: "Collections")
+                            StatisticsDataView(title: "\(viewModel.zikrsAmount)", subtitle: "zikrs".localized(language))
+                            StatisticsDataView(title: "\(viewModel.duasAmount)", subtitle: "duas".localized(language))
+                            StatisticsDataView(title: "\(viewModel.collectionsAmount)", subtitle: "wirds".localized(language))
                         }
                         .padding(.horizontal)
                         HStack {
-                            StatisticsDataView(title: "\(viewModel.idealDaysCount)", subtitle: "Ideal days")
+                            StatisticsDataView(title: "\(viewModel.idealDaysCount)", subtitle: "idealDays".localized(language))
                         }
                         .padding(.horizontal)
                         ForEach(viewModel.zikrProgresses) { progressData in

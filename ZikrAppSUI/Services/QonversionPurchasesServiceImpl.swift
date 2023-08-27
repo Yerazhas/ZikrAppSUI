@@ -86,7 +86,7 @@ final class QonversionPurchasesServiceImpl: PurchasesService {
                     case .cancelled:
                         // The user has turned off auto-renewal for the subscription, but the subscription has not expired yet.
                         // Prompt the user to resubscribe with a special offer.
-                        continuation.resume(returning: true)
+                        continuation.resume(returning: false)
                         return
                     default:
                         continuation.resume(returning: false)

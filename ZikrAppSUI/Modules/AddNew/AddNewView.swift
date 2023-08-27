@@ -30,7 +30,7 @@ struct AddNewView: View {
                 ZStack {
                     HStack {
                         Spacer()
-                        Text("Add new zikr")
+                        Text("addNewZikr".localized(language))
                             .bold()
                             .padding(.top)
                         Spacer()

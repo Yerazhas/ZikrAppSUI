@@ -9,20 +9,27 @@ import Foundation
 import Factory
 
 public protocol SubscriptionSyncService {
-    var isSubscrtibed: Bool { get }
+    var isSubscribed: Bool { get }
+    var isSubscribedPublisher: Published<Bool>.Publisher { get }
     func updateSubscriptionStatus(to isSubscribed: Bool)
 }
 
 final class SubscriptionSyncServiceImpl: SubscriptionSyncService {
     @UserDefaultsValue(key: "SubscriptionSyncServiceIsSubscribed", defaultValue: false)
-    private var _isSubscribed: Bool
+    private var tempIsSubscribed: Bool
 
-    var isSubscrtibed: Bool {
-        _isSubscribed
+    @Published private(set) var isSubscribed: Bool = false
+    var isSubscribedPublisher: Published<Bool>.Publisher {
+        $isSubscribed
+    }
+
+    init() {
+        isSubscribed = tempIsSubscribed
     }
     
     func updateSubscriptionStatus(to isSubscribed: Bool) {
-        self._isSubscribed = isSubscribed
+        self.tempIsSubscribed = isSubscribed
+        self.isSubscribed = isSubscribed
     }
 }
 
