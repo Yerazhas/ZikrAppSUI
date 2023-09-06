@@ -17,6 +17,7 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
         case failed(Error)
     }
     @Injected(Container.purchasesService) private var purchasesService
+    @Injected(Container.analyticsService) private var analyticsService
     @Published private(set) var products: [Qonversion.Product] = []
     @Published var state: State = .loading
     @Published var isButtonLoading: Bool = false
@@ -47,6 +48,7 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
 
     func purchase() {
         guard let selectedProduct else { return }
+        analyticsService.trackDonation(productId: selectedProduct.storeID)
         Task {
             do {
                 setButtonLoading(to: true)
@@ -54,10 +56,11 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
                 setButtonLoading(to: false)
                 if isSuccessful {
                     completion()
+                    analyticsService.trackDonationSuccess(productId: selectedProduct.storeID)
                 }
             } catch {
                 setButtonLoading(to: false)
-                print(error)
+                analyticsService.trackDonationError(productId: selectedProduct.storeID, error: error.localizedDescription)
             }
         }
     }

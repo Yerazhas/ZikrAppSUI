@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import Factory
 
 final class ZikrService {
     func transferZikrsFromJson() {
@@ -56,6 +57,24 @@ final class ZikrService {
             print(error.localizedDescription)
         }
         
+    }
+
+    func fixTextsInVersion1_8() {
+        do {
+            let realm = try Realm()
+            if let zikr = realm.objects(Zikr.self).first(where: { $0.id == "duaOfYunus" }) {
+                try realm.write {
+                    zikr.arabicTitle = "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِين"
+                }
+            }
+            if let dua = realm.objects(Dua.self).first(where: { $0.id == "duaOfYunus" }) {
+                try realm.write {
+                    dua.arabicTitle = "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِين"
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
     func transferDuasFromJson() {
@@ -197,5 +216,11 @@ final class ZikrService {
                 }
             }
         }
+    }
+}
+
+extension Container {
+    static let zikrService = Factory<ZikrService> {
+        ZikrService()
     }
 }

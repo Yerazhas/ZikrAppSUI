@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Factory
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    @Injected(Container.appStatsService) private var appStatsService
+    @Injected(Container.analyticsService) private var analyticsService
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,5 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         let coordinator = RootCoordinator(nc: rootVC)
         coordinator.run()
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        analyticsService.trackAppOpen(isFirstOpen: appStatsService.isFirstOpen)
+        appStatsService.didBecomeActive()
     }
 }

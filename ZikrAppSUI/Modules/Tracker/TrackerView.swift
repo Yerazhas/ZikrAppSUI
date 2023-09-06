@@ -20,6 +20,10 @@ struct TrackerView: View {
     @State private var isSupportPaywallPresented: Bool = false
     @State private var isStatisticsPresented: Bool = false
     @State private var isStatisticsToolTipVisible: Bool = false
+    @State private var isManualProgressToolTipVisible: Bool = false
+    @State private var isZikrAmountAlertPresented: Bool = false
+    @State private var isDuaAmountAlertPresented: Bool = false
+    @State private var isWirdAmountAlertPresented: Bool = false
     private let columns = [
         GridItem(.flexible(minimum: 100))
     ]
@@ -30,6 +34,7 @@ struct TrackerView: View {
         _viewModel = .init(wrappedValue: .init(out: out))
         tooltipConfig.defaultConfig()
         _isStatisticsToolTipVisible = .init(initialValue: !appStatsService.didSeeStatisticsToolTip)
+        _isManualProgressToolTipVisible = .init(initialValue: !appStatsService.didSeeManualProgressToolTip)
     }
 
     var body: some View {
@@ -54,6 +59,13 @@ struct TrackerView: View {
                                             .onTapGesture {
                                                 viewModel.openZikr(zikr)
                                             }
+                                            .onLongPressGesture {
+                                                hapticLight()
+                                                viewModel.selectedZikr = zikr
+                                                isZikrAmountAlertPresented = true
+                                                appStatsService.didSeeManualProgressToolTipPage()
+                                                isManualProgressToolTipVisible = false
+                                            }
                                     }
                                 }
                             }
@@ -65,6 +77,13 @@ struct TrackerView: View {
                                             .padding(.horizontal)
                                             .onTapGesture {
                                                 viewModel.openZikr(dua)
+                                            }
+                                            .onLongPressGesture {
+                                                hapticLight()
+                                                viewModel.selectedDua = dua
+                                                isDuaAmountAlertPresented = true
+                                                appStatsService.didSeeManualProgressToolTipPage()
+                                                isManualProgressToolTipVisible = false
                                             }
                                     }
                                 }
@@ -78,6 +97,13 @@ struct TrackerView: View {
                                             .onTapGesture {
                                                 viewModel.openWird(wird)
                                             }
+                                            .onLongPressGesture {
+                                                hapticLight()
+                                                viewModel.selectedWird = wird
+                                                isWirdAmountAlertPresented = true
+                                                appStatsService.didSeeManualProgressToolTipPage()
+                                                isManualProgressToolTipVisible = false
+                                            }
                                     }
                                 }
                             }
@@ -85,6 +111,17 @@ struct TrackerView: View {
                     }
                     .hSpacing(.center)
                     .vSpacing(.center)
+                    .tooltip(
+                        isManualProgressToolTipVisible && viewModel.hasZikrs,
+                        side: .bottom,
+                        config: tooltipConfig
+                    ) {
+                        ZStack {
+                            Text("manualProgressSet".localized(language))
+                                .font(.caption)
+                                .foregroundColor(colorScheme == .dark ? .black : .white)
+                        }
+                    }
                 }
             }
         })
@@ -93,13 +130,43 @@ struct TrackerView: View {
         .onAppear(perform: {
             viewModel.onAppear()
         })
+        .alert(
+            "enterTodaysProgress".localized(language),
+            isPresented: $isZikrAmountAlertPresented
+        ) {
+            TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
+                .keyboardType(.decimalPad)
+            Button("ok".localized(language), action: {
+                viewModel.zikrDidLongTap()
+            })
+        } message: {}
+            .alert(
+                "enterDailyZikrAmount".localized(language),
+                isPresented: $isWirdAmountAlertPresented
+            ) {
+                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
+                    .keyboardType(.decimalPad)
+                Button("ok".localized(language), action: {
+                    viewModel.wirdDidLongTap()
+                })
+            } message: {}
+            .alert(
+                "enterDailyZikrAmount".localized(language),
+                isPresented: $isDuaAmountAlertPresented
+            ) {
+                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
+                    .keyboardType(.decimalPad)
+                Button("ok".localized(language), action: {
+                    viewModel.duaDidLongTap()
+                })
+            } message: {}
         .sheet(isPresented: $isStatisticsPresented) {
             if #available(iOS 16.0, *) {
                 StatisticsView {
                     viewModel.openPaywall()
                 }
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
             } else {
                 StatisticsView {
                     viewModel.openPaywall()
@@ -132,6 +199,7 @@ struct TrackerView: View {
                     isStatisticsPresented = true
                     appStatsService.didSeeStatisticsToolTipPage()
                     isStatisticsToolTipVisible = false
+                    viewModel.openStatistics()
                 } label: {
                     Image(systemName: "chart.xyaxis.line")
                         .renderingMode(.template)
@@ -148,16 +216,26 @@ struct TrackerView: View {
                             }
                         }
                 }
-                .frame(width: 50, height: 50)
+                .padding(.trailing, 15)
+                Button {
+                    guard let url = URL(string: "https://t.me/yera_zhas") else { return }
+                    viewModel.contactSupport()
+                    UIApplication.shared.open(url)
+                } label: {
+                    Image(systemName: "message.badge")
+                        .renderingMode(.template)
+                        .foregroundColor(.primary)
+                }
+                .padding(.trailing, 15)
                 Button {
                     hapticLight()
                     isSupportPaywallPresented = true
+                    viewModel.openSupportPaywall()
                 } label: {
                     Image(systemName: "heart.fill")
                         .renderingMode(.template)
                         .foregroundColor(.red)
                 }
-                .frame(width: 50, height: 50)
 
             }
             .zIndex(1)
@@ -326,7 +404,7 @@ struct TrackerView: View {
     }
 
     private func addZikrs() {
-        viewModel.hapticLight()
+        viewModel.addZikrs()
         tabSelection = 1
     }
 }

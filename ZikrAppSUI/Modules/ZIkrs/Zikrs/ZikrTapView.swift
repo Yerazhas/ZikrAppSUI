@@ -16,18 +16,22 @@ struct ZikrTapView: View {
     @AppStorage("themeSecondColor") private var themeSecondColor: String?
     @Environment(\.colorScheme) private var colorScheme
     @Injected(Container.appStatsService) private var appStatsService
-    @State private var isPresented: Bool = false
     @State private var isAmountAlertPresented: Bool = false
     @State private var currentIndex: Int = 0
     @State private var image: UIImage?
     @State private var isPresentingShareSheet = false
     @State private var isDailyAmountToolTipVisible: Bool = false
+    @State private var isAutoCountToolTipVisible: Bool = false
+    @State private var isOptionsMenuPresented: Bool = false
+    @State private var isAutoCountIntervalsMenuPresented: Bool = false
+
     private var tooltipConfig = DefaultTooltipConfig()
 
     init(zikr: Zikr, out: @escaping ZikrTapOut) {
         _viewModel = StateObject(wrappedValue: .init(zikr: zikr, out: out))
         tooltipConfig.defaultConfig()
         _isDailyAmountToolTipVisible = .init(initialValue: !appStatsService.didSeeDailyAmountToolTip)
+        _isAutoCountToolTipVisible = .init(initialValue: !appStatsService.didAutoCountToolTip)
     }
 
     var body: some View {
@@ -51,8 +55,45 @@ struct ZikrTapView: View {
             }
             .confirmationDialog(
                 "",
-                isPresented: $isPresented
+                isPresented: $isAutoCountIntervalsMenuPresented
             ) {
+                Button("1sec".localized(language)) {
+                    hapticLight()
+                    viewModel.setTimer(withInterval: 1)
+                }
+                Button("2sec".localized(language)) {
+                    hapticLight()
+                    viewModel.setTimer(withInterval: 2)
+                }
+                Button("3sec".localized(language)) {
+                    hapticLight()
+                    viewModel.setTimer(withInterval: 3)
+                }
+                Button("5sec".localized(language)) {
+                    hapticLight()
+                    viewModel.setTimer(withInterval: 5)
+                }
+                Button("7sec".localized(language)) {
+                    hapticLight()
+                    viewModel.setTimer(withInterval: 7)
+                }
+                Button("turnOff".localized(language)) {
+                    hapticLight()
+                    viewModel.invalidate()
+                }
+            } message: {
+                Text("intervals".localized(language))
+            }
+            .confirmationDialog(
+                "",
+                isPresented: $isOptionsMenuPresented
+            ) {
+                Button("enterDailyZikrAmount".localized(language)) {
+                    isAmountAlertPresented = true
+                }
+                Button("removeFromTracker".localized(language)) {
+                    viewModel.removeFromTracker()
+                }
                 if viewModel.zikr.isDeletable {
                     Button("delete".localized(language)) {
                         viewModel.deleteZikr()
@@ -62,7 +103,9 @@ struct ZikrTapView: View {
                     hapticLight()
                     renderShareContent(gr: gr)
                 }
-            } message: {}
+            } message: {
+                Text("actions".localized(language))
+            }
         }
         .ignoresSafeArea(.keyboard)
         .onAppear(perform: viewModel.onAppear)
@@ -88,8 +131,6 @@ struct ZikrTapView: View {
     }
 
     private func renderShareContent(gr: GeometryProxy) {
-//        let renderer = ImageRenderer(content: zikrContentView(gr))
-//        self.image = zikrContentView(gr).snapshot()
         self.image = ZikrShareView(zikr: viewModel.zikr, gr: gr).asImage
         isPresentingShareSheet = true
     }
@@ -98,11 +139,11 @@ struct ZikrTapView: View {
         HStack {
             Button {
                 hapticLight()
-                isAmountAlertPresented = true
+                isOptionsMenuPresented = true
                 appStatsService.didSeeDailyAmountToolTipPage()
                 isDailyAmountToolTipVisible = false
             } label: {
-                Image(systemName: "calendar")
+                Image(systemName: "ellipsis.circle.fill")
                     .renderingMode(.template)
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -125,17 +166,6 @@ struct ZikrTapView: View {
                 .bold()
                 .padding(.leading)
             Spacer()
-            Button {
-                hapticLight()
-                isPresented = true
-            } label: {
-                Image(systemName: "ellipsis.circle.fill")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.secondary)
-            }
-            .padding(.trailing)
             Button {
                 viewModel.willDisappear()
             } label: {
@@ -181,8 +211,34 @@ struct ZikrTapView: View {
                     .padding(.trailing, 30)
                     .padding(.top)
                 }
+                HStack {
+                    Spacer()
+                    Button {
+                        hapticLight()
+                        isAutoCountToolTipVisible = false
+                        isAutoCountIntervalsMenuPresented = true
+                    } label: {
+                        Image(systemName: viewModel.isAutoCounting ? "hand.tap.fill" : "hand.tap")
+                            .schemeAdapted(colorScheme: colorScheme)
+                            .tooltip(
+                                isAutoCountToolTipVisible,
+                                side: .left,
+                                config: tooltipConfig
+                            ) {
+                                ZStack {
+                                    Text("autoCount".localized(language))
+                                        .font(.caption)
+                                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                                }
+                            }
+                    }
+                    .padding(.trailing, 30)
+                    .padding(.top)
+                }
+                .padding(.top, 10)
                 Spacer()
             }
+            .zIndex(1)
             VStack(spacing: 0) {
                 Spacer()
                 Group {

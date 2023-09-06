@@ -24,19 +24,20 @@ struct OnboardingView: View {
                     }
                     .foregroundColor(.blue)
                 }
+                .padding(.horizontal)
                 TabView(selection: $currentPage) {
                     OnboardingPageView(
-                        imageName: "img-serene-sunset",
+                        imageName: "SC 54",
                         title: "onboarding_title_1".localized(language)
                     )
                     .tag(0)
                     OnboardingPageView(
-                        imageName: "img-prayer",
+                        imageName: "SC 57",
                         title: "onboarding_title_2".localized(language)
                     )
                     .tag(1)
                     OnboardingPageView(
-                        imageName: "img-blossom-cherry",
+                        imageName: "SC 58",
                         title: "onboarding_title_3".localized(language)
                     )
                     .tag(2)
@@ -63,7 +64,6 @@ struct OnboardingView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal)
             }
-            .padding(.horizontal)
             .padding(.top, 5)
         }
     }

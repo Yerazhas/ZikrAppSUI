@@ -10,6 +10,7 @@ import RealmSwift
 import Haptica
 import Factory
 import SwiftUI
+import AudioToolbox
 
 struct TargetedZikr: Hashable {
     let zikr: Zikr
@@ -27,6 +28,7 @@ enum WirdTapOutCmd {
     case openPaywall
 }
 
+@MainActor
 final class WirdTapViewModel: ObservableObject, Hapticable {
     @Published var currentIndex: Int = 0 {
         didSet {
@@ -77,6 +79,9 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
     }
 
     func zikrDidTap() {
+        if appStatsService.isSoundEnabled {
+            AudioServicesPlaySystemSound(UInt32(appStatsService.soundId))
+        }
         if count < currentTargetedZikr.targetAmount {
             hapticLight()
             count += 1
@@ -144,17 +149,23 @@ final class WirdTapViewModel: ObservableObject, Hapticable {
         out(.delete(delete))
     }
 
+    func removeFromTracker() {
+        dailyAmount = "0"
+        setAmount()
+    }
+
     func setAmount() {
-        let realm = try! Realm()
         guard let amount = Int(dailyAmount) else {
             return
         }
+        let realm = try! Realm()
         guard let wird = realm.objects(Wird.self).where({ $0.id == wird.id }).first else {
             return
         }
         try! realm.write {
             wird.dailyTargetAmountAmount = amount
         }
+        analyticsService.setZikrTrackerAmount(zikrId: wird.id, zikrType: wird.type, amount: amount)
         makeStatusString()
     }
 

@@ -17,6 +17,7 @@ public enum AddNewOutCmd {
 
 final class AddNewViewModel: ObservableObject {
     @Injected(Container.appStatsService) private var appStatsService
+    @Injected(Container.analyticsService) private var analyticsService
     @Published var zikrViewModels: [AddNewZikrViewModel] = []
     @Published var contentType: ZikrType = .zikr
     private let language = LocalizationService.shared.language
@@ -88,6 +89,10 @@ final class AddNewViewModel: ObservableObject {
         }
     }
 
+    func onAppear() {
+        analyticsService.trackOpenAddNew()
+    }
+
     func didPressAdd() {
         hapticLight()
         switch contentType {
@@ -119,6 +124,7 @@ final class AddNewViewModel: ObservableObject {
                 try realm.write {
                     realm.add(zikr)
                     appStatsService.setDidAddZikr()
+                    analyticsService.trackAddNewSuccess(zikrType: .zikr)
                     out(.success)
                 }
             } catch {
@@ -152,6 +158,7 @@ final class AddNewViewModel: ObservableObject {
                 try realm.write {
                     realm.add(dua)
                     appStatsService.setDidAddZikr()
+                    analyticsService.trackAddNewSuccess(zikrType: .dua)
                     out(.success)
                 }
             } catch {
@@ -179,6 +186,7 @@ final class AddNewViewModel: ObservableObject {
                 try realm.write {
                     realm.add(wird)
                     appStatsService.setDidAddZikr()
+                    analyticsService.trackAddNewSuccess(zikrType: .wird)
                     out(.success)
                 }
             } catch {

@@ -38,14 +38,14 @@ struct ZikrSharePreviewView: View {
                     } label: {
                         ZStack {
                             Color.blue
-                                .cornerRadius(20)
+                                .cornerRadius(10)
                             Text("share".localized(language))
                         }
                     }
                     .frame(height: 60)
                     .padding(.horizontal)
                     .foregroundColor(.white)
-                    .font(.title2)
+                    .font(.title3)
 
                 }
             }

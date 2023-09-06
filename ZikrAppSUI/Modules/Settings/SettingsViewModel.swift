@@ -11,10 +11,17 @@ import UserNotifications
 import UIKit
 import SwiftUI
 import Factory
+import AudioToolbox
+import UniformTypeIdentifiers
 
 struct NotificationTime: Codable {
     let hour: Int
     let minute: Int
+}
+
+enum SoundState {
+    case off
+    case on(Int)
 }
 
 final class SettingsViewModel: ObservableObject {
@@ -22,9 +29,14 @@ final class SettingsViewModel: ObservableObject {
     @Published var firstDate: Date = .init()
     @Published var isSecondDateSet: Bool = false
     @Published var secondDate: Date = .init()
+    @Published var isSoundEnabled: Bool = false
+    @Published var soundId: Int = 0
+
     @AppStorage(.firstNotificationDate) var firstNotificationDate: Data?
     @AppStorage(.secondNotificationDate) var secondNotificationDate: Data?
     @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.subscriptionSyncService) private var subscriptionSyncService
+    @Injected(Container.appStatsService) private var appStatsService
     let out: SettingsOut
     private var cancellables = Set<AnyCancellable>()
     private var firstNotificationIds: [String] = []
@@ -55,6 +67,31 @@ final class SettingsViewModel: ObservableObject {
             }
         }
         analyticsService.trackNotificationDateSet(firstDate: firstDateString, secondDate: secondDateString)
+
+        isSoundEnabled = appStatsService.isSoundEnabled
+        soundId = appStatsService.soundId
+    }
+
+    func setSound(to state: SoundState) {
+        switch state {
+        case .off:
+            hapticLight()
+            appStatsService.isSoundEnabled = false
+            isSoundEnabled = false
+        case .on(let soundId):
+            if subscriptionSyncService.isSubscribed {
+                hapticLight()
+                appStatsService.isSoundEnabled = true
+                isSoundEnabled = true
+
+                appStatsService.soundId = soundId
+                self.soundId = soundId
+                AudioServicesPlaySystemSound(UInt32(appStatsService.soundId))
+            } else {
+                hapticStrong()
+                openPaywall()
+            }
+        }
     }
 
     func scheduleFirstNotification() {
@@ -96,8 +133,18 @@ final class SettingsViewModel: ObservableObject {
         analyticsService.trackOpenSettings()
     }
 
+    func openPaywallDismissingTopmostView() {
+        out(.openPaywallDismissingTopmostView)
+    }
+
     func openPaywall() {
         out(.openPaywall)
+    }
+
+    func copyQonversionUserIdToClipboard() {
+        hapticLight()
+        UIPasteboard.general.setValue(appStatsService.qonversionId,
+                    forPasteboardType: UTType.plainText.identifier)
     }
 
     private func scheduleNotification(_ dateComponents: DateComponents, isFirst: Bool) {
@@ -124,3 +171,5 @@ extension String {
     static let firstNotificationDate = "firstNotificationDate"
     static let secondNotificationDate = "secondNotificationDate"
 }
+
+extension SettingsViewModel: Hapticable {}

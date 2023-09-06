@@ -76,8 +76,15 @@ final class RootCoordinator {
             case .openSettings:
                 self.router.openSettings { cmd in
                     switch cmd {
-                    case .openPaywall:
+                    case .openPaywallDismissingTopmostView:
                         self.router.dismissPresentedVC(nil)
+                        self.router.openPaywall { cmd in
+                            switch cmd {
+                            case .close:
+                                self.router.dismissPresentedVC(nil)
+                            }
+                        }
+                    case .openPaywall:
                         self.router.openPaywall { cmd in
                             switch cmd {
                             case .close:
@@ -128,21 +135,21 @@ final class RootCoordinator {
             }
         }
 
-        if !appStatsService.didSeeWhatsNew {
-            router.openWhatsNew {
+        if !appStatsService.didSeeOnboarding {
+            router.openOnboarding {
                 self.router.dismissPresentedVC {
                     self.openPaywallIfNeeded()
                 }
             }
-            appStatsService.didSeeWhatsNewPage()
+            appStatsService.didSeeOnboardingPage()
         } else {
-            if !appStatsService.didSeeOnboarding {
-                router.openOnboarding {
+            if !appStatsService.didSeeWhatsNew {
+                router.openWhatsNew {
                     self.router.dismissPresentedVC {
                         self.openPaywallIfNeeded()
                     }
                 }
-                appStatsService.didSeeOnboardingPage()
+                appStatsService.didSeeWhatsNewPage()
             }
         }
 

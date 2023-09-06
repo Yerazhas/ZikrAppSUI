@@ -14,13 +14,14 @@ struct OnboardingPageView: View {
     var body: some View {
         VStack(alignment: .center) {
             Image(imageName)
-                .frame(width: 250, height: 250)
-                .padding(.top, 50)
+                .padding(.horizontal, 5)
+            Spacer()
             Text(title)
-                .font(.title3)
+                .font(.largeTitle)
+                .bold()
+                .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
-                .padding(.top, 50)
+                .padding(.top, 20)
             Spacer()
         }
         .padding(.bottom, 40)

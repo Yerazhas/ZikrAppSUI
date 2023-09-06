@@ -79,6 +79,7 @@
 		60A6CC722975ABB00037C083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60A6CC742975ABB00037C083 /* Localizable.strings */; };
 		60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6CC792975CAC60037C083 /* Dua.swift */; };
 		60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */; };
+		60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */; };
 		60FC32972A83F74000A214F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC32962A83F74000A214F9 /* StoreKit.framework */; };
 		60FC32992A84DF4900A214F9 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32982A84DF4900A214F9 /* PageControl.swift */; };
 		60FC329C2A88C9B900A214F9 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC329B2A88C9B900A214F9 /* PaywallView.swift */; };
@@ -184,6 +185,7 @@
 		60A6CC762975ABB90037C083 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60A6CC792975CAC60037C083 /* Dua.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dua.swift; sourceTree = "<group>"; };
 		60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
+		60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallProductsConverter.swift; sourceTree = "<group>"; };
 		60FC32962A83F74000A214F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		60FC32982A84DF4900A214F9 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		60FC329B2A88C9B900A214F9 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				60FC32A32A8A152B00A214F9 /* QonversionPurchasesServiceImpl.swift */,
 				60FC32AF2A8CA17A00A214F9 /* SubscriptionSyncService.swift */,
 				603E9B542A920458000068E0 /* AppStatsService.swift */,
+				60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				6079E4A92A62AAB900F0F014 /* ZikrShareView.swift in Sources */,
 				603DFABC2A505D0B0065572F /* ValidatedTextField.swift in Sources */,
 				603DFABD2A505D0B0065572F /* ValidatedTextFieldViewModel.swift in Sources */,
+				60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */,
 				605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */,
 				60FC32AC2A8BC83A00A214F9 /* LoadingButtonViewModel.swift in Sources */,
 				60FC32A02A8A08A600A214F9 /* ProductButtonView.swift in Sources */,
@@ -910,10 +914,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 54622A6055EF5513B2D67299 /* Pods-ZikrAppSUI.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.beta;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 101;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
 				DEVELOPMENT_TEAM = W7XBRGS6CR;
 				ENABLE_PREVIEWS = YES;
@@ -929,7 +933,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -948,7 +952,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 101;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
 				DEVELOPMENT_TEAM = W7XBRGS6CR;
 				ENABLE_PREVIEWS = YES;
@@ -964,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8;
+				MARKETING_VERSION = 1.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

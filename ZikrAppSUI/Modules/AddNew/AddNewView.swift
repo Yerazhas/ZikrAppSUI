@@ -88,6 +88,7 @@ struct AddNewView: View {
                 hapticLight()
             }
         }
+        .onAppear(perform: viewModel.onAppear)
     }
 
     private var addWirdView: some View {

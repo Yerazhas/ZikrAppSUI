@@ -12,7 +12,8 @@ struct IconTitleView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 15) {
-            Image(systemName: "checkmark.square.fill")
+//            Image(systemName: "checkmark.square.fill")
+            Image(systemName: "checkmark")
                 .resizable()
                 .frame(width: 18, height: 18)
                 .foregroundColor(.systemGreen)
@@ -22,6 +23,7 @@ struct IconTitleView: View {
                     .foregroundColor(.primary)
                     .font(.callout)
                     .bold()
+                    .fixedSize(horizontal: false, vertical: true)
 //                if let subtitle {
 //                    Text(subtitle)
 //                        .fixedSize(horizontal: false, vertical: true)

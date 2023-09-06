@@ -10,6 +10,7 @@ import Factory
 
 enum QonversionOffering: String {
     case main = "paywall_1"
+    case paywall11 = "paywall_1.1"
     case paywallSupport = "paywall_support"
 }
 
@@ -38,6 +39,44 @@ final class QonversionPurchasesServiceImpl: PurchasesService {
                 }
             }
         }
+    }
+
+    func getRemoteConfig() async throws -> Qonversion.RemoteConfig {
+        try await withCheckedThrowingContinuation({ [weak self] continuation in
+            Qonversion.shared().remoteConfig { remoteConfig, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                if let remoteConfig {
+                    continuation.resume(returning: remoteConfig)
+                    return
+                }
+    //            // JSON payload you have configured using the Qonversion dashboard.
+    //            remoteConfig.payload
+    //
+    //            // Object with the experiment's information.
+    //            remoteConfig.experiment
+    //
+    //            // Experiment's identifier.
+    //            remoteConfig.experiment.identifier
+    //
+    //            // Experiment's name. The same as you set in Qonversion. You can use it for analytical purposes.
+    //            remoteConfig.experiment.name
+    //
+    //            // Experiment's group the user has been assigned to.
+    //            remoteConfig.experiment.group
+    //
+    //            // Experiment group's identifier.
+    //            remoteConfig.experiment.group.identifier
+    //
+    //            // Experiment group's name. The same as you set in Qonversion. You can use it for analytical purposes.
+    //            remoteConfig.experiment.group.name
+    //
+    //            // Type of the experiment's group. Either control or treatment.
+    //            remoteConfig.experiment.group.type
+            }
+        })
     }
 
     func purchase(product: Qonversion.Product) async throws -> Bool {

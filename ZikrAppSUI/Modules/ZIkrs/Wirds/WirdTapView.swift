@@ -10,7 +10,6 @@ import Factory
 
 struct WirdTapView: View {
     @StateObject private var viewModel: WirdTapViewModel
-    @State private var isPresented: Bool = false
     @State private var isAmountAlertPresented: Bool = false
     @AppStorage("language") private var language = LocalizationService.shared.language
     @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
@@ -20,6 +19,7 @@ struct WirdTapView: View {
     @State private var image: UIImage?
     @State private var isPresentingShareSheet = false
     @State private var isDailyAmountToolTipVisible: Bool = false
+    @State private var isOptionsMenuPresented: Bool = false
     private var tooltipConfig = DefaultTooltipConfig()
 
     init(wird: Wird, out: @escaping WirdTapOut) {
@@ -59,8 +59,14 @@ struct WirdTapView: View {
             } message: {}
             .confirmationDialog(
                 "",
-                isPresented: $isPresented
+                isPresented: $isOptionsMenuPresented
             ) {
+                Button("enterDailyZikrAmount".localized(language)) {
+                    isAmountAlertPresented = true
+                }
+                Button("removeFromTracker".localized(language)) {
+                    viewModel.removeFromTracker()
+                }
                 if viewModel.wird.isDeletable {
                     Button("delete".localized(language)) {
                         viewModel.deleteWird()
@@ -70,7 +76,9 @@ struct WirdTapView: View {
                     hapticLight()
                     renderShareContent(gr: gr)
                 }
-            } message: {}
+            } message: {
+                Text("actions".localized(language))
+            }
                 .sheet(isPresented: $isPresentingShareSheet) {
                     if #available(iOS 16.0, *) {
                         ZikrSharePreviewView(image: image!)
@@ -89,11 +97,11 @@ struct WirdTapView: View {
         HStack(spacing: 15) {
             Button {
                 hapticLight()
-                isAmountAlertPresented = true
+                isOptionsMenuPresented = true
                 appStatsService.didSeeDailyAmountToolTipPage()
                 isDailyAmountToolTipVisible = false
             } label: {
-                Image(systemName: "calendar")
+                Image(systemName: "ellipsis.circle.fill")
                     .renderingMode(.template)
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -116,17 +124,6 @@ struct WirdTapView: View {
                 .bold()
                 .padding(.leading)
             Spacer()
-            Button {
-                hapticLight()
-                isPresented = true
-            } label: {
-                Image(systemName: "ellipsis.circle.fill")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.secondary)
-            }
-            .padding(.trailing)
             Button {
                 viewModel.willDisappear()
             } label: {

@@ -8,9 +8,11 @@
 import SwiftUI
 import UIKit
 import Factory
+import Qonversion
 
 typealias SettingsOut = (SettingsOutCmd) -> Void
 enum SettingsOutCmd {
+    case openPaywallDismissingTopmostView
     case openPaywall
 }
 
@@ -79,6 +81,64 @@ struct SettingsView: View {
                     }
                 }
                 Section {
+                    Button {
+                        viewModel.setSound(to: .off)
+                    } label: {
+                        HStack {
+                            Text("turnOffSound".localized(language))
+                            Spacer()
+                            if !viewModel.isSoundEnabled {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                    Button {
+                        viewModel.setSound(to: .on(1105))
+                    } label: {
+                        HStack {
+                            Text("sound1".localized(language))
+                            Spacer()
+                            if viewModel.isSoundEnabled && viewModel.soundId == 1105 {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                    Button {
+                        viewModel.setSound(to: .on(1306))
+                    } label: {
+                        HStack {
+                            Text("sound2".localized(language))
+                            Spacer()
+                            if viewModel.isSoundEnabled && viewModel.soundId == 1306 {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                    Button {
+                        viewModel.setSound(to: .on(1057))
+                    } label: {
+                        HStack {
+                            Text("sound3".localized(language))
+                            Spacer()
+                            if viewModel.isSoundEnabled && viewModel.soundId == 1057 {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                    Button {
+                        viewModel.setSound(to: .on(1103))
+                    } label: {
+                        HStack {
+                            Text("sound4".localized(language))
+                            Spacer()
+                            if viewModel.isSoundEnabled && viewModel.soundId == 1103 {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                }
+                .foregroundColor(.primary)
+                Section {
                     Button(action: {
                         isPresentingLanguageSheet = true
                     }) {
@@ -100,6 +160,12 @@ struct SettingsView: View {
                         share()
                     }) {
                         Text("share".localized(language))
+                    }
+                    Button(action: {
+                        Qonversion.shared().presentCodeRedemptionSheet()
+                        analyticsService.trackOpenEnterPromocodes()
+                    }) {
+                        Text("redeemPromocode".localized(language))
                     }
                     Button(action: {
                         openInstagram()
@@ -130,13 +196,13 @@ struct SettingsView: View {
             .sheet(isPresented: $isThemePresented) {
                 if #available(iOS 16.0, *) {
                     ThemeView {
-                        viewModel.openPaywall()
+                        viewModel.openPaywallDismissingTopmostView()
                     }
                         .presentationDetents([.height(250)])
                         .presentationDragIndicator(.visible)
                 } else {
                     ThemeView {
-                        viewModel.openPaywall()
+                        viewModel.openPaywallDismissingTopmostView()
                     }
                 }
             }
@@ -166,6 +232,9 @@ struct SettingsView: View {
                 .font(.callout)
                 .foregroundColor(.secondary)
                 .padding(.bottom)
+                .onLongPressGesture(minimumDuration: 5) {
+                    viewModel.copyQonversionUserIdToClipboard()
+                }
         }
         .onAppear(perform: viewModel.onAppear)
     }

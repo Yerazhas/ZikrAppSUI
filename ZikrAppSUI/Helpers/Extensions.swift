@@ -23,15 +23,25 @@ extension Font {
 extension String {
     static let didTransferZikrs = "didTransferZikrs"
     static let didTransferZikrs1 = "didTransferZikrs1" // add localized fields on zikr, like translation, transcription (KZ, RU, EN)
+    static let didFixTextsInVersion1_8 = "didFixTextsInVersion1_8" // Dua of Yunus, arabic text mistake
+    static let qonversionId = "qonversionId"
+
     static let didSetAppLang = "didSetAppLang"
-    static let didSeeWhatsNew = "didSeenWhatsNew"
-    static let didSeeOnboarding = "didSeeOnboarding"
+    static let didSeeWhatsNew = "didSeeWhatsNew_1_8_2"
+    static let didSeeOnboarding = "didSeeOnboarding_1_8_2"
     static let didSeeDailyAmountToolTip = "didSeeDailyAmountToolTip"
+    static let didAutoCountToolTip = "didAutoCountToolTip"
     static let didSeeStatisticsToolTip = "didSeeStatisticsToolTip"
+    static let didSeeManualProgressToolTip = "didSeeManualProgressToolTip"
+
+    static let isSoundEnabled = "isSoundEnabled"
+    static let soundId = "soundId"
 
     // AppStats
     static let didAddNewZikr = "didAddNewZikr"
     static let numberOfExpansion = "numberOfExpansion"
+    static let numberOfAutoCount = "numberOfAutoCount"
+    static let appOpenCount = "appOpenCount"
 }
 
 extension UINavigationController {

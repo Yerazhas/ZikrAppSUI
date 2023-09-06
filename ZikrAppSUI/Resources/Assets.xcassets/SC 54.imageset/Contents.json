@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "img-prayer.png",
+      "filename" : "SC 54.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img-prayer@2x.png",
+      "filename" : "SC 54@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img-prayer@3x.png",
+      "filename" : "SC 54@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

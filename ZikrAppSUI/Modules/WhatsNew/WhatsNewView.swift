@@ -13,22 +13,30 @@ struct WhatsNewView: View {
         "whatsnewBenefitsTitle",
         "whatsnewBenefits1",
         "whatsnewBenefits2",
-        "whatsnewBenefits3"
+        "whatsnewBenefits3",
+        "whatsnewBenefits4",
+        "whatsnewBenefits5",
+        "whatsnewBenefits6"
     ]
     let completion: () -> Void
 
     var body: some View {
         VStack {
-            Text("whatsNew".localized(language))
-                .font(.largeTitle)
-                .bold()
-            ForEach(benefits, id: \.self) { benefit in
-                IconTitleView(title: benefit.localized(language))
-                    .padding(.top, 10)
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    Text("whatsNew".localized(language))
+                        .font(.largeTitle)
+                        .bold()
+                        .fixedSize(horizontal: false, vertical: true)
+                    ForEach(benefits, id: \.self) { benefit in
+                        IconTitleView(title: benefit.localized(language))
+                            .padding(.top, 7)
+                    }
+                    .padding(.leading, 40)
+                    .padding(.top, 20)
+                    Spacer()
+                }
             }
-            .padding(.leading, 40)
-            .padding(.top, 20)
-            Spacer()
             Button {
                 hapticLight()
                 completion()
@@ -43,7 +51,6 @@ struct WhatsNewView: View {
             }
             .frame(height: 60)
             .padding(.horizontal)
-
         }
         .padding()
         .padding(.top, 40)

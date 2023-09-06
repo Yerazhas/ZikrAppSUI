@@ -7,12 +7,17 @@
 
 import SwiftUI
 import Factory
+import AudioToolbox
 
 final class CounterViewModel: ObservableObject, Hapticable {
     @AppStorage("counterCount") private(set) var count: Int = 0
     @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.appStatsService) private var appStatsService
 
     func zikrDidTap() {
+        if appStatsService.isSoundEnabled {
+            AudioServicesPlaySystemSound(UInt32(appStatsService.soundId))
+        }
         hapticLight()
         count += 1
     }

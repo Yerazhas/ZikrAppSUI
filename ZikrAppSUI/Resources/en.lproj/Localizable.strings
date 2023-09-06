@@ -234,18 +234,21 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Onboarding
 
-"onboarding_title_1" = "Welcome to ZikrApp! Form daily habits from zikrs and duas with our app.";
-"onboarding_title_2" = "Watch everyday progress, form long-lasting habits";
-"onboarding_title_3" = "Set notifications, see yearly statistics.";
+"onboarding_title_1" = "Zikr tracker. Statistics";
+"onboarding_title_2" = "Wide list of zikrs, duas, collections. Not enough? Add your own!";
+"onboarding_title_3" = "Automatic zikr. Change color. Set everyday notifications";
 "skip" = "Skip";
 
 // What's New
 
 "whatsNew" = "What's New in ZikrApp";
-"whatsnewBenefitsTitle" = "ZikrApp Premium subscription is available with which you can:";
-"whatsnewBenefits1" = "Add unlimited amount of zikrs, duas for spiritual growth";
-"whatsnewBenefits2" = "Set daily amouny of zikrs, form habits, track progress";
-"whatsnewBenefits3" = "See insights, statistics and a lot more.";
+"whatsnewBenefitsTitle" = "ZikrApp Premium subscription:";
+"whatsnewBenefits1" = "Track everyday zikrs, duas.";
+"whatsnewBenefits2" = "See insights, statistics.";
+"whatsnewBenefits3" = "Auto counting. Best when hands are busy.";
+"whatsnewBenefits4" = "Add unlimited amount of zikrs, duas and collections for spiritual growth.";
+"whatsnewBenefits5" = "Free subscriptions with promocodes.";
+"whatsnewBenefits6" = "Expand tap area, tap sounds, change theme color and a lot more.";
 "continue" = "Continue";
 
 // Tracker
@@ -261,8 +264,8 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Paywall
 
-"paywallBenefits1" = "Add unlimited amount of zikrs";
-"paywallBenefits2" = "Set daily amount of zikrs and duas and track progress";
+"paywallBenefits1" = "Zikr Tracker - set daily amount of zikrs and duas and track progress";
+"paywallBenefits2" = "Add unlimited amount of zikrs";
 "paywallBenefits3" = "Watch statistics and a lot more";
 "restore" = "Restore";
 "termsOfUse" = "Terms of use";
@@ -299,7 +302,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Paywall Success View
 
-"successfullSubscription" = "You have successfully subscribed to ZikrApp Premium! Use it's all useful features!";
+"successfullSubscription" = "You have successfully subscribed to ZikrApp Premium! Use its all useful features!";
 
 // ToolTip
 
@@ -310,11 +313,31 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "yearly" = "Yearly";
 "lifetime" = "Lifetime";
 "oneTimePayment" = "One-time payment";
-"autoRenewingMonthly" = "Auto-renewing subscription charged monthly";
-"autoRenewingYearly" = "Auto-renewing subscription charged yearly";
-"" = "";
-"" = "";
-"" = "";
+"autoRenewingMonthly" = "Billed monthly";
+"autoRenewingYearly" = "Billed yearly";
+
+"removeFromTracker" = "Remove from tracker";
+"enterTodaysProgress" = "What's your progress today?";
+"manualProgressSet" = "Long tap to set progress manually";
+
+"mostPopular" = "Most popular";
+"redeemPromocode" = "Redeem promocode";
+
+"turnOffSound" = "Turn sounds off";
+"sound1" = "Sound 1";
+"sound2" = "Sound 2";
+"sound3" = "Sound 3";
+"sound4" = "Sound 4";
+
+"autoCount" = "Count automatically";
+"intervals" = "Intervals";
+
+"1sec" = "1 sec";
+"2sec" = "2 sec";
+"3sec" = "3 sec";
+"5sec" = "5 sec";
+"7sec" = "7 sec";
+"turnOff" = "Turn off";
 "" = "";
 "" = "";
 "" = "";

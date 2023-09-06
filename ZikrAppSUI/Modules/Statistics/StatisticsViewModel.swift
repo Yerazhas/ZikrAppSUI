@@ -142,6 +142,7 @@ final class StatisticsViewModel: ObservableObject {
     }
 
     func getIdealDays() {
+        idealDaysCount = 0
         let realm = try! Realm()
         let progresses = realm.objects(DailyZikrProgress.self)
         let groupedProgresses = Dictionary(grouping: progresses) { progress -> String in

@@ -24,13 +24,13 @@ struct TrackerEmptyView: View {
                 } label: {
                     ZStack {
                         Color.blue
-                            .cornerRadius(20)
+                            .cornerRadius(10)
                         Text("addZikrs".localized(language))
                     }
                 }
-                .frame(width: 200, height: 60)
+                .frame(width: 200, height: 44)
                 .foregroundColor(.white)
-                .font(.title2)
+                .font(.title3)
             }
             Spacer()
         }

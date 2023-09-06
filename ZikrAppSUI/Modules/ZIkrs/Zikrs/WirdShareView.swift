@@ -45,9 +45,9 @@ struct WirdShareView: View {
                     .font(.title)
                     .foregroundColor(.secondary)
                     .padding(.top, -15)
-//                Text("https://apps.apple.com/kz/app/zikrapp-dhikr-dua-tasbih/id1590270292")
-//                    .multilineTextAlignment(.center)
-//                    .padding(.horizontal)
+                Text("https://apps.apple.com/app/zikrapp-dhikr-dua-tasbih/id1590270292")
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
             }
             .padding()
             .padding(.bottom, 20)

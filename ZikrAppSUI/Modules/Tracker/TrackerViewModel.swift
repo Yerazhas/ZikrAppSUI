@@ -25,6 +25,20 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     @Published var currentWeekIndex: Int = 1
     @Published var createWeek: Bool = false
     @Published var currentDayIdentificator: String
+    @Published var dailyAmount: String = ""
+    @Injected(Container.zikrService) private var zikrService
+    @Injected(Container.appStatsService) private var appStatsService
+    @Injected(Container.analyticsService) private var analyticsService
+    var selectedZikr: Zikr?
+    var selectedDua: Dua?
+    var selectedWird: Wird?
+    var hasZikrs: Bool {
+        let areZikrsEmpty = zikrs?.isEmpty ?? true
+        let areDuasEmpty = duas?.isEmpty ?? true
+        let areWirdsEmpty = wirds?.isEmpty ?? true
+        return !areZikrsEmpty || !areDuasEmpty || !areWirdsEmpty
+    }
+
     @Injected(Container.subscriptionSyncService) private var subscriptionService
     let out: TrackerViewOut
 
@@ -195,21 +209,105 @@ final class TrackerViewModel: ObservableObject, Hapticable {
 
     func openZikr(_ zikr: Zikr) {
         hapticLight()
+        analyticsService.trackOpenTrackerZikr(zikrId: zikr.id, zikrType: zikr.type)
         guard currentDate.isToday else { return }
         openPaywallIfFreeProgressTrackingEnded(else: { self.out(.openZikr(zikr)) })
     }
 
     func openWird(_ wird: Wird) {
         hapticLight()
+        analyticsService.trackOpenTrackerZikr(zikrId: wird.id, zikrType: .wird)
         guard currentDate.isToday else { return }
         openPaywallIfFreeProgressTrackingEnded(else: { self.out(.openWird(wird)) })
     }
 
+    func zikrDidLongTap() {
+        openPaywallIfFreeProgressTrackingEnded {
+            self.setProgressForZikr()
+        }
+    }
+
+    func addZikrs() {
+        hapticLight()
+        analyticsService.trackAddZikrsToTracker()
+    }
+
+    func openSupportPaywall() {
+        analyticsService.trackOpenSupportPaywall()
+    }
+
+    func openStatistics() {
+        analyticsService.trackOpenStatistics()
+    }
+
+    private func setProgressForZikr() {
+        guard let zikr = selectedZikr, let amount = Int(dailyAmount) else { return }
+        zikrService.updateZikrTotalCount(
+            type: .zikr,
+            id: zikr.id,
+            isSubscribed: subscriptionService.isSubscribed || appStatsService.isFreeProgressTrackingAvailable(),
+            currentlyDoneCount: amount,
+            internalDoneCount: amount,
+            totallyDoneCount: zikr.totalDoneCount
+        )
+        analyticsService.trackTrackererSetManualProgress(zikrId: zikr.id, zikrType: .zikr, progress: amount)
+        selectedZikr = nil
+        dailyAmount = ""
+    }
+
+    func duaDidLongTap() {
+        openPaywallIfFreeProgressTrackingEnded {
+            self.setProgressForDua()
+        }
+    }
+
+    func contactSupport() {
+        analyticsService.trackContactSupport()
+    }
+
+    private func setProgressForDua() {
+        guard let dua = selectedDua, let amount = Int(dailyAmount) else { return }
+        zikrService.updateZikrTotalCount(
+            type: .dua,
+            id: dua.id,
+            isSubscribed: subscriptionService.isSubscribed || appStatsService.isFreeProgressTrackingAvailable(),
+            currentlyDoneCount: amount,
+            internalDoneCount: amount,
+            totallyDoneCount: dua.totalDoneCount
+        )
+        analyticsService.trackTrackererSetManualProgress(zikrId: dua.id, zikrType: .dua, progress: amount)
+        selectedDua = nil
+        dailyAmount = ""
+    }
+
+    func wirdDidLongTap() {
+        openPaywallIfFreeProgressTrackingEnded {
+            self.setProgressForWird()
+        }
+    }
+
+    private func setProgressForWird() {
+        guard let wird = selectedWird, let amount = Int(dailyAmount) else { return }
+        zikrService.updateZikrTotalCount(
+            type: .wird,
+            id: wird.id,
+            isSubscribed: subscriptionService.isSubscribed || appStatsService.isFreeProgressTrackingAvailable(),
+            currentlyDoneCount: amount,
+            internalDoneCount: amount,
+            totallyDoneCount: wird.totalDoneCount
+        )
+        analyticsService.trackTrackererSetManualProgress(zikrId: wird.id, zikrType: .wird, progress: amount)
+        selectedWird = nil
+        dailyAmount = ""
+    }
+
     private func openPaywallIfFreeProgressTrackingEnded(else completion: @escaping () -> Void) {
         let realm = try! Realm()
-        let progressesCount = realm.objects(DailyZikrProgress.self).where { $0.amountDone == $0.targetAmount }.count
-        if !subscriptionService.isSubscribed && progressesCount >= 12 {
+        print(subscriptionService.isSubscribed)
+        print(appStatsService.isFreeProgressTrackingAvailable())
+        if !(subscriptionService.isSubscribed || appStatsService.isFreeProgressTrackingAvailable()) {
             out(.openPaywall)
+            analyticsService.trackOpenTrackerPaywall()
         } else {
             completion()
         }

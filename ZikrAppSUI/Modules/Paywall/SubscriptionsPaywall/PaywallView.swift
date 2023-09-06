@@ -41,16 +41,17 @@ struct PaywallView: View {
                                 Spacer()
                             }
                             Image("premium-logo")
+                                .padding(.top, -40)
                             VStack {
                                 ForEach(viewModel.benefits, id: \.self) { benefit in
                                     IconTitleView(title: benefit.localized(language))
-                                        .padding(.top, 10)
+                                        .padding(.top, 7)
                                 }
                             }
                             .padding(.leading, 40)
                             .padding(.top, 20)
                             VStack(spacing: 15) {
-                                ForEach(viewModel.products, id: \.storeID) { product in
+                                ForEach(viewModel.products, id: \.product.storeID) { product in
                                     ProductButtonView(
                                         product: product,
                                         isSelected: viewModel.selectedProduct == product,
@@ -60,13 +61,13 @@ struct PaywallView: View {
                                 .allowsHitTesting(!viewModel.isButtonLoading)
                             }
                             .padding(.top, 40)
-                            restorePrivacyButtons
-                                .padding(.top, 20)
                         }
                         .padding()
+                        .padding(.bottom, 40)
                     }
                     purchaseButton
                         .padding(.top, -15)
+                    restorePrivacyButtons
                 }
             case .failed:
                 ErrorView(closeAction: viewModel.close, retryAction: viewModel.getProducts)
@@ -102,27 +103,14 @@ struct PaywallView: View {
     }
 
     private var purchaseButton: some View {
-        ZStack {
-            let gradientColor = Color.paleGray
-            LinearGradient(
-                colors: [
-                    gradientColor.opacity(0),
-                    gradientColor
-                ],
-                startPoint: .top,
-                endPoint: .center
-            )
-            .frame(maxHeight: 80)
-            PrimaryButtonView(
-                title: "purchase".localized(language),
-                isLoading: viewModel.isButtonLoading,
-                action: {
-                viewModel.purchase()
-            })
-            .allowsHitTesting(!viewModel.isButtonLoading)
-            .padding(.horizontal)
-            .padding(.bottom)
-        }
+        PrimaryButtonView(
+            title: "purchase".localized(language),
+            isLoading: viewModel.isButtonLoading,
+            action: {
+            viewModel.purchase()
+        })
+        .allowsHitTesting(!viewModel.isButtonLoading)
+        .padding(.horizontal)
     }
 }
 

@@ -21,7 +21,7 @@ struct ZikrShareView: View {
             VStack(alignment: .center, spacing: 20) {
                 ZikrContentView(zikr: zikr)
                     .makeContentView(gr: gr)
-                Image(uiImage: .init(named: "AppIcon") ?? UIImage())
+                Image(uiImage: Bundle.main.icon ?? UIImage())
                     .resizable()
                     .cornerRadius(10)
                     .frame(width: 60, height: 60)
@@ -29,7 +29,7 @@ struct ZikrShareView: View {
                     .font(.title)
                     .foregroundColor(.secondary)
                     .padding(.top, -15)
-                Text("https://apps.apple.com/kz/app/zikrapp-dhikr-dua-tasbih/id1590270292")
+                Text("https://apps.apple.com/app/zikrapp-dhikr-dua-tasbih/id1590270292")
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
@@ -46,3 +46,15 @@ struct ZikrShareView: View {
 //        }
 //    }
 //}
+
+extension Bundle {
+    public var icon: UIImage? {
+        if let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
+            let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
+            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+            let lastIcon = iconFiles.last {
+            return UIImage(named: lastIcon)
+        }
+        return nil
+    }
+}

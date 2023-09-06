@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "img-serene-sunset.png",
+      "filename" : "SC 57.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img-serene-sunset@2x.png",
+      "filename" : "SC 57@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img-serene-sunset@3x.png",
+      "filename" : "SC 57@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
