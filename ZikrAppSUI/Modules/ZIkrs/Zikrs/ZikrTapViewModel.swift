@@ -215,12 +215,21 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
             dailyAmountStatusString = ""
         } else {
             let realm = try! Realm()
-            guard let tempZikr = realm.objects(Zikr.self).first(where: { $0.id == zikr.id }) else { return }
-            let progress = tempZikr.getCurrentProgress(for: .init())
-            let currentAmount = (progress?.0 ?? 0)
-            let targetAmount = progress?.1 ?? 0
-            let remainingAmount = targetAmount - currentAmount
-            dailyAmountStatusString = remainingAmount <= 0 ? "dailyAmountDone".localized(LocalizationService.shared.language) : "remaining".localized(LocalizationService.shared.language, args: String(remainingAmount))
+            if zikr.type == .zikr {
+                guard let tempZikr = realm.objects(Zikr.self).first(where: { $0.id == zikr.id }) else { return }
+                let progress = tempZikr.getCurrentProgress(for: .init())
+                let currentAmount = (progress?.0 ?? 0)
+                let targetAmount = progress?.1 ?? 0
+                let remainingAmount = targetAmount - currentAmount
+                dailyAmountStatusString = remainingAmount <= 0 ? "dailyAmountDone".localized(LocalizationService.shared.language) : "remaining".localized(LocalizationService.shared.language, args: String(remainingAmount))
+            } else if zikr.type == .dua {
+                guard let tempZikr = realm.objects(Dua.self).first(where: { $0.id == zikr.id }) else { return }
+                let progress = tempZikr.getCurrentProgress(for: .init())
+                let currentAmount = (progress?.0 ?? 0)
+                let targetAmount = progress?.1 ?? 0
+                let remainingAmount = targetAmount - currentAmount
+                dailyAmountStatusString = remainingAmount <= 0 ? "dailyAmountDone".localized(LocalizationService.shared.language) : "remaining".localized(LocalizationService.shared.language, args: String(remainingAmount))
+            }
         }
     }
 }

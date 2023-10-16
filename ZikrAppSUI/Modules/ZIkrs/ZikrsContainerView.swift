@@ -13,8 +13,8 @@ enum ZikrsContainerViewOutCmd {
     case openZikr(Zikr)
     case openDua(Dua)
     case openWird(Wird)
-    case openSettings
     case openAddNew
+    case openCounter
 }
 
 struct ZikrsContainerView: View {
@@ -24,39 +24,79 @@ struct ZikrsContainerView: View {
     @Injected(Container.localizationService) private var localizationService
     @Injected(Container.analyticsService) private var analyticsService
     @AppStorage("language") private var language = LocalizationService.shared.language
+    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
+    @AppStorage("themeSecondColor") private var themeSecondColor: String?
 
     var body: some View {
-        VStack(spacing: 0) {
-            headerView
-            Divider()
-            switch contentType {
-            case .zikr:
-                ZikrsView { zikr in
-                    out(.openZikr(zikr))
-                }
-                .onAppear {
-                    analyticsService.trackOpenZikrs(zikrType: contentType)
-                }
-            case .dua:
-                DuasView { dua in
-                    out(.openDua(dua))
-                }
-                .onAppear {
-                    analyticsService.trackOpenZikrs(zikrType: contentType)
-                }
-            case .wird:
-                WirdsView { wird in
-                    out(.openWird(wird))
-                }
-                .onAppear {
-                    analyticsService.trackOpenZikrs(zikrType: contentType)
+        ZStack {
+            VStack(spacing: 0) {
+                headerView
+                Divider()
+                switch contentType {
+                case .zikr:
+                    ZikrsView { zikr in
+                        out(.openZikr(zikr))
+                    }
+                    .onAppear {
+                        analyticsService.trackOpenZikrs(zikrType: contentType)
+                    }
+                case .dua:
+                    DuasView { dua in
+                        out(.openDua(dua))
+                    }
+                    .onAppear {
+                        analyticsService.trackOpenZikrs(zikrType: contentType)
+                    }
+                case .wird:
+                    WirdsView { wird in
+                        out(.openWird(wird))
+                    }
+                    .onAppear {
+                        analyticsService.trackOpenZikrs(zikrType: contentType)
+                    }
                 }
             }
+            .animation(.none)
+            .navigationBarHidden(true)
+            .onChange(of: contentType) { _ in
+                hapticLight()
+            }
+            counterButton()
+            .padding()
         }
-        .animation(.none)
-        .navigationBarHidden(true)
-        .onChange(of: contentType) { _ in
-            hapticLight()
+    }
+
+    @ViewBuilder
+    func counterButton() -> some View {
+        var stops: [Gradient.Stop] = [.init(color: Color(themeFirstColor), location: 0.00)]
+        if let themeSecondColor {
+            stops.append(.init(color: Color(themeSecondColor), location: 1.00))
+        }
+
+        return VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    out(.openCounter)
+                    hapticLight()
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    stops: stops,
+                                    startPoint: UnitPoint(x: 1, y: 0.96),
+                                    endPoint: UnitPoint(x: 0, y: 0)
+                                )
+                            )
+                            .shadow(color: Color(themeFirstColor).opacity(0.6), radius: 5)
+                        Image(systemName: "hand.tap.fill")
+                            .foregroundColor(colorScheme == .light ? .white : .black)
+                    }
+                }
+                .frame(width: 60, height: 60)
+            }
         }
     }
 
@@ -65,12 +105,13 @@ struct ZikrsContainerView: View {
             Spacer()
             Button {
                 hapticLight()
-                out(.openSettings)
+//                out(.openSettings)
             } label: {
                 Image("ic-menu")
                     .renderingMode(.template)
                     .foregroundColor(.secondary)
             }
+            .opacity(0)
             .schemeAdapted(colorScheme: colorScheme)
             Picker(selection: $contentType) {
                 Text("zikrs".localized(language))

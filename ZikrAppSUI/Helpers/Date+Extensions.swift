@@ -8,6 +8,15 @@
 import Foundation
 import RealmSwift
 
+extension Date {
+    var string: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale(identifier: LocalizationService.shared.language.rawValue)
+        return dateFormatter.string(from: self)
+    }
+}
+
 /// Date Extensions Needed for Building UI
 extension Date {
     /// Custom Date Format
@@ -22,6 +31,10 @@ extension Date {
     /// Checking Whether the Date is Today
     var isToday: Bool {
         return Calendar.current.isDateInToday(self)
+    }
+
+    var isYesterday: Bool {
+        return Calendar.current.isDateInYesterday(self)
     }
     
     /// Checking if the date is Same Hour
@@ -40,6 +53,10 @@ extension Date {
 
     var isPastDay: Bool {
         return Calendar.current.compare(self, to: .init(), toGranularity: .day) == .orderedAscending
+    }
+
+    func isOlderThan(date: Date) -> Bool {
+        Calendar.current.compare(self, to: .init(), toGranularity: .day) == .orderedAscending
     }
     
     /// Fetching Week Based on given Date

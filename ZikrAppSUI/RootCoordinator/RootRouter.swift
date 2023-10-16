@@ -10,17 +10,22 @@ import SwiftUI
 import Factory
 
 protocol RootRouter: AnyObject {
+    func openSplash(completion: @escaping () -> Void)
+    func openWelcome(completion: @escaping () -> Void)
     func openMain(out: @escaping MainOut)
 
     func openZikr(_ zikr: Zikr,  _ out: @escaping ZikrTapOut)
     func openDua(_ dua: Dua,  _ out: @escaping ZikrTapOut)
     func openWird(_ wird: Wird,  _ out: @escaping WirdTapOut)
     func openSettings(out: @escaping SettingsOut)
-    func openLanguageSetupAlert()
+    func openLanguageSetupAlert(completion: @escaping () -> Void)
     func openAddNew(out: @escaping AddNewOut)
     func openPaywall(out: @escaping PaywallViewOut)
     func openWhatsNew(out: @escaping () -> Void)
     func openOnboarding(out: @escaping () -> Void)
+    func openKaspiOnboarding(out: @escaping () -> Void)
+    func openReviewRequest(completion: @escaping () -> Void)
+    func openCounter(out: @escaping CounterOut)
 
     func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?)
     func showInfoAlert(message: String)
@@ -41,6 +46,18 @@ final class RootRouterImpl: RootRouter {
 
     init(_ nc: UINavigationController?) {
         self.nc = nc
+    }
+
+    func openSplash(completion: @escaping () -> Void) {
+        let view = SplashView(completion: completion)
+        nc?.set(suiView: view)
+    }
+
+    func openWelcome(completion: @escaping () -> Void) {
+        let view = WelcomeView(completion: completion)
+        let vc = UIHostingController(rootView: view)
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
     }
 
     func openMain(out: @escaping MainOut) {
@@ -76,23 +93,26 @@ final class RootRouterImpl: RootRouter {
         nc?.present(vc, animated: true)
     }
 
-    func openLanguageSetupAlert() {
+    func openLanguageSetupAlert(completion: @escaping () -> Void) {
         let language = localizationService.language
         let alertVC = UIAlertController(title: "selectLanguage".localized(language), message: nil, preferredStyle: .alert)
         let enAction = UIAlertAction(title: "English", style: .default) { _ in
             self.localizationService.language = .en
             UserDefaults.standard.setValue(true, forKey: .didSetAppLang)
             self.analyticsService.setUserProperties(["locale": self.localizationService.language.rawValue])
+            completion()
         }
         let kzAction = UIAlertAction(title: "Қазақша", style: .default) { _ in
             self.localizationService.language = .kz
             UserDefaults.standard.setValue(true, forKey: .didSetAppLang)
             self.analyticsService.setUserProperties(["locale": self.localizationService.language.rawValue])
+            completion()
         }
         let ruAction = UIAlertAction(title: "Русский".localized(language), style: .default) { _ in
             self.localizationService.language = .ru
             UserDefaults.standard.setValue(true, forKey: .didSetAppLang)
             self.analyticsService.setUserProperties(["locale": self.localizationService.language.rawValue])
+            completion()
         }
         alertVC.addAction(enAction)
         alertVC.addAction(kzAction)
@@ -121,10 +141,48 @@ final class RootRouterImpl: RootRouter {
         let vc = UIHostingController(rootView: WhatsNewView(completion: out))
         vc.modalPresentationStyle = .pageSheet
         nc?.present(vc, animated: true)
+        analyticsService.trackShowWhatsNew()
     }
 
     func openOnboarding(out: @escaping () -> Void) {
-        let vc = UIHostingController(rootView: OnboardingView(completion: out))
+        let vc = UIHostingController(rootView:
+                                        OnboardingView(
+                                            pagesData: [
+                                                .init(imageName: "SC 54", titleKey: "onboarding_title_1", subtitleKey: "onboarding_subtitle_1"),
+                                                .init(imageName: "SC 55", titleKey: "onboarding_title_2", subtitleKey: "onboarding_subtitle_2"),
+                                                .init(imageName: "SC 56", titleKey: "onboarding_title_3", subtitleKey: "onboarding_subtitle_3")
+                                            ],
+                                            completion: out
+                                        )
+        )
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+        analyticsService.trackShowOnboarding()
+    }
+
+    func openKaspiOnboarding(out: @escaping () -> Void) {
+        let view = OnboardingView(
+            pagesData: [
+                .init(imageName: "SC 59", titleKey: "kaspiIsAvailable", subtitleKey: nil)
+            ],
+            completion: out
+        )
+        let vc = UIHostingController(rootView: view)
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+        analyticsService.trackShowKaspiOnboarding()
+    }
+
+    func openReviewRequest(completion: @escaping () -> Void) {
+        let view = ReviewRequestView(completion: completion)
+        let vc = UIHostingController(rootView: view)
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+    }
+
+    func openCounter(out: @escaping CounterOut) {
+        let view = CounterView(out: out)
+        let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
         nc?.present(vc, animated: true)
     }

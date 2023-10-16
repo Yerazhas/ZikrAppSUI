@@ -6,19 +6,36 @@
 //
 
 import SwiftUI
+import Factory
 
 struct WhatsNewView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
-    private let benefits: [String] = [
-        "whatsnewBenefitsTitle",
-        "whatsnewBenefits1",
-        "whatsnewBenefits2",
-        "whatsnewBenefits3",
-        "whatsnewBenefits4",
-        "whatsnewBenefits5",
-        "whatsnewBenefits6"
-    ]
+    private var benefits: [String] = []
+
+    @Injected(Container.appStatsService) private var appStatsService
     let completion: () -> Void
+
+    init(completion: @escaping () -> Void) {
+        self.completion = completion
+        if [Language.ru, .kz].contains(language) && appStatsService.showsRI {
+            benefits = [
+                "whatsnewBenefitsTitle",
+                "whatsnewBenefits7",
+                "whatsnewBenefits1",
+                "whatsnewBenefits2",
+                "whatsnewBenefits3",
+                "whatsnewBenefits4"
+            ]
+        } else {
+            benefits = [
+                "whatsnewBenefitsTitle",
+                "whatsnewBenefits1",
+                "whatsnewBenefits2",
+                "whatsnewBenefits3",
+                "whatsnewBenefits4"
+            ]
+        }
+    }
 
     var body: some View {
         VStack {
@@ -46,7 +63,7 @@ struct WhatsNewView: View {
                         .cornerRadius(12)
                     Text("continue".localized(language))
                         .foregroundColor(.white)
-                        .font(.title2)
+                        .bold()
                 }
             }
             .frame(height: 60)

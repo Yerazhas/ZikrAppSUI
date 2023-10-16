@@ -10,8 +10,6 @@ import SwiftUI
 struct ZikrView: View {
     let zikr: Zikr
     @AppStorage("language") private var language = LocalizationService.shared.language
-    @AppStorage("themeFirstColor") private var themeFirstColor = ThemeService.shared.firstColor
-    @AppStorage("themeSecondColor") private var themeSecondColor: String?
 
     var body: some View {
         ZStack {
@@ -22,7 +20,7 @@ struct ZikrView: View {
                 HStack {
                     Text(zikr.type.rawValue.localized(language))
                         .font(.headline)
-                        .foregroundLinearGradient(themeFirstColor: themeFirstColor, themeSecondColor: themeSecondColor)
+                        .foregroundColor(.systemGreen)
                     Spacer()
                     Image("ic-checkmark")
                         .opacity(0)

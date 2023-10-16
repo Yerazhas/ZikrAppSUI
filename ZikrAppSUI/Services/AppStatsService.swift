@@ -9,17 +9,36 @@ import Factory
 import RealmSwift
 
 final class AppStatsService {
-    var offering: QonversionOffering = .main
+    @UserDefaultsValue(key: .showsRI, defaultValue: false)
+    var showsRI: Bool
+
+    func setShowsRI(to showsRI: Bool) {
+        self.showsRI = showsRI
+    }
+
+    var offering: QonversionOffering = .paywall11
+
+    var halfDiscountOffering: QonversionHalfDiscountOffering = .halfDiscount
+
     @UserDefaultsValue(key: .didSetAppLang, defaultValue: false)
     var didSetAppLang: Bool
 
     @UserDefaultsValue(key: .qonversionId, defaultValue: "")
     var qonversionId: String
 
-    // MARK: - Settings -
+    // MARK: - Review Request -
 
     @UserDefaultsValue(key: .isSoundEnabled, defaultValue: false)
     var isSoundEnabled: Bool
+
+    // MARK: - Settings -
+
+    @UserDefaultsValue(key: .didSeeReviewRequest, defaultValue: false)
+    var didSeeReviewRequest: Bool
+
+    func didSeeReviewRequestPage() {
+        didSeeReviewRequest = true
+    }
 
     @UserDefaultsValue(key: .soundId, defaultValue: 1105)
     var soundId: Int
@@ -37,7 +56,30 @@ final class AppStatsService {
             openCount += 1
         }
     }
-    
+
+    // MARK: - Qaza Tracker -
+
+    @UserDefaultsValue(key: .numberOfQazaMakeUp, defaultValue: 0)
+    private var numberOfQazaMakeUps: Int
+
+    @UserDefaultsValue(key: .didSetUpQaza, defaultValue: false)
+    private var didSetUpQaza: Bool
+
+    func didSetUpQazaPage() {
+        didSetUpQaza = true
+    }
+
+    private let numberOfFreeQazaMakeUps: Int = 5
+
+    var canMakeUpQaza: Bool {
+        numberOfQazaMakeUps < numberOfFreeQazaMakeUps
+    }
+
+    func didMakeUpQaza() {
+        guard canMakeUpQaza else { return }
+        numberOfQazaMakeUps += 1
+    }
+
     // MARK: - Expansion -
     
     @UserDefaultsValue(key: .numberOfExpansion, defaultValue: 0)
@@ -74,6 +116,20 @@ final class AppStatsService {
     }
 
     // MARK: - Onboarding -
+    
+    @UserDefaultsValue(key: .didSeeKaspiOnboarding, defaultValue: false)
+    var didSeeKaspiOnboarding: Bool
+
+    func didSeeKaspiOnboardingPage() {
+        didSeeKaspiOnboarding = true
+    }
+
+    @UserDefaultsValue(key: .didSeeWelcome, defaultValue: false)
+    var didSeeWelcome: Bool
+
+    func didSeeWelcomePage() {
+        didSeeWelcome = true
+    }
 
     @UserDefaultsValue(key: .didSeeOnboarding, defaultValue: false)
     var didSeeOnboarding: Bool
@@ -140,6 +196,9 @@ final class AppStatsService {
         didSeeManualProgressToolTip = false
         didAutoCountToolTip = false
         numberOfAutoCount = 0
+        didSeeKaspiOnboarding = false
+        didSeeReviewRequest = false
+        didSeeWelcome = false
     }
 
     // MARK: - JSON tranfferring -

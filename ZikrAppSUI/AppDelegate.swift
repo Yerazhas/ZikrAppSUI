@@ -10,6 +10,7 @@ import Amplitude
 import Factory
 import RealmSwift
 import Qonversion
+import FirebaseCore
 
 @main
 final class AppDelegate: NSObject, UIApplicationDelegate {
@@ -17,6 +18,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     @Injected(Container.purchasesService) private var purchasesService
     @Injected(Container.subscriptionSyncService) private var subscriptionService
     @Injected(Container.appStatsService) private var appStatsService
+    @Injected(Container.remoteConfigService) private var remoteConfigService
+    @Injected(Container.themeService) private var themeService
 
     func application(
         _ application: UIApplication,
@@ -24,12 +27,30 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         let config = Realm.Configuration(schemaVersion: 2)
         Realm.Configuration.defaultConfiguration = config
+        configureFirebase()
         setupQonversion()
         checkSubscriptions()
         transferDataToRealmIfNeeded()
+        setDefaultTrackerZikrsIfNeeded()
+
         UIPageControl.appearance().isUserInteractionEnabled = false
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
+
         configureAmplitude()
+        themeService.setDefaultTheme()
+//        let realm = try! Realm()
+//        let prayers = realm.objects(QazaPrayer.self)
+//        let safarPrayers = realm.objects(SafarQazaPrayer.self)
+//        try! realm.write({
+//            for prayer in prayers {
+//                realm.delete(prayer)
+//            }
+//            for prayer in safarPrayers {
+//                realm.delete(prayer)
+//            }
+//        })
+//        UserDefaults.standard.set(false, forKey: "didSetUpQaza")
+//        appStatsService.resetAllValues() // Remove before release
         return true
     }
 
@@ -52,7 +73,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         }
 
 //        // TODO: remove before submission
-//        Qonversion.shared().attachUser(toExperiment: "ea330055-0941-411e-a596-9cea547f1e4c", groupId: "77405f32") { _, _ in
+//        Qonversion.shared().attachUser(toExperiment: "433c7db1-4483-4651-bc2b-4cdf01fb7ea9", groupId: "879adac4") { _, _ in
 //            Qonversion.shared().remoteConfig { remoteConfig, error in
 //                if let remoteConfig {
 //                    let offerindId = remoteConfig.payload?["offering_id"] as? String ?? "paywall_1"
@@ -61,12 +82,19 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 //            }
 //        }
 
-        Qonversion.shared().remoteConfig { remoteConfig, error in
-            if let remoteConfig {
-                let offerindId = remoteConfig.payload?["offering_id"] as? String ?? "paywall_1"
-                self.appStatsService.offering = .init(rawValue: offerindId) ?? .main
-            }
-        }
+//        Qonversion.shared().remoteConfig { remoteConfig, error in
+//            if let remoteConfig {
+//                let offerindId = remoteConfig.payload?["offering_id"] as? String ?? "paywall_1"
+//                self.appStatsService.offering = .init(rawValue: offerindId) ?? .main
+
+//                let halfDiscountOfferingId = remoteConfig.payload?["discount_offering_id"] as? String ?? "paywall_half_discount"
+//                self.appStatsService.halfDiscountOffering = .init(rawValue: halfDiscountOfferingId) ?? .halfDiscount
+//            }
+//        }
+    }
+
+    private func configureFirebase() {
+        FirebaseApp.configure()
     }
 
     private func checkSubscriptions() {
@@ -100,6 +128,18 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         service.transferDuasFromJson()
         service.transferWirdsFromJson()
         UserDefaults.standard.set(true, forKey: .didTransferZikrs)
+    }
+
+    private func setDefaultTrackerZikrsIfNeeded() {
+        let zikrService = ZikrService()
+        let realm = try! Realm()
+        let hasNoTrackedZikrs = realm.objects(Zikr.self).where({ $0.dailyTargetAmountAmount > 0 }).isEmpty
+        let hasNoTrackedDuas = realm.objects(Dua.self).where({ $0.dailyTargetAmountAmount > 0 }).isEmpty
+        let hasNoTrackedWirds = realm.objects(Wird.self).where({ $0.dailyTargetAmountAmount > 0 }).isEmpty
+        let hasNoTraction = hasNoTrackedDuas && hasNoTrackedZikrs && hasNoTrackedWirds
+
+        guard !subscriptionService.isSubscribed && hasNoTraction else { return }
+        zikrService.setDefaultTrackerZikrs()
     }
 
     private func configureAmplitude() {

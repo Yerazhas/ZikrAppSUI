@@ -15,7 +15,9 @@ struct TrackerEmptyView: View {
     var body: some View {
         VStack(spacing: 50) {
             Spacer()
-            Image("ic-empty-zikrs")
+            Image("LaunchScreenLogo")
+                .resizable()
+                .frame(width: 150, height: 150)
             Text("noZikrs".localized(language))
                 .foregroundColor(.secondary)
             if isToday {

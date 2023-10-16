@@ -14,10 +14,39 @@ enum QonversionOffering: String {
     case paywallSupport = "paywall_support"
 }
 
+enum QonversionHalfDiscountOffering: String {
+    case halfDiscount = "paywall_half_discount"
+    case halfDiscount1 = "paywall_half_discount_1"
+}
+
 final class QonversionPurchasesServiceImpl: PurchasesService {
     private(set) var products: [Qonversion.Product] = []
 
     func getProducts(offeringId: QonversionOffering) async throws -> [Qonversion.Product] {
+        try await withCheckedThrowingContinuation { [weak self] continuation in
+            Qonversion.shared().offerings { offerings, error in
+                if let error {
+                    let fetchProductsError = PurchasesError.fetchProductsError(underlying: error)
+                    continuation.resume(throwing: fetchProductsError)
+                    return
+                }
+                if let products = offerings?.offering(for: offeringId.rawValue)?.products {
+                    if products.isEmpty {
+                        let noProductsError = PurchasesError.noProducts
+                        continuation.resume(throwing: noProductsError)
+                        return
+                    }
+                    self?.products = products.reversed()
+                    continuation.resume(returning: products.reversed())
+                } else {
+                    let noProductsError = PurchasesError.noProducts
+                    continuation.resume(throwing: noProductsError)
+                }
+            }
+        }
+    }
+
+    func getHalfDiscountProduct(offeringId: QonversionHalfDiscountOffering) async throws -> [Qonversion.Product] {
         try await withCheckedThrowingContinuation { [weak self] continuation in
             Qonversion.shared().offerings { offerings, error in
                 if let error {
@@ -128,7 +157,7 @@ final class QonversionPurchasesServiceImpl: PurchasesService {
                         continuation.resume(returning: false)
                         return
                     default:
-                        continuation.resume(returning: false)
+                        continuation.resume(returning: true)
                         return
                     }
                 } else {
@@ -216,6 +245,11 @@ extension Qonversion.Product {
         } else {
             return skProduct?.subscriptionPeriod?.periodString
         }
+    }
+
+    var localizedPeriodLength: String? {
+        guard type != .oneTime else { return nil }
+        return skProduct?.subscriptionPeriod?.periodLengthString
     }
 
     var subscriptionDescription: String? {

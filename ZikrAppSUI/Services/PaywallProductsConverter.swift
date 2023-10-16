@@ -10,8 +10,6 @@ import Qonversion
 
 final class PaywallProductsConverter {
     func convertByExpensive(products: [Qonversion.Product]) -> [PaywallProduct] {
-        let hasMoreThan2Products = products.count > 2
-
         if products.isEmpty {
             return []
         }
@@ -64,6 +62,7 @@ extension Container {
 
 struct PaywallProduct {
     let localizedPeriod: String
+    let localizedPeriodLength: String
     let duration: Qonversion.ProductDuration
     let prettyPrice: String
     let subtitle: String?
@@ -80,12 +79,21 @@ struct PaywallProduct {
     ) {
         self.product = product
         localizedPeriod = product.localizedPeriod ?? ""
+        localizedPeriodLength = product.localizedPeriodLength ?? ""
         duration = product.duration
         prettyPrice = product.prettyPrice
         subtitle = product.subscriptionDescription
         self.isMostPopular = isMostPopular
         self.fullPrice = fullPrice
         self.discount = discount
+    }
+
+    func getMultipliedPrice(by amount: NSDecimalNumber) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        let price = product.skProduct?.price ?? 0.0
+        return formatter.string(from: price.multiplying(by: amount))
     }
 }
 

@@ -14,6 +14,7 @@ extension UIColor {
 
 extension Color {
     static let systemGreen = Color("SystemGreen")
+    static let kaspiRed = Color("KaspiRed")
     static let paleGray = Color("PaleGray")
     static let textGray = Color("TextGray")
 }

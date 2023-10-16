@@ -46,6 +46,10 @@ final class AnalyticsService {
         case setZikrTrackerAmount = "set_zikr_tracker_amount"
         case contactSupport = "contact_support"
 
+        case showOnboarding = "show_onboarding"
+        case showKaspiOnboarding = "show_kaspi_onboarding"
+        case showWhatsNew = "show_whats_new"
+
         case openSupportPaywall = "open_support_paywall"
         case openEnterPromocodes = "open_enter_promocodes"
         case promocodeActivation = "promocode_activation"
@@ -53,6 +57,9 @@ final class AnalyticsService {
         case donationSuccess = "donation_success"
         case donationError = "donation_error"
         case donation = "donation"
+
+        case payKaspi = "pay_kaspi"
+        case sendCheck = "send_check"
     }
 
     func trackAppOpen(isFirstOpen: Bool) {
@@ -175,13 +182,13 @@ final class AnalyticsService {
         track(event: .selectPaywallProduct, properties: props)
     }
 
-    func trackSubscription(productId: String) {
-        let props = ["product_id": productId]
+    func trackSubscription(productId: String, price: String) {
+        let props = ["product_id": productId, "price": price]
         track(event: .subscribe, properties: props)
     }
 
-    func trackSubscriptionSuccess(productId: String) {
-        let props = ["product_id": productId]
+    func trackSubscriptionSuccess(productId: String, price: String) {
+        let props = ["product_id": productId, "price": price]
         track(event: .subscriptionSuccess, properties: props)
     }
 
@@ -243,6 +250,26 @@ final class AnalyticsService {
 
     func trackDonationSuccess(productId: String) {
         track(event: .donationSuccess, properties: ["product_id": productId])
+    }
+
+    func trackPayKaspi() {
+        track(event: .payKaspi)
+    }
+
+    func trackSendCheck() {
+        track(event: .sendCheck)
+    }
+
+    func trackShowOnboarding() {
+        track(event: .showOnboarding)
+    }
+
+    func trackShowKaspiOnboarding() {
+        track(event: .showKaspiOnboarding)
+    }
+
+    func trackShowWhatsNew() {
+        track(event: .showWhatsNew)
     }
 
     func trackDonationError(productId: String, error: String) {

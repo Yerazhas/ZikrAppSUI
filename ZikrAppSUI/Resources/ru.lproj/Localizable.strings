@@ -260,9 +260,13 @@
 
 // Onboarding
 
-"onboarding_title_1" = "Зикр трекер. Статистика";
-"onboarding_title_2" = "Большой список зикров, дуа, коллекции. Не хватает? Добавьте свои!";
-"onboarding_title_3" = "Автоматический зикр. Меняйте тему. Ставьте ежедневные уведомления";
+"onboarding_title_1" = "Зикр трекер. Теперь не пропустите ежедневные зикры!";
+"onboarding_subtitle_1" = "Наполните свою жизнь баракатом.";
+"onboarding_title_2" = "Каза трекер.";
+"onboarding_subtitle_2" = "Восполняйте пропущенные намазы и пост месяца Рамадан.";
+"onboarding_title_3" = "Большой список зикров, дуа, коллекции.";
+"onboarding_subtitle_3" = "Не хватает? Добавьте свои!";
+"onboarding_title_4" = "Будьте своей лучшей версией!";
 "skip" = "Пропустить";
 
 // What's New
@@ -275,6 +279,7 @@
 "whatsnewBenefits4" = "Добавлять неограниченное количество зикров, дуа и коллекции";
 "whatsnewBenefits5" = "Подписки бесплатно через промокод.";
 "whatsnewBenefits6" = "Расширять область нажатия, звуки нажатия, менять цветовую тему и многое другое";
+"whatsnewBenefits7" = "Оплата через Kaspi Gold.";
 "continue" = "Продолжить";
 
 // Tracker
@@ -290,8 +295,8 @@
 
 // Paywall
 
-"paywallBenefits1" = "Зикр трекер - устанавливайте ежедневное количество для зикров, дуа, следите за прогрессом, формируйте привычки";
-"paywallBenefits2" = "Добавляйте неограниченное количество зикров и дуа";
+"paywallBenefits1" = "Зикр Трекер - устанавливайте ежедневное количество для зикров, дуа, следите за прогрессом, формируйте привычки";
+"paywallBenefits2" = "Каза Трекер - восполняйте ваши пропущенные намазы и посты";
 "paywallBenefits3" = "Смотрите инсайты и статистику и многое другое";
 "restore" = "Восстановить";
 "termsOfUse" = "Правила пользования";
@@ -365,12 +370,124 @@
 "7sec" = "7 сек";
 "turnOff" = "Выключить";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"pay_with_kaspi" = "Оплатить через Kaspi";
+"send_money_to_kaspi" = "1. Отправьте деньги за выбрраный тариф на kaspi gold";
+"copy_requisites" = "* нажав реквизиты, можете скопировать их";
+"send_check_to_whatsapp" = "2. Отправьте чек на наш Whatsapp";
+"send_check" = "Отправить чек";
+"ios_msg" = "Ассаламуалейкум. Мой id: %@. Сейчас отправлю чек.";
+"kaspi_donate" = "или можете отправить деньги на Kaspi Gold:";
+"kaspiIsAvailable" = "Теперь Вы можете совершать оплату, благотворительность через Kaspi Gold";
+
+"reviewRequestTitle" = "Нравится наше приложение? Получите бесплатную неделю premium доступа за отзыв в App Store.";
+"reviewRequest" = "1. Оставьте отзыв ";
+"writeWhatsappTelegram" = "2. Напишите нам на Whatsapp/Telegram";
+"writeWhatsapp" = "Написать на Whatsapp";
+"writeTelegram" = "Написать на Telegram";
+"leaveReview" = "Оставить отзыв";
+
+"today" = "Сегодня";
+"normalQaza" = "Каза";
+"safarQaza" = "Каза в сафаре";
+
+"manualFillOutTitle" = "Заполните каждый каза намаз и пост";
+"manualFillOutWarning" = "Сафар означает намаз, который был пропущен во время сафара";
+
+"fajr" = "Фаджр";
+"dhuhr" = "Зухр";
+"safarDhuhr" = "Сафар зухр";
+"asr" = "Аср";
+"safarAsr" = "Сафар аср";
+"maghrib" = "Магриб";
+"isha" = "Иша";
+"safarIsha" = "Сафар иша";
+"witr" = "Витр";
+"fast" = "Пост Рамадан";
+
+// MARK: - Error -
+"emptyBirthdayDateDesc" = "Выберите дату рождения";
+"emptyMajorityDateDesc" = "Выберите дату совершеннолетия";
+"emptyPrayerStartDateDesc" = "Выберите дату начала молитв";
+"invalidMajorityAndPrayerStartDatesRelationDesc" = "Выберите правильно дату совершеннолетия и начала молитв";
+"incorrectMajorityAgeDesc" = "Выберите правильно возраст совершеннолетия";
+"unknownErrorDesc" = "Заполните поля правильно";
+"emptyBirthdayDateReason" = "Дата рождения не выбрана";
+"emptyMajorityDateReason" = "Дата совершеннолетия не выбрана";
+"emptyPrayerStartDateReason" = "Дата начала молитв не выбрана";
+"invalidMajorityAndPrayerStartDatesRelationReason" = "Дата совершеннолетия позже даты начала молитв";
+"incorrectMajorityAgeReason" = "Совершеннолетие еще не наступило";
+"unknownErrorReason" = "Поля заполнены неправильно";
+
+"fillOutInfo.title" = "Чтобы правильно рассчитать количество ваших пропущенных намазов, заполните данные о себе ниже";
+"fillOutInfo.subtitle" = "Ваши данные используются только ради расчетов и не будут храниться";
+"majorityAge" = "Возраст совершеннолетия";
+"dontKnow" = "Не знаю";
+"majorityAgeWarningTitle" = "Если не знаете возраст, когда наступило совершеннолетие, автоматически выберется 15 лет";
+"sinceToday" = "С сегодняшнего дня";
+"safarDays" = "Количество дней в сафаре";
+"birthDay" = "Дата рождения";
+"yourBirthDay" = "Ваш день рождения";
+"prayerStartDate" = "Дата начала молитв";
+"yourPrayerStartDate" = "Дата начала ваших молитв";
+"monthlyHaidDays" = "Количество дней хайда в каждом месяце";
+"birthAmountBeforePrayerStart" = "Количество родов до того, как начали молитву";
+"remainingQaza" = "осталось каза";
+
+"male" = "Мужчина";
+"female" = "Женщина";
+
+"knowQazaAmount" = "Да, знаю";
+"dontKnowQazaAmount" = "Нет, нужна помощь в подсчете";
+
+"hanafiCalculation" = "Подсчеты сделаны по Ханафитской фикховой школе";
+
+"qazaCalculationIntroText" = "Ассаламуалейкум!\nТеперь вы можете подсчитывать и восполнять пропущенные намазы.\n\nВы знаете количество пропущенных намазов?";
+
+"calculationProgressTitle" = "Подсчитываем количество ваших намазов...";
+"purchaseProgressTitle" = "Ваше удивительное путешествие начинается...";
+"dontClosePage" = "Пожалуйста, не закрывайте данную страницу";
+
+"save" = "Сохранить";
+"qaza" = "каза";
+
+"subscriptionFailed" = "Ошибка при подписке";
+"tryAgain" = "Попробуйте еще раз";
+"retry" = "Повторить";
+
+"claimNow" = "Взять Сейчас!";
+"beABetterMuslim" = "Будьте продуктивным, сильным мусульманином вместе с Premium!";
+
+"month" = "месяц";
+"year" = "год";
+
+"prayers" = "Молитвы";
+"showAll" = "Показать все";
+"hide" = "Скрыть";
+"lastUpdated" = "Последнее изменение: %@";
+"today" = "сегодня";
+"yesterday" = "вчера";
+
+"welcomePromoTitle1" = "Миллионы";
+"welcomePromoSubtitle1" = "зикров совершены";
+"welcomePromoTitle2" = "4.9";
+"welcomePromoSubtitle2" = "Приложение с Высокой Оценкой\n2023";
+"welcomePromoTitle3" = "Трекер";
+"welcomePromoSubtitle3" = "зикры и намазы";
+
+"welcomeTitle" = "Ассаламуалейкум";
+"welcomeSubtitle" = "Самое удобное и лучшее приложение для формирования привычки ежедневных зикров";
+
+"before" = "До";
+"beforeText1" = "Неорганизованная жизнь";
+"beforeText2" = "Пропуск ежедневных зикров";
+"beforeText3" = "Незаконченные цели";
+"beforeText4" = "Плохие привычки";
+
+"after" = "После";
+"afterText1" = "Струтурированный день";
+"afterText2" = "Ежедневные зикры";
+"afterText3" = "Здоровые привычки";
+"afterText4" = "Умиротворенное сердце";
 "" = "";
 "" = "";
 "" = "";

@@ -7,70 +7,71 @@
 
 import SwiftUI
 
+struct OnboardingPageData {
+    let imageName: String
+    let titleKey: String
+    let subtitleKey: String?
+}
+
 struct OnboardingView: View {
+    let pagesData: [OnboardingPageData]
     @State private var currentPage: Int = 0
+    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("language") private var language = LocalizationService.shared.language
     let completion: () -> Void
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            Color(.paleGray)
                 .ignoresSafeArea()
-            VStack {
-                HStack {
-                    Spacer()
-                    Button("skip".localized(language)) {
-                        completion()
-                    }
-                    .foregroundColor(.blue)
-                }
-                .padding(.horizontal)
+            ZStack {
                 TabView(selection: $currentPage) {
-                    OnboardingPageView(
-                        imageName: "SC 54",
-                        title: "onboarding_title_1".localized(language)
-                    )
-                    .tag(0)
-                    OnboardingPageView(
-                        imageName: "SC 57",
-                        title: "onboarding_title_2".localized(language)
-                    )
-                    .tag(1)
-                    OnboardingPageView(
-                        imageName: "SC 58",
-                        title: "onboarding_title_3".localized(language)
-                    )
-                    .tag(2)
+                    ForEach(0..<pagesData.count, id: \.self) { index in
+                        OnboardingImagedPageView(imageName: pagesData[index].imageName, title: pagesData[index].titleKey.localized(language), subtitle: pagesData[index].subtitleKey?.localized(language))
+                            .tag(index)
+                    }
+                    OnboardingPageView(title: "onboarding_title_4", subtitle: nil) {
+                        BeforeAndAfterView()
+                    }
                 }
                 .animation(.default)
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                Button {
-                    if currentPage < 2 {
-                        currentPage += 1
-                    } else {
-                        completion()
-                    }
-                } label: {
+                VStack {
+                    Spacer()
                     ZStack {
-                        Color.blue
-                            .cornerRadius(8)
-                        Text("continue".localized(language))
-                            .foregroundColor(.white)
-                            .font(.title2)
+                        Color.paleGray
+                            .blur(radius: 20)
+                            .frame(maxHeight: 150)
+                            .padding(.top, -30)
+                        ButtonView(
+                            action: {
+                                hapticLight()
+                                if currentPage < pagesData.count - 1 && pagesData.count > 1 {
+                                    currentPage += 1
+                                } else {
+                                    completion()
+                                }
+                            },
+                            text: "continue".localized(language),
+                            backgroundColor: .primary,
+                            foregroundColor: colorScheme == .light ? .white : .black
+                        )
+                        .frame(height: 60)
+                        .padding(.bottom, 20)
+                        .padding(.horizontal)
                     }
                 }
-                .frame(height: 60)
-                .padding(.bottom, 20)
-                .padding(.horizontal)
             }
             .padding(.top, 5)
         }
     }
 }
 
+extension OnboardingView: Hapticable {}
+
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView {}
+        OnboardingView(pagesData: []) {}
     }
 }

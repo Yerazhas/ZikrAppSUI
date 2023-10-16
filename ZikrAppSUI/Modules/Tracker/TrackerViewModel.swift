@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import RealmSwift
 import Factory
 
@@ -16,19 +17,30 @@ enum TrackerViewOutCmd {
     case openPaywall
 }
 
+@MainActor
 final class TrackerViewModel: ObservableObject, Hapticable {
     @Published var zikrs: Results<Zikr>?
     @Published var duas: Results<Dua>?
     @Published var wirds: Results<Wird>?
+    @Published var qazaPrayers: [QazaViewModel] = []
+    @Published var fullListQazaPrayers: [QazaViewModel] = []
+    @Published var shortListQazaPrayers: [QazaViewModel] = []
     @Published var currentDate: Date = .init()
     @Published var weekSlider: [[DayProgress]] = []
     @Published var currentWeekIndex: Int = 1
     @Published var createWeek: Bool = false
     @Published var currentDayIdentificator: String
+    @Published var zikrProgress: String = ""
     @Published var dailyAmount: String = ""
+    @Published var selectedQazaPrayer: QazaPrayer?
+    @Published var isFullQazaPrayersListShown: Bool = false
+
     @Injected(Container.zikrService) private var zikrService
     @Injected(Container.appStatsService) private var appStatsService
     @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.purchasesService) private var purchasesService
+    @Injected(Container.subscriptionSyncService) private var subscriptionsService
+    @Injected(Container.paywallProductsConverter) private var paywallProductsConverter
     var selectedZikr: Zikr?
     var selectedDua: Dua?
     var selectedWird: Wird?
@@ -38,6 +50,8 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         let areWirdsEmpty = wirds?.isEmpty ?? true
         return !areZikrsEmpty || !areDuasEmpty || !areWirdsEmpty
     }
+    var addZikrsCmd: TrackerAddZikrsOutCmd?
+    private var cancellable: AnyCancellable?
 
     @Injected(Container.subscriptionSyncService) private var subscriptionService
     let out: TrackerViewOut
@@ -48,13 +62,22 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         zikrs = getZikrs(for: .init())
         duas = getDuas(for: .init())
         wirds = getWirds(for: .init())
-        NotificationCenter.default.addObserver(self, selector: #selector(onAppear), name: NSNotification.Name.NSSystemClockDidChange, object: nil)
+        fullListQazaPrayers = getQazaPrayers(for: .init())
+        if let firstActiveQazaPrayer = fullListQazaPrayers.first(where: { !$0.isFinished }) {
+            self.shortListQazaPrayers = [firstActiveQazaPrayer]
+        }
+        qazaPrayers = isFullQazaPrayersListShown ? fullListQazaPrayers : shortListQazaPrayers
     }
 
     func updateZikrs(for date: Date) {
         zikrs = getZikrs(for: date)
         duas = getDuas(for: date)
         wirds = getWirds(for: date)
+        fullListQazaPrayers = getQazaPrayers(for: date)
+        if let firstActiveQazaPrayer = fullListQazaPrayers.first(where: { !$0.isFinished }) {
+            self.shortListQazaPrayers = [firstActiveQazaPrayer]
+        }
+        qazaPrayers = isFullQazaPrayersListShown ? fullListQazaPrayers : shortListQazaPrayers
     }
 
     private func getZikrs(for date: Date) -> Results<Zikr> {
@@ -89,6 +112,18 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         
         // Convert the filtered Zikrs to a Results object
         return realm.objects(Zikr.self).filter("id IN %@", filteredZikrs.map({ $0.id }))
+    }
+
+    private func getQazaPrayers(for date: Date) -> [QazaViewModel] {
+        let realm = try! Realm()
+        let qazaPrayers = realm.objects(QazaPrayer.self)
+        var filteredQazaPrayers: [QazaPrayer] = []
+        for qazaPrayer in qazaPrayers {
+            if qazaPrayer.targetAmount > 0 {
+                filteredQazaPrayers.append(qazaPrayer)
+            }
+        }
+        return realm.objects(QazaPrayer.self).filter("title IN %@", filteredQazaPrayers.map({ $0.id })).map { QazaViewModel(qazaPrayer: $0, date: date) }
     }
 
     private func getDuas(for date: Date) -> Results<Dua> {
@@ -129,6 +164,54 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         out(.openPaywall)
     }
 
+    func setAmount() {
+        guard let addZikrsCmd, let amount = Int(dailyAmount) else {
+            return
+        }
+        let realm = try! Realm()
+        switch addZikrsCmd {
+        case .zikr(let zikr):
+            guard let amount = Int(dailyAmount) else {
+                return
+            }
+            guard let zikr = realm.objects(Zikr.self).where({ $0.id == zikr.id }).first else {
+                return
+            }
+            try! realm.write {
+                zikr.dailyTargetAmountAmount = amount
+            }
+            analyticsService.setZikrTrackerAmount(zikrId: zikr.id, zikrType: zikr.type, amount: amount)
+        case .dua(let dua):
+            guard let dua = realm.objects(Dua.self).where({ $0.id == dua.id }).first else { return }
+            try! realm.write {
+                dua.dailyTargetAmountAmount = amount
+            }
+            analyticsService.setZikrTrackerAmount(zikrId: dua.id, zikrType: dua.type, amount: amount)
+        case .wird(let wird):
+            guard let wird = realm.objects(Wird.self).where({ $0.id == wird.id }).first else {
+                return
+            }
+            try! realm.write {
+                wird.dailyTargetAmountAmount = amount
+            }
+            analyticsService.setZikrTrackerAmount(zikrId: wird.id, zikrType: wird.type, amount: amount)
+        }
+        self.addZikrsCmd = nil
+        dailyAmount = ""
+        onAppear()
+    }
+
+    func selectQazaPrayer(_ qazaPrayer: QazaPrayer) {
+        hapticLight()
+        selectedQazaPrayer = qazaPrayer
+    }
+
+    func changeFullListShownState() {
+        hapticLight()
+        isFullQazaPrayersListShown.toggle()
+        qazaPrayers = isFullQazaPrayersListShown ? fullListQazaPrayers : shortListQazaPrayers
+    }
+
     func getWirds(for date: Date) -> Results<Wird> {
         let realm = try! Realm()
         
@@ -160,6 +243,11 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         
         // Convert the filtered Zikrs to a Results object
         return realm.objects(Wird.self).filter("id IN %@", filteredWirds.map({ $0.id }))
+    }
+
+    func updateQazaPrayer(with modifiedQazaPrayer: QazaPrayer) {
+        guard let index = qazaPrayers.firstIndex(where: { $0.qazaPrayer.id == modifiedQazaPrayer.id }) else { return }
+        qazaPrayers[index] = .init(qazaPrayer: modifiedQazaPrayer, date: .init())
     }
 
     func paginateWeek() {
@@ -201,6 +289,11 @@ final class TrackerViewModel: ObservableObject, Hapticable {
                 weekSlider.append(weekDays.map { $0.makeProgress() })
             }
         }
+        fullListQazaPrayers = getQazaPrayers(for: .init())
+        if let firstActiveQazaPrayer = fullListQazaPrayers.first(where: { !$0.isFinished }) {
+            self.shortListQazaPrayers = [firstActiveQazaPrayer]
+        }
+        qazaPrayers = isFullQazaPrayersListShown ? fullListQazaPrayers : shortListQazaPrayers
 //        else {
 //            let currentWeek = Date().fetchWeek()
 //            weekSlider.insert(currentWeek.map { $0.makeProgress() }, at: 1)
@@ -241,7 +334,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     }
 
     private func setProgressForZikr() {
-        guard let zikr = selectedZikr, let amount = Int(dailyAmount) else { return }
+        guard let zikr = selectedZikr, let amount = Int(zikrProgress) else { return }
         zikrService.updateZikrTotalCount(
             type: .zikr,
             id: zikr.id,
@@ -252,7 +345,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         )
         analyticsService.trackTrackererSetManualProgress(zikrId: zikr.id, zikrType: .zikr, progress: amount)
         selectedZikr = nil
-        dailyAmount = ""
+        zikrProgress = ""
     }
 
     func duaDidLongTap() {
@@ -266,7 +359,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     }
 
     private func setProgressForDua() {
-        guard let dua = selectedDua, let amount = Int(dailyAmount) else { return }
+        guard let dua = selectedDua, let amount = Int(zikrProgress) else { return }
         zikrService.updateZikrTotalCount(
             type: .dua,
             id: dua.id,
@@ -277,7 +370,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         )
         analyticsService.trackTrackererSetManualProgress(zikrId: dua.id, zikrType: .dua, progress: amount)
         selectedDua = nil
-        dailyAmount = ""
+        zikrProgress = ""
     }
 
     func wirdDidLongTap() {
@@ -287,7 +380,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     }
 
     private func setProgressForWird() {
-        guard let wird = selectedWird, let amount = Int(dailyAmount) else { return }
+        guard let wird = selectedWird, let amount = Int(zikrProgress) else { return }
         zikrService.updateZikrTotalCount(
             type: .wird,
             id: wird.id,
@@ -298,7 +391,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
         )
         analyticsService.trackTrackererSetManualProgress(zikrId: wird.id, zikrType: .wird, progress: amount)
         selectedWird = nil
-        dailyAmount = ""
+        zikrProgress = ""
     }
 
     private func openPaywallIfFreeProgressTrackingEnded(else completion: @escaping () -> Void) {

@@ -17,9 +17,9 @@ final class LocalizationService {
     var language: Language {
         get {
             guard let languageString = UserDefaults.standard.string(forKey: "language") else {
-                return .en
+                return .ru
             }
-            return Language(rawValue: languageString) ?? .en
+            return Language(rawValue: languageString) ?? .ru
         } set {
             if newValue != language {
                 UserDefaults.standard.setValue(newValue.rawValue, forKey: "language")

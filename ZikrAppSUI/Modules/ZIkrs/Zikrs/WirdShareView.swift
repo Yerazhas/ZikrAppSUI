@@ -36,7 +36,7 @@ struct WirdShareView: View {
                     makeContentView(zikr: targetedZikr.zikr, targetCount: viewModel.wird.zikrs[index].targetCount)
                         .padding(.bottom, -20)
                 }
-                Image(uiImage: .init(named: "AppIcon") ?? UIImage())
+                Image(uiImage: Bundle.main.icon ?? UIImage())
                     .resizable()
                     .cornerRadius(10)
                     .frame(width: 60, height: 60)

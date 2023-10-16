@@ -71,6 +71,14 @@ extension LottieView {
         createView(name: "lottie-error", loopMode: loopMode, showOnlyLastFrame: showOnlyLastFrame)
     }
 
+    static func lottiePaymentLoader(loopMode: LottieLoopMode = .playOnce, showOnlyLastFrame: Bool = false) -> LottieView {
+        createView(name: "lottie-payment-loader", loopMode: loopMode, showOnlyLastFrame: showOnlyLastFrame)
+    }
+
+    static func lottiePaymentLoader1(loopMode: LottieLoopMode = .playOnce, showOnlyLastFrame: Bool = false) -> LottieView {
+        createView(name: "lottie-payment-loader1", loopMode: loopMode, showOnlyLastFrame: showOnlyLastFrame)
+    }
+
     static func createView(name: String, loopMode: LottieLoopMode, showOnlyLastFrame: Bool) -> LottieView {
       return LottieView(lottie: .init(animationName: name, bundle: BundleToken().bundle), loopMode: loopMode, showOnlyLastFrame: showOnlyLastFrame)
     }

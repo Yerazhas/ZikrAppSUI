@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import Combine
 
 extension View {
     func schemeAdapted(colorScheme: ColorScheme) -> some View {
@@ -27,21 +28,38 @@ extension String {
     static let qonversionId = "qonversionId"
 
     static let didSetAppLang = "didSetAppLang"
-    static let didSeeWhatsNew = "didSeeWhatsNew_1_8_2"
+    static let didSeeWhatsNew = "didSeeWhatsNew_1_8_4"
+    static let didSeeReviewRequest = "didSeeReviewRequest"
     static let didSeeOnboarding = "didSeeOnboarding_1_8_2"
+    static let didSeeWelcome = "didSeeWelcome"
+    static let didSeeKaspiOnboarding = "didSeeKaspiOnboarding"
     static let didSeeDailyAmountToolTip = "didSeeDailyAmountToolTip"
     static let didAutoCountToolTip = "didAutoCountToolTip"
     static let didSeeStatisticsToolTip = "didSeeStatisticsToolTip"
     static let didSeeManualProgressToolTip = "didSeeManualProgressToolTip"
+    static let didSetUpQaza = "didSetUpQaza"
 
     static let isSoundEnabled = "isSoundEnabled"
+    static let showsRI = "showsRI"
     static let soundId = "soundId"
 
     // AppStats
     static let didAddNewZikr = "didAddNewZikr"
     static let numberOfExpansion = "numberOfExpansion"
+    static let numberOfQazaMakeUp = "numberOfQazaMakeUp"
     static let numberOfAutoCount = "numberOfAutoCount"
     static let appOpenCount = "appOpenCount"
+}
+
+extension String{
+    var encodeUrl : String
+    {
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+    }
+    var decodeUrl : String
+    {
+        return self.removingPercentEncoding!
+    }
 }
 
 extension UINavigationController {
@@ -139,9 +157,9 @@ extension View {
         themeFirstColor: String,
         themeSecondColor: String?
     ) -> LinearGradient {
-        var stops: [Gradient.Stop] = [.init(color: Color(themeFirstColor).opacity(0.7), location: 0.00)]
+        var stops: [Gradient.Stop] = [.init(color: Color(themeFirstColor), location: 0.00)]
         if let themeSecondColor {
-            stops.append(.init(color: Color(themeSecondColor).opacity(0.7), location: 1.00))
+            stops.append(.init(color: Color(themeSecondColor), location: 1.00))
         }
         return LinearGradient(
             stops: stops,
@@ -222,6 +240,19 @@ extension SKProductSubscriptionPeriod {
         return string
     }
 
+    var periodLengthString: String {
+        let string: String
+        switch unit {
+        case .month:
+            string = "month".localized(LocalizationService.shared.language)
+        case .year:
+            string = "year".localized(LocalizationService.shared.language)
+        @unknown default:
+            string = ""
+        }
+        return string
+    }
+
     var subscriptionDescription: String {
         let string: String
         switch unit {
@@ -269,3 +300,21 @@ extension Color {
     }
 }
 
+extension Publishers {
+    
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification).map { $0.keyboardHeight }
+        
+        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification).map { _ in CGFloat(0) }
+        return MergeMany(willShow, willHide).eraseToAnyPublisher()
+    }
+    
+}
+
+extension Notification {
+    
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+    
+}

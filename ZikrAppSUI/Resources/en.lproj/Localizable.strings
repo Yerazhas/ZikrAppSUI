@@ -234,9 +234,13 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Onboarding
 
-"onboarding_title_1" = "Zikr tracker. Statistics";
-"onboarding_title_2" = "Wide list of zikrs, duas, collections. Not enough? Add your own!";
-"onboarding_title_3" = "Automatic zikr. Change color. Set everyday notifications";
+"onboarding_title_1" = "Zikr tracker. Never miss your daily dhikrs again.";
+"onboarding_subtitle_1" = "Fill your life with barakah.";
+"onboarding_title_2" = "Qaza tracker.";
+"onboarding_subtitle_2" = "Make up your missed prayers and Ramadan fasts.";
+"onboarding_title_3" = "Wide list of zikrs, duas, collections.";
+"onboarding_subtitle_3" = "Not enough? Add your own!";
+"onboarding_title_4" = "Become the best version of yourself!";
 "skip" = "Skip";
 
 // What's New
@@ -249,6 +253,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "whatsnewBenefits4" = "Add unlimited amount of zikrs, duas and collections for spiritual growth.";
 "whatsnewBenefits5" = "Free subscriptions with promocodes.";
 "whatsnewBenefits6" = "Expand tap area, tap sounds, change theme color and a lot more.";
+"whatsnewBenefits7" = "Payment via Kaspi Gold.";
 "continue" = "Continue";
 
 // Tracker
@@ -265,7 +270,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 // Paywall
 
 "paywallBenefits1" = "Zikr Tracker - set daily amount of zikrs and duas and track progress";
-"paywallBenefits2" = "Add unlimited amount of zikrs";
+"paywallBenefits2" = "Qaza Tracker - make up your missed prayers and fasts";
 "paywallBenefits3" = "Watch statistics and a lot more";
 "restore" = "Restore";
 "termsOfUse" = "Terms of use";
@@ -338,13 +343,124 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "5sec" = "5 sec";
 "7sec" = "7 sec";
 "turnOff" = "Turn off";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+
+"pay_with_kaspi" = "Оплатить через Kaspi";
+"send_money_to_kaspi" = "1. Отправьте деньги за выбрраный тариф на kaspi gold";
+"copy_requisites" = "* нажав реквизиты, можете скопировать их";
+"send_check_to_whatsapp" = "2. Отправьте чек на наш Whatsapp";
+"send_check" = "Отправить чек";
+"ios_msg" = "Ассаламуалейкум. Мой id: %@. Сейчас отправлю чек.";
+"kaspi_donate" = "or you can send money to Kaspi Gold:";
+"kaspiIsAvailable" = "Payment, donation via Kaspi Gold is available now";
+
+"reviewRequestTitle" = "Enjoying our app? Write a review on App Store and get a free week of premium access.";
+"reviewRequest" = "1. Leave a review ";
+"writeWhatsappTelegram" = "2. Text us on Whatsapp/Telegram";
+"writeWhatsapp" = "Write on Whatsapp";
+"writeTelegram" = "Write on Telegram";
+"leaveReview" = "Leave a review";
+
+"today" = "Today";
+"normalQaza" = "Qaza";
+"safarQaza" = "Qaza in safar";
+
+"manualFillOutTitle" = "Fill out amount for each missed prayer and fast";
+"manualFillOutWarning" = "Safar means that prayer was missed while being in safar";
+
+"fajr" = "Fajr";
+"dhuhr" = "Dhuhr";
+"safarDhuhr" = "Safar Dhuhr";
+"asr" = "Asr";
+"safarAsr" = "Safar Asr";
+"maghrib" = "Maghrib";
+"isha" = "Isha";
+"safarIsha" = "Safar Isha";
+"witr" = "Witr";
+"fast" = "Ramadan fast";
+
+// MARK: - Error -
+"emptyBirthdayDateDesc" = "Your birth date";
+"emptyMajorityDateDesc" = "Majority date";
+"emptyPrayerStartDateDesc" = "Prayer start date";
+"invalidMajorityAndPrayerStartDatesRelationDesc" = "Choose majority and prayer start dates correctly";
+"incorrectMajorityAgeDesc" = "Choose correct majority age";
+"unknownErrorDesc" = "Fill the form correctly";
+"emptyBirthdayDateReason" = "No birth date";
+"emptyMajorityDateReason" = "No majority age";
+"emptyPrayerStartDateReason" = "No prayer start date";
+"invalidMajorityAndPrayerStartDatesRelationReason" = "Majority date is later than prayer start date";
+"incorrectMajorityAgeReason" = "Majority age not reached";
+"unknownErrorReason" = "Fields are filled out incorrectly";
+
+"fillOutInfo.title" = "Enter accurate information about yourself so we can correctly calculate your qaza prayers";
+"fillOutInfo.subtitle" = "Your data is only used for calculations and will not be stored";
+"majorityAge" = "Majority age";
+"dontKnow" = "Don't know";
+"majorityAgeWarningTitle" = "If you don't know your majority age, then we automatically take 15 years";
+"sinceToday" = "Since today";
+"safarDays" = "Days on safar";
+"birthDay" = "Birth date";
+"yourBirthDay" = "Your birth date";
+"prayerStartDate" = "Prayer start date";
+"yourPrayerStartDate" = "Your prayer start date";
+"monthlyHaidDays" = "Monthly haid days";
+"birthAmountBeforePrayerStart" = "Birth amount before prayers start";
+"remainingQaza" = "remaining qaza";
+
+"male" = "Male";
+"female" = "Female";
+
+"knowQazaAmount" = "Yes, I do";
+"dontKnowQazaAmount" = "No, help me calculate";
+
+"hanafiCalculation" = "Calculation is based on Hanafi fiqh school";
+
+"qazaCalculationIntroText" = "Assalamualeykum!\nNow you can track and make up for your missed prayers.\n\nDo you know the exact amount of your missed prayers?";
+
+"calculationProgressTitle" = "Calculating your personal qaza prayers...";
+"purchaseProgressTitle" = "Starting your wonderful journey...";
+"dontClosePage" = "Please don't close the page";
+
+"save" = "Save";
+"qaza" = "qaza";
+
+"subscriptionFailed" = "Subscription failed";
+"tryAgain" = "Please try again";
+"retry" = "Retry";
+
+"claimNow" = "Claim Now!";
+"beABetterMuslim" = "Be a better, more productive muslim with Premium!";
+
+"month" = "month";
+"year" = "year";
+"prayers" = "Prayers";
+"showAll" = "Show all";
+"hide" = "Hide";
+"lastUpdated" = "Last updated: %@";
+"today" = "today";
+"yesterday" = "yesterday";
+
+"welcomePromoTitle1" = "Millions";
+"welcomePromoSubtitle1" = "of dhikrs done";
+"welcomePromoTitle2" = "4.9";
+"welcomePromoSubtitle2" = "High-Rated App\n2023";
+"welcomePromoTitle3" = "Tracker";
+"welcomePromoSubtitle3" = "of dhikrs and missed prayers";
+
+"welcomeTitle" = "Assalamualeykum";
+"welcomeSubtitle" = "The most user-friendly & best habit forming app for dhikrs";
+
+"before" = "Before";
+"beforeText1" = "Unorganized muslim life";
+"beforeText2" = "Ignoring daily dhikrs";
+"beforeText3" = "Unfinished goals";
+"beforeText4" = "Bad habits";
+
+"after" = "After";
+"afterText1" = "Structured day";
+"afterText2" = "Daily dhikrs";
+"afterText3" = "Healthy muslim habits";
+"afterText4" = "Peace of mind";
 "" = "";
 "" = "";
 "" = "";

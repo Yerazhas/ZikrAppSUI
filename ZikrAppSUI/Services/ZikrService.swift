@@ -56,7 +56,6 @@ final class ZikrService {
         } catch {
             print(error.localizedDescription)
         }
-        
     }
 
     func fixTextsInVersion1_8() {
@@ -132,6 +131,24 @@ final class ZikrService {
             let realm = try Realm()
             try realm.write {
                 zikrs.forEach { realm.add($0) }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func setDefaultTrackerZikrs() {
+        do {
+            let realm = try Realm()
+            if let salawat = realm.objects(Zikr.self).first(where: { $0.id == "salawat" }) {
+                try realm.write {
+                    salawat.dailyTargetAmountAmount = 100
+                }
+            }
+            if let istighfar = realm.objects(Zikr.self).first(where: { $0.id == "istighfar" }) {
+                try realm.write {
+                    istighfar.dailyTargetAmountAmount = 100
+                }
             }
         } catch {
             print(error.localizedDescription)

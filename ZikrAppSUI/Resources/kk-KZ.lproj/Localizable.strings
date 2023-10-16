@@ -261,9 +261,14 @@
 
 // Onboarding
 
-"onboarding_title_1" = "Зікір трекер. Статистика";
-"onboarding_title_2" = "Зікір, дұға, жиынтықтар үлкен тізімі. Жетпейді ме? Өзіңіз жаңасын қосып алыңыз!";
-"onboarding_title_3" = "Автоматты зікір. Түсін өзгертіңіз. Күнделікті хабарламаларды қойыңыз";
+"onboarding_title_1" = "Зікір трекер. Күнделікті зікірлеріңізді енді қаза қылмайсыз!";
+"onboarding_subtitle_1" = "Өміріңізді берекемен толтырыңыз.";
+"onboarding_title_2" = "Қаза трекер.";
+"onboarding_subtitle_2" = "Қаза намаздарыңыз бен қаза Рамазан оразасын өтеңіз.";
+"onboarding_title_3" = "Зікір, дұға, жиынтықтар үлкен тізімі.";
+"onboarding_subtitle_3" = "Жетпейді ме? Өзіңіз жаңасын қосып алыңыз!";
+"onboarding_title_4" = "Өзіңіздің ең мықты версияңыз болыңыз!";
+
 "skip" = "Өткізу";
 
 // What's New
@@ -276,6 +281,7 @@
 "whatsnewBenefits4" = "Шектеусіз зікір, дұғалар және жинақтарды қоса аласыз.";
 "whatsnewBenefits5" = "Промокод арқылы тегін жазылу.";
 "whatsnewBenefits6" = "Зікір басу ауданын үлкейту, басудың дыбыстары, қосымшаның түсін өзгерту және т.б.";
+"whatsnewBenefits7" = "Kaspi Gold арқылы төлеу.";
 "continue" = "Жалғастыру";
 
 // Tracker
@@ -291,8 +297,8 @@
 
 // Paywall
 
-"paywallBenefits1" = "Зікір трекер - зікір, дұғаларға күнделікті мөлшер қойып, прогресті қарап, әдеттер қалыптастырыңыз";
-"paywallBenefits2" = "Шектеусіз зікірлерді қосыңыз";
+"paywallBenefits1" = "Зікір Трекер - зікір, дұғаларға күнделікті мөлшер қойып, прогресті қарап, әдеттер қалыптастырыңыз";
+"paywallBenefits2" = "Қаза Трекер - қаза намаз бен оразаларыңызды өтеңіз";
 "paywallBenefits3" = "Инсайттар мен статистиканы қараңыз және басқа да көптеген пайдалы заттар";
 "restore" = "Қалпына келтіру";
 "termsOfUse" = "Қолдану шарттары";
@@ -366,7 +372,124 @@
 "7sec" = "7 сек";
 "turnOff" = "Өшіру";
 
-"" = "";
+"pay_with_kaspi" = "Kaspi арқылы төлеу";
+"send_money_to_kaspi" = "1. Таңдалған тарифқа төлемді kaspi gold-қа жіберіңіз";
+"copy_requisites" = "* реквизиттерді басу арқылы оларды көшіре аласыз";
+"send_check_to_whatsapp" = "2. Чекті біздің Whatsapp-қа жіберіңіз";
+"send_check" = "Чекті жіберу";
+"ios_msg" = "Ассалаумағалейкүм. Менің id-ім: %@. Қазір чекті жіберемін.";
+"kaspi_donate" = "немесе Kaspi Gold-қа жібере аласыз:";
+"kaspiIsAvailable" = "Енді Сіз Kaspi Gold арқылы төлем, қайырымдылық жасай аласыз";
+
+"reviewRequestTitle" = "Біздің қосымша ұнап жатыр ма? App Store-да жақсы пікір қалдырып, тегін 1 апта premium жазылымын алыңыз.";
+"reviewRequest" = "1. Пікір қалдырыңыз ";
+"writeWhatsappTelegram" = "2. Бізге Whatsapp/Telegram-ға жазыңыз";
+"writeWhatsapp" = "Whatsapp-қа жазу";
+"writeTelegram" = "Telegram-қа жазу";
+"leaveReview" = "Пікір қалдыру";
+
+"today" = "Бүгін";
+"normalQaza" = "Қаза";
+"safarQaza" = "Сапардағы қаза";
+
+"manualFillOutTitle" = "Әрбір қаза намаз бен оразаны толтырыңыз";
+"manualFillOutWarning" = "Сапар деген сөз сапар уақытында қаза болған намазды білдіреді";
+
+"fajr" = "Таң намазы";
+"dhuhr" = "Бесін";
+"safarDhuhr" = "Сапардағы бесін";
+"asr" = "Екінті";
+"safarAsr" = "Сапардағы екінті";
+"maghrib" = "Ақшам";
+"isha" = "Құптан";
+"safarIsha" = "Сапардағы құптан";
+"witr" = "Үтір";
+"fast" = "Рамазан оразасы";
+
+// MARK: - Error -
+"emptyBirthdayDateDesc" = "Туған күніңізді белгілеңіз";
+"emptyMajorityDateDesc" = "Балиғатқа толған жасыңызды белгілеңіз";
+"emptyPrayerStartDateDesc" = "Намаз бастаған уақытыңызды белгілеңіз";
+"invalidMajorityAndPrayerStartDatesRelationDesc" = "Балиғатқа толған уақыт пен намаз бастаған уақытты дұрыс белгілеңіз";
+"incorrectMajorityAgeDesc" = "Дұрыс балиғат жасын таңдаңыз";
+"unknownErrorDesc" = "Жолдарды дұрыс толтырыңыз";
+"emptyBirthdayDateReason" = "Туған күн белгіленбеген";
+"emptyMajorityDateReason" = "Балиғатқа толған жас белгіленбеген";
+"emptyPrayerStartDateReason" = "Намаз бастаған уақыт белгіленбеген";
+"invalidMajorityAndPrayerStartDatesRelationReason" = "Балиғатқа толған уақыт намаз бастаған уақыттан кеш";
+"incorrectMajorityAgeReason" = "Балиғат уақыты әлі келмеген";
+"unknownErrorReason" = "Жолдар дұрыс толтырылмады";
+
+"fillOutInfo.title" = "Сіздің қаза намаздырыңыздың санын нақты білу үшін төменге өзіңіз жайлы ақпаратты сәйкесінше енгізіңіз";
+"fillOutInfo.subtitle" = "Сіз жайлы ақпарат тек есептеу үшін ғана қолданылады және сақталмайды";
+"majorityAge" = "Балиғат жасы";
+"dontKnow" = "Білмеймін";
+"majorityAgeWarningTitle" = "Егер балиғат жасқа толған уақытыңызды білмесеңіз, автоматты түрде 15 жас есепке алынады";
+"sinceToday" = "Бүгіннен бастап";
+"safarDays" = "Сапарда болған күндер";
+"birthDay" = "Туған күн";
+"yourBirthDay" = "Сіздің туған күніңіз";
+"prayerStartDate" = "Намаз бастаған күн";
+"yourPrayerStartDate" = "Сіз намаз бастаған күн";
+"monthlyHaidDays" = "Әр айдағы етеккір ұзақтығы";
+"birthAmountBeforePrayerStart" = "Намаз бастағанға дейінгі босану саны";
+"remainingQaza" = "қалған қаза";
+
+"male" = "Еркек";
+"female" = "Әйел";
+
+"knowQazaAmount" = "Йә, білемін";
+"dontKnowQazaAmount" = "Жоқ, есептеуге көмек керек";
+
+"hanafiCalculation" = "Есептеу Ханафи фиқһ мектебіне сай жасалады";
+
+"qazaCalculationIntroText" = "Әссәләмуғалейкүм!\nЕнді сіз қаза болған намаздарыңызды есептеп, өтей аласыз.\n\nҚаза намаздарыңыздың санын нақты білесіз бе?";
+
+"calculationProgressTitle" = "Сіздің қаза намаздарыңызды есептеудеміз...";
+"purchaseProgressTitle" = "Таңғажайып саяхатыңыз басталуда...";
+"dontClosePage" = "Өтінеміз, бұл бетті жаппай тұрыңыз";
+
+"save" = "Сақтау";
+"qaza" = "қаза";
+
+"subscriptionFailed" = "Жазылуда қате орын алды";
+"tryAgain" = "Қайта көріңіз";
+"retry" = "Қайталау";
+
+"claimNow" = "Қазір Алу!";
+"beABetterMuslim" = "Premium арқылы өнімді, мықты мұсылман болыңыз!";
+
+"month" = "ай";
+"year" = "жыл";
+
+"prayers" = "Намаздар";
+"showAll" = "Барлығын көрсету";
+"hide" = "Жасыру";
+"lastUpdated" = "Соңғы өзгеріс: %@";
+"today" = "бүгін";
+"yesterday" = "кеше";
+
+"welcomePromoTitle1" = "Миллиондаған";
+"welcomePromoSubtitle1" = "зікірлер жасалды";
+"welcomePromoTitle2" = "4.9";
+"welcomePromoSubtitle2" = "Жоғары Бағаланған Қосымша\n2023";
+"welcomePromoTitle3" = "Трекер";
+"welcomePromoSubtitle3" = "зікірлер мен намаздар";
+
+"welcomeTitle" = "Әссәләмуғалейкүм";
+"welcomeSubtitle" = "Қолдануға ең қолайлы & зікір айтуды әдетке айналдыратын ең жақсы қосымша";
+
+"before" = "Дейін";
+"beforeText1" = "Жүйесіз мұсылман өмірі";
+"beforeText2" = "Күнделікті зікірлерді елемеу";
+"beforeText3" = "Аяқталмаған жоспарлар";
+"beforeText4" = "Жаман әдеттер";
+
+"after" = "Кейін";
+"afterText1" = "Жүйеленген күн";
+"afterText2" = "Күнделікті зікірлер";
+"afterText3" = "Салауатты әдеттер";
+"afterText4" = "Жүрек тыныштығы";
 "" = "";
 "" = "";
 "" = "";

@@ -210,7 +210,7 @@ protocol Hapticable {
 
 extension Hapticable {
     func hapticLight() {
-        Haptic.impact(.medium).generate()
+        Haptic.impact(.heavy).generate()
     }
 
     func hapticStrong() {

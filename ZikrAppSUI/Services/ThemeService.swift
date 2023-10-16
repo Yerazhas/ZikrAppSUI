@@ -42,6 +42,10 @@ final class ThemeService {
     func setSecondColor(to colorName: String?) {
         UserDefaults.standard.set(colorName, forKey: .themeSecondColor)
     }
+
+    func setDefaultTheme() {
+        setThemeColor(to: themes[0])
+    }
 }
 
 struct ThemeColor: Identifiable {

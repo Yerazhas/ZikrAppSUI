@@ -12,6 +12,9 @@ struct PaywallView: View {
     @StateObject private var viewModel: PaywallViewModel
     @State private var isPrivacyPolicyPresented: Bool = false
     @State private var isUserAgreementPresented: Bool = false
+    @State private var isKaspiPaywallPresented: Bool = false
+
+    @State private var shouldShowError: Bool = false
 
     init(out: @escaping PaywallViewOut) {
         _viewModel = .init(wrappedValue: .init(out: out))
@@ -65,8 +68,23 @@ struct PaywallView: View {
                         .padding()
                         .padding(.bottom, 40)
                     }
-                    purchaseButton
-                        .padding(.top, -15)
+                    HStack(spacing: 10) {
+                        purchaseButton
+                        if viewModel.shouldShowKaspi {
+                            KaspiButtonView(
+                             title: "pay_with_kaspi".localized(language),
+                             isLoading: viewModel.isButtonLoading,
+                             action: {
+                                 hapticLight()
+                                 viewModel.payKaspi()
+                                 isKaspiPaywallPresented = true
+                         })
+//                            .padding(.horizontal)
+//                            .padding(.top, -15)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, -15)
                     restorePrivacyButtons
                 }
             case .failed:
@@ -81,6 +99,27 @@ struct PaywallView: View {
         }
         .sheet(isPresented: $isUserAgreementPresented) {
             SFSafariView(url: .init(string: "https://docs.google.com/document/d/16_XCThX2SMjISjyl6XedBaQ9eCasb45swItT_1DbJDA/edit?usp=sharing")!)
+        }
+        .sheet(isPresented: $isKaspiPaywallPresented) {
+            KaspiPaywallView(products: viewModel.products)
+        }
+        .fullScreenCover(isPresented: $viewModel.shouldShowLoader, onDismiss: {
+            guard viewModel.error != nil else { return }
+            shouldShowError = true
+        }, content: {
+            LottieProgressView(title: "purchaseProgressTitle".localized(language), subtitle: "dontClosePage".localized(language))
+        })
+        .alert(isPresented: $shouldShowError) {
+            Alert(
+                title: Text("subscriptionFailed".localized(language)),
+                message: Text("tryAgain".localized(language)),
+                primaryButton: .default(Text("retry".localized(language))) {
+                    viewModel.purchase()
+                },
+                secondaryButton: .cancel({
+                    viewModel.shouldShowLoader = false
+                })
+            )
         }
     }
 
@@ -107,12 +146,14 @@ struct PaywallView: View {
             title: "purchase".localized(language),
             isLoading: viewModel.isButtonLoading,
             action: {
-            viewModel.purchase()
-        })
+                viewModel.purchase()
+            })
         .allowsHitTesting(!viewModel.isButtonLoading)
-        .padding(.horizontal)
+//        .padding(.horizontal)
     }
 }
+
+extension PaywallView: Hapticable {}
 
 struct PaywallView_Previews: PreviewProvider {
     static var previews: some View {

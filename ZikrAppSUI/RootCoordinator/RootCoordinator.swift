@@ -20,6 +20,12 @@ final class RootCoordinator {
     }
 
     func run() {
+        router.openSplash {
+            self.runMain()
+        }
+    }
+
+    private func runMain() {
         router.openMain { cmd in
             switch cmd {
             case .openZikr(let zikr):
@@ -27,7 +33,7 @@ final class RootCoordinator {
                     switch cmd {
                     case .close:
                         self.router.dismissPresentedVC(nil)
-                        self.reviewService.requestReviewIfPossible()
+                        self.requestReviewIfPossible()
                     case .delete(let action):
                         self.router.showAlert(message: "deleteZikr".localized(self.language), action: action)
                     case .openPaywall:
@@ -44,7 +50,7 @@ final class RootCoordinator {
                     switch cmd {
                     case .close:
                         self.router.dismissPresentedVC(nil)
-                        self.reviewService.requestReviewIfPossible()
+                        self.requestReviewIfPossible()
                     case .delete(let action):
                         self.router.showAlert(message: "deleteDua".localized(self.language), action: action)
                     case .openPaywall:
@@ -61,29 +67,9 @@ final class RootCoordinator {
                     switch cmd {
                     case .close:
                         self.router.dismissPresentedVC(nil)
-                        self.reviewService.requestReviewIfPossible()
+                        self.requestReviewIfPossible()
                     case .delete(let action):
                         self.router.showAlert(message: "deleteWird".localized(self.language), action: action)
-                    case .openPaywall:
-                        self.router.openPaywall { cmd in
-                            switch cmd {
-                            case .close:
-                                self.router.dismissPresentedVC(nil)
-                            }
-                        }
-                    }
-                }
-            case .openSettings:
-                self.router.openSettings { cmd in
-                    switch cmd {
-                    case .openPaywallDismissingTopmostView:
-                        self.router.dismissPresentedVC(nil)
-                        self.router.openPaywall { cmd in
-                            switch cmd {
-                            case .close:
-                                self.router.dismissPresentedVC(nil)
-                            }
-                        }
                     case .openPaywall:
                         self.router.openPaywall { cmd in
                             switch cmd {
@@ -132,29 +118,58 @@ final class RootCoordinator {
                         self.router.dismissPresentedVC(nil)
                     }
                 }
-            }
-        }
-
-        if !appStatsService.didSeeOnboarding {
-            router.openOnboarding {
-                self.router.dismissPresentedVC {
-                    self.openPaywallIfNeeded()
-                }
-            }
-            appStatsService.didSeeOnboardingPage()
-        } else {
-            if !appStatsService.didSeeWhatsNew {
-                router.openWhatsNew {
-                    self.router.dismissPresentedVC {
-                        self.openPaywallIfNeeded()
+            case .openCounter:
+                self.router.openCounter { cmd in
+                    switch cmd {
+                    case .close:
+                        self.router.dismissPresentedVC(nil)
                     }
                 }
-                appStatsService.didSeeWhatsNewPage()
             }
         }
-
         if !appStatsService.didSetAppLang {
-            router.openLanguageSetupAlert()
+            router.openLanguageSetupAlert {
+                self.launchOnboardings()
+            }
+        } else {
+            launchOnboardings()
+        }
+    }
+
+    private func launchOnboardings() {
+        if !appStatsService.didSeeWelcome {
+            router.openWelcome {
+                self.router.dismissPresentedVC {
+                    self.router.openOnboarding {
+                        self.router.dismissPresentedVC {
+                            self.openPaywallIfNeeded()
+                        }
+                    }
+                    self.appStatsService.didSeeOnboardingPage()
+                }
+            }
+            appStatsService.didSeeWelcomePage()
+        } else {
+            // Removed whats new page for a while
+//            if !appStatsService.didSeeWhatsNew {
+//                router.openWhatsNew {
+//                    self.router.dismissPresentedVC {
+//                        self.openPaywallIfNeeded()
+//                    }
+//                }
+//                appStatsService.didSeeWhatsNewPage()
+//            }
+        }
+    }
+
+    private func requestReviewIfPossible() {
+        if !appStatsService.didSeeReviewRequest && !subscriptionsService.isSubscribed {
+            router.openReviewRequest {
+                self.router.dismissPresentedVC(nil)
+            }
+            appStatsService.didSeeReviewRequestPage()
+        } else {
+            reviewService.requestReviewIfPossible()
         }
     }
 

@@ -27,6 +27,9 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
     @Published private(set) var selectedProduct: PaywallProduct?
     @Published var isButtonLoading: Bool = false
 
+    @Published var error: PurchasesError?
+    @Published var shouldShowLoader: Bool = false
+
     @Injected(Container.purchasesService) private var purchasesService
     @Injected(Container.subscriptionSyncService) private var subscriptionsService
     @Injected(Container.analyticsService) private var analyticsService
@@ -39,9 +42,11 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
         "paywallBenefits3"
     ]
     let out: PaywallViewOut
+    private(set) var shouldShowKaspi: Bool = false
 
     init(out: @escaping PaywallViewOut) {
         self.out = out
+        self.shouldShowKaspi = appStatsService.showsRI && [Language.kz, Language.ru].contains(LocalizationService.shared.language)
     }
     
     func onAppear() {
@@ -54,7 +59,9 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
             do {
                 self.state = .loading
                 let products = try await purchasesService.getProducts(offeringId: appStatsService.offering)
+                print(products.map { $0.storeID })
                 self.products = paywallProductsConverter.convertByExpensive(products: products)
+                print(self.products.map { $0.product.storeID })
                 self.selectedProduct = self.products.dropLast().last
                 self.state = .loaded
             } catch {
@@ -72,27 +79,38 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
         hapticLight()
         selectedProduct = product
         analyticsService.trackSelectPaywallProduct(id: product.product.storeID)
+        purchase()
     }
 
     func purchase() {
+        hapticLight()
         guard let selectedProduct else { return }
-        analyticsService.trackSubscription(productId: selectedProduct.product.storeID)
+        shouldShowLoader = true
+        analyticsService.trackSubscription(productId: selectedProduct.product.storeID, price: selectedProduct.prettyPrice)
         Task {
             do {
                 setButtonLoading(to: true)
                 let isSuccessful = try await purchasesService.purchase(product: selectedProduct.product)
                 subscriptionsService.updateSubscriptionStatus(to: isSuccessful)
+                error = nil
                 setButtonLoading(to: false)
                 if isSuccessful {
                     state = .purchaseSuccess
-                    analyticsService.trackSubscriptionSuccess(productId: selectedProduct.product.storeID)
+                    analyticsService.trackSubscriptionSuccess(productId: selectedProduct.product.storeID, price: selectedProduct.prettyPrice)
                 }
+                shouldShowLoader = false
             } catch let error as PurchasesError {
+                shouldShowLoader = false
+                self.error = error
                 setButtonLoading(to: false)
-                state = .failed(error)
+//                state = .failed(error)
                 analyticsService.trackSubscriptionError(productId: selectedProduct.product.storeID, error: error.localizedDescription)
             }
         }
+    }
+
+    func payKaspi() {
+        analyticsService.trackPayKaspi()
     }
 
     func restorePurchases() {

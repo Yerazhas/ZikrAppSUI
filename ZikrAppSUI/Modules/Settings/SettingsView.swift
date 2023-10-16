@@ -12,7 +12,6 @@ import Qonversion
 
 typealias SettingsOut = (SettingsOutCmd) -> Void
 enum SettingsOutCmd {
-    case openPaywallDismissingTopmostView
     case openPaywall
 }
 
@@ -25,7 +24,6 @@ struct SettingsView: View {
     @StateObject private var viewModel: SettingsViewModel
     @State private var isPresentingShareSheet: Bool = false
     @State private var isPresentingLanguageSheet: Bool = false
-    @State private var isThemePresented: Bool = false
 
     init(out: @escaping SettingsOut) {
         _viewModel = StateObject(wrappedValue: .init(out: out))
@@ -51,6 +49,7 @@ struct SettingsView: View {
                     Toggle(isOn: toggle) {
                         Text("notifications".localized(language))
                     }
+                    .toggleStyle(SwitchToggleStyle(tint: .systemGreen))
                     if isNotificationEnabled {
                         if viewModel.isFirstDateSet {
                             DatePicker("firstDate".localized(language), selection: $viewModel.firstDate, displayedComponents: .hourAndMinute)
@@ -81,6 +80,12 @@ struct SettingsView: View {
                     }
                 }
                 Section {
+                    Button(action: {
+                        isPresentingLanguageSheet = true
+                    }) {
+                        Text("changeLanguage".localized(language))
+                            .foregroundColor(.primary)
+                    }
                     Button {
                         viewModel.setSound(to: .off)
                     } label: {
@@ -140,37 +145,9 @@ struct SettingsView: View {
                 .foregroundColor(.primary)
                 Section {
                     Button(action: {
-                        isPresentingLanguageSheet = true
-                    }) {
-                        Text("changeLanguage".localized(language))
-                            .foregroundColor(.primary)
-                    }
-                    Button(action: {
-                        isThemePresented = true
-                    }) {
-                        Text("theme".localized(language))
-                            .foregroundColor(.primary)
-                    }
-                    Toggle(isOn: $shouldHideZikrAmount) {
-                        Text("hideZikrNumbers".localized(language))
-                    }
-                }
-                Section {
-                    Button(action: {
                         share()
                     }) {
                         Text("share".localized(language))
-                    }
-                    Button(action: {
-                        Qonversion.shared().presentCodeRedemptionSheet()
-                        analyticsService.trackOpenEnterPromocodes()
-                    }) {
-                        Text("redeemPromocode".localized(language))
-                    }
-                    Button(action: {
-                        openInstagram()
-                    }) {
-                        Text("followInstagram".localized(language))
                     }
                     Button(action: {
                         openTelegram()
@@ -193,19 +170,6 @@ struct SettingsView: View {
                     )
                 }
             )
-            .sheet(isPresented: $isThemePresented) {
-                if #available(iOS 16.0, *) {
-                    ThemeView {
-                        viewModel.openPaywallDismissingTopmostView()
-                    }
-                        .presentationDetents([.height(250)])
-                        .presentationDragIndicator(.visible)
-                } else {
-                    ThemeView {
-                        viewModel.openPaywallDismissingTopmostView()
-                    }
-                }
-            }
             .actionSheet(isPresented: $isPresentingLanguageSheet) {
                 ActionSheet(
                     title: Text("changeLanguage".localized(language)),
@@ -232,7 +196,7 @@ struct SettingsView: View {
                 .font(.callout)
                 .foregroundColor(.secondary)
                 .padding(.bottom)
-                .onLongPressGesture(minimumDuration: 5) {
+                .onLongPressGesture(minimumDuration: 2) {
                     viewModel.copyQonversionUserIdToClipboard()
                 }
         }

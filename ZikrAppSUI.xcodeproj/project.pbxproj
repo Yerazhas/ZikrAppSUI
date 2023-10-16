@@ -37,6 +37,7 @@
 		601D2DC4297B076600AE6687 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601D2DC3297B076600AE6687 /* Launch Screen.storyboard */; };
 		601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */; };
 		601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */; };
+		6038F6292ABC661200ED3F8E /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038F6282ABC661200ED3F8E /* ReviewRequestView.swift */; };
 		603CF2662A481EFE00179C6C /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CF2652A481EFE00179C6C /* BlurredView.swift */; };
 		603DFABC2A505D0B0065572F /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFABA2A505D0B0065572F /* ValidatedTextField.swift */; };
 		603DFABD2A505D0B0065572F /* ValidatedTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFABB2A505D0B0065572F /* ValidatedTextFieldViewModel.swift */; };
@@ -45,16 +46,32 @@
 		603DFAC32A51083B0065572F /* AddNewZikrViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DFAC22A51083B0065572F /* AddNewZikrViewModel.swift */; };
 		603E9B532A91958D000068E0 /* SFSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E9B522A91958D000068E0 /* SFSafariView.swift */; };
 		603E9B552A920458000068E0 /* AppStatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E9B542A920458000068E0 /* AppStatsService.swift */; };
+		604B33062AD3F6BC00EDAA36 /* QazaModifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604B33052AD3F6BC00EDAA36 /* QazaModifyViewModel.swift */; };
+		604B33082AD3FCFF00EDAA36 /* QazaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604B33072AD3FCFF00EDAA36 /* QazaViewModel.swift */; };
+		6055B1D42ADA8D9600741DAC /* LaurelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055B1D32ADA8D9600741DAC /* LaurelView.swift */; };
+		6055B1D62ADA935B00741DAC /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055B1D52ADA935B00741DAC /* ButtonView.swift */; };
+		6055B1D82ADCD6B800741DAC /* BeforeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055B1D72ADCD6B800741DAC /* BeforeView.swift */; };
+		6055B1DA2ADCE72A00741DAC /* OnboadingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055B1D92ADCE72A00741DAC /* OnboadingPageView.swift */; };
+		6055B1DC2ADCE93200741DAC /* BeforeAndAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055B1DB2ADCE93200741DAC /* BeforeAndAfterView.swift */; };
 		605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8129A2177D00E0CBA7 /* AddNewView.swift */; };
 		605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */; };
 		606A9D242A6CEE52000910AC /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9D232A6CEE52000910AC /* TrackerView.swift */; };
 		606A9D262A6E98C2000910AC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9D252A6E98C2000910AC /* Date+Extensions.swift */; };
 		606A9D282A6E9977000910AC /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9D272A6E9977000910AC /* OffsetKey.swift */; };
 		606A9D2A2A6F6527000910AC /* TrackerZikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A9D292A6F6527000910AC /* TrackerZikrView.swift */; };
+		607673C42AD6316600CF4CD4 /* LottieProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607673C32AD6316600CF4CD4 /* LottieProgressView.swift */; };
+		607673C62AD632D500CF4CD4 /* lottie-payment-loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 607673C52AD632D500CF4CD4 /* lottie-payment-loader.json */; };
+		607673C82AD632E300CF4CD4 /* lottie-payment-loader1.json in Resources */ = {isa = PBXBuildFile; fileRef = 607673C72AD632E300CF4CD4 /* lottie-payment-loader1.json */; };
+		607673CA2AD6C9F800CF4CD4 /* LottieProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607673C92AD6C9F800CF4CD4 /* LottieProgressViewModel.swift */; };
+		607673CE2ADA76A500CF4CD4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607673CD2ADA76A500CF4CD4 /* WelcomeView.swift */; };
+		607673D02ADA7DA200CF4CD4 /* GradientRaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607673CF2ADA7DA200CF4CD4 /* GradientRaysView.swift */; };
+		607673D22ADA7DC800CF4CD4 /* RotatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607673D12ADA7DC800CF4CD4 /* RotatingView.swift */; };
 		6079E4A92A62AAB900F0F014 /* ZikrShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6079E4A82A62AAB900F0F014 /* ZikrShareView.swift */; };
 		6079E4AB2A630E0500F0F014 /* ZikrSharePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6079E4AA2A630E0500F0F014 /* ZikrSharePreviewView.swift */; };
 		6079E4AD2A6680D700F0F014 /* WirdShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6079E4AC2A6680D700F0F014 /* WirdShareView.swift */; };
 		6079E4AF2A66A4C400F0F014 /*  WirdShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6079E4AE2A66A4C400F0F014 /*  WirdShareViewModel.swift */; };
+		608625FB2AC8213A00BDC512 /* QazaTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608625FA2AC8213A00BDC512 /* QazaTrackerView.swift */; };
+		608625FD2AC826C000BDC512 /* QazaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608625FC2AC826C000BDC512 /* QazaView.swift */; };
 		60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60896D202974503200FC3A7E /* ZikrTapView.swift */; };
 		60896D2329745FD100FC3A7E /* ZikrContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60896D2229745FD100FC3A7E /* ZikrContentView.swift */; };
 		60896D252974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */; };
@@ -71,6 +88,17 @@
 		609548AA29741AA400E3A899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548A929741AA400E3A899 /* AppDelegate.swift */; };
 		609548AC29742E0300E3A899 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548AB29742E0300E3A899 /* Extensions.swift */; };
 		609548AF297432F500E3A899 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609548AE297432F500E3A899 /* SettingsView.swift */; };
+		6096A0BB2AAF3A2E00AF836A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6096A0BA2AAF3A2E00AF836A /* GoogleService-Info.plist */; };
+		6096A0BD2AAF3EED00AF836A /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0BC2AAF3EED00AF836A /* RemoteConfigService.swift */; };
+		6096A0C22AAF682700AF836A /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0C12AAF682700AF836A /* AppConfiguration.swift */; };
+		6096A0C42AAFE2E800AF836A /* TimeoutOperationActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0C32AAFE2E800AF836A /* TimeoutOperationActor.swift */; };
+		6096A0C62AAFEEC100AF836A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0C52AAFEEC100AF836A /* AppConfig.swift */; };
+		6096A0C82AAFF92E00AF836A /* KaspiButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0C72AAFF92E00AF836A /* KaspiButtonView.swift */; };
+		6096A0CC2AB03C5400AF836A /* KaspiPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0CB2AB03C5400AF836A /* KaspiPaywallView.swift */; };
+		6096A0CE2AB2A34900AF836A /* TrackerAddZikrsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0CD2AB2A34900AF836A /* TrackerAddZikrsView.swift */; };
+		6096A0D12AB2FBEC00AF836A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0D02AB2FBEC00AF836A /* SplashView.swift */; };
+		6096A0D32AB2FE2100AF836A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0D22AB2FE2100AF836A /* SplashViewModel.swift */; };
+		6096A0D52AB30E9F00AF836A /* TrackerAddZikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6096A0D42AB30E9F00AF836A /* TrackerAddZikrView.swift */; };
 		60A5BCF4298E900C006E9FBE /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5BCF3298E900C006E9FBE /* ReviewService.swift */; };
 		60A5BCF6298E90A3006E9FBE /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A5BCF5298E90A3006E9FBE /* LocalizationService.swift */; };
 		60A6CC67297598450037C083 /* zikrs.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A6CC66297598450037C083 /* zikrs.json */; };
@@ -79,7 +107,30 @@
 		60A6CC722975ABB00037C083 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60A6CC742975ABB00037C083 /* Localizable.strings */; };
 		60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6CC792975CAC60037C083 /* Dua.swift */; };
 		60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */; };
+		60D1381A2AD1426300568529 /* QazaModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138192AD1426300568529 /* QazaModifyView.swift */; };
+		60D138212AD2508700568529 /* QazaInputSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138202AD2508700568529 /* QazaInputSelectionView.swift */; };
+		60D138232AD25CFE00568529 /* QazaContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138222AD25CFE00568529 /* QazaContainerView.swift */; };
+		60D138252AD270BA00568529 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138242AD270BA00568529 /* WarningView.swift */; };
+		60D138272AD276C900568529 /* QazaManualInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138262AD276C900568529 /* QazaManualInputView.swift */; };
+		60D138292AD2772200568529 /* PrayerAmountRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138282AD2772200568529 /* PrayerAmountRowViewModel.swift */; };
+		60D1382B2AD2773900568529 /* QazaManualInputRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D1382A2AD2773900568529 /* QazaManualInputRowViewModel.swift */; };
+		60D1382D2AD277AE00568529 /* QazaManualInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D1382C2AD277AE00568529 /* QazaManualInputViewModel.swift */; };
+		60D1382F2AD279DF00568529 /* PrayerCheckoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D1382E2AD279DF00568529 /* PrayerCheckoutRowView.swift */; };
+		60D138332AD27ECE00568529 /* QazaCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138322AD27ECE00568529 /* QazaCalculationView.swift */; };
+		60D138352AD27EF200568529 /* QazaCalculationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138342AD27EF200568529 /* QazaCalculationViewModel.swift */; };
+		60D138372AD27F2100568529 /* MaleProfileDetailsFillOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138362AD27F2100568529 /* MaleProfileDetailsFillOutViewModel.swift */; };
+		60D138392AD27F4900568529 /* ProfileDetailsFillOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138382AD27F4900568529 /* ProfileDetailsFillOutViewModel.swift */; };
+		60D1383B2AD2829C00568529 /* TitledDateInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D1383A2AD2829C00568529 /* TitledDateInputViewModel.swift */; };
+		60D1383D2AD282E600568529 /* FemaleProfileDetailsFillOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D1383C2AD282E600568529 /* FemaleProfileDetailsFillOutViewModel.swift */; };
+		60D138412AD283FE00568529 /* MaleQazaCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138402AD283FE00568529 /* MaleQazaCalculationView.swift */; };
+		60D138432AD2860C00568529 /* FemaleQazaCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138422AD2860C00568529 /* FemaleQazaCalculationView.swift */; };
+		60D138452AD2867A00568529 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138442AD2867A00568529 /* KeyboardAdaptive.swift */; };
 		60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */; };
+		60F51D8C2AD2C6900074AFA7 /* QazaPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8B2AD2C6900074AFA7 /* QazaPrayer.swift */; };
+		60F51D8E2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8D2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift */; };
+		60F51D902AD3B1C30074AFA7 /* QazaTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8F2AD3B1C30074AFA7 /* QazaTrackerViewModel.swift */; };
+		60F51D922AD3C2160074AFA7 /* SafarQazaPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D912AD3C2160074AFA7 /* SafarQazaPrayer.swift */; };
+		60F51D942AD3CDB00074AFA7 /* CalculationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D932AD3CDB00074AFA7 /* CalculationError.swift */; };
 		60FC32972A83F74000A214F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC32962A83F74000A214F9 /* StoreKit.framework */; };
 		60FC32992A84DF4900A214F9 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32982A84DF4900A214F9 /* PageControl.swift */; };
 		60FC329C2A88C9B900A214F9 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC329B2A88C9B900A214F9 /* PaywallView.swift */; };
@@ -95,7 +146,7 @@
 		60FC32B02A8CA17A00A214F9 /* SubscriptionSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32AF2A8CA17A00A214F9 /* SubscriptionSyncService.swift */; };
 		60FC32B22A8CA4E100A214F9 /* UserDefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32B12A8CA4E100A214F9 /* UserDefaultsValue.swift */; };
 		60FC32B62A8E06D400A214F9 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32B52A8E06D400A214F9 /* WhatsNewView.swift */; };
-		60FC32B82A8E631D00A214F9 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32B72A8E631C00A214F9 /* OnboardingPageView.swift */; };
+		60FC32B82A8E631D00A214F9 /* OnboardingImagedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32B72A8E631C00A214F9 /* OnboardingImagedPageView.swift */; };
 		60FC32BA2A8E634F00A214F9 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32B92A8E634F00A214F9 /* OnboardingView.swift */; };
 		60FC32BE2A8F359800A214F9 /* SupportPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32BD2A8F359800A214F9 /* SupportPaywallView.swift */; };
 		60FC32C02A8F35DC00A214F9 /* SupportPaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32BF2A8F35DC00A214F9 /* SupportPaywallViewModel.swift */; };
@@ -139,6 +190,7 @@
 		601D2DC3297B076600AE6687 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		601D2DCC297B1ECF00AE6687 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		601D2DCE297B33CE00AE6687 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		6038F6282ABC661200ED3F8E /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		603CF2652A481EFE00179C6C /* BlurredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredView.swift; sourceTree = "<group>"; };
 		603DFABA2A505D0B0065572F /* ValidatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
 		603DFABB2A505D0B0065572F /* ValidatedTextFieldViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatedTextFieldViewModel.swift; sourceTree = "<group>"; };
@@ -147,16 +199,32 @@
 		603DFAC22A51083B0065572F /* AddNewZikrViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewZikrViewModel.swift; sourceTree = "<group>"; };
 		603E9B522A91958D000068E0 /* SFSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariView.swift; sourceTree = "<group>"; };
 		603E9B542A920458000068E0 /* AppStatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatsService.swift; sourceTree = "<group>"; };
+		604B33052AD3F6BC00EDAA36 /* QazaModifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaModifyViewModel.swift; sourceTree = "<group>"; };
+		604B33072AD3FCFF00EDAA36 /* QazaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaViewModel.swift; sourceTree = "<group>"; };
+		6055B1D32ADA8D9600741DAC /* LaurelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaurelView.swift; sourceTree = "<group>"; };
+		6055B1D52ADA935B00741DAC /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		6055B1D72ADCD6B800741DAC /* BeforeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeView.swift; sourceTree = "<group>"; };
+		6055B1D92ADCE72A00741DAC /* OnboadingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboadingPageView.swift; sourceTree = "<group>"; };
+		6055B1DB2ADCE93200741DAC /* BeforeAndAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAndAfterView.swift; sourceTree = "<group>"; };
 		605ADC8129A2177D00E0CBA7 /* AddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewView.swift; sourceTree = "<group>"; };
 		605ADC8329A22E9700E0CBA7 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		606A9D232A6CEE52000910AC /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
 		606A9D252A6E98C2000910AC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		606A9D272A6E9977000910AC /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
 		606A9D292A6F6527000910AC /* TrackerZikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerZikrView.swift; sourceTree = "<group>"; };
+		607673C32AD6316600CF4CD4 /* LottieProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieProgressView.swift; sourceTree = "<group>"; };
+		607673C52AD632D500CF4CD4 /* lottie-payment-loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lottie-payment-loader.json"; sourceTree = "<group>"; };
+		607673C72AD632E300CF4CD4 /* lottie-payment-loader1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lottie-payment-loader1.json"; sourceTree = "<group>"; };
+		607673C92AD6C9F800CF4CD4 /* LottieProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieProgressViewModel.swift; sourceTree = "<group>"; };
+		607673CD2ADA76A500CF4CD4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		607673CF2ADA7DA200CF4CD4 /* GradientRaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientRaysView.swift; sourceTree = "<group>"; };
+		607673D12ADA7DC800CF4CD4 /* RotatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingView.swift; sourceTree = "<group>"; };
 		6079E4A82A62AAB900F0F014 /* ZikrShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrShareView.swift; sourceTree = "<group>"; };
 		6079E4AA2A630E0500F0F014 /* ZikrSharePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrSharePreviewView.swift; sourceTree = "<group>"; };
 		6079E4AC2A6680D700F0F014 /* WirdShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirdShareView.swift; sourceTree = "<group>"; };
 		6079E4AE2A66A4C400F0F014 /*  WirdShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " WirdShareViewModel.swift"; sourceTree = "<group>"; };
+		608625FA2AC8213A00BDC512 /* QazaTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaTrackerView.swift; sourceTree = "<group>"; };
+		608625FC2AC826C000BDC512 /* QazaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaView.swift; sourceTree = "<group>"; };
 		60896D202974503200FC3A7E /* ZikrTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrTapView.swift; sourceTree = "<group>"; };
 		60896D2229745FD100FC3A7E /* ZikrContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZikrContentView.swift; sourceTree = "<group>"; };
 		60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KFGQPC Uthmanic Script HAFS Regular.otf"; sourceTree = "<group>"; };
@@ -175,6 +243,17 @@
 		609548A929741AA400E3A899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		609548AB29742E0300E3A899 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		609548AE297432F500E3A899 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6096A0BA2AAF3A2E00AF836A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6096A0BC2AAF3EED00AF836A /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
+		6096A0C12AAF682700AF836A /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		6096A0C32AAFE2E800AF836A /* TimeoutOperationActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutOperationActor.swift; sourceTree = "<group>"; };
+		6096A0C52AAFEEC100AF836A /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		6096A0C72AAFF92E00AF836A /* KaspiButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaspiButtonView.swift; sourceTree = "<group>"; };
+		6096A0CB2AB03C5400AF836A /* KaspiPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaspiPaywallView.swift; sourceTree = "<group>"; };
+		6096A0CD2AB2A34900AF836A /* TrackerAddZikrsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerAddZikrsView.swift; sourceTree = "<group>"; };
+		6096A0D02AB2FBEC00AF836A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		6096A0D22AB2FE2100AF836A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		6096A0D42AB30E9F00AF836A /* TrackerAddZikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerAddZikrView.swift; sourceTree = "<group>"; };
 		60A5BCF3298E900C006E9FBE /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		60A5BCF5298E90A3006E9FBE /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		60A6CC66297598450037C083 /* zikrs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zikrs.json; sourceTree = "<group>"; };
@@ -185,7 +264,30 @@
 		60A6CC762975ABB90037C083 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60A6CC792975CAC60037C083 /* Dua.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dua.swift; sourceTree = "<group>"; };
 		60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
+		60D138192AD1426300568529 /* QazaModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaModifyView.swift; sourceTree = "<group>"; };
+		60D138202AD2508700568529 /* QazaInputSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaInputSelectionView.swift; sourceTree = "<group>"; };
+		60D138222AD25CFE00568529 /* QazaContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaContainerView.swift; sourceTree = "<group>"; };
+		60D138242AD270BA00568529 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
+		60D138262AD276C900568529 /* QazaManualInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaManualInputView.swift; sourceTree = "<group>"; };
+		60D138282AD2772200568529 /* PrayerAmountRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerAmountRowViewModel.swift; sourceTree = "<group>"; };
+		60D1382A2AD2773900568529 /* QazaManualInputRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaManualInputRowViewModel.swift; sourceTree = "<group>"; };
+		60D1382C2AD277AE00568529 /* QazaManualInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaManualInputViewModel.swift; sourceTree = "<group>"; };
+		60D1382E2AD279DF00568529 /* PrayerCheckoutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCheckoutRowView.swift; sourceTree = "<group>"; };
+		60D138322AD27ECE00568529 /* QazaCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaCalculationView.swift; sourceTree = "<group>"; };
+		60D138342AD27EF200568529 /* QazaCalculationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaCalculationViewModel.swift; sourceTree = "<group>"; };
+		60D138362AD27F2100568529 /* MaleProfileDetailsFillOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleProfileDetailsFillOutViewModel.swift; sourceTree = "<group>"; };
+		60D138382AD27F4900568529 /* ProfileDetailsFillOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsFillOutViewModel.swift; sourceTree = "<group>"; };
+		60D1383A2AD2829C00568529 /* TitledDateInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledDateInputViewModel.swift; sourceTree = "<group>"; };
+		60D1383C2AD282E600568529 /* FemaleProfileDetailsFillOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleProfileDetailsFillOutViewModel.swift; sourceTree = "<group>"; };
+		60D138402AD283FE00568529 /* MaleQazaCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleQazaCalculationView.swift; sourceTree = "<group>"; };
+		60D138422AD2860C00568529 /* FemaleQazaCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleQazaCalculationView.swift; sourceTree = "<group>"; };
+		60D138442AD2867A00568529 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
 		60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallProductsConverter.swift; sourceTree = "<group>"; };
+		60F51D8B2AD2C6900074AFA7 /* QazaPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaPrayer.swift; sourceTree = "<group>"; };
+		60F51D8D2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerQazaPrayerView.swift; sourceTree = "<group>"; };
+		60F51D8F2AD3B1C30074AFA7 /* QazaTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaTrackerViewModel.swift; sourceTree = "<group>"; };
+		60F51D912AD3C2160074AFA7 /* SafarQazaPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafarQazaPrayer.swift; sourceTree = "<group>"; };
+		60F51D932AD3CDB00074AFA7 /* CalculationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationError.swift; sourceTree = "<group>"; };
 		60FC32962A83F74000A214F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		60FC32982A84DF4900A214F9 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		60FC329B2A88C9B900A214F9 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -201,7 +303,7 @@
 		60FC32AF2A8CA17A00A214F9 /* SubscriptionSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSyncService.swift; sourceTree = "<group>"; };
 		60FC32B12A8CA4E100A214F9 /* UserDefaultsValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsValue.swift; sourceTree = "<group>"; };
 		60FC32B52A8E06D400A214F9 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
-		60FC32B72A8E631C00A214F9 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		60FC32B72A8E631C00A214F9 /* OnboardingImagedPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImagedPageView.swift; sourceTree = "<group>"; };
 		60FC32B92A8E634F00A214F9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		60FC32BD2A8F359800A214F9 /* SupportPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPaywallView.swift; sourceTree = "<group>"; };
 		60FC32BF2A8F35DC00A214F9 /* SupportPaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPaywallViewModel.swift; sourceTree = "<group>"; };
@@ -264,15 +366,19 @@
 		6009F96329765A8E0096EC40 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				607673CC2ADA769600CF4CD4 /* WelcomeView */,
+				6038F6272ABC64F100ED3F8E /* ReviewRequestView */,
+				6096A0CF2AB2FBDC00AF836A /* Splash */,
 				60FC32B42A8E062900A214F9 /* WhatsNew */,
 				60FC32B32A8E061D00A214F9 /* Onboarding */,
-				6095489B2973D29E00E3A899 /* Counter */,
 				6009F965297664400096EC40 /* Main */,
+				6095489B2973D29E00E3A899 /* Counter */,
 				606A9D222A6CEE2B000910AC /* Tracker */,
+				6009F9672976646C0096EC40 /* ZIkrs */,
+				608625F92AC8211A00BDC512 /* QazaTracker */,
 				6003BEDD2A78EC5F0041EF14 /* Statistics */,
 				60FC329A2A88C9A900A214F9 /* Paywall */,
 				601AD1172A5DB97500E44C84 /* Theme */,
-				6009F9672976646C0096EC40 /* ZIkrs */,
 				605ADC8029A2152800E0CBA7 /* AddNew */,
 				609548AD297432E400E3A899 /* Settings */,
 			);
@@ -291,12 +397,19 @@
 				60FC32982A84DF4900A214F9 /* PageControl.swift */,
 				60FC32A52A8B59F300A214F9 /* IconTitleView.swift */,
 				60FC32A72A8BA66700A214F9 /* PrimaryButtonView.swift */,
+				6096A0C72AAFF92E00AF836A /* KaspiButtonView.swift */,
 				60FC32A92A8BA70B00A214F9 /* LottieView.swift */,
 				60FC32AB2A8BC83A00A214F9 /* LoadingButtonViewModel.swift */,
 				60FC32B12A8CA4E100A214F9 /* UserDefaultsValue.swift */,
 				60FC32C32A90A7B200A214F9 /* ErrorView.swift */,
 				60FC32CE2A90BA5D00A214F9 /* PaywallSuccessView.swift */,
 				603E9B522A91958D000068E0 /* SFSafariView.swift */,
+				60D138242AD270BA00568529 /* WarningView.swift */,
+				60D138442AD2867A00568529 /* KeyboardAdaptive.swift */,
+				607673CF2ADA7DA200CF4CD4 /* GradientRaysView.swift */,
+				607673D12ADA7DC800CF4CD4 /* RotatingView.swift */,
+				6055B1D32ADA8D9600741DAC /* LaurelView.swift */,
+				6055B1D52ADA935B00741DAC /* ButtonView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,6 +440,14 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		6038F6272ABC64F100ED3F8E /* ReviewRequestView */ = {
+			isa = PBXGroup;
+			children = (
+				6038F6282ABC661200ED3F8E /* ReviewRequestView.swift */,
+			);
+			path = ReviewRequestView;
+			sourceTree = "<group>";
+		};
 		605ADC8029A2152800E0CBA7 /* AddNew */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,9 +468,49 @@
 				606A9D232A6CEE52000910AC /* TrackerView.swift */,
 				606A9D292A6F6527000910AC /* TrackerZikrView.swift */,
 				6003BED72A6F7AA50041EF14 /* TrackerWirdView.swift */,
+				60F51D8D2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift */,
 				6003BEE22A7B70F20041EF14 /* TrackerEmptyView.swift */,
+				6096A0CD2AB2A34900AF836A /* TrackerAddZikrsView.swift */,
+				6096A0D42AB30E9F00AF836A /* TrackerAddZikrView.swift */,
+				607673CB2AD6D09200CF4CD4 /* LottieProgressView */,
 			);
 			path = Tracker;
+			sourceTree = "<group>";
+		};
+		607673CB2AD6D09200CF4CD4 /* LottieProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				607673C32AD6316600CF4CD4 /* LottieProgressView.swift */,
+				607673C92AD6C9F800CF4CD4 /* LottieProgressViewModel.swift */,
+			);
+			path = LottieProgressView;
+			sourceTree = "<group>";
+		};
+		607673CC2ADA769600CF4CD4 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				607673CD2ADA76A500CF4CD4 /* WelcomeView.swift */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
+		608625F92AC8211A00BDC512 /* QazaTracker */ = {
+			isa = PBXGroup;
+			children = (
+				60D138222AD25CFE00568529 /* QazaContainerView.swift */,
+				608625FA2AC8213A00BDC512 /* QazaTrackerView.swift */,
+				60F51D8F2AD3B1C30074AFA7 /* QazaTrackerViewModel.swift */,
+				608625FC2AC826C000BDC512 /* QazaView.swift */,
+				604B33072AD3FCFF00EDAA36 /* QazaViewModel.swift */,
+				60D138192AD1426300568529 /* QazaModifyView.swift */,
+				604B33052AD3F6BC00EDAA36 /* QazaModifyViewModel.swift */,
+				60D138202AD2508700568529 /* QazaInputSelectionView.swift */,
+				60D138302AD27D4000568529 /* Manual */,
+				60D138312AD27DFC00568529 /* Calculation */,
+				60D138282AD2772200568529 /* PrayerAmountRowViewModel.swift */,
+				60D1382E2AD279DF00568529 /* PrayerCheckoutRowView.swift */,
+			);
+			path = QazaTracker;
 			sourceTree = "<group>";
 		};
 		608D091329768B7800671A71 /* Wirds */ = {
@@ -426,6 +587,7 @@
 		6095489A2971EDE500E3A899 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6096A0BA2AAF3A2E00AF836A /* GoogleService-Info.plist */,
 				60FC32C52A90A85500A214F9 /* lottie */,
 				60896D26297462FD00FC3A7E /* Info.plist */,
 				60896D242974617A00FC3A7E /* KFGQPC Uthmanic Script HAFS Regular.otf */,
@@ -465,6 +627,23 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		6096A0BE2AAF454B00AF836A /* RemoteConfig */ = {
+			isa = PBXGroup;
+			children = (
+				6096A0BC2AAF3EED00AF836A /* RemoteConfigService.swift */,
+			);
+			path = RemoteConfig;
+			sourceTree = "<group>";
+		};
+		6096A0CF2AB2FBDC00AF836A /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				6096A0D02AB2FBEC00AF836A /* SplashView.swift */,
+				6096A0D22AB2FE2100AF836A /* SplashViewModel.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		60A6CC6829759B3A0037C083 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +657,10 @@
 				60FC32AF2A8CA17A00A214F9 /* SubscriptionSyncService.swift */,
 				603E9B542A920458000068E0 /* AppStatsService.swift */,
 				60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */,
+				6096A0BE2AAF454B00AF836A /* RemoteConfig */,
+				6096A0C12AAF682700AF836A /* AppConfiguration.swift */,
+				6096A0C32AAFE2E800AF836A /* TimeoutOperationActor.swift */,
+				6096A0C52AAFEEC100AF836A /* AppConfig.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -489,8 +672,52 @@
 				60A6CC792975CAC60037C083 /* Dua.swift */,
 				601D2DBB2976DCDA00AE6687 /* Wird.swift */,
 				6003BED92A6FD81B0041EF14 /* DailyZikrProgress.swift */,
+				60F51D8B2AD2C6900074AFA7 /* QazaPrayer.swift */,
+				60F51D912AD3C2160074AFA7 /* SafarQazaPrayer.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		60D138302AD27D4000568529 /* Manual */ = {
+			isa = PBXGroup;
+			children = (
+				60D138262AD276C900568529 /* QazaManualInputView.swift */,
+				60D1382C2AD277AE00568529 /* QazaManualInputViewModel.swift */,
+				60D1382A2AD2773900568529 /* QazaManualInputRowViewModel.swift */,
+			);
+			path = Manual;
+			sourceTree = "<group>";
+		};
+		60D138312AD27DFC00568529 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				60D1383E2AD283E400568529 /* Male */,
+				60D1383F2AD283E800568529 /* Female */,
+				60D138322AD27ECE00568529 /* QazaCalculationView.swift */,
+				60D138342AD27EF200568529 /* QazaCalculationViewModel.swift */,
+				60D138382AD27F4900568529 /* ProfileDetailsFillOutViewModel.swift */,
+				60D1383A2AD2829C00568529 /* TitledDateInputViewModel.swift */,
+				60F51D932AD3CDB00074AFA7 /* CalculationError.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
+		60D1383E2AD283E400568529 /* Male */ = {
+			isa = PBXGroup;
+			children = (
+				60D138402AD283FE00568529 /* MaleQazaCalculationView.swift */,
+				60D138362AD27F2100568529 /* MaleProfileDetailsFillOutViewModel.swift */,
+			);
+			path = Male;
+			sourceTree = "<group>";
+		};
+		60D1383F2AD283E800568529 /* Female */ = {
+			isa = PBXGroup;
+			children = (
+				60D138422AD2860C00568529 /* FemaleQazaCalculationView.swift */,
+				60D1383C2AD282E600568529 /* FemaleProfileDetailsFillOutViewModel.swift */,
+			);
+			path = Female;
 			sourceTree = "<group>";
 		};
 		60FC329A2A88C9A900A214F9 /* Paywall */ = {
@@ -505,8 +732,11 @@
 		60FC32B32A8E061D00A214F9 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				60FC32B72A8E631C00A214F9 /* OnboardingPageView.swift */,
+				6055B1D92ADCE72A00741DAC /* OnboadingPageView.swift */,
+				60FC32B72A8E631C00A214F9 /* OnboardingImagedPageView.swift */,
 				60FC32B92A8E634F00A214F9 /* OnboardingView.swift */,
+				6055B1D72ADCD6B800741DAC /* BeforeView.swift */,
+				6055B1DB2ADCE93200741DAC /* BeforeAndAfterView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -524,6 +754,7 @@
 			children = (
 				60FC329D2A88C9C300A214F9 /* PaywallViewModel.swift */,
 				60FC329B2A88C9B900A214F9 /* PaywallView.swift */,
+				6096A0CB2AB03C5400AF836A /* KaspiPaywallView.swift */,
 				60FC329F2A8A08A600A214F9 /* ProductButtonView.swift */,
 			);
 			path = SubscriptionsPaywall;
@@ -542,6 +773,8 @@
 		60FC32C52A90A85500A214F9 /* lottie */ = {
 			isa = PBXGroup;
 			children = (
+				607673C72AD632E300CF4CD4 /* lottie-payment-loader1.json */,
+				607673C52AD632D500CF4CD4 /* lottie-payment-loader.json */,
 				60FC32CA2A90A87600A214F9 /* lottie-error.json */,
 				60FC32CB2A90A87600A214F9 /* no_internet_lottie.json */,
 				60FC32AD2A8BC9CA00A214F9 /* lottie-loader.json */,
@@ -631,9 +864,12 @@
 			files = (
 				60FC32AE2A8BC9CA00A214F9 /* lottie-loader.json in Resources */,
 				60A6CC722975ABB00037C083 /* Localizable.strings in Resources */,
+				607673C62AD632D500CF4CD4 /* lottie-payment-loader.json in Resources */,
 				601D2DBE2976F43800AE6687 /* wirds.json in Resources */,
 				601D2DC4297B076600AE6687 /* Launch Screen.storyboard in Resources */,
+				607673C82AD632E300CF4CD4 /* lottie-payment-loader1.json in Resources */,
 				609548932971EDC800E3A899 /* Preview Assets.xcassets in Resources */,
+				6096A0BB2AAF3A2E00AF836A /* GoogleService-Info.plist in Resources */,
 				60FC32CC2A90A87600A214F9 /* lottie-error.json in Resources */,
 				60FC32CD2A90A87600A214F9 /* no_internet_lottie.json in Resources */,
 				60A6CC67297598450037C083 /* zikrs.json in Resources */,
@@ -692,42 +928,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D138412AD283FE00568529 /* MaleQazaCalculationView.swift in Sources */,
 				60FC32A22A8A0FDF00A214F9 /* PurchasesService.swift in Sources */,
 				6003BEE12A7938720041EF14 /* StatisticsDataView.swift in Sources */,
 				60896D212974503200FC3A7E /* ZikrTapView.swift in Sources */,
+				60F51D942AD3CDB00074AFA7 /* CalculationError.swift in Sources */,
+				608625FD2AC826C000BDC512 /* QazaView.swift in Sources */,
+				60F51D922AD3C2160074AFA7 /* SafarQazaPrayer.swift in Sources */,
 				603DFAC12A50FBC00065572F /* AddNewZikrView.swift in Sources */,
+				6055B1D62ADA935B00741DAC /* ButtonView.swift in Sources */,
 				60A5BCF4298E900C006E9FBE /* ReviewService.swift in Sources */,
 				60A6CC7A2975CAC60037C083 /* Dua.swift in Sources */,
 				60FC329C2A88C9B900A214F9 /* PaywallView.swift in Sources */,
 				601D2DC02977328000AE6687 /* WirdTapView.swift in Sources */,
+				6055B1DC2ADCE93200741DAC /* BeforeAndAfterView.swift in Sources */,
 				601AD1162A5D5BCC00E44C84 /* ThemeService.swift in Sources */,
 				6079E4AD2A6680D700F0F014 /* WirdShareView.swift in Sources */,
 				6009F95E2976566D0096EC40 /* RootRouter.swift in Sources */,
-				60FC32B82A8E631D00A214F9 /* OnboardingPageView.swift in Sources */,
+				6096A0D12AB2FBEC00AF836A /* SplashView.swift in Sources */,
+				604B33082AD3FCFF00EDAA36 /* QazaViewModel.swift in Sources */,
+				6096A0CE2AB2A34900AF836A /* TrackerAddZikrsView.swift in Sources */,
+				60FC32B82A8E631D00A214F9 /* OnboardingImagedPageView.swift in Sources */,
 				60A5BCF6298E90A3006E9FBE /* LocalizationService.swift in Sources */,
+				6096A0D32AB2FE2100AF836A /* SplashViewModel.swift in Sources */,
 				6095489F2973F6B300E3A899 /* ZikrView.swift in Sources */,
 				605ADC8429A22E9700E0CBA7 /* AnalyticsService.swift in Sources */,
 				601D2DCD297B1ECF00AE6687 /* ShareSheet.swift in Sources */,
 				60060E4D2A9B477300C90D97 /* TooltipConfig.swift in Sources */,
 				6095489D2973D2AC00E3A899 /* CounterView.swift in Sources */,
+				60D138232AD25CFE00568529 /* QazaContainerView.swift in Sources */,
 				60FC32BE2A8F359800A214F9 /* SupportPaywallView.swift in Sources */,
 				603CF2662A481EFE00179C6C /* BlurredView.swift in Sources */,
+				6096A0C62AAFEEC100AF836A /* AppConfig.swift in Sources */,
+				60D1382B2AD2773900568529 /* QazaManualInputRowViewModel.swift in Sources */,
 				601D2DBC2976DCDA00AE6687 /* Wird.swift in Sources */,
+				60F51D8C2AD2C6900074AFA7 /* QazaPrayer.swift in Sources */,
 				608D091529768B8600671A71 /* WirdsView.swift in Sources */,
 				60FC32BA2A8E634F00A214F9 /* OnboardingView.swift in Sources */,
 				60FC32A62A8B59F300A214F9 /* IconTitleView.swift in Sources */,
 				60FC32B22A8CA4E100A214F9 /* UserDefaultsValue.swift in Sources */,
+				60D138212AD2508700568529 /* QazaInputSelectionView.swift in Sources */,
 				60060E502A9B477300C90D97 /* DefaultTooltipConfig.swift in Sources */,
 				603DFABF2A505E030065572F /* AddNewViewModel.swift in Sources */,
 				60FC32A82A8BA66700A214F9 /* PrimaryButtonView.swift in Sources */,
 				60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */,
+				607673CA2AD6C9F800CF4CD4 /* LottieProgressViewModel.swift in Sources */,
+				60D138292AD2772200568529 /* PrayerAmountRowViewModel.swift in Sources */,
 				6009F969297674580096EC40 /* ZikrTapViewModel.swift in Sources */,
 				60FC32C02A8F35DC00A214F9 /* SupportPaywallViewModel.swift in Sources */,
+				6096A0C82AAFF92E00AF836A /* KaspiButtonView.swift in Sources */,
+				604B33062AD3F6BC00EDAA36 /* QazaModifyViewModel.swift in Sources */,
 				603DFAC32A51083B0065572F /* AddNewZikrViewModel.swift in Sources */,
 				609548A12973FDE200E3A899 /* Palette.swift in Sources */,
 				60A6CC6D29759B960037C083 /* Zikr.swift in Sources */,
+				608625FB2AC8213A00BDC512 /* QazaTrackerView.swift in Sources */,
 				606A9D2A2A6F6527000910AC /* TrackerZikrView.swift in Sources */,
+				6038F6292ABC661200ED3F8E /* ReviewRequestView.swift in Sources */,
 				601AD1192A5DB98400E44C84 /* ThemeView.swift in Sources */,
+				60D1382F2AD279DF00568529 /* PrayerCheckoutRowView.swift in Sources */,
+				60D138392AD27F4900568529 /* ProfileDetailsFillOutViewModel.swift in Sources */,
 				60FC32B62A8E06D400A214F9 /* WhatsNewView.swift in Sources */,
 				609548AA29741AA400E3A899 /* AppDelegate.swift in Sources */,
 				6003BEDA2A6FD81B0041EF14 /* DailyZikrProgress.swift in Sources */,
@@ -735,48 +994,73 @@
 				6003BEE52A7BC7190041EF14 /* StatisticsViewModel.swift in Sources */,
 				60896D2329745FD100FC3A7E /* ZikrContentView.swift in Sources */,
 				609548A42974101900E3A899 /* DuasView.swift in Sources */,
+				60F51D8E2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift in Sources */,
 				6003BED82A6F7AA50041EF14 /* TrackerWirdView.swift in Sources */,
 				6003BEDF2A78EC740041EF14 /* StatisticsView.swift in Sources */,
+				60D138272AD276C900568529 /* QazaManualInputView.swift in Sources */,
 				60FC329E2A88C9C300A214F9 /* PaywallViewModel.swift in Sources */,
 				60FC32CF2A90BA5D00A214F9 /* PaywallSuccessView.swift in Sources */,
+				6096A0BD2AAF3EED00AF836A /* RemoteConfigService.swift in Sources */,
+				60D1383D2AD282E600568529 /* FemaleProfileDetailsFillOutViewModel.swift in Sources */,
 				608D091729768D5E00671A71 /* WirdView.swift in Sources */,
+				60D138332AD27ECE00568529 /* QazaCalculationView.swift in Sources */,
 				6009F959297655250096EC40 /* SceneDelegate.swift in Sources */,
 				6079E4A92A62AAB900F0F014 /* ZikrShareView.swift in Sources */,
+				6096A0C22AAF682700AF836A /* AppConfiguration.swift in Sources */,
 				603DFABC2A505D0B0065572F /* ValidatedTextField.swift in Sources */,
 				603DFABD2A505D0B0065572F /* ValidatedTextFieldViewModel.swift in Sources */,
+				60D138452AD2867A00568529 /* KeyboardAdaptive.swift in Sources */,
+				60D138352AD27EF200568529 /* QazaCalculationViewModel.swift in Sources */,
 				60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */,
+				6055B1D82ADCD6B800741DAC /* BeforeView.swift in Sources */,
 				605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */,
 				60FC32AC2A8BC83A00A214F9 /* LoadingButtonViewModel.swift in Sources */,
 				60FC32A02A8A08A600A214F9 /* ProductButtonView.swift in Sources */,
 				6003BEE32A7B70F20041EF14 /* TrackerEmptyView.swift in Sources */,
 				6079E4AB2A630E0500F0F014 /* ZikrSharePreviewView.swift in Sources */,
 				6003BEDC2A6FE26F0041EF14 /* TrackerViewModel.swift in Sources */,
+				607673D22ADA7DC800CF4CD4 /* RotatingView.swift in Sources */,
+				607673D02ADA7DA200CF4CD4 /* GradientRaysView.swift in Sources */,
 				6079E4AF2A66A4C400F0F014 /*  WirdShareViewModel.swift in Sources */,
 				60060E4E2A9B477300C90D97 /* TooltipModifier.swift in Sources */,
 				606A9D242A6CEE52000910AC /* TrackerView.swift in Sources */,
+				6055B1DA2ADCE72A00741DAC /* OnboadingPageView.swift in Sources */,
 				6009F96229765A600096EC40 /* MainView.swift in Sources */,
 				60FC32C42A90A7B200A214F9 /* ErrorView.swift in Sources */,
+				60D138372AD27F2100568529 /* MaleProfileDetailsFillOutViewModel.swift in Sources */,
 				60060E4B2A9B477300C90D97 /* CurveInArrowShape.swift in Sources */,
 				606A9D282A6E9977000910AC /* OffsetKey.swift in Sources */,
+				607673C42AD6316600CF4CD4 /* LottieProgressView.swift in Sources */,
 				60060E4C2A9B477300C90D97 /* TooltipViewExtension.swift in Sources */,
+				60F51D902AD3B1C30074AFA7 /* QazaTrackerViewModel.swift in Sources */,
 				60FC32AA2A8BA70B00A214F9 /* LottieView.swift in Sources */,
 				603E9B532A91958D000068E0 /* SFSafariView.swift in Sources */,
+				60D1383B2AD2829C00568529 /* TitledDateInputViewModel.swift in Sources */,
 				60FC32A42A8A152B00A214F9 /* QonversionPurchasesServiceImpl.swift in Sources */,
 				609548AC29742E0300E3A899 /* Extensions.swift in Sources */,
+				60D138432AD2860C00568529 /* FemaleQazaCalculationView.swift in Sources */,
+				60D1381A2AD1426300568529 /* QazaModifyView.swift in Sources */,
+				6096A0CC2AB03C5400AF836A /* KaspiPaywallView.swift in Sources */,
 				60FC32C22A8F484E00A214F9 /* SupportProductButtonView.swift in Sources */,
 				60060E4F2A9B477300C90D97 /* ArrowShape.swift in Sources */,
 				60FC32992A84DF4900A214F9 /* PageControl.swift in Sources */,
 				609548A8297413AD00E3A899 /* ZikrsContainerView.swift in Sources */,
 				6095488E2971EDC600E3A899 /* ZikrsView.swift in Sources */,
 				603E9B552A920458000068E0 /* AppStatsService.swift in Sources */,
+				6096A0C42AAFE2E800AF836A /* TimeoutOperationActor.swift in Sources */,
 				606A9D262A6E98C2000910AC /* Date+Extensions.swift in Sources */,
 				601D2DC22977328B00AE6687 /* WirdTapViewModel.swift in Sources */,
 				60FC32B02A8CA17A00A214F9 /* SubscriptionSyncService.swift in Sources */,
+				60D1382D2AD277AE00568529 /* QazaManualInputViewModel.swift in Sources */,
+				6055B1D42ADA8D9600741DAC /* LaurelView.swift in Sources */,
+				60D138252AD270BA00568529 /* WarningView.swift in Sources */,
 				6009F95B297656420096EC40 /* RootCoordinator.swift in Sources */,
 				60060E522A9B477300C90D97 /* TooltipSide.swift in Sources */,
 				609548AF297432F500E3A899 /* SettingsView.swift in Sources */,
+				607673CE2ADA76A500CF4CD4 /* WelcomeView.swift in Sources */,
 				60060E512A9B477300C90D97 /* ArrowOnlyTooltipConfig.swift in Sources */,
 				601D2DCF297B33CE00AE6687 /* SettingsViewModel.swift in Sources */,
+				6096A0D52AB30E9F00AF836A /* TrackerAddZikrView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,16 +1208,18 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZikrAppSUI/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Zikr App";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 1.8.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -959,16 +1245,18 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZikrAppSUI/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Zikr App";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 1.8.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

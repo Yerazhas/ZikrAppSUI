@@ -12,37 +12,18 @@ enum MainOutCmd {
     case openZikr(Zikr)
     case openDua(Dua)
     case openWird(Wird)
-    case openSettings
     case openAddNew
     case openPaywall
+    case openCounter
 }
 
 struct MainView: View {
-    @AppStorage("isOnboarded") private var isOnboarded: Bool = false
     let out: MainOut
     @State private var currentIndex: Int = 0
 
     var body: some View {
         TabView(selection: $currentIndex) {
-            CounterView()
-                .animation(.none)
-                .tag(0)
-            ZikrsContainerView { outCmd in
-                switch outCmd {
-                case .openZikr(let zikr):
-                    out(.openZikr(zikr))
-                case .openDua(let dua):
-                    out(.openDua(dua))
-                case .openWird(let wird):
-                    out(.openWird(wird))
-                case .openSettings:
-                    out(.openSettings)
-                case .openAddNew:
-                    out(.openAddNew)
-                }
-            }
-            .tag(1)
-            TrackerView(tabSelection: $currentIndex) { outCmd in
+            TrackerView { outCmd in
                 switch outCmd {
                 case .openZikr(let zikr):
                     out(.openZikr(zikr))
@@ -52,23 +33,58 @@ struct MainView: View {
                     out(.openPaywall)
                 }
             }
-                .tag(2)
-        }
-        .animation(.default)
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .onAppear {
-            guard !isOnboarded else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                currentIndex = 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    currentIndex = 0
-                    isOnboarded = true
+            .tag(0)
+            .tabItem {
+                Label("Habits", image: "ic-checkmark-1")
+            }
+            ZikrsContainerView { outCmd in
+                switch outCmd {
+                case .openZikr(let zikr):
+                    out(.openZikr(zikr))
+                case .openDua(let dua):
+                    out(.openDua(dua))
+                case .openWird(let wird):
+                    out(.openWird(wird))
+                case .openAddNew:
+                    out(.openAddNew)
+                case .openCounter:
+                    out(.openCounter)
                 }
             }
+            .tag(1)
+            .tabItem {
+                Label("Zikr", image: "ic-tasbih")
+            }
+            QazaContainerView(out: { cmd in
+                switch cmd {
+                case .openPaywall:
+                    out(.openPaywall)
+                }
+            })
+                .animation(.none)
+                .tag(2)
+                .tabItem {
+                    Label("Qaza Tracker", image: "ic-qaza")
+                }
+            SettingsView { cmd in
+                switch cmd {
+                case .openPaywall:
+                    out(.openPaywall)
+                }
+            }
+            .tag(3)
+            .tabItem {
+                Label("Profile", image: "ic-profile")
+            }
+        }
+        .animation(.default)
+        .onChange(of: currentIndex) { newIndex in
+            hapticLight()
         }
     }
 }
+
+extension MainView: Hapticable {}
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -13,6 +13,7 @@ struct ProductButtonView: View {
     @Environment(\.colorScheme) private var colorScheme
     let product: PaywallProduct
     let isSelected: Bool
+    var isFullyDisplayed: Bool = true
     let tapAction: () -> Void
 
     var body: some View {
@@ -27,10 +28,12 @@ struct ProductButtonView: View {
                             .bold()
                             .foregroundColor(isSelected ? .white : .primary)
                             .multilineTextAlignment(.leading)
-                        Text(product.subtitle ?? "")
-                            .font(.footnote)
-                            .foregroundColor(isSelected ? .white : .secondary)
-                            .multilineTextAlignment(.leading)
+                        if isFullyDisplayed {
+                            Text(product.subtitle ?? "")
+                                .font(.footnote)
+                                .foregroundColor(isSelected ? .white : .secondary)
+                                .multilineTextAlignment(.leading)
+                        }
                     }
                     Spacer()
                     if let fullPrice = product.fullPrice {
@@ -54,7 +57,7 @@ struct ProductButtonView: View {
                 }
             }
             .padding(EdgeInsets(top: 17, leading: 20, bottom: 16, trailing: 0))
-            .frame(minHeight: 88)
+            .frame(minHeight: isFullyDisplayed ? 88 : 60)
             .background {
                 (isSelected ? .systemGreen : Color(.systemBackground))
                     .cornerRadius(16)

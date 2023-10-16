@@ -24,6 +24,7 @@ enum SoundState {
     case on(Int)
 }
 
+@MainActor
 final class SettingsViewModel: ObservableObject {
     @Published var isFirstDateSet: Bool = false
     @Published var firstDate: Date = .init()
@@ -37,12 +38,20 @@ final class SettingsViewModel: ObservableObject {
     @Injected(Container.analyticsService) private var analyticsService
     @Injected(Container.subscriptionSyncService) private var subscriptionSyncService
     @Injected(Container.appStatsService) private var appStatsService
+    @Injected(Container.purchasesService) private var purchasesService
+    @Injected(Container.paywallProductsConverter) private var paywallProductsConverter
     let out: SettingsOut
     private var cancellables = Set<AnyCancellable>()
     private var firstNotificationIds: [String] = []
     private var secondNotificationIds: [String] = []
     private var firstDateString: String?
     private var secondDateString: String?
+
+    @Published var error: PurchasesError?
+    @Published var shouldShowLoader: Bool = false
+//    @Published var discountedProduct: PaywallProduct?
+
+    private var cancellable: AnyCancellable?
 
     init(out: @escaping SettingsOut) {
         self.out = out
@@ -70,7 +79,49 @@ final class SettingsViewModel: ObservableObject {
 
         isSoundEnabled = appStatsService.isSoundEnabled
         soundId = appStatsService.soundId
+//        cancellable = subscriptionSyncService.isSubscribedPublisher.sink { [weak self] isSubscribed in
+//            self?.getDiscountPaywallProductBasedOnSubscription(isSubscribed)
+//        }
+//        getDiscountPaywallProductBasedOnSubscription(subscriptionSyncService.isSubscribed)
     }
+
+//    private func getDiscountPaywallProductBasedOnSubscription(_ isSubscribed: Bool) {
+//        print(isSubscribed)
+//        guard !isSubscribed else {
+//            discountedProduct = nil
+//            return
+//        }
+//        Task {
+//            do {
+//                let products = try await purchasesService.getHalfDiscountProduct(offeringId: appStatsService.halfDiscountOffering)
+//                print(appStatsService.halfDiscountOffering)
+//                discountedProduct = paywallProductsConverter.convertByExpensive(products: products).first
+//            }
+//        }
+//    }
+
+//    func purchaseDiscountProduct() {
+//        hapticLight()
+//        guard let discountedProduct else { return }
+//        shouldShowLoader = true
+//        analyticsService.trackSubscription(productId: discountedProduct.product.storeID, price: discountedProduct.prettyPrice)
+//        Task {
+//            do {
+//                let isSuccessful = try await purchasesService.purchase(product: discountedProduct.product)
+//                subscriptionSyncService.updateSubscriptionStatus(to: isSuccessful)
+//                error = nil
+//                if isSuccessful {
+//                    self.discountedProduct = nil
+//                    analyticsService.trackSubscriptionSuccess(productId: discountedProduct.product.storeID, price: discountedProduct.prettyPrice)
+//                }
+//                shouldShowLoader = false
+//            } catch let error as PurchasesError {
+//                shouldShowLoader = false
+//                self.error = error
+//                analyticsService.trackSubscriptionError(productId: discountedProduct.product.storeID, error: error.localizedDescription)
+//            }
+//        }
+//    }
 
     func setSound(to state: SoundState) {
         switch state {
@@ -133,16 +184,12 @@ final class SettingsViewModel: ObservableObject {
         analyticsService.trackOpenSettings()
     }
 
-    func openPaywallDismissingTopmostView() {
-        out(.openPaywallDismissingTopmostView)
-    }
-
     func openPaywall() {
         out(.openPaywall)
     }
 
     func copyQonversionUserIdToClipboard() {
-        hapticLight()
+        hapticStrong()
         UIPasteboard.general.setValue(appStatsService.qonversionId,
                     forPasteboardType: UTType.plainText.identifier)
     }
