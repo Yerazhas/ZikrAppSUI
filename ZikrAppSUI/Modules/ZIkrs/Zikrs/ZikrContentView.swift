@@ -18,24 +18,29 @@ struct ZikrContentView: View {
     private var contentView: some View {
         GeometryReader { gr in
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 15) {
-                    Spacer()
-                    Text(zikr.arabicTitle)
-                        .font(.uthmanicArabic(size: 30))
-                        .fixedSize(horizontal: false, vertical: true)
-                    Text("\(zikr.title).transcription".localized(language))
-                        .foregroundColor(.secondary)
-                    Text("\(zikr.title).translation".localized(language))
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
-                .multilineTextAlignment(.center)
-                .padding()
-                .frame(width: gr.size.width)
-                .frame(minHeight: gr.size.height)
-                .foregroundColor(.textGray)
+                makeContentView(gr: gr)
             }
         }
+    }
+
+    func makeContentView(gr: GeometryProxy) -> some View {
+        VStack(spacing: 25) {
+            Spacer()
+            Text(zikr.arabicTitle)
+                .font(.uthmanicArabic(size: 30))
+                .fixedSize(horizontal: false, vertical: true)
+            Text(zikr.getTranscription(language: language))
+                .foregroundColor(.secondary)
+            Text(zikr.getTranslation(language: language))
+                .foregroundColor(.secondary)
+                .italic()
+            Spacer()
+        }
+        .multilineTextAlignment(.center)
+        .padding()
+        .frame(width: gr.size.width)
+        .frame(minHeight: gr.size.height)
+        .foregroundColor(.textGray)
     }
 }
 

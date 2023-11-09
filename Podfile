@@ -8,6 +8,11 @@ target 'ZikrAppSUI' do
   pod "Haptica"
   pod 'Amplitude', '~> 8.8.0'
   pod 'Factory', '1.3.7'
+  pod 'Qonversion'
+  pod 'lottie-ios'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseRemoteConfig'
+
   # Pods for ZikrAppSUI
 
 end

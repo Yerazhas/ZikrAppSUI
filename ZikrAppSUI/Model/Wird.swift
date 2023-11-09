@@ -14,6 +14,10 @@ class Wird: Object, Decodable, Identifiable {
     @Persisted var isDeletable: Bool
     @Persisted var zikrs: List<WirdZikr>
     @Persisted var totalDoneCount: Int
+
+    @Persisted var dailyTargetAmountAmount: Int = 0
+    @Persisted var dailyProgress = List<DailyZikrProgress>()
+
     @Persisted var repeatTimes: Int?
     var type: ZikrType {
         .wird
@@ -49,12 +53,25 @@ class Wird: Object, Decodable, Identifiable {
     func getSubtitle(language: Language) -> String {
         zikrs.map { "\($0.targetCount) \($0.zikrId.localized(language))" }.joined(separator: ", ")
     }
+
+    func getCurrentProgress(for date: Date) -> (Int, Int)? {
+        if date.isPastDay {
+            guard let progress = dailyProgress.first(where: { $0.date.isSame(to: date) && $0.isActive }) else { return nil }
+            return (progress.amountDone, progress.targetAmount)
+        } else {
+            if let progress = dailyProgress.first(where: { $0.date.isSame(to: date) && $0.isActive }) {
+                return (progress.amountDone, progress.targetAmount)
+            } else {
+                return (0, dailyTargetAmountAmount)
+            }
+        }
+    }
 }
 
 class WirdZikr: Object, Decodable {
     @Persisted var zikrId: String
     @Persisted var targetCount: Int
-    @Persisted private var zikrType: String
+    @Persisted var zikrType: String
     var type: ZikrType {
         ZikrType(rawValue: zikrType) ?? .zikr
     }

@@ -28,7 +28,7 @@ struct ZikrView: View {
                 Spacer()
                 Group {
                     Text(zikr.title.localized(language))
-                    Text("\(zikr.title).transcription".localized(language))
+                    Text(zikr.getTranscription(language: language))
                         .foregroundColor(.secondary)
                         .font(.footnote)
                 }

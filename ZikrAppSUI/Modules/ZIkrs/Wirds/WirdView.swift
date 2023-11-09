@@ -30,24 +30,25 @@ struct WirdView: View {
                         Text(wird.title.localized(language))
                         Text(wird.getSubtitle(language: language))
                             .foregroundColor(.secondary)
-                            .font(.subheadline)
+                            .font(.footnote)
                         if let repeatTimes = wird.repeatTimes {
                             Text(
                                 "repeat".localized(language, args: String(repeatTimes))
                             )
-                            .padding(.top, 7)
                             .foregroundColor(.systemGreen)
+                            .padding(.top, 7)
                             .font(.subheadline)
                         }
                     }
                     .multilineTextAlignment(.leading)
                     Spacer()
                 }
+
                 if !shouldHideZikrAmount {
                     Text("\(wird.totalDoneCount)")
                         .font(.system(size: 40))
-                        .minimumScaleFactor(0.5)
                         .foregroundColor(.systemGreen)
+                        .minimumScaleFactor(0.5)
                         .padding()
                 }
             }
@@ -62,3 +63,4 @@ struct WirdView_Previews: PreviewProvider {
         WirdView(wird: .init())
     }
 }
+

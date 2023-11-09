@@ -12,7 +12,7 @@
 "zikrAmount" = "Zikr amount";
 "actions" = "Actions";
 "chooseAction" = "Choose an action";
-"createWird" = "Create a wird";
+"createWird" = "Create a collection";
 "downloadNow" = "Download Now";
 
 "info.description" = "We are a group of enthusiastic people, software developers, designers who want to help the muslim ummah by creating high-quality apps which solve specific, actual problems.\n\nWe will continue to develop, and you can try our other apps to support the project. And we will be always grateful if you share them with family and friends.";
@@ -32,9 +32,12 @@
 "aboutUs" = "About us";
 "rateApp" = "Rate app";
 
-"wird" = "wird";
+"wird" = "collection";
 "zikr" = "zikr";
 "countingZikr" = "Counter";
+
+"palestineOnboardingTitle" = "Duas compilation for our Palestinian brothers and sisters is available in duas section";
+"palestineOnboardingSubtitle" = "\"The believers in their mutual kindness, compassion, and sympathy are just like one body. When any part of the body suffers, the whole body feels pain. If any part of the body aches, the whole body will be in discomfort.\"\n\nBukhari, Muslim";
 
 // zikr
 
@@ -87,6 +90,28 @@
 "ainniAlaDhikrika.translation" = "O Allah! Assist me in remembering You, in thanking you, and in worshipping You in the best of manners";
 
 // dua
+
+"antaMawlana" = "Dua for Palestinian brothers 🇵🇸";
+"antaMawlana.transcription" = "Anta Mawlana Fansurna 'alal qawmil kafirin";
+"antaMawlana.translation" = "You are our protector, so help us against the disbelieving people Baqarah:286";
+
+"shamYaman" = "Dua for Palestinian brothers (1) 🇵🇸";
+"shamYaman.transcription" = "Allahumma barik lana fi shamina wa fi yamanina";
+"shamYaman.translation" = "O Allah, bless us in our Sham and our Yemen";
+
+"munzilalKitab" = "Dua for Palestinian brothers (2) 🇵🇸";
+"munzilalKitab.transcription" = "Allahumma, munzilal-kitabi sari' al-hisabi-hzim al-ahzaba, Allahumma-hzimhum wa zalzilhum";
+"munzilalKitab.translation" = "O Allah, the Revealer of the Book, Swift in Reckoning, defeat the factions. O Allah, defeat them and shake them";
+
+"rabbulMadhlumeen" = "Dua for Palestinian brothers (3) 🇵🇸";
+"rabbulMadhlumeen.transcription" = "Allahumma inna ka rabbul madhlumeen. Allahumma ansur al-madhlumeen 'ala qawm al-dhaalimeen fi kulli makan. Allahumma irham ummat Muhammadﷺ . Allahumma arsilil faraja li ummati Muhammadﷺ .";
+"rabbulMadhlumeen.translation" = "O Allah, You are the Lord of the oppressed. O Allah, assist the oppressed against the unjust people everywhere. O Allah, have mercy on the nation of Muhammadﷺ . O Allah, send relief to the nation of Muhammadﷺ ";
+
+"innaNaj'aluka" = "Allahumma inna naj'aluka fi nuhurihim wa na'udhu bika min shururihim 🇵🇸";
+"innaNaj'aluka.transcription" = "Allahumma inna naj'aluka fi nuhurihim wa na'udhu bika min shururihim";
+"innaNaj'aluka.translation" = "O Allah, we place You in their rears, and we seek refuge in You from their evil";
+
+
 
 "sayyidulIstighfar" = "Sayyidul Istighfar";
 "sayyidulIstighfar.transcription" = "Allahumma anta rabbi laa ilaaha illa ant, kholaqtanee wa ana 'abduk, wa ana 'alaa 'ahdika wa wa'dika mastato't, a'udhu bika min sharri ma sona't, aboou laka bini'matika 'alayy, wa aboou laka bidhanbi faghfirli, fainnahu la yaghfirudh-dhunuba illa ant.";
@@ -204,16 +229,269 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 "dua" = "Dua";
 "zikr" = "Zikr";
-"wird" = "Wird";
+"wird" = "Collection";
 
 "duas" = "Duas";
 "zikrs" = "Zikrs";
-"wirds" = "Wirds";
+"wirds" = "Collections";
 
 "changeLanguage" = "Change language";
 "selectLanguage" = "Select language";
-"" = "";
-"" = "";
+
+// Add New Page
+
+"addNew" = "Add new";
+"add" = "Add";
+"selectZikrs" = "Select zikrs";
+"fillFieldsCorrectly" = "Fill fields correctly";
+
+"title" = "Title";
+"enterAValidTitle" = "Enter a valid title";
+"arabicText" = "Arabic text";
+"transcription" = "Transcription";
+"translation" = "Translation";
+"deleteWird" = "Are you sure to delete collection?";
+"ok" = "Yes";
+"deleteZikr" = "Are you sure to delete zikr?";
+"deleteDua" = "Are you sure to delete dua?";
+
+"shareText" = "Assalamu aleykum! I`m using zikr.app to perform dhikrs. Highly recommend this app to you as well! %@";
+
+// Onboarding
+
+"onboarding_title_1" = "Zikr tracker. Never miss your daily dhikrs again.";
+"onboarding_subtitle_1" = "Fill your life with barakah.";
+"onboarding_title_2" = "Qaza tracker.";
+"onboarding_subtitle_2" = "Make up your missed prayers and Ramadan fasts.";
+"onboarding_title_3" = "Wide list of zikrs, duas, collections.";
+"onboarding_subtitle_3" = "Not enough? Add your own!";
+"onboarding_title_4" = "Become the best version of yourself!";
+"skip" = "Skip";
+
+// What's New
+
+"whatsNew" = "What's New in ZikrApp";
+"whatsnewBenefitsTitle" = "ZikrApp Premium subscription:";
+"whatsnewBenefits1" = "Track everyday zikrs, duas.";
+"whatsnewBenefits2" = "See insights, statistics.";
+"whatsnewBenefits3" = "Auto counting. Best when hands are busy.";
+"whatsnewBenefits4" = "Add unlimited amount of zikrs, duas and collections for spiritual growth.";
+"whatsnewBenefits5" = "Free subscriptions with promocodes.";
+"whatsnewBenefits6" = "Expand tap area, tap sounds, change theme color and a lot more.";
+"whatsnewBenefits7" = "Payment via Kaspi Gold.";
+"continue" = "Continue";
+
+// Tracker
+
+"noZikrs" = "You have no zikrs";
+"addZikrs" = "Add zikrs";
+
+// Statistics
+
+"dataForDemo" = "This data is only for demonstration. To use this functionality please subscribe to ZikrApp Premium";
+"subscribe" = "Subscribe";
+"idealDays" = "Ideal days";
+
+// Paywall
+
+"paywallBenefits1" = "Unlimited access to dhikrs, duas, collections. Autodhikr without hands, dhikr sounds";
+"paywallBenefits2" = "Zikr Tracker - set daily amount of zikrs and duas and track progress";
+"paywallBenefits3" = "Qaza Tracker - make up your missed prayers and fasts";
+"paywallBenefits4" = "Watch statistics and a lot more";
+"restore" = "Restore";
+"termsOfUse" = "Terms of use";
+"privacyPolicy" = "Privacy policy";
+"purchase" = "Purchase";
+
+// Support Paywall
+
+"mission" = "Our mission is to help ummah by doing great, useful products, not only apps. You can help us on this way bt making a donation.";
+"donate" = "Donate";
+
+// Zikrs
+
+"dailyAmountDone" = "Daily amount done!";
+"remaining" = "Remaining: %@";
+"delete" = "Delete";
+"enterDailyZikrAmount" = "Enter daily zikr amount";
+"dailyZikrPlaceholder" = "For example, 33";
+
+// Add New Zikr
+
+"addNewZikr" = "Add new zikr";
+
+// Settings
+
+"contactMe" = "Contact developer";
+"theme" = "Change color theme";
+
+// Error View
+
+"unableToConnect" = "Unable to connect";
+"errorOccured" = "An error occured while loading this page. Try again or restart the app";
+"tryAgain" = "Try again";
+
+// Paywall Success View
+
+"successfullSubscription" = "You have successfully subscribed to ZikrApp Premium! Use its all useful features!";
+
+// ToolTip
+
+"setDailyAmount" = "Set daily amount";
+"seeStatistics" = "See statistics";
+
+"monthly" = "Monthly";
+"yearly" = "Yearly";
+"lifetime" = "Lifetime";
+"oneTimePayment" = "Pay ONCE, use forever";
+"autoRenewingMonthly" = "Billed monthly";
+"autoRenewingYearly" = "Billed yearly";
+
+"removeFromTracker" = "Remove from tracker";
+"enterTodaysProgress" = "What's your progress today?";
+"manualProgressSet" = "Long tap to set progress manually";
+
+"mostPopular" = "Most popular";
+"redeemPromocode" = "Redeem promocode";
+
+"turnOffSound" = "Turn sounds off";
+"sound1" = "Sound 1";
+"sound2" = "Sound 2";
+"sound3" = "Sound 3";
+"sound4" = "Sound 4";
+
+"autoCount" = "Count automatically";
+"intervals" = "Intervals";
+
+"1sec" = "1 sec";
+"2sec" = "2 sec";
+"3sec" = "3 sec";
+"5sec" = "5 sec";
+"7sec" = "7 sec";
+"turnOff" = "Turn off";
+
+"pay_with_kaspi" = "Оплатить через Kaspi";
+"send_money_to_kaspi" = "1. Отправьте деньги за выбрраный тариф на kaspi gold";
+"copy_requisites" = "* нажав реквизиты, можете скопировать их";
+"send_check_to_whatsapp" = "2. Отправьте чек на наш Whatsapp";
+"send_check" = "Отправить чек";
+"ios_msg" = "Ассаламуалейкум. Мой id: %@. Сейчас отправлю чек.";
+"kaspi_donate" = "or you can send money to Kaspi Gold:";
+"kaspiIsAvailable" = "Payment, donation via Kaspi Gold is available now";
+
+"reviewRequestTitle" = "Enjoying our app? Write a review on App Store and get a free week of premium access.";
+"reviewRequest" = "1. Leave a review ";
+"writeWhatsappTelegram" = "2. Text us on Whatsapp/Telegram";
+"writeWhatsapp" = "Write on Whatsapp";
+"writeTelegram" = "Write on Telegram";
+"leaveReview" = "Leave a review";
+
+"today" = "Today";
+"normalQaza" = "Qaza";
+"safarQaza" = "Qaza in safar";
+
+"manualFillOutTitle" = "Fill out amount for each missed prayer and fast";
+"manualFillOutWarning" = "Safar means that prayer was missed while being in safar";
+
+"fajr" = "Fajr";
+"dhuhr" = "Dhuhr";
+"safarDhuhr" = "Safar Dhuhr";
+"asr" = "Asr";
+"safarAsr" = "Safar Asr";
+"maghrib" = "Maghrib";
+"isha" = "Isha";
+"safarIsha" = "Safar Isha";
+"witr" = "Witr";
+"fast" = "Ramadan fast";
+
+// MARK: - Error -
+"emptyBirthdayDateDesc" = "Your birth date";
+"emptyMajorityDateDesc" = "Majority date";
+"emptyPrayerStartDateDesc" = "Prayer start date";
+"invalidMajorityAndPrayerStartDatesRelationDesc" = "Choose majority and prayer start dates correctly";
+"incorrectMajorityAgeDesc" = "Choose correct majority age";
+"unknownErrorDesc" = "Fill the form correctly";
+"emptyBirthdayDateReason" = "No birth date";
+"emptyMajorityDateReason" = "No majority age";
+"emptyPrayerStartDateReason" = "No prayer start date";
+"invalidMajorityAndPrayerStartDatesRelationReason" = "Majority date is later than prayer start date";
+"incorrectMajorityAgeReason" = "Majority age not reached";
+"unknownErrorReason" = "Fields are filled out incorrectly";
+
+"fillOutInfo.title" = "Enter accurate information about yourself so we can correctly calculate your qaza prayers";
+"fillOutInfo.subtitle" = "Your data is only used for calculations and will not be stored";
+"majorityAge" = "Majority age";
+"dontKnow" = "Don't know";
+"majorityAgeWarningTitle" = "If you don't know your majority age, then we automatically take 15 years";
+"sinceToday" = "Since today";
+"safarDays" = "Days on safar";
+"birthDay" = "Birth date";
+"yourBirthDay" = "Your birth date";
+"prayerStartDate" = "Prayer start date";
+"yourPrayerStartDate" = "Your prayer start date";
+"monthlyHaidDays" = "Monthly haid days";
+"birthAmountBeforePrayerStart" = "Birth amount before prayers start";
+"remainingQaza" = "remaining qaza";
+
+"male" = "Male";
+"female" = "Female";
+
+"knowQazaAmount" = "Yes, I do";
+"dontKnowQazaAmount" = "No, help me calculate";
+
+"hanafiCalculation" = "Calculation is based on Hanafi fiqh school";
+
+"qazaCalculationIntroText" = "Assalamualeykum!\nNow you can track and make up for your missed prayers.\n\nDo you know the exact amount of your missed prayers?";
+
+"calculationProgressTitle" = "Calculating your personal qaza prayers...";
+"purchaseProgressTitle" = "Starting your wonderful journey...";
+"dontClosePage" = "Please don't close the page";
+
+"save" = "Save";
+"qaza" = "qaza";
+
+"subscriptionFailed" = "Subscription failed";
+"tryAgain" = "Please try again";
+"retry" = "Retry";
+
+"claimNow" = "Claim Now!";
+"beABetterMuslim" = "Be a better, more productive muslim with Premium!\n\nPay ONCE - use forever";
+
+"month" = "month";
+"year" = "year";
+"prayers" = "Prayers";
+"showAll" = "Show all";
+"hide" = "Hide";
+"lastUpdated" = "Last updated: %@";
+"today" = "today";
+"yesterday" = "yesterday";
+
+"welcomePromoTitle1" = "Millions";
+"welcomePromoSubtitle1" = "of dhikrs done";
+"welcomePromoTitle2" = "4.9⭐";
+"welcomePromoSubtitle2" = "High-Rated App\n2023";
+"welcomePromoTitle3" = "Tracker";
+"welcomePromoSubtitle3" = "of dhikrs and missed prayers";
+
+"welcomeTitle" = "Assalamualeykum";
+"welcomeSubtitle" = "The most user-friendly & best habit forming app for dhikrs";
+
+"before" = "Before";
+"beforeText1" = "Unorganized muslim life";
+"beforeText2" = "Ignoring daily dhikrs";
+"beforeText3" = "Unfinished goals";
+"beforeText4" = "Bad habits";
+
+"after" = "After";
+"afterText1" = "Structured day";
+"afterText2" = "Daily dhikrs";
+"afterText3" = "Healthy muslim habits";
+"afterText4" = "Peace of mind";
+"copy" = "Copy";
+"unlimitedAccess" = "unlimited access";
+"trial3Days" = "FREE 3 DAYS";
+"trialWeek" = "FREE WEEK";
+"russiaPayment" = "How to pay from Russia?";
 "" = "";
 "" = "";
 "" = "";
