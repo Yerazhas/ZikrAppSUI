@@ -29,6 +29,6 @@ struct LaurelView: View {
     }
 }
 
-#Preview {
-    LaurelView(title: "Millions", subtitle: "of dhikrs done")
-}
+//#Preview {
+//    LaurelView(title: "Millions", subtitle: "of dhikrs done")
+//}

@@ -126,6 +126,6 @@ struct QazaTrackerView: View {
 
 extension QazaTrackerView: Hapticable {}
 
-#Preview {
-    QazaTrackerView { _ in }
-}
+//#Preview {
+//    QazaTrackerView { _ in }
+//}

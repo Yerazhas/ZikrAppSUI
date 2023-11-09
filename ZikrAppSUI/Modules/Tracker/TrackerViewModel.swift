@@ -34,6 +34,7 @@ final class TrackerViewModel: ObservableObject, Hapticable {
     @Published var dailyAmount: String = ""
     @Published var selectedQazaPrayer: QazaPrayer?
     @Published var isFullQazaPrayersListShown: Bool = false
+    @Published var shouldShowBanner: Bool = false
 
     @Injected(Container.zikrService) private var zikrService
     @Injected(Container.appStatsService) private var appStatsService
@@ -67,6 +68,14 @@ final class TrackerViewModel: ObservableObject, Hapticable {
             self.shortListQazaPrayers = [firstActiveQazaPrayer]
         }
         qazaPrayers = isFullQazaPrayersListShown ? fullListQazaPrayers : shortListQazaPrayers
+        shouldShowBanner = subscriptionService.isSubscribed
+        cancellable = subscriptionService.isSubscribedPublisher.sink { [weak self] isSubscribed in
+            self?.shouldShowBanner = !isSubscribed
+        }
+    }
+
+    deinit {
+        cancellable = nil
     }
 
     func updateZikrs(for date: Date) {

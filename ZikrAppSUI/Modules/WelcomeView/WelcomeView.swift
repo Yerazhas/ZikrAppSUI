@@ -78,6 +78,6 @@ struct WelcomeView: View {
 
 extension WelcomeView: Hapticable {}
 
-#Preview {
-    WelcomeView {}
-}
+//#Preview {
+//    WelcomeView {}
+//}

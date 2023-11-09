@@ -92,6 +92,6 @@ struct QazaCalculationView: View {
 
 extension QazaCalculationView: Hapticable {}
 
-#Preview {
-    QazaCalculationView(viewModel: .init(maleViewModel: .init(completion: {}), femaleViewModel: .init(completion: {})))
-}
+//#Preview {
+//    QazaCalculationView(viewModel: .init(maleViewModel: .init(completion: {}), femaleViewModel: .init(completion: {})))
+//}

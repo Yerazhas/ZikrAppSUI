@@ -66,6 +66,6 @@ struct QazaManualInputView: View {
     }
 }
 
-#Preview {
-    QazaManualInputView {}
-}
+//#Preview {
+//    QazaManualInputView {}
+//}

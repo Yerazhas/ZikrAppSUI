@@ -39,7 +39,8 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
     let benefits: [String] = [
         "paywallBenefits1",
         "paywallBenefits2",
-        "paywallBenefits3"
+        "paywallBenefits3",
+        "paywallBenefits4"
     ]
     let out: PaywallViewOut
     private(set) var shouldShowKaspi: Bool = false
@@ -59,9 +60,9 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
             do {
                 self.state = .loading
                 let products = try await purchasesService.getProducts(offeringId: appStatsService.offering)
-                print(products.map { $0.storeID })
+                print(products.map { $0.appStoreId })
                 self.products = paywallProductsConverter.convertByExpensive(products: products)
-                print(self.products.map { $0.product.storeID })
+                print(self.products.map { $0.product.appStoreId })
                 self.selectedProduct = self.products.dropLast().last
                 self.state = .loaded
             } catch {
@@ -78,7 +79,7 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
     func selectProduct(_ product: PaywallProduct) {
         hapticLight()
         selectedProduct = product
-        analyticsService.trackSelectPaywallProduct(id: product.product.storeID)
+        analyticsService.trackSelectPaywallProduct(id: product.product.appStoreId)
         purchase()
     }
 
@@ -86,17 +87,17 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
         hapticLight()
         guard let selectedProduct else { return }
         shouldShowLoader = true
-        analyticsService.trackSubscription(productId: selectedProduct.product.storeID, price: selectedProduct.prettyPrice)
+        analyticsService.trackSubscription(productId: selectedProduct.product.appStoreId, price: selectedProduct.prettyPrice)
         Task {
             do {
                 setButtonLoading(to: true)
-                let isSuccessful = try await purchasesService.purchase(product: selectedProduct.product)
+                let isSuccessful = try await purchasesService.purchase(product: selectedProduct.product.product)
                 subscriptionsService.updateSubscriptionStatus(to: isSuccessful)
                 error = nil
                 setButtonLoading(to: false)
                 if isSuccessful {
                     state = .purchaseSuccess
-                    analyticsService.trackSubscriptionSuccess(productId: selectedProduct.product.storeID, price: selectedProduct.prettyPrice)
+                    analyticsService.trackSubscriptionSuccess(productId: selectedProduct.product.appStoreId, price: selectedProduct.prettyPrice)
                 }
                 shouldShowLoader = false
             } catch let error as PurchasesError {
@@ -104,7 +105,7 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
                 self.error = error
                 setButtonLoading(to: false)
 //                state = .failed(error)
-                analyticsService.trackSubscriptionError(productId: selectedProduct.product.storeID, error: error.localizedDescription)
+                analyticsService.trackSubscriptionError(productId: selectedProduct.product.appStoreId, error: error.localizedDescription)
             }
         }
     }

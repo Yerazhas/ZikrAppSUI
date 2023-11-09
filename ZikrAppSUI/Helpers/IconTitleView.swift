@@ -13,7 +13,7 @@ struct IconTitleView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 15) {
 //            Image(systemName: "checkmark.square.fill")
-            Image(systemName: "checkmark")
+            Image(systemName: "checkmark.circle.fill")
                 .resizable()
                 .frame(width: 18, height: 18)
                 .foregroundColor(.systemGreen)

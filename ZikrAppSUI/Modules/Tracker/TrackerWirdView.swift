@@ -20,17 +20,17 @@ struct TrackerWirdView: View {
                 
                 // The main rectangle
                 Rectangle()
-                    .fill(Color(.paleGray))
+                    .fill(Color.paleGray)
                     .frame(width: gr.size.width)
                 
                 // The progress indicator...
                 let progress = wird.getCurrentProgress(for: date)
                 let doneAmount = progress?.0 ?? 0
                 let targetAmount = progress?.1 ?? wird.dailyTargetAmountAmount
-
+                let min = min(CGFloat(Double(doneAmount) / Double(targetAmount)), 1.0)
                 Color.systemGreen
                     .cornerRadius(10)
-                    .frame(width: min(CGFloat(Double(doneAmount) / Double(targetAmount)), 1.0) * gr.size.width)
+                    .frame(width: min == 0.0 ? 0 : max(min, 0.04) * gr.size.width)
                 HStack {
                     Text(wird.title.localized(language))
                         .font(.system(size: 14))

@@ -129,7 +129,7 @@ final class FemaleProfileDetailsFillOutViewModel: ProfileDetailsFillOutViewModel
             
             guard let majorityDate = self.getIncrementedDate(from: birthdayDate, by: self.majorityAge) else { return }
             if majorityDate > Date() {
-                handleError(.incorrectMajorityAge)
+                self.handleError(.incorrectMajorityAge)
             } else {
                 self.majorityDate = majorityDate
             }

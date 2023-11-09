@@ -30,8 +30,8 @@ final class SubscriptionSyncServiceImpl: SubscriptionSyncService {
     func updateSubscriptionStatus(to isSubscribed: Bool) {
         self.tempIsSubscribed = isSubscribed
         self.isSubscribed = isSubscribed
-//        self.tempIsSubscribed = true
-//        self.isSubscribed = true
+//        self.tempIsSubscribed = false
+//        self.isSubscribed = false
     }
 }
 

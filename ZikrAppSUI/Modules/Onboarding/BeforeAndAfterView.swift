@@ -56,6 +56,6 @@ struct BeforeAndAfterView: View {
     }
 }
 
-#Preview {
-    BeforeAndAfterView()
-}
+//#Preview {
+//    BeforeAndAfterView()
+//}

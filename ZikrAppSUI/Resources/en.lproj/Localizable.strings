@@ -36,6 +36,9 @@
 "zikr" = "zikr";
 "countingZikr" = "Counter";
 
+"palestineOnboardingTitle" = "Duas compilation for our Palestinian brothers and sisters is available in duas section";
+"palestineOnboardingSubtitle" = "\"The believers in their mutual kindness, compassion, and sympathy are just like one body. When any part of the body suffers, the whole body feels pain. If any part of the body aches, the whole body will be in discomfort.\"\n\nBukhari, Muslim";
+
 // zikr
 
 "kalima" = "Kalima Tawheed";
@@ -87,6 +90,28 @@
 "ainniAlaDhikrika.translation" = "O Allah! Assist me in remembering You, in thanking you, and in worshipping You in the best of manners";
 
 // dua
+
+"antaMawlana" = "Dua for Palestinian brothers 🇵🇸";
+"antaMawlana.transcription" = "Anta Mawlana Fansurna 'alal qawmil kafirin";
+"antaMawlana.translation" = "You are our protector, so help us against the disbelieving people Baqarah:286";
+
+"shamYaman" = "Dua for Palestinian brothers (1) 🇵🇸";
+"shamYaman.transcription" = "Allahumma barik lana fi shamina wa fi yamanina";
+"shamYaman.translation" = "O Allah, bless us in our Sham and our Yemen";
+
+"munzilalKitab" = "Dua for Palestinian brothers (2) 🇵🇸";
+"munzilalKitab.transcription" = "Allahumma, munzilal-kitabi sari' al-hisabi-hzim al-ahzaba, Allahumma-hzimhum wa zalzilhum";
+"munzilalKitab.translation" = "O Allah, the Revealer of the Book, Swift in Reckoning, defeat the factions. O Allah, defeat them and shake them";
+
+"rabbulMadhlumeen" = "Dua for Palestinian brothers (3) 🇵🇸";
+"rabbulMadhlumeen.transcription" = "Allahumma inna ka rabbul madhlumeen. Allahumma ansur al-madhlumeen 'ala qawm al-dhaalimeen fi kulli makan. Allahumma irham ummat Muhammadﷺ . Allahumma arsilil faraja li ummati Muhammadﷺ .";
+"rabbulMadhlumeen.translation" = "O Allah, You are the Lord of the oppressed. O Allah, assist the oppressed against the unjust people everywhere. O Allah, have mercy on the nation of Muhammadﷺ . O Allah, send relief to the nation of Muhammadﷺ ";
+
+"innaNaj'aluka" = "Allahumma inna naj'aluka fi nuhurihim wa na'udhu bika min shururihim 🇵🇸";
+"innaNaj'aluka.transcription" = "Allahumma inna naj'aluka fi nuhurihim wa na'udhu bika min shururihim";
+"innaNaj'aluka.translation" = "O Allah, we place You in their rears, and we seek refuge in You from their evil";
+
+
 
 "sayyidulIstighfar" = "Sayyidul Istighfar";
 "sayyidulIstighfar.transcription" = "Allahumma anta rabbi laa ilaaha illa ant, kholaqtanee wa ana 'abduk, wa ana 'alaa 'ahdika wa wa'dika mastato't, a'udhu bika min sharri ma sona't, aboou laka bini'matika 'alayy, wa aboou laka bidhanbi faghfirli, fainnahu la yaghfirudh-dhunuba illa ant.";
@@ -269,9 +294,10 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 // Paywall
 
-"paywallBenefits1" = "Zikr Tracker - set daily amount of zikrs and duas and track progress";
-"paywallBenefits2" = "Qaza Tracker - make up your missed prayers and fasts";
-"paywallBenefits3" = "Watch statistics and a lot more";
+"paywallBenefits1" = "Unlimited access to dhikrs, duas, collections. Autodhikr without hands, dhikr sounds";
+"paywallBenefits2" = "Zikr Tracker - set daily amount of zikrs and duas and track progress";
+"paywallBenefits3" = "Qaza Tracker - make up your missed prayers and fasts";
+"paywallBenefits4" = "Watch statistics and a lot more";
 "restore" = "Restore";
 "termsOfUse" = "Terms of use";
 "privacyPolicy" = "Privacy policy";
@@ -317,7 +343,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "monthly" = "Monthly";
 "yearly" = "Yearly";
 "lifetime" = "Lifetime";
-"oneTimePayment" = "One-time payment";
+"oneTimePayment" = "Pay ONCE, use forever";
 "autoRenewingMonthly" = "Billed monthly";
 "autoRenewingYearly" = "Billed yearly";
 
@@ -429,7 +455,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "retry" = "Retry";
 
 "claimNow" = "Claim Now!";
-"beABetterMuslim" = "Be a better, more productive muslim with Premium!";
+"beABetterMuslim" = "Be a better, more productive muslim with Premium!\n\nPay ONCE - use forever";
 
 "month" = "month";
 "year" = "year";
@@ -442,7 +468,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 
 "welcomePromoTitle1" = "Millions";
 "welcomePromoSubtitle1" = "of dhikrs done";
-"welcomePromoTitle2" = "4.9";
+"welcomePromoTitle2" = "4.9⭐";
 "welcomePromoSubtitle2" = "High-Rated App\n2023";
 "welcomePromoTitle3" = "Tracker";
 "welcomePromoSubtitle3" = "of dhikrs and missed prayers";
@@ -461,9 +487,11 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "afterText2" = "Daily dhikrs";
 "afterText3" = "Healthy muslim habits";
 "afterText4" = "Peace of mind";
-"" = "";
-"" = "";
-"" = "";
+"copy" = "Copy";
+"unlimitedAccess" = "unlimited access";
+"trial3Days" = "FREE 3 DAYS";
+"trialWeek" = "FREE WEEK";
+"russiaPayment" = "How to pay from Russia?";
 "" = "";
 "" = "";
 "" = "";

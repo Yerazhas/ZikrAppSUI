@@ -39,6 +39,6 @@ struct FemaleQazaCalculationView: View {
     }
 }
 
-#Preview {
-    FemaleQazaCalculationView(viewModel: .init(completion: {}))
-}
+//#Preview {
+//    FemaleQazaCalculationView(viewModel: .init(completion: {}))
+//}

@@ -36,7 +36,7 @@ struct SupportPaywallView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.top, 40)
                             VStack(spacing: 15) {
-                                ForEach(viewModel.products, id: \.skProduct?.productIdentifier) { product in
+                                ForEach(viewModel.products, id: \.product.skProduct?.productIdentifier) { product in
                                     SupportProductButtonView(
                                         product: product,
                                         isSelected: viewModel.selectedProduct == product,

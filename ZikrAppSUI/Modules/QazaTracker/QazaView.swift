@@ -45,6 +45,6 @@ struct QazaView: View {
     }
 }
 
-#Preview {
-    QazaView(qazaPrayer: .init())
-}
+//#Preview {
+//    QazaView(qazaPrayer: .init())
+//}

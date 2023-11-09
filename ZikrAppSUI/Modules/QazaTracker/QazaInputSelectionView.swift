@@ -116,6 +116,6 @@ struct QazaInputSelectionView: View {
 
 extension QazaInputSelectionView: Hapticable {}
 
-#Preview {
-    QazaInputSelectionView()
-}
+//#Preview {
+//    QazaInputSelectionView()
+//}

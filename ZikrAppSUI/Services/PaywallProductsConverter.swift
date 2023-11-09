@@ -9,7 +9,7 @@ import Factory
 import Qonversion
 
 final class PaywallProductsConverter {
-    func convertByExpensive(products: [Qonversion.Product]) -> [PaywallProduct] {
+    func convertByExpensive(products: [PurchasingProduct]) -> [PaywallProduct] {
         if products.isEmpty {
             return []
         }
@@ -19,7 +19,7 @@ final class PaywallProductsConverter {
         formatter.maximumFractionDigits = 2
 
         if let product = products.first {
-            formatter.locale = product.skProduct?.priceLocale
+            formatter.locale = product.priceLocale
         }
 
         let mostExpensiveProduct = products.filter { $0.type != .oneTime}.sorted { lhs, rhs in
@@ -34,7 +34,7 @@ final class PaywallProductsConverter {
             var fullPrice: String?
             var isMostPopular: Bool = false
             
-            if product.storeID != mostExpensiveProduct?.storeID,
+            if product.appStoreId != mostExpensiveProduct?.appStoreId,
                product.type != .oneTime,
                let durationInDays = product.duration.inDays,
                let mostExpensiveDailyPrice = mostExpensiveProduct?.dailyPrice,
@@ -49,7 +49,13 @@ final class PaywallProductsConverter {
                 fullPrice = formatter
                     .string(from: mostExpensiveDailyPrice.multiplying(by: NSDecimalNumber(value: durationInDays)))
             }
-            return PaywallProduct(product: product, fullPrice: fullPrice, isMostPopular: isMostPopular, discount: discount)
+            return PaywallProduct(
+                product: product,
+                fullPrice: fullPrice,
+                hasTrial: product.trialDuration != .notAvailable,
+                isMostPopular: isMostPopular,
+                discount: discount
+            )
         }
     }
 }
@@ -57,88 +63,5 @@ final class PaywallProductsConverter {
 extension Container {
     static let paywallProductsConverter = Factory<PaywallProductsConverter> {
         .init()
-    }
-}
-
-struct PaywallProduct {
-    let localizedPeriod: String
-    let localizedPeriodLength: String
-    let duration: Qonversion.ProductDuration
-    let prettyPrice: String
-    let subtitle: String?
-    let isMostPopular: Bool
-    let fullPrice: String?
-    let discount: String?
-    let product: Qonversion.Product
-
-    init(
-        product: Qonversion.Product,
-        fullPrice: String?,
-        isMostPopular: Bool = false,
-        discount: String?
-    ) {
-        self.product = product
-        localizedPeriod = product.localizedPeriod ?? ""
-        localizedPeriodLength = product.localizedPeriodLength ?? ""
-        duration = product.duration
-        prettyPrice = product.prettyPrice
-        subtitle = product.subscriptionDescription
-        self.isMostPopular = isMostPopular
-        self.fullPrice = fullPrice
-        self.discount = discount
-    }
-
-    func getMultipliedPrice(by amount: NSDecimalNumber) -> String? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 2
-        let price = product.skProduct?.price ?? 0.0
-        return formatter.string(from: price.multiplying(by: amount))
-    }
-}
-
-extension PaywallProduct: Equatable {
-    static func == (_ lhs: PaywallProduct, _ rhs: PaywallProduct) -> Bool {
-        lhs.product.storeID == rhs.product.storeID
-    }
-}
-
-extension Qonversion.Product {
-    public var dailyPrice: NSDecimalNumber? {
-        guard let durationInDays = duration.inDays else {
-            return nil
-        }
-        let behavior = NSDecimalNumberHandler(
-            roundingMode: .down,
-            scale: 2,
-            raiseOnExactness: false,
-            raiseOnOverflow: false,
-            raiseOnUnderflow: false,
-            raiseOnDivideByZero: false
-        )
-
-        return skProduct?.price.dividing(
-            by: NSDecimalNumber(decimal: Decimal(durationInDays)),
-            withBehavior: behavior
-        )
-    }
-}
-
-extension Qonversion.ProductDuration {
-    public var inDays: Int? {
-        switch self {
-        case .durationWeekly:
-            return 7
-        case .durationMonthly:
-            return 30
-        case .duration3Months:
-            return 30 * 3
-        case .duration6Months:
-            return 30 * 6
-        case .durationAnnual:
-            return 365
-        case .durationLifetime, .durationUnknown:
-            return nil
-        }
     }
 }

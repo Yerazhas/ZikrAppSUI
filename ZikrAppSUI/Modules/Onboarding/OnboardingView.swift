@@ -22,7 +22,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Color(.paleGray)
+            Color.paleGray
                 .ignoresSafeArea()
             ZStack {
                 TabView(selection: $currentPage) {
@@ -33,6 +33,7 @@ struct OnboardingView: View {
                     OnboardingPageView(title: "onboarding_title_4", subtitle: nil) {
                         BeforeAndAfterView()
                     }
+                    .tag(pagesData.count)
                 }
                 .animation(.default)
                 .tabViewStyle(.page(indexDisplayMode: .always))
@@ -47,7 +48,7 @@ struct OnboardingView: View {
                         ButtonView(
                             action: {
                                 hapticLight()
-                                if currentPage < pagesData.count - 1 && pagesData.count > 1 {
+                                if currentPage < pagesData.count + 1 - 1 && pagesData.count + 1 > 1 { // + 1 is for additional page in the end
                                     currentPage += 1
                                 } else {
                                     completion()

@@ -19,11 +19,14 @@ struct QazaContainerView: View {
     }
 
     var body: some View {
-        if didSetUpQaza {
-            QazaTrackerView(out: out)
-        } else {
-            QazaInputSelectionView()
+        Group {
+            if didSetUpQaza {
+                QazaTrackerView(out: out)
+            } else {
+                QazaInputSelectionView()
+            }
         }
+        .navigationBarHidden(true)
     }
 }
 

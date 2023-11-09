@@ -43,8 +43,13 @@ struct PaywallView: View {
                                 .frame(width: 18, height: 18)
                                 Spacer()
                             }
-                            Image("premium-logo")
-                                .padding(.top, -40)
+//                            Image("premium-logo")
+//                                .padding(.top, -40)
+                            Text("beABetterMuslim".localized(language))
+                                .bold()
+                                .font(.title2)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 20)
                             VStack {
                                 ForEach(viewModel.benefits, id: \.self) { benefit in
                                     IconTitleView(title: benefit.localized(language))
@@ -54,7 +59,7 @@ struct PaywallView: View {
                             .padding(.leading, 40)
                             .padding(.top, 20)
                             VStack(spacing: 15) {
-                                ForEach(viewModel.products, id: \.product.storeID) { product in
+                                ForEach(viewModel.products, id: \.product.appStoreId) { product in
                                     ProductButtonView(
                                         product: product,
                                         isSelected: viewModel.selectedProduct == product,
@@ -143,7 +148,7 @@ struct PaywallView: View {
 
     private var purchaseButton: some View {
         PrimaryButtonView(
-            title: "purchase".localized(language),
+            title: "continue".localized(language),
             isLoading: viewModel.isButtonLoading,
             action: {
                 viewModel.purchase()

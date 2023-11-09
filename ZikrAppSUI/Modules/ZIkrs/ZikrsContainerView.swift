@@ -20,7 +20,7 @@ enum ZikrsContainerViewOutCmd {
 struct ZikrsContainerView: View {
     let out: ZikrsContainerViewOut
     @Environment(\.colorScheme) private var colorScheme
-    @State private var contentType: ZikrType = .zikr
+    @State private var contentType: ZikrType = .dua
     @Injected(Container.localizationService) private var localizationService
     @Injected(Container.analyticsService) private var analyticsService
     @AppStorage("language") private var language = LocalizationService.shared.language
@@ -63,6 +63,7 @@ struct ZikrsContainerView: View {
             }
             counterButton()
             .padding()
+            .padding(.bottom, 40)
         }
     }
 

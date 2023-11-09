@@ -11,12 +11,24 @@ import RealmSwift
 final class AppStatsService {
     @UserDefaultsValue(key: .showsRI, defaultValue: false)
     var showsRI: Bool
+    @UserDefaultsValue(key: .isLifetimeActivationEnabled, defaultValue: false)
+    var isLifetimeActivationEnabled: Bool
+    @UserDefaultsValue(key: .isActivatedByCode, defaultValue: false)
+    var isActivatedByCode: Bool
 
     func setShowsRI(to showsRI: Bool) {
         self.showsRI = showsRI
     }
 
-    var offering: QonversionOffering = .paywall11
+    func setLifetimeActivationAvailability(to isAvailable: Bool) {
+        self.isLifetimeActivationEnabled = isAvailable
+    }
+
+    func setActivationByCode(to isActivated: Bool) {
+        self.isActivatedByCode = isActivated
+    }
+
+    var offering: String = QonversionOffering.paywall11.rawValue
 
     var halfDiscountOffering: QonversionHalfDiscountOffering = .halfDiscount
 
@@ -131,6 +143,13 @@ final class AppStatsService {
         didSeeWelcome = true
     }
 
+    @UserDefaultsValue(key: .didSeeRussiaPaymentAlert, defaultValue: false)
+    var didSeeRussiaPaymentAlert: Bool
+
+    func didSeeRussiaPaymentAlertPage() {
+        didSeeRussiaPaymentAlert = true
+    }
+
     @UserDefaultsValue(key: .didSeeOnboarding, defaultValue: false)
     var didSeeOnboarding: Bool
 
@@ -199,6 +218,8 @@ final class AppStatsService {
         didSeeKaspiOnboarding = false
         didSeeReviewRequest = false
         didSeeWelcome = false
+//        didSeePalestineOnboarding = false
+        isActivatedByCode = false
     }
 
     // MARK: - JSON tranfferring -
@@ -208,6 +229,13 @@ final class AppStatsService {
 
     func didFixTextsInVersion1_8Action() {
         didFixTextsInVersion1_8 = true
+    }
+
+    @UserDefaultsValue(key: .didFixTextsInVersion1_9, defaultValue: false)
+    var didFixTextsInVersion1_9: Bool
+
+    func didFixTextsInVersion1_9Action() {
+        didFixTextsInVersion1_9 = true
     }
     
     func isFreeProgressTrackingAvailable() -> Bool {

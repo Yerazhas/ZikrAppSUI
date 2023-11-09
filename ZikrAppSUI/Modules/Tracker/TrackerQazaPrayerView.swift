@@ -27,10 +27,10 @@ struct TrackerQazaPrayerView: View {
                 let progress = viewModel.qazaPrayer.getCurrentProgress(for: date)
                 let doneAmount = progress?.0 ?? 0
                 let targetAmount = progress?.1 ?? viewModel.qazaPrayer.targetAmount
-
+                let min = min(CGFloat(Double(doneAmount) / Double(targetAmount)), 1.0)
                 Color.systemGreen
                     .cornerRadius(10)
-                    .frame(width: min(CGFloat(Double(doneAmount) / Double(targetAmount)), 1.0) * gr.size.width)
+                    .frame(width: min == 0.0 ? 0 : max(min, 0.04) * gr.size.width)
                 HStack {
                     Text(viewModel.qazaPrayer.title.localized(language))
                         .font(.system(size: 14))
@@ -51,6 +51,6 @@ struct TrackerQazaPrayerView: View {
     }
 }
 
-#Preview {
-    TrackerQazaPrayerView(viewModel: .init(qazaPrayer: .init(), date: .init()), date: .init())
-}
+//#Preview {
+//    TrackerQazaPrayerView(viewModel: .init(qazaPrayer: .init(), date: .init()), date: .init())
+//}

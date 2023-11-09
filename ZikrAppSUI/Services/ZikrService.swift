@@ -58,6 +58,42 @@ final class ZikrService {
         }
     }
 
+    func addPalestineDuas() {
+        do {
+            let realm = try Realm()
+            let jsonUrl = Bundle.main.url(forResource: "duas", withExtension: "json")!
+            let data = try Data(contentsOf: jsonUrl)
+            let duas = try JSONDecoder().decode([Dua].self, from: data)
+            let realmDuas = realm.objects(Dua.self)
+            let tempRealmDuas = realmDuas
+            try realm.write {
+                for realmDua in realmDuas {
+                    realm.delete(realmDua)
+                }
+                for dua in duas {
+                    dua.translationKZ = "\(dua.title).translation".localized(.kz)
+                    dua.translationRU = "\(dua.title).translation".localized(.ru)
+                    dua.translationEN = "\(dua.title).translation".localized(.en)
+
+                    dua.transcriptionKZ = "\(dua.title).transcription".localized(.kz)
+                    dua.transcriptionRU = "\(dua.title).transcription".localized(.ru)
+                    dua.transcriptionEN = "\(dua.title).transcription".localized(.en)
+                    if let foundDua = tempRealmDuas.first(where: { $0.id == dua.id }) {
+                        dua.dailyTargetAmountAmount = foundDua.dailyTargetAmountAmount
+                        dua.currentDoneCount = foundDua.currentDoneCount
+                        dua.totalDoneCount = foundDua.totalDoneCount
+                        dua.dailyProgress = foundDua.dailyProgress
+                    }
+
+                    realm.add(dua)
+                }
+                duas.forEach { realm.add($0) }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     func fixTextsInVersion1_8() {
         do {
             let realm = try Realm()
@@ -69,6 +105,24 @@ final class ZikrService {
             if let dua = realm.objects(Dua.self).first(where: { $0.id == "duaOfYunus" }) {
                 try realm.write {
                     dua.arabicTitle = "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِين"
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func fixTextsInVersion1_9_0() {
+        do {
+            let realm = try Realm()
+            if let zikr = realm.objects(Zikr.self).first(where: { $0.id == "lailahaillaantalMalikulHaqqulMubin" }) {
+                try realm.write {
+                    zikr.arabicTitle = "لا إِلَٰهَ إِلَّا أَنتَ المَلِكُ الحَقُّ المُبِينْ"
+                }
+            }
+            if let dua = realm.objects(Dua.self).first(where: { $0.id == "lailahaillaantalMalikulHaqqulMubin" }) {
+                try realm.write {
+                    dua.arabicTitle = "لا إِلَٰهَ إِلَّا أَنتَ المَلِكُ الحَقُّ المُبِينْ"
                 }
             }
         } catch {

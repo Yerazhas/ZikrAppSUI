@@ -52,19 +52,25 @@ struct TrackerView: View {
                         {
                             TrackerEmptyView(isToday: viewModel.currentDate.isToday, action: addZikrs)
                         } else {
+                            if viewModel.shouldShowBanner {
+                                PremiumBannerView {
+                                    viewModel.openPaywall()
+                                }
+                                .padding(.horizontal, 10)
+                            }
                             HStack {
                                 Text("zikrs".localized(language))
                                     .font(.system(size: 16))
                                     .bold()
                                 Spacer()
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 10)
                             if let zikrs = viewModel.zikrs {
                                 ForEach(zikrs) { zikr in
                                     VStack(spacing: 0) {
                                         TrackerZikrView(zikr: zikr, date: viewModel.currentDate)
                                             .frame(height: 70)
-                                            .padding(.horizontal)
+                                            .padding(.horizontal, 10)
                                             .onTapGesture {
                                                 viewModel.openZikr(zikr)
                                             }
@@ -87,7 +93,7 @@ struct TrackerView: View {
                                     VStack {
                                         TrackerZikrView(zikr: dua, date: viewModel.currentDate)
                                             .frame(height: 70)
-                                            .padding(.horizontal)
+                                            .padding(.horizontal, 10)
                                             .onTapGesture {
                                                 viewModel.openZikr(dua)
                                             }
@@ -106,7 +112,7 @@ struct TrackerView: View {
                                     VStack {
                                         TrackerWirdView(wird: wird, date: viewModel.currentDate)
                                             .frame(height: 70)
-                                            .padding(.horizontal)
+                                            .padding(.horizontal, 10)
                                             .onTapGesture {
                                                 viewModel.openWird(wird)
                                             }
@@ -135,13 +141,13 @@ struct TrackerView: View {
                                     }
 
                                 }
-                                .padding(.horizontal)
+                                .padding(.horizontal, 10)
                                 .padding(.top)
                                 ForEach(viewModel.qazaPrayers, id: \.qazaPrayer.id) { vm in
                                     VStack {
                                         TrackerQazaPrayerView(viewModel: vm, date: viewModel.currentDate)
                                             .frame(height: 70)
-                                            .padding(.horizontal)
+                                            .padding(.horizontal, 10)
                                             .onTapGesture {
                                                 guard viewModel.currentDate.isToday else {
                                                     viewModel.hapticStrong()
@@ -184,36 +190,63 @@ struct TrackerView: View {
             .onAppear(perform: {
                 viewModel.onAppear()
             })
-            .alert(
-                "enterTodaysProgress".localized(language),
-                isPresented: $isZikrAmountAlertPresented
-            ) {
-                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
-                    .keyboardType(.decimalPad)
-                Button("ok".localized(language), action: {
+            .textFieldAlert(
+                isPresented: $isZikrAmountAlertPresented,
+                title: "enterTodaysProgress".localized(language),
+                text: $viewModel.zikrProgress,
+                placeholder: "dailyZikrPlaceholder".localized(language),
+                action: { _ in
                     viewModel.zikrDidLongTap()
-                })
-            } message: {}
-                .alert(
-                    "enterDailyZikrAmount".localized(language),
-                    isPresented: $isWirdAmountAlertPresented
-                ) {
-                    TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
-                        .keyboardType(.decimalPad)
-                    Button("ok".localized(language), action: {
-                        viewModel.wirdDidLongTap()
-                    })
-                } message: {}
-                .alert(
-                    "enterDailyZikrAmount".localized(language),
-                    isPresented: $isDuaAmountAlertPresented
-                ) {
-                    TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
-                        .keyboardType(.decimalPad)
-                    Button("ok".localized(language), action: {
-                        viewModel.duaDidLongTap()
-                    })
-                } message: {}
+                }
+            )
+//            .alert(
+//                "enterTodaysProgress".localized(language),
+//                isPresented: $isZikrAmountAlertPresented
+//            ) {
+//                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
+//                    .keyboardType(.decimalPad)
+//                Button("ok".localized(language), action: {
+//                    viewModel.zikrDidLongTap()
+//                })
+//            } message: {}
+            .textFieldAlert(
+                isPresented: $isWirdAmountAlertPresented,
+                title: "enterDailyZikrAmount".localized(language),
+                text: $viewModel.zikrProgress,
+                placeholder: "dailyZikrPlaceholder".localized(language),
+                action: { _ in
+                    viewModel.wirdDidLongTap()
+                }
+            )
+//                .alert(
+//                    "enterDailyZikrAmount".localized(language),
+//                    isPresented: $isWirdAmountAlertPresented
+//                ) {
+//                    TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
+//                        .keyboardType(.decimalPad)
+//                    Button("ok".localized(language), action: {
+//                        viewModel.wirdDidLongTap()
+//                    })
+//                } message: {}
+            .textFieldAlert(
+                isPresented: $isDuaAmountAlertPresented,
+                title: "enterDailyZikrAmount".localized(language),
+                text: $viewModel.zikrProgress,
+                placeholder: "dailyZikrPlaceholder".localized(language),
+                action: { _ in
+                    viewModel.duaDidLongTap()
+                }
+            )
+//                .alert(
+//                    "enterDailyZikrAmount".localized(language),
+//                    isPresented: $isDuaAmountAlertPresented
+//                ) {
+//                    TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.zikrProgress)
+//                        .keyboardType(.decimalPad)
+//                    Button("ok".localized(language), action: {
+//                        viewModel.duaDidLongTap()
+//                    })
+//                } message: {}
             .sheet(isPresented: $isStatisticsPresented) {
                 if #available(iOS 16.0, *) {
                     StatisticsView {
@@ -263,19 +296,30 @@ struct TrackerView: View {
                     isAddZikrsViewPresented = false
                 }
             }
-            .alert(
-                "enterDailyZikrAmount".localized(language),
-                isPresented: $isAmountAlertPresented
-            ) {
-                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
-                    .keyboardType(.decimalPad)
-                Button("ok".localized(language), action: {
+            .textFieldAlert(
+                isPresented: $isAmountAlertPresented,
+                title: "enterDailyZikrAmount".localized(language),
+                text: $viewModel.dailyAmount,
+                placeholder: "dailyZikrPlaceholder".localized(language),
+                action: { _ in
                     viewModel.setAmount()
-                })
-            } message: {}
+                }
+            )
+//            .alert(
+//                "enterDailyZikrAmount".localized(language),
+//                isPresented: $isAmountAlertPresented
+//            ) {
+//                TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
+//                    .keyboardType(.decimalPad)
+//                Button("ok".localized(language), action: {
+//                    viewModel.setAmount()
+//                })
+//            } message: {}
             plusButton()
                 .padding()
+                .padding(.bottom, 40)
         }
+        .navigationBarHidden(true)
     }
 
     @ViewBuilder

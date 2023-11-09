@@ -24,7 +24,7 @@ struct KaspiPaywallView: View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 15) {
-                    ForEach(products, id: \.product.storeID) { product in
+                    ForEach(products, id: \.product.appStoreId) { product in
                         ProductButtonView(
                             product: product,
                             isSelected: selectedProduct == product,

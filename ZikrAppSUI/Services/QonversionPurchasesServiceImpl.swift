@@ -12,6 +12,7 @@ enum QonversionOffering: String {
     case main = "paywall_1"
     case paywall11 = "paywall_1.1"
     case paywallSupport = "paywall_support"
+    case paywallPremiumBanner = "paywall_premium_banner"
 }
 
 enum QonversionHalfDiscountOffering: String {
@@ -20,9 +21,9 @@ enum QonversionHalfDiscountOffering: String {
 }
 
 final class QonversionPurchasesServiceImpl: PurchasesService {
-    private(set) var products: [Qonversion.Product] = []
+    private(set) var products: [PurchasingProduct] = []
 
-    func getProducts(offeringId: QonversionOffering) async throws -> [Qonversion.Product] {
+    func getProducts(offeringId: String) async throws -> [PurchasingProduct] {
         try await withCheckedThrowingContinuation { [weak self] continuation in
             Qonversion.shared().offerings { offerings, error in
                 if let error {
@@ -30,38 +31,23 @@ final class QonversionPurchasesServiceImpl: PurchasesService {
                     continuation.resume(throwing: fetchProductsError)
                     return
                 }
-                if let products = offerings?.offering(for: offeringId.rawValue)?.products {
+                if let products = offerings?.offering(for: offeringId)?.products {
                     if products.isEmpty {
                         let noProductsError = PurchasesError.noProducts
                         continuation.resume(throwing: noProductsError)
                         return
                     }
-                    self?.products = products.reversed()
-                    continuation.resume(returning: products.reversed())
-                } else {
-                    let noProductsError = PurchasesError.noProducts
-                    continuation.resume(throwing: noProductsError)
-                }
-            }
-        }
-    }
-
-    func getHalfDiscountProduct(offeringId: QonversionHalfDiscountOffering) async throws -> [Qonversion.Product] {
-        try await withCheckedThrowingContinuation { [weak self] continuation in
-            Qonversion.shared().offerings { offerings, error in
-                if let error {
-                    let fetchProductsError = PurchasesError.fetchProductsError(underlying: error)
-                    continuation.resume(throwing: fetchProductsError)
-                    return
-                }
-                if let products = offerings?.offering(for: offeringId.rawValue)?.products {
-                    if products.isEmpty {
-                        let noProductsError = PurchasesError.noProducts
-                        continuation.resume(throwing: noProductsError)
-                        return
+                    let productIds = products.map(\.qonversionID)
+                    Qonversion.shared().checkTrialIntroEligibility(productIds) { [weak self] result, error in
+                        if let error {
+                            print(error.localizedDescription)
+                        }
+                        let tempProducts = products.map { product -> PurchasingProduct in
+                            PurchasingProduct(qonversionProduct: product, introEligibility: result[product.qonversionID])
+                        }
+                        self?.products = tempProducts
+                        continuation.resume(returning: tempProducts)
                     }
-                    self?.products = products
-                    continuation.resume(returning: products)
                 } else {
                     let noProductsError = PurchasesError.noProducts
                     continuation.resume(throwing: noProductsError)
@@ -238,25 +224,25 @@ public enum PurchasesError: Error {
     }
 }
 
-extension Qonversion.Product {
+extension PurchasingProduct {
     var localizedPeriod: String? {
         if type == .oneTime {
             return "lifetime".localized(LocalizationService.shared.language)
         } else {
-            return skProduct?.subscriptionPeriod?.periodString
+            return product.skProduct?.subscriptionPeriod?.periodString
         }
     }
 
     var localizedPeriodLength: String? {
         guard type != .oneTime else { return nil }
-        return skProduct?.subscriptionPeriod?.periodLengthString
+        return product.skProduct?.subscriptionPeriod?.periodLengthString
     }
 
     var subscriptionDescription: String? {
         if type == .oneTime {
             return "oneTimePayment".localized(LocalizationService.shared.language)
         } else {
-            return skProduct?.subscriptionPeriod?.subscriptionDescription
+            return product.skProduct?.subscriptionPeriod?.subscriptionDescription
         }
     }
 }

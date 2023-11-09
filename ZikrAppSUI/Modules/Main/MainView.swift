@@ -15,6 +15,7 @@ enum MainOutCmd {
     case openAddNew
     case openPaywall
     case openCounter
+    case openRussiaPaymentTutorial
 }
 
 struct MainView: View {
@@ -66,10 +67,12 @@ struct MainView: View {
                 .tabItem {
                     Label("Qaza Tracker", image: "ic-qaza")
                 }
-            SettingsView { cmd in
+            ProfileView { cmd in
                 switch cmd {
                 case .openPaywall:
                     out(.openPaywall)
+                case .openRussiaPaymentTutorial:
+                    out(.openRussiaPaymentTutorial)
                 }
             }
             .tag(3)
@@ -77,6 +80,8 @@ struct MainView: View {
                 Label("Profile", image: "ic-profile")
             }
         }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .animation(.default)
         .onChange(of: currentIndex) { newIndex in
             hapticLight()

@@ -26,6 +26,6 @@ struct WarningView: View {
     }
 }
 
-#Preview {
-    WarningView(text: "Random text!")
-}
+//#Preview {
+//    WarningView(text: "Random text!")
+//}

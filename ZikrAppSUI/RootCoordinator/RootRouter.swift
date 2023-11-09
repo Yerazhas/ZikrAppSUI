@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Factory
+import SafariServices
 
 protocol RootRouter: AnyObject {
     func openSplash(completion: @escaping () -> Void)
@@ -17,7 +18,6 @@ protocol RootRouter: AnyObject {
     func openZikr(_ zikr: Zikr,  _ out: @escaping ZikrTapOut)
     func openDua(_ dua: Dua,  _ out: @escaping ZikrTapOut)
     func openWird(_ wird: Wird,  _ out: @escaping WirdTapOut)
-    func openSettings(out: @escaping SettingsOut)
     func openLanguageSetupAlert(completion: @escaping () -> Void)
     func openAddNew(out: @escaping AddNewOut)
     func openPaywall(out: @escaping PaywallViewOut)
@@ -26,6 +26,8 @@ protocol RootRouter: AnyObject {
     func openKaspiOnboarding(out: @escaping () -> Void)
     func openReviewRequest(completion: @escaping () -> Void)
     func openCounter(out: @escaping CounterOut)
+    func openRussiaPaymentAlert(openTutorialAction: @escaping () -> Void)
+    func openSafariBrowserVC(url: URL)
 
     func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?)
     func showInfoAlert(message: String)
@@ -83,13 +85,6 @@ final class RootRouterImpl: RootRouter {
         let view = WirdTapView(wird: wird, out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
-        nc?.present(vc, animated: true)
-    }
-
-    func openSettings(out: @escaping SettingsOut) {
-        let view = SettingsView(out: out)
-        let vc = UIHostingController(rootView: view)
-        vc.modalPresentationStyle = .pageSheet
         nc?.present(vc, animated: true)
     }
 
@@ -184,6 +179,24 @@ final class RootRouterImpl: RootRouter {
         let view = CounterView(out: out)
         let vc = UIHostingController(rootView: view)
         vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+    }
+
+    func openRussiaPaymentAlert(openTutorialAction: @escaping () -> Void) {
+        let message = "• Остаток на счете учетной записи Apple\n•Оплата со счета мобильного телефона (Билайн, МТС)"
+        let alertVC = UIAlertController(title: "Как оплатить из России?", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Понятно", style: .default)
+        let openTutorialAction = UIAlertAction(title: "Открыть инструкцию", style: .default) { _ in
+            openTutorialAction()
+        }
+        alertVC.addAction(openTutorialAction)
+        alertVC.addAction(okAction)
+        nc?.present(alertVC, animated: true)
+    }
+
+    func openSafariBrowserVC(url: URL) {
+        let vc = SFSafariViewController(url: url)
+        vc.modalPresentationStyle = .formSheet
         nc?.present(vc, animated: true)
     }
 

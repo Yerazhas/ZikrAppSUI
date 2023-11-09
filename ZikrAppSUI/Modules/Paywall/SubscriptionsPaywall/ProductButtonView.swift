@@ -23,7 +23,7 @@ struct ProductButtonView: View {
             } label: {
                 HStack {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("ZikrApp \(product.localizedPeriod ?? "")")
+                        Text(product.getTitle(language: language))
                             .font(.title3)
                             .bold()
                             .foregroundColor(isSelected ? .white : .primary)
@@ -70,6 +70,7 @@ struct ProductButtonView: View {
                         lineWidth: 2
                     )
             )
+
             if let discount = product.discount {
                 badgeView(title: "-\(discount)")
                     .offset(x: 0, y: -12)

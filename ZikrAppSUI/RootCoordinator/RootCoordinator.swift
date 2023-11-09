@@ -63,11 +63,13 @@ final class RootCoordinator {
                     }
                 }
             case .openWird(let wird):
+                UIPageControl.appearance().isUserInteractionEnabled = false
                 self.router.openWird(wird) { cmd in
                     switch cmd {
                     case .close:
                         self.router.dismissPresentedVC(nil)
                         self.requestReviewIfPossible()
+                        UIPageControl.appearance().isUserInteractionEnabled = true
                     case .delete(let action):
                         self.router.showAlert(message: "deleteWird".localized(self.language), action: action)
                     case .openPaywall:
@@ -125,6 +127,8 @@ final class RootCoordinator {
                         self.router.dismissPresentedVC(nil)
                     }
                 }
+            case .openRussiaPaymentTutorial:
+                self.openRussiaPaymentSafariVC()
             }
         }
         if !appStatsService.didSetAppLang {
@@ -150,16 +154,22 @@ final class RootCoordinator {
             }
             appStatsService.didSeeWelcomePage()
         } else {
-            // Removed whats new page for a while
-//            if !appStatsService.didSeeWhatsNew {
-//                router.openWhatsNew {
-//                    self.router.dismissPresentedVC {
-//                        self.openPaywallIfNeeded()
-//                    }
-//                }
-//                appStatsService.didSeeWhatsNewPage()
-//            }
+            presentRussiaPaymentAlert()
         }
+    }
+
+    private func presentRussiaPaymentAlert() {
+        if Locale.current.regionCode == "RU" && !appStatsService.didSeeRussiaPaymentAlert {
+            router.openRussiaPaymentAlert { [weak self] in
+                self?.openRussiaPaymentSafariVC()
+            }
+            appStatsService.didSeeRussiaPaymentAlertPage()
+        }
+    }
+
+    private func openRussiaPaymentSafariVC() {
+        guard let url = URL(string: "https://appleinsider.ru/tips-tricks/kak-polozhit-dengi-na-apple-id-luchshie-sposoby.html") else { return }
+        router.openSafariBrowserVC(url: url)
     }
 
     private func requestReviewIfPossible() {

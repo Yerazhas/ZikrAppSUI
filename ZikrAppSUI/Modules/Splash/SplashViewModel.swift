@@ -34,6 +34,9 @@ final class SplashViewModel: ObservableObject {
             try await remoteConfigService.fetchAndActivate()
             let appConfig = remoteConfigService.feature(AppConfig.self, by: "app_config")
             appStatsService.setShowsRI(to: appConfig?.should_sri ?? false)
+            appStatsService.setLifetimeActivationAvailability(to: appConfig?.is_lifetime_activation_available ?? false)
+            appStatsService.offering = appConfig?.paywall ?? QonversionOffering.paywall11.rawValue
+            print("sdfsdf")
         } catch {
             print(error.localizedDescription)
         }

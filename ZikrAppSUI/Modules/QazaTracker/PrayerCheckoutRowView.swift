@@ -16,9 +16,9 @@ struct PrayerCheckoutRowView: View {
     }
 }
 
-#Preview {
-    PrayerCheckoutRowView(viewModel: .init(count: 0, title: "Default"))
-}
+//#Preview {
+//    PrayerCheckoutRowView(viewModel: .init(count: 0, title: "Default"))
+//}
 
 struct TitledStepperView: View {
     let title: String

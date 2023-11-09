@@ -18,10 +18,10 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
     }
     @Injected(Container.purchasesService) private var purchasesService
     @Injected(Container.analyticsService) private var analyticsService
-    @Published private(set) var products: [Qonversion.Product] = []
+    @Published private(set) var products: [PurchasingProduct] = []
     @Published var state: State = .loading
     @Published var isButtonLoading: Bool = false
-    @Published private(set) var selectedProduct: Qonversion.Product?
+    @Published private(set) var selectedProduct: PurchasingProduct?
     let completion: () -> Void
 
     init(completion: @escaping () -> Void) {
@@ -32,7 +32,7 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
         Task {
             do {
                 self.state = .loading
-                self.products = try await purchasesService.getProducts(offeringId: .paywallSupport)
+                self.products = try await purchasesService.getProducts(offeringId: QonversionOffering.paywallSupport.rawValue)
                 self.selectedProduct = self.products.dropLast().dropLast().last
                 self.state = .loaded
             } catch {
@@ -41,26 +41,26 @@ final class SupportPaywallViewModel: ObservableObject, LoadingButtonViewModel {
         }
     }
 
-    func selectProduct(_ product: Qonversion.Product) {
+    func selectProduct(_ product: PurchasingProduct) {
         hapticLight()
         selectedProduct = product
     }
 
     func purchase() {
         guard let selectedProduct else { return }
-        analyticsService.trackDonation(productId: selectedProduct.storeID)
+        analyticsService.trackDonation(productId: selectedProduct.appStoreId)
         Task {
             do {
                 setButtonLoading(to: true)
-                let isSuccessful = try await purchasesService.purchase(product: selectedProduct)
+                let isSuccessful = try await purchasesService.purchase(product: selectedProduct.product)
                 setButtonLoading(to: false)
                 if isSuccessful {
                     completion()
-                    analyticsService.trackDonationSuccess(productId: selectedProduct.storeID)
+                    analyticsService.trackDonationSuccess(productId: selectedProduct.appStoreId)
                 }
             } catch {
                 setButtonLoading(to: false)
-                analyticsService.trackDonationError(productId: selectedProduct.storeID, error: error.localizedDescription)
+                analyticsService.trackDonationError(productId: selectedProduct.appStoreId, error: error.localizedDescription)
             }
         }
     }

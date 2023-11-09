@@ -1,14 +1,12 @@
 //
-//  SettingsViewModel.swift
+//  ProfileViewModel.swift
 //  ZikrAppSUI
 //
-//  Created by Yerassyl Zhassuzakhov on 21.01.2023.
+//  Created by Yerassyl Zhassuzakhov on 24.10.2023.
 //
 
-import Foundation
 import Combine
-import UserNotifications
-import UIKit
+import Foundation
 import SwiftUI
 import Factory
 import AudioToolbox
@@ -24,36 +22,39 @@ enum SoundState {
     case on(Int)
 }
 
+typealias ProfileOut = (ProfileOutCmd) -> Void
+enum ProfileOutCmd {
+    case openPaywall
+    case openRussiaPaymentTutorial
+}
+
 @MainActor
-final class SettingsViewModel: ObservableObject {
+final class ProfileViewModel: ObservableObject {
     @Published var isFirstDateSet: Bool = false
     @Published var firstDate: Date = .init()
     @Published var isSecondDateSet: Bool = false
     @Published var secondDate: Date = .init()
     @Published var isSoundEnabled: Bool = false
     @Published var soundId: Int = 0
+    @Published var shouldShowBanner: Bool = false
+    let out: ProfileOut
 
     @AppStorage(.firstNotificationDate) var firstNotificationDate: Data?
     @AppStorage(.secondNotificationDate) var secondNotificationDate: Data?
-    @Injected(Container.analyticsService) private var analyticsService
-    @Injected(Container.subscriptionSyncService) private var subscriptionSyncService
     @Injected(Container.appStatsService) private var appStatsService
     @Injected(Container.purchasesService) private var purchasesService
+    @Injected(Container.subscriptionSyncService) private var subscriptionSyncService
     @Injected(Container.paywallProductsConverter) private var paywallProductsConverter
-    let out: SettingsOut
-    private var cancellables = Set<AnyCancellable>()
+    @Injected(Container.analyticsService) private var analyticsService
+    @Injected(Container.subscriptionSyncService) private var subscriptionService
+
     private var firstNotificationIds: [String] = []
     private var secondNotificationIds: [String] = []
     private var firstDateString: String?
     private var secondDateString: String?
-
-    @Published var error: PurchasesError?
-    @Published var shouldShowLoader: Bool = false
-//    @Published var discountedProduct: PaywallProduct?
-
     private var cancellable: AnyCancellable?
 
-    init(out: @escaping SettingsOut) {
+    init(out: @escaping ProfileOut) {
         self.out = out
         if let firstNotificationDate, let time = try? JSONDecoder().decode(NotificationTime.self, from: firstNotificationDate) {
             var dateComponents = DateComponents()
@@ -79,49 +80,57 @@ final class SettingsViewModel: ObservableObject {
 
         isSoundEnabled = appStatsService.isSoundEnabled
         soundId = appStatsService.soundId
-//        cancellable = subscriptionSyncService.isSubscribedPublisher.sink { [weak self] isSubscribed in
-//            self?.getDiscountPaywallProductBasedOnSubscription(isSubscribed)
-//        }
-//        getDiscountPaywallProductBasedOnSubscription(subscriptionSyncService.isSubscribed)
+        shouldShowBanner = subscriptionService.isSubscribed
+        cancellable = subscriptionService.isSubscribedPublisher.sink { [weak self] isSubscribed in
+            self?.shouldShowBanner = !isSubscribed
+        }
     }
 
-//    private func getDiscountPaywallProductBasedOnSubscription(_ isSubscribed: Bool) {
-//        print(isSubscribed)
-//        guard !isSubscribed else {
-//            discountedProduct = nil
-//            return
-//        }
-//        Task {
-//            do {
-//                let products = try await purchasesService.getHalfDiscountProduct(offeringId: appStatsService.halfDiscountOffering)
-//                print(appStatsService.halfDiscountOffering)
-//                discountedProduct = paywallProductsConverter.convertByExpensive(products: products).first
-//            }
-//        }
-//    }
+    deinit {
+        cancellable = nil
+    }
 
-//    func purchaseDiscountProduct() {
-//        hapticLight()
-//        guard let discountedProduct else { return }
-//        shouldShowLoader = true
-//        analyticsService.trackSubscription(productId: discountedProduct.product.storeID, price: discountedProduct.prettyPrice)
-//        Task {
-//            do {
-//                let isSuccessful = try await purchasesService.purchase(product: discountedProduct.product)
-//                subscriptionSyncService.updateSubscriptionStatus(to: isSuccessful)
-//                error = nil
-//                if isSuccessful {
-//                    self.discountedProduct = nil
-//                    analyticsService.trackSubscriptionSuccess(productId: discountedProduct.product.storeID, price: discountedProduct.prettyPrice)
-//                }
-//                shouldShowLoader = false
-//            } catch let error as PurchasesError {
-//                shouldShowLoader = false
-//                self.error = error
-//                analyticsService.trackSubscriptionError(productId: discountedProduct.product.storeID, error: error.localizedDescription)
-//            }
-//        }
-//    }
+    func reset() {
+        firstNotificationDate = nil
+        secondNotificationDate = nil
+        isFirstDateSet = false
+        isSecondDateSet = false
+    }
+
+    func scheduleFirstNotification() {
+        guard isFirstDateSet else { return }
+        hapticLight()
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: firstDate)
+        var newDateComponents = DateComponents()
+        newDateComponents.hour = dateComponents.hour
+        newDateComponents.minute = dateComponents.minute
+        firstDateString = "\(dateComponents.hour ?? -1):\(dateComponents.minute ?? -1)"
+//        analyticsService.trackNotificationDateSet(firstDate: firstDateString, secondDate: secondDateString)
+        let time = NotificationTime(hour: newDateComponents.hour ?? 0, minute: newDateComponents.minute ?? 0)
+        guard let data = try? JSONEncoder().encode(time) else { return }
+        UserDefaults.standard.set(data, forKey: .firstNotificationDate)
+        scheduleNotification(newDateComponents, isFirst: true)
+    }
+
+    func scheduleSecondNotification() {
+        hapticLight()
+        guard isSecondDateSet else { return }
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: secondDate)
+        var newDateComponents = DateComponents()
+        newDateComponents.hour = dateComponents.hour
+        newDateComponents.minute = dateComponents.minute
+        secondDateString = "\(dateComponents.hour ?? -1):\(dateComponents.minute ?? -1)"
+//        analyticsService.trackNotificationDateSet(firstDate: firstDateString, secondDate: secondDateString)
+        let time = NotificationTime(hour: newDateComponents.hour ?? 0, minute: newDateComponents.minute ?? 0)
+        guard let data = try? JSONEncoder().encode(time) else { return }
+        UserDefaults.standard.set(data, forKey: .secondNotificationDate)
+        scheduleNotification(newDateComponents, isFirst: false)
+    }
+
+    func openRussiaPaymentTutorial() {
+        hapticLight()
+        out(.openRussiaPaymentTutorial)
+    }
 
     func setSound(to state: SoundState) {
         switch state {
@@ -145,47 +154,15 @@ final class SettingsViewModel: ObservableObject {
         }
     }
 
-    func scheduleFirstNotification() {
-        guard isFirstDateSet else { return }
-        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: firstDate)
-        var newDateComponents = DateComponents()
-        newDateComponents.hour = dateComponents.hour
-        newDateComponents.minute = dateComponents.minute
-        firstDateString = "\(dateComponents.hour ?? -1):\(dateComponents.minute ?? -1)"
-        analyticsService.trackNotificationDateSet(firstDate: firstDateString, secondDate: secondDateString)
-        let time = NotificationTime(hour: newDateComponents.hour ?? 0, minute: newDateComponents.minute ?? 0)
-        guard let data = try? JSONEncoder().encode(time) else { return }
-        UserDefaults.standard.set(data, forKey: .firstNotificationDate)
-        scheduleNotification(newDateComponents, isFirst: true)
-    }
-
-    func scheduleSecondNotification() {
-        guard isSecondDateSet else { return }
-        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: secondDate)
-        var newDateComponents = DateComponents()
-        newDateComponents.hour = dateComponents.hour
-        newDateComponents.minute = dateComponents.minute
-        secondDateString = "\(dateComponents.hour ?? -1):\(dateComponents.minute ?? -1)"
-        analyticsService.trackNotificationDateSet(firstDate: firstDateString, secondDate: secondDateString)
-        let time = NotificationTime(hour: newDateComponents.hour ?? 0, minute: newDateComponents.minute ?? 0)
-        guard let data = try? JSONEncoder().encode(time) else { return }
-        UserDefaults.standard.set(data, forKey: .secondNotificationDate)
-        scheduleNotification(newDateComponents, isFirst: false)
-    }
-
-    func reset() {
-        firstNotificationDate = nil
-        secondNotificationDate = nil
-        isFirstDateSet = false
-        isSecondDateSet = false
-    }
-
-    func onAppear() {
-        analyticsService.trackOpenSettings()
-    }
-
     func openPaywall() {
         out(.openPaywall)
+    }
+
+    func activateIfPossible() {
+        if appStatsService.isLifetimeActivationEnabled {
+            appStatsService.isActivatedByCode = true
+            hapticLight()
+        }
     }
 
     func copyQonversionUserIdToClipboard() {
@@ -200,8 +177,8 @@ final class SettingsViewModel: ObservableObject {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
         let content = UNMutableNotificationContent()
-        content.title = NSLocalizedString("notificationTitle", comment: "")
-        content.subtitle = NSLocalizedString("notificationSubtitle", comment: "")
+        content.title = "notificationTitle".localized(LocalizationService.shared.language)
+        content.subtitle = "notificationSubtitle".localized(LocalizationService.shared.language)
         content.sound = UNNotificationSound.default
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
@@ -214,9 +191,15 @@ final class SettingsViewModel: ObservableObject {
     }
 }
 
+extension ProfileViewModel: Hapticable {}
+
+extension Bundle {
+    static func versionString() -> String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
+}
+
 extension String {
     static let firstNotificationDate = "firstNotificationDate"
     static let secondNotificationDate = "secondNotificationDate"
 }
-
-extension SettingsViewModel: Hapticable {}

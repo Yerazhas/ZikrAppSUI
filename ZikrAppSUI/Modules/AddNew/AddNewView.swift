@@ -61,7 +61,7 @@ struct AddNewView: View {
                 .pickerStyle(.segmented)
                 .padding()
                 VStack(alignment: .leading, spacing: 14) {
-                    ValidatedTextField(viewModel: viewModel.titleViewModel, keyboardType: .alphabet)
+                    ValidatedTextField(viewModel: viewModel.titleViewModel, keyboardType: .default)
                         .padding(.horizontal)
                     if viewModel.contentType == .wird {
                         Text("selectZikrs".localized(language))
@@ -71,10 +71,10 @@ struct AddNewView: View {
                         addWirdView
                     } else {
                         Group {
-                            ValidatedTextField(viewModel: viewModel.arabicViewModel, keyboardType: .alphabet)
+                            ValidatedTextField(viewModel: viewModel.arabicViewModel, keyboardType: .default)
                                 .font(.uthmanicArabic(size: 18))
-                            ValidatedTextField(viewModel: viewModel.transcriptionViewModel, keyboardType: .alphabet)
-                            ValidatedTextField(viewModel: viewModel.translationViewModel, keyboardType: .alphabet)
+                            ValidatedTextField(viewModel: viewModel.transcriptionViewModel, keyboardType: .default)
+                            ValidatedTextField(viewModel: viewModel.translationViewModel, keyboardType: .default)
                         }
                         .padding(.horizontal)
                     }

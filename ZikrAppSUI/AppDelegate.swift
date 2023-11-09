@@ -18,14 +18,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     @Injected(Container.purchasesService) private var purchasesService
     @Injected(Container.subscriptionSyncService) private var subscriptionService
     @Injected(Container.appStatsService) private var appStatsService
-    @Injected(Container.remoteConfigService) private var remoteConfigService
     @Injected(Container.themeService) private var themeService
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
-        let config = Realm.Configuration(schemaVersion: 2)
+        let config = Realm.Configuration(schemaVersion: 3)
         Realm.Configuration.defaultConfiguration = config
         configureFirebase()
         setupQonversion()
@@ -33,8 +32,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         transferDataToRealmIfNeeded()
         setDefaultTrackerZikrsIfNeeded()
 
-        UIPageControl.appearance().isUserInteractionEnabled = false
-        UIPageControl.appearance().currentPageIndicatorTintColor = .black
+        UIPageControl.appearance().currentPageIndicatorTintColor = .systemGreen
 
         configureAmplitude()
         themeService.setDefaultTheme()
@@ -100,8 +98,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     private func checkSubscriptions() {
         Task {
             do {
-                let isSubscribed = try await purchasesService.checkSubscription()
-                subscriptionService.updateSubscriptionStatus(to: isSubscribed)
+                if appStatsService.isActivatedByCode {
+                    subscriptionService.updateSubscriptionStatus(to: true)
+                } else {
+                    let isSubscribed = try await purchasesService.checkSubscription()
+                    subscriptionService.updateSubscriptionStatus(to: isSubscribed)
+                }
             } catch {
 //                subscriptionService.updateSubscriptionStatus(to: false)
                 print(error)
@@ -121,6 +123,14 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             if !appStatsService.didFixTextsInVersion1_8 {
                 service.fixTextsInVersion1_8()
                 appStatsService.didFixTextsInVersion1_8Action()
+            }
+            if !appStatsService.didFixTextsInVersion1_9 {
+                service.fixTextsInVersion1_9_0()
+                appStatsService.didFixTextsInVersion1_9Action()
+            }
+            if !UserDefaults.standard.bool(forKey: "didTransferDuasForPalestine") {
+                service.addPalestineDuas()
+                UserDefaults.standard.set(true, forKey: "didTransferDuasForPalestine")
             }
             return
         }

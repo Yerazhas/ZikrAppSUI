@@ -40,9 +40,9 @@ struct LottieProgressView: View {
     }
 }
 
-#Preview {
-    LottieProgressView(title: "Starting your wonderful journey...", subtitle: "Please don't close the page") {}
-}
+//#Preview {
+//    LottieProgressView(title: "Starting your wonderful journey...", subtitle: "Please don't close the page") {}
+//}
 
 struct BackgroundBlurView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {

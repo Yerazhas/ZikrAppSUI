@@ -10,7 +10,7 @@ import Qonversion
 
 struct SupportProductButtonView: View {
     @Environment(\.colorScheme) private var colorScheme
-    let product: Qonversion.Product
+    let product: PurchasingProduct
     let isSelected: Bool
     let tapAction: () -> Void
 

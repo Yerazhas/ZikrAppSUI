@@ -9,9 +9,8 @@ import Foundation
 import Qonversion
 
 protocol PurchasesService {
-    var products: [Qonversion.Product] { get }
-    func getProducts(offeringId: QonversionOffering) async throws -> [Qonversion.Product]
-    func getHalfDiscountProduct(offeringId: QonversionHalfDiscountOffering) async throws -> [Qonversion.Product]
+    var products: [PurchasingProduct] { get }
+    func getProducts(offeringId: String) async throws -> [PurchasingProduct]
     func getRemoteConfig() async throws -> Qonversion.RemoteConfig
     func purchase(product: Qonversion.Product) async throws -> Bool
     func checkSubscription() async throws -> Bool
