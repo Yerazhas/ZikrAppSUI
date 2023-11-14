@@ -155,6 +155,7 @@ final class ProfileViewModel: ObservableObject {
     }
 
     func openPaywall() {
+        hapticLight()
         out(.openPaywall)
     }
 

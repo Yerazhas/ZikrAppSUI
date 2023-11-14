@@ -77,15 +77,13 @@ struct PaywallView: View {
                         purchaseButton
                         if viewModel.shouldShowKaspi {
                             KaspiButtonView(
-                             title: "pay_with_kaspi".localized(language),
-                             isLoading: viewModel.isButtonLoading,
-                             action: {
-                                 hapticLight()
-                                 viewModel.payKaspi()
-                                 isKaspiPaywallPresented = true
-                         })
-//                            .padding(.horizontal)
-//                            .padding(.top, -15)
+                                title: "pay_with_kaspi".localized(language),
+                                isLoading: viewModel.isButtonLoading,
+                                action: {
+                                    hapticLight()
+                                    viewModel.payKaspi()
+                                    isKaspiPaywallPresented = true
+                                })
                         }
                     }
                     .padding(.horizontal)

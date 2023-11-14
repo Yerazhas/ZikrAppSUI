@@ -177,6 +177,9 @@ final class ZikrTapViewModel: ObservableObject, Hapticable {
             }
             try! realm.write {
                 zikr.dailyTargetAmountAmount = amount
+                if amount == 0 {
+                    zikr.dailyProgress.removeAll()
+                }
             }
             analyticsService.setZikrTrackerAmount(zikrId: zikr.id, zikrType: zikr.type, amount: amount)
         } else if zikr.type == .dua {

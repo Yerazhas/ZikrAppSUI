@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Factory
 
 struct PremiumBannerView: View {
     @AppStorage("language") private var language = LocalizationService.shared.language
+    @Injected(Container.appStatsService) private var appStatsService
     let purchaseAction: () -> Void
 
     var body: some View {
@@ -17,10 +19,17 @@ struct PremiumBannerView: View {
 //            Color.purple
                 .cornerRadius(10)
             VStack(alignment: .leading) {
-                Text("beABetterMuslim".localized(language))
-                    .bold()
+                Group {
+                    if appStatsService.offering.contains("banner") {
+                        Text("beABetterMuslim1".localized(language))
+                            .bold()
+                    } else {
+                        Text("beABetterMuslim".localized(language))
+                            .bold()
+                    }
+                }
                     .font(.title3)
-                    .foregroundStyle(.white)
+//                    .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.5)
                 Button {
