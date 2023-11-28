@@ -341,10 +341,12 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "seeStatistics" = "See statistics";
 
 "monthly" = "Monthly";
+"6Months" = "6 months";
 "yearly" = "Yearly";
 "lifetime" = "Lifetime";
 "oneTimePayment" = "Pay ONCE, use forever";
 "autoRenewingMonthly" = "Billed monthly";
+"autoRenewing6Months" = "Billed every 6 months";
 "autoRenewingYearly" = "Billed yearly";
 
 "removeFromTracker" = "Remove from tracker";
@@ -371,17 +373,19 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "turnOff" = "Turn off";
 
 "pay_with_kaspi" = "Оплатить через Kaspi";
-"send_money_to_kaspi" = "1. Отправьте деньги за выбрраный тариф на kaspi gold";
+"send_money_to_kaspi" = "1. Отправьте деньги за выбранный тариф на kaspi gold";
+"send_money_to_beeline" = "1. Пополните данный beeline номер на сумму выбранного тарифа";
 "copy_requisites" = "* нажав реквизиты, можете скопировать их";
 "send_check_to_whatsapp" = "2. Отправьте чек на наш Whatsapp";
 "send_check" = "Отправить чек";
 "ios_msg" = "Ассаламуалейкум. Мой id: %@. Сейчас отправлю чек.";
+"ios_review_msg" = "Assalamualeikum. My id: %@. I left a good review will send you screenshot now.";
 "kaspi_donate" = "or you can send money to Kaspi Gold:";
 "kaspiIsAvailable" = "Payment, donation via Kaspi Gold is available now";
 
 "reviewRequestTitle" = "Enjoying our app? Write a review on App Store and get a free week of premium access.";
-"reviewRequest" = "1. Leave a review ";
-"writeWhatsappTelegram" = "2. Text us on Whatsapp/Telegram";
+"reviewRequest" = "Step 1. Leave a review ";
+"writeWhatsappTelegram" = "Step 2. Text us on Whatsapp/Telegram";
 "writeWhatsapp" = "Write on Whatsapp";
 "writeTelegram" = "Write on Telegram";
 "leaveReview" = "Leave a review";
@@ -389,6 +393,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "today" = "Today";
 "normalQaza" = "Qaza";
 "safarQaza" = "Qaza in safar";
+"resetQazas" = "Are you sure to reset qaza prayers?";
 
 "manualFillOutTitle" = "Fill out amount for each missed prayer and fast";
 "manualFillOutWarning" = "Safar means that prayer was missed while being in safar";
@@ -493,6 +498,7 @@ Muhammadan al-wasilata wal-fadilah, wa b'ath-hu maqaman mahmudan-il-ladhi wa'adt
 "trial3Days" = "FREE 3 DAYS";
 "trialWeek" = "FREE WEEK";
 "russiaPayment" = "How to pay from Russia?";
+"pay_with_beeline" = "Оплатить через Beeline";
 "" = "";
 "" = "";
 "" = "";

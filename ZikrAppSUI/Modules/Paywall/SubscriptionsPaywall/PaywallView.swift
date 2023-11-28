@@ -13,6 +13,7 @@ struct PaywallView: View {
     @State private var isPrivacyPolicyPresented: Bool = false
     @State private var isUserAgreementPresented: Bool = false
     @State private var isKaspiPaywallPresented: Bool = false
+    @State private var isBeelinePaywallPresented: Bool = false
 
     @State private var shouldShowError: Bool = false
 
@@ -84,10 +85,18 @@ struct PaywallView: View {
                                     viewModel.payKaspi()
                                     isKaspiPaywallPresented = true
                                 })
+                        } else if viewModel.shouldShowBeeline {
+                            BeelineButtonView(
+                                title: "pay_with_beeline".localized(language),
+                                isLoading: viewModel.isButtonLoading,
+                                action: {
+                                    hapticLight()
+                                    isBeelinePaywallPresented = true
+                                })
                         }
                     }
                     .padding(.horizontal)
-                    .padding(.top, -15)
+//                    .padding(.top, -15)
                     restorePrivacyButtons
                 }
             case .failed:
@@ -105,6 +114,9 @@ struct PaywallView: View {
         }
         .sheet(isPresented: $isKaspiPaywallPresented) {
             KaspiPaywallView(products: viewModel.products)
+        }
+        .sheet(isPresented: $isBeelinePaywallPresented) {
+            KaspiPaywallView(isKaspi: false, products: viewModel.products)
         }
         .fullScreenCover(isPresented: $viewModel.shouldShowLoader, onDismiss: {
             guard viewModel.error != nil else { return }

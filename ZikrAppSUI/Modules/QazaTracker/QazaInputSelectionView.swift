@@ -25,6 +25,7 @@ struct QazaInputSelectionView: View {
                     subtitle: "dontClosePage".localized(language),
                     completion: {
                         appStatsService.didSetUpQazaPage()
+                        shouldShowLoader = false
                     }
                 )
             }

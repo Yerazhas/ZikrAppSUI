@@ -44,10 +44,12 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
     ]
     let out: PaywallViewOut
     private(set) var shouldShowKaspi: Bool = false
+    private(set) var shouldShowBeeline: Bool = false
 
     init(out: @escaping PaywallViewOut) {
         self.out = out
-        self.shouldShowKaspi = appStatsService.showsRI && [Language.kz, Language.ru].contains(LocalizationService.shared.language)
+        self.shouldShowKaspi = appStatsService.showsRI && Locale.current.isKazakhstan
+        self.shouldShowBeeline = appStatsService.showsRI && Locale.current.isRussia
     }
     
     func onAppear() {
@@ -80,7 +82,6 @@ final class PaywallViewModel: ObservableObject, LoadingButtonViewModel {
         hapticLight()
         selectedProduct = product
         analyticsService.trackSelectPaywallProduct(id: product.product.appStoreId)
-        purchase()
     }
 
     func purchase() {

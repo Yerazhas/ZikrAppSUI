@@ -37,7 +37,7 @@ struct ProfileView: View {
                         }
                     }
                     firstSection()
-                    if Locale.current.regionCode == "RU" && appStatsService.showsRI {
+                    if Locale.current.isRussia && appStatsService.showsRI {
                         russiaPaymentSection()
                     }
                     secondSection()

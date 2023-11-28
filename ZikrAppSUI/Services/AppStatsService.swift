@@ -81,6 +81,10 @@ final class AppStatsService {
         didSetUpQaza = true
     }
 
+    func resetDidSetUpQaza() {
+        didSetUpQaza = false
+    }
+
     private let numberOfFreeQazaMakeUps: Int = 5
 
     var canMakeUpQaza: Bool {
@@ -148,6 +152,13 @@ final class AppStatsService {
 
     func didSeeRussiaPaymentAlertPage() {
         didSeeRussiaPaymentAlert = true
+    }
+
+    @UserDefaultsValue(key: .didSeeRussiaBeelineOnboarding, defaultValue: false)
+    var didSeeRussiaBeelineOnboarding: Bool
+
+    func didSeeRussiaBeelineOnboardingPage() {
+        didSeeRussiaBeelineOnboarding = true
     }
 
     @UserDefaultsValue(key: .didSeeOnboarding, defaultValue: false)
@@ -236,6 +247,13 @@ final class AppStatsService {
 
     func didFixTextsInVersion1_9Action() {
         didFixTextsInVersion1_9 = true
+    }
+
+    @UserDefaultsValue(key: .didFixTextsInVersion2_0_4, defaultValue: false)
+    var didFixTextsInVersion2_0_4: Bool
+
+    func didFixTextsInVersion2_0_4Action() {
+        didFixTextsInVersion2_0_4 = true
     }
     
     func isFreeProgressTrackingAvailable() -> Bool {

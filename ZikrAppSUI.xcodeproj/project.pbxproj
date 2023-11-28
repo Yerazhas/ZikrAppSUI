@@ -111,6 +111,7 @@
 		60BDAEA929756C3C001F2EA1 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */; };
 		60C7D40F2AEE75170016368D /* PremiumBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D40E2AEE75170016368D /* PremiumBannerView.swift */; };
 		60C7D4112AEEFF1A0016368D /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D4102AEEFF1A0016368D /* TextFieldAlert.swift */; };
+		60C8821B2B15A4A4006D0835 /* BeelineButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8821A2B15A4A4006D0835 /* BeelineButtonView.swift */; };
 		60D1381A2AD1426300568529 /* QazaModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138192AD1426300568529 /* QazaModifyView.swift */; };
 		60D138212AD2508700568529 /* QazaInputSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138202AD2508700568529 /* QazaInputSelectionView.swift */; };
 		60D138232AD25CFE00568529 /* QazaContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138222AD25CFE00568529 /* QazaContainerView.swift */; };
@@ -129,13 +130,13 @@
 		60D138412AD283FE00568529 /* MaleQazaCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138402AD283FE00568529 /* MaleQazaCalculationView.swift */; };
 		60D138432AD2860C00568529 /* FemaleQazaCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138422AD2860C00568529 /* FemaleQazaCalculationView.swift */; };
 		60D138452AD2867A00568529 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D138442AD2867A00568529 /* KeyboardAdaptive.swift */; };
+		60E4CC2A2B14700B00D77C9F /* BeelineOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E4CC292B14700B00D77C9F /* BeelineOnboardingView.swift */; };
 		60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */; };
 		60F51D8C2AD2C6900074AFA7 /* QazaPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8B2AD2C6900074AFA7 /* QazaPrayer.swift */; };
 		60F51D8E2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8D2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift */; };
 		60F51D902AD3B1C30074AFA7 /* QazaTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D8F2AD3B1C30074AFA7 /* QazaTrackerViewModel.swift */; };
 		60F51D922AD3C2160074AFA7 /* SafarQazaPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D912AD3C2160074AFA7 /* SafarQazaPrayer.swift */; };
 		60F51D942AD3CDB00074AFA7 /* CalculationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F51D932AD3CDB00074AFA7 /* CalculationError.swift */; };
-		60F8D8542AF36E1F00D15CF8 /* PalestineOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8D8532AF36E1F00D15CF8 /* PalestineOnboardingView.swift */; };
 		60FC32972A83F74000A214F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC32962A83F74000A214F9 /* StoreKit.framework */; };
 		60FC32992A84DF4900A214F9 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC32982A84DF4900A214F9 /* PageControl.swift */; };
 		60FC329C2A88C9B900A214F9 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC329B2A88C9B900A214F9 /* PaywallView.swift */; };
@@ -273,6 +274,7 @@
 		60BDAEA829756C3C001F2EA1 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
 		60C7D40E2AEE75170016368D /* PremiumBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumBannerView.swift; sourceTree = "<group>"; };
 		60C7D4102AEEFF1A0016368D /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
+		60C8821A2B15A4A4006D0835 /* BeelineButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeelineButtonView.swift; sourceTree = "<group>"; };
 		60D138192AD1426300568529 /* QazaModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaModifyView.swift; sourceTree = "<group>"; };
 		60D138202AD2508700568529 /* QazaInputSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaInputSelectionView.swift; sourceTree = "<group>"; };
 		60D138222AD25CFE00568529 /* QazaContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaContainerView.swift; sourceTree = "<group>"; };
@@ -291,13 +293,13 @@
 		60D138402AD283FE00568529 /* MaleQazaCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleQazaCalculationView.swift; sourceTree = "<group>"; };
 		60D138422AD2860C00568529 /* FemaleQazaCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleQazaCalculationView.swift; sourceTree = "<group>"; };
 		60D138442AD2867A00568529 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		60E4CC292B14700B00D77C9F /* BeelineOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeelineOnboardingView.swift; sourceTree = "<group>"; };
 		60E95E2C2AA48E9F005F3E3B /* PaywallProductsConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallProductsConverter.swift; sourceTree = "<group>"; };
 		60F51D8B2AD2C6900074AFA7 /* QazaPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaPrayer.swift; sourceTree = "<group>"; };
 		60F51D8D2AD2D3AD0074AFA7 /* TrackerQazaPrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerQazaPrayerView.swift; sourceTree = "<group>"; };
 		60F51D8F2AD3B1C30074AFA7 /* QazaTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QazaTrackerViewModel.swift; sourceTree = "<group>"; };
 		60F51D912AD3C2160074AFA7 /* SafarQazaPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafarQazaPrayer.swift; sourceTree = "<group>"; };
 		60F51D932AD3CDB00074AFA7 /* CalculationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationError.swift; sourceTree = "<group>"; };
-		60F8D8532AF36E1F00D15CF8 /* PalestineOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalestineOnboardingView.swift; sourceTree = "<group>"; };
 		60FC32962A83F74000A214F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		60FC32982A84DF4900A214F9 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		60FC329B2A88C9B900A214F9 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -376,9 +378,9 @@
 		6009F96329765A8E0096EC40 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				60F8D8552AF36E2300D15CF8 /* Palestine */,
 				607673CC2ADA769600CF4CD4 /* WelcomeView */,
 				6038F6272ABC64F100ED3F8E /* ReviewRequestView */,
+				60E4CC282B146FFE00D77C9F /* Beeline */,
 				6096A0CF2AB2FBDC00AF836A /* Splash */,
 				60FC32B42A8E062900A214F9 /* WhatsNew */,
 				60FC32B32A8E061D00A214F9 /* Onboarding */,
@@ -408,6 +410,7 @@
 				60FC32982A84DF4900A214F9 /* PageControl.swift */,
 				60FC32A52A8B59F300A214F9 /* IconTitleView.swift */,
 				60FC32A72A8BA66700A214F9 /* PrimaryButtonView.swift */,
+				60C8821A2B15A4A4006D0835 /* BeelineButtonView.swift */,
 				6096A0C72AAFF92E00AF836A /* KaspiButtonView.swift */,
 				60FC32A92A8BA70B00A214F9 /* LottieView.swift */,
 				60FC32AB2A8BC83A00A214F9 /* LoadingButtonViewModel.swift */,
@@ -735,12 +738,12 @@
 			path = Female;
 			sourceTree = "<group>";
 		};
-		60F8D8552AF36E2300D15CF8 /* Palestine */ = {
+		60E4CC282B146FFE00D77C9F /* Beeline */ = {
 			isa = PBXGroup;
 			children = (
-				60F8D8532AF36E1F00D15CF8 /* PalestineOnboardingView.swift */,
+				60E4CC292B14700B00D77C9F /* BeelineOnboardingView.swift */,
 			);
-			path = Palestine;
+			path = Beeline;
 			sourceTree = "<group>";
 		};
 		60FC329A2A88C9A900A214F9 /* Paywall */ = {
@@ -1003,7 +1006,6 @@
 				6009F969297674580096EC40 /* ZikrTapViewModel.swift in Sources */,
 				60FC32C02A8F35DC00A214F9 /* SupportPaywallViewModel.swift in Sources */,
 				6096A0C82AAFF92E00AF836A /* KaspiButtonView.swift in Sources */,
-				60F8D8542AF36E1F00D15CF8 /* PalestineOnboardingView.swift in Sources */,
 				604B33062AD3F6BC00EDAA36 /* QazaModifyViewModel.swift in Sources */,
 				603DFAC32A51083B0065572F /* AddNewZikrViewModel.swift in Sources */,
 				6095FC162AF889BF008EFED6 /* PurchasingProduct.swift in Sources */,
@@ -1042,6 +1044,7 @@
 				60D138352AD27EF200568529 /* QazaCalculationViewModel.swift in Sources */,
 				60E95E2D2AA48E9F005F3E3B /* PaywallProductsConverter.swift in Sources */,
 				6055B1D82ADCD6B800741DAC /* BeforeView.swift in Sources */,
+				60C8821B2B15A4A4006D0835 /* BeelineButtonView.swift in Sources */,
 				605ADC8229A2177D00E0CBA7 /* AddNewView.swift in Sources */,
 				60FC32AC2A8BC83A00A214F9 /* LoadingButtonViewModel.swift in Sources */,
 				60FC32A02A8A08A600A214F9 /* ProductButtonView.swift in Sources */,
@@ -1052,6 +1055,7 @@
 				607673D02ADA7DA200CF4CD4 /* GradientRaysView.swift in Sources */,
 				6079E4AF2A66A4C400F0F014 /*  WirdShareViewModel.swift in Sources */,
 				60060E4E2A9B477300C90D97 /* TooltipModifier.swift in Sources */,
+				60E4CC2A2B14700B00D77C9F /* BeelineOnboardingView.swift in Sources */,
 				606A9D242A6CEE52000910AC /* TrackerView.swift in Sources */,
 				6055B1DA2ADCE72A00741DAC /* OnboadingPageView.swift in Sources */,
 				6009F96229765A600096EC40 /* MainView.swift in Sources */,
@@ -1229,7 +1233,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.beta;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 100;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
 				DEVELOPMENT_TEAM = W7XBRGS6CR;
 				ENABLE_PREVIEWS = YES;
@@ -1247,7 +1251,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.4;
+				MARKETING_VERSION = 2.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1266,7 +1270,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 100;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ZikrAppSUI/Preview Content\"";
 				DEVELOPMENT_TEAM = W7XBRGS6CR;
 				ENABLE_PREVIEWS = YES;
@@ -1284,7 +1288,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.4;
+				MARKETING_VERSION = 2.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yerazhas.Zikr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

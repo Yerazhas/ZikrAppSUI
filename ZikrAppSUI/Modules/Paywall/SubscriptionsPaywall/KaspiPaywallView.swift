@@ -9,13 +9,16 @@ import SwiftUI
 import Factory
 
 struct KaspiPaywallView: View {
-    private let products: [PaywallProduct]
-    private var selectedProduct: PaywallProduct?
     @AppStorage("language") private var language = LocalizationService.shared.language
     @Injected(Container.appStatsService) private var appStatsService
     @Injected(Container.analyticsService) private var analyticsService
 
-    init(products: [PaywallProduct]) {
+    private let products: [PaywallProduct]
+    private var selectedProduct: PaywallProduct?
+    private let isKaspi: Bool
+
+    init(isKaspi: Bool = true, products: [PaywallProduct]) {
+        self.isKaspi = isKaspi
         self.products = products
         selectedProduct = self.products.dropLast().last
     }
@@ -33,10 +36,17 @@ struct KaspiPaywallView: View {
                         )
                     }
                     .allowsHitTesting(false)
-                    Text("send_money_to_kaspi".localized(language))
-                        .bold()
-                        .padding(.top, 40)
-                    kaspiView
+                    if isKaspi {
+                        Text("send_money_to_kaspi".localized(language))
+                            .bold()
+                            .padding(.top, 40)
+                        kaspiView
+                    } else {
+                        Text("send_money_to_beeline".localized(language))
+                            .bold()
+                            .padding(.top, 40)
+                        beelineView
+                    }
                     Text("copy_requisites".localized(language))
                         .bold()
                         .foregroundColor(.systemGreen)
@@ -84,6 +94,25 @@ struct KaspiPaywallView: View {
             .padding(.leading, -100)
             .font(.title2)
             .foregroundColor(.white)
+        }
+    }
+
+    private var beelineView: some View {
+        VStack {
+            Image("img-beeline-logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 30)
+                .shadow(radius: 3, y: 3)
+            let phone = "+7 776 937 85 53"
+            VStack(alignment: .leading, spacing: 40) {
+                Button(phone) {
+                    hapticLight()
+                    UIPasteboard.general.string = phone
+                }
+            }
+            .font(.title2)
+            .foregroundColor(.primary)
         }
     }
 }

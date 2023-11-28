@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Factory
 
 struct ReviewRequestView: View {
     let completion: () -> Void
     @AppStorage("language") private var language = LocalizationService.shared.language
+    @Injected(Container.appStatsService) private var appStatsService
 
     var body: some View {
         ZStack {
@@ -48,7 +50,7 @@ struct ReviewRequestView: View {
                             }
                             IconTitleView(title: "writeWhatsappTelegram".localized(language))
                                 .padding(.top, 30)
-                            Link(destination: .init(string: "https://api.whatsapp.com/send?phone=77473528357")!) {
+                            Link(destination: .init(string: "https://api.whatsapp.com/send?phone=77473528357&text=\("ios_review_msg".localized(language, args: String(appStatsService.qonversionId)))".encodeUrl)!) {
                                 ZStack {
                                     Color.black.cornerRadius(10)
                                     Text("writeWhatsapp".localized(language))

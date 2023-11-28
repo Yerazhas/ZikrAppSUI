@@ -13,6 +13,7 @@ enum QazaType: String {
 }
 
 struct QazaTrackerView: View {
+    @Environment(\.colorScheme) private var colorScheme
     private let columns = [
         GridItem(.flexible(minimum: 100)),
         GridItem(.flexible(minimum: 100))
@@ -109,6 +110,14 @@ struct QazaTrackerView: View {
     private var headerView: some View {
         HStack(spacing: 10) {
             Spacer()
+            Button {
+                
+            } label: {
+                Image("ic-add")
+                    .renderingMode(.template)
+                    .foregroundColor(.secondary)
+            }
+            .opacity(0)
             Picker(selection: $qazaType) {
                 Text("normalQaza".localized(language))
                     .tag(QazaType.normal)
@@ -119,6 +128,15 @@ struct QazaTrackerView: View {
             }
             .pickerStyle(.segmented)
             .padding()
+            Button {
+                hapticLight()
+                viewModel.resetQazas()
+            } label: {
+                Image(systemName: "arrow.counterclockwise")
+                    .renderingMode(.template)
+                    .foregroundColor(.secondary)
+            }
+            .schemeAdapted(colorScheme: colorScheme)
             Spacer()
         }
     }

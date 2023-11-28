@@ -28,6 +28,7 @@ protocol RootRouter: AnyObject {
     func openCounter(out: @escaping CounterOut)
     func openRussiaPaymentAlert(openTutorialAction: @escaping () -> Void)
     func openSafariBrowserVC(url: URL)
+    func openRussiaBeelineOnboarding(out: @escaping () -> Void)
 
     func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?)
     func showInfoAlert(message: String)
@@ -200,6 +201,13 @@ final class RootRouterImpl: RootRouter {
         nc?.present(vc, animated: true)
     }
 
+    func openRussiaBeelineOnboarding(out: @escaping () -> Void) {
+        let view = BeelineOnboardingView(completion: out)
+        let vc = UIHostingController(rootView: view)
+        vc.modalPresentationStyle = .fullScreen
+        nc?.present(vc, animated: true)
+    }
+
     func dismissPresentedVC(onlyPresentedVC: Bool, _ completion: (() -> Void)?) {
         if onlyPresentedVC {
             nc?.presentedViewController?.dismiss(animated: true, completion: completion)
@@ -229,6 +237,10 @@ final class RootRouterImpl: RootRouter {
         let cancelAction = UIAlertAction(title: "cancel".localized(language), style: .cancel)
         alertVC.addAction(okAction)
         alertVC.addAction(cancelAction)
-        nc?.presentedViewController?.present(alertVC, animated: true)
+        if nc?.presentedViewController == nil {
+            nc?.present(alertVC, animated: true)
+        } else {
+            nc?.presentedViewController?.present(alertVC, animated: true)
+        }
     }
  }

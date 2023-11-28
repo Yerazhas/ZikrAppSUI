@@ -12,6 +12,7 @@ public struct PurchasingProduct: Equatable {
     public enum Duration: Int {
         case unknown
         case monthly
+        case sixMonths
         case annual
         case lifetime
 
@@ -19,6 +20,8 @@ public struct PurchasingProduct: Equatable {
             switch self {
             case .monthly:
                 return "monthly"
+            case .sixMonths:
+                return "6Months"
             case .annual:
                 return "yearly"
             case .unknown, .lifetime:
@@ -26,10 +29,27 @@ public struct PurchasingProduct: Equatable {
             }
         }
 
+        public var subscriptionDescription: String {
+            let string: String
+            switch self {
+            case .monthly:
+                string = "autoRenewingMonthly".localized(LocalizationService.shared.language)
+            case .sixMonths:
+                string = "autoRenewing6Months".localized(LocalizationService.shared.language)
+            case .annual:
+                string = "autoRenewingYearly".localized(LocalizationService.shared.language)
+            @unknown default:
+                string = ""
+            }
+            return string
+        }
+
         public var inDays: Int? {
             switch self {
             case .monthly:
                 return 30
+            case .sixMonths:
+                return 30 * 6
             case .annual:
                 return 365
             case .lifetime, .unknown:
@@ -117,6 +137,8 @@ public struct PurchasingProduct: Equatable {
         switch duration {
         case .monthly:
             title = "monthly"
+        case .sixMonths:
+            title = "6Months"
         case .annual:
             title = "yearly"
         case .lifetime, .unknown:
@@ -145,6 +167,8 @@ extension PurchasingProduct {
             duration = .unknown
         case .durationMonthly:
             duration = .monthly
+        case .duration6Months:
+            duration = .sixMonths
         case .durationAnnual:
             duration = .annual
         default:

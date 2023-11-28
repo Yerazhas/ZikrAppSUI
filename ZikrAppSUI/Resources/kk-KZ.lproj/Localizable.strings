@@ -371,10 +371,12 @@
 "seeStatistics" = "Статистиканы қарау";
 
 "monthly" = "Айлық";
+"6Months" = "6 айлық";
 "yearly" = "Жылдық";
 "lifetime" = "Өмір бойына";
 "oneTimePayment" = "БІР РЕТ төлеп, өмір бойы қолданыңыз";
 "autoRenewingMonthly" = "Ай сайынғы төлем";
+"autoRenewing6Months" = "6 ай сайынғы төлем";
 "autoRenewingYearly" = "Жыл сайынғы төлем";
 
 "removeFromTracker" = "Трекерден алып тастау";
@@ -401,17 +403,19 @@
 "turnOff" = "Өшіру";
 
 "pay_with_kaspi" = "Kaspi арқылы төлеу";
-"send_money_to_kaspi" = "1. Таңдалған тарифқа төлемді kaspi gold-қа жіберіңіз";
+"send_money_to_kaspi" = "1. Таңдалған тарифке төлемді kaspi gold-қа жіберіңіз";
+"send_money_to_beeline" = "1. Таңдалған тарифтің ақшасын осы beeline нөмірге жіберіңіз";
 "copy_requisites" = "* реквизиттерді басу арқылы оларды көшіре аласыз";
 "send_check_to_whatsapp" = "2. Чекті біздің Whatsapp-қа жіберіңіз";
 "send_check" = "Чекті жіберу";
 "ios_msg" = "Ассалаумағалейкүм. Менің id-ім: %@. Қазір чекті жіберемін.";
+"ios_review_msg" = "Ассалаумағалейкүм. Менің id-ім: %@. Мен жақсы пікір қалдырдым, қазір скрин жіберемін.";
 "kaspi_donate" = "немесе Kaspi Gold-қа жібере аласыз:";
 "kaspiIsAvailable" = "Енді Сіз Kaspi Gold арқылы төлем, қайырымдылық жасай аласыз";
 
 "reviewRequestTitle" = "Біздің қосымша ұнап жатыр ма? App Store-да жақсы пікір қалдырып, тегін 1 апта premium жазылымын алыңыз.";
-"reviewRequest" = "1. Пікір қалдырыңыз ";
-"writeWhatsappTelegram" = "2. Бізге Whatsapp/Telegram-ға жазыңыз";
+"reviewRequest" = "1-қадам. Пікір қалдырыңыз ";
+"writeWhatsappTelegram" = "2-қадам. Бізге Whatsapp/Telegram-ға жазыңыз";
 "writeWhatsapp" = "Whatsapp-қа жазу";
 "writeTelegram" = "Telegram-қа жазу";
 "leaveReview" = "Пікір қалдыру";
@@ -419,6 +423,7 @@
 "today" = "Бүгін";
 "normalQaza" = "Қаза";
 "safarQaza" = "Сапардағы қаза";
+"resetQazas" = "Қаза намаздарды өшіруге сенімдісіз бе?";
 
 "manualFillOutTitle" = "Әрбір қаза намаз бен оразаны толтырыңыз";
 "manualFillOutWarning" = "Сапар деген сөз сапар уақытында қаза болған намазды білдіреді";
@@ -524,6 +529,7 @@
 "trial3Days" = "ТЕГІН 3 КҮН";
 "trialWeek" = "ТЕГІН АПТА";
 "russiaPayment" = "Как оплатить из России?";
+"pay_with_beeline" = "Оплатить через Beeline";
 "" = "";
 "" = "";
 "" = "";

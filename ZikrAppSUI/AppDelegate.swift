@@ -120,18 +120,44 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 //                service.transferWirdsFromJson1()
             }
             UserDefaults.standard.set(true, forKey: .didTransferZikrs1)
-            if !appStatsService.didFixTextsInVersion1_8 {
-                service.fixTextsInVersion1_8()
-                appStatsService.didFixTextsInVersion1_8Action()
+            if !appStatsService.didFixTextsInVersion2_0_4 {
+                service.fixTextsInVersion2_0_4()
+                appStatsService.didFixTextsInVersion2_0_4Action()
             }
             if !appStatsService.didFixTextsInVersion1_9 {
                 service.fixTextsInVersion1_9_0()
                 appStatsService.didFixTextsInVersion1_9Action()
             }
-            if !UserDefaults.standard.bool(forKey: "didTransferDuasForPalestine") {
-                service.addPalestineDuas()
-                UserDefaults.standard.set(true, forKey: "didTransferDuasForPalestine")
-            }
+//            if !UserDefaults.standard.bool(forKey: "didTransferDuasForPalestine") {
+//                service.addPalestineDuas()
+//                UserDefaults.standard.set(true, forKey: "didTransferDuasForPalestine")
+//            }
+//              TODO: Add below duas to duas.json and uncomment Palestine method in zikr service
+//            {
+//                "id": "antaMawlana",
+//                "title": "antaMawlana",
+//                "arabicTitle": "أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ"
+//            },
+//            {
+//                "id": "shamYaman",
+//                "title": "shamYaman",
+//                "arabicTitle": "اللهُمَّ بَارِكْ لَنَا فِي شَامِنَا وَفِي يَمَنِنَا"
+//            },
+//            {
+//                "id": "munzilalKitab",
+//                "title": "munzilalKitab",
+//                "arabicTitle": "اللَّهُمَّ مُنْزِلَ الْكِتَابِ، سَرِيعَ الْحِسَابِ، اهْزِمِ الْأَحْزَابِ، اللَّهُمَّ اهْزِمْهُمْ وَزَلْزِلْهُمْ"
+//            },
+//            {
+//                "id": "rabbulMadhlumeen",
+//                "title": "rabbulMadhlumeen",
+//                "arabicTitle": "اللَّهُمَّ إِنَّكَ رَبُّ الْمَظْلُومِين. اللَّهُمَّ أَنصُرِ الْمَظْلُمِينَ عَلَى قَوْمِ الظَّالِمِين فِي كُلِّ مَكَانٍ. اللَّهُمَّ ارْحَمْ أُمَّةَ مُحَمَّدٍ. اللَّهُمَّ أَرْسِلِ الْفَرَجَ لأُمَّةِ مُحَمَّدٍ."
+//            },
+//            {
+//                "id": "innaNaj'aluka",
+//                "title": "innaNaj'aluka",
+//                "arabicTitle": "اللهم إِنَّا نَجْعَلُكَ فِي نُحُورِهِم وَنَعُوذُ بِكَ مِنْ شُرُورِهِم"
+//            },
             return
         }
         service.transferZikrsFromJson()

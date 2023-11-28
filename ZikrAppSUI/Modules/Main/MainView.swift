@@ -16,6 +16,7 @@ enum MainOutCmd {
     case openPaywall
     case openCounter
     case openRussiaPaymentTutorial
+    case delete(() -> Void)
 }
 
 struct MainView: View {
@@ -60,6 +61,8 @@ struct MainView: View {
                 switch cmd {
                 case .openPaywall:
                     out(.openPaywall)
+                case .delete(let action):
+                    out(.delete(action))
                 }
             })
                 .animation(.none)

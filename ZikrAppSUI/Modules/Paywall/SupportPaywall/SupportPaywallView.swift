@@ -16,7 +16,7 @@ struct SupportPaywallView: View {
     
     init(completion: @escaping () -> Void) {
         _viewModel = .init(wrappedValue: .init(completion: completion))
-        _isKaspiEnabled = .init(wrappedValue: appStatsService.showsRI && [Language.ru, .kz].contains(language))
+        _isKaspiEnabled = .init(wrappedValue: appStatsService.showsRI && Locale.current.isKazakhstan)
     }
     
     var body: some View {

@@ -36,7 +36,6 @@ final class SplashViewModel: ObservableObject {
             appStatsService.setShowsRI(to: appConfig?.should_sri ?? false)
             appStatsService.setLifetimeActivationAvailability(to: appConfig?.is_lifetime_activation_available ?? false)
             appStatsService.offering = appConfig?.paywall ?? QonversionOffering.paywall11.rawValue
-            print("sdfsdf")
         } catch {
             print(error.localizedDescription)
         }

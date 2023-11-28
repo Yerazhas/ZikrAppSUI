@@ -229,7 +229,7 @@ extension PurchasingProduct {
         if type == .oneTime {
             return "lifetime".localized(LocalizationService.shared.language)
         } else {
-            return product.skProduct?.subscriptionPeriod?.periodString
+            return duration.stringValue?.localized(LocalizationService.shared.language)
         }
     }
 
@@ -242,7 +242,7 @@ extension PurchasingProduct {
         if type == .oneTime {
             return "oneTimePayment".localized(LocalizationService.shared.language)
         } else {
-            return product.skProduct?.subscriptionPeriod?.subscriptionDescription
+            return duration.subscriptionDescription
         }
     }
 }

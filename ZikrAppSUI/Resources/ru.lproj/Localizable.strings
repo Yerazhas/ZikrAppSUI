@@ -364,10 +364,12 @@
 "seeStatistics" = "Посмотреть статистику";
 
 "monthly" = "Месячная";
+"6Months" = "6 месячная";
 "yearly" = "Годовая";
 "lifetime" = "На всю жизнь";
 "oneTimePayment" = "Купите ОДИН РАЗ, используйте всю жизнь";
 "autoRenewingMonthly" = "Ежемесячная подписка";
+"autoRenewing6Months" = "Подписка каждые 6 месяцев";
 "autoRenewingYearly" = "Ежегодная подписка";
 
 "removeFromTracker" = "Убрать из трекера";
@@ -395,16 +397,18 @@
 
 "pay_with_kaspi" = "Оплатить через Kaspi";
 "send_money_to_kaspi" = "1. Отправьте деньги за выбрраный тариф на kaspi gold";
+"send_money_to_beeline" = "1. Пополните данный beeline номер на сумму выбранного тарифа";
 "copy_requisites" = "* нажав реквизиты, можете скопировать их";
 "send_check_to_whatsapp" = "2. Отправьте чек на наш Whatsapp";
 "send_check" = "Отправить чек";
 "ios_msg" = "Ассаламуалейкум. Мой id: %@. Сейчас отправлю чек.";
+"ios_review_msg" = "Ассаламуалейкум. Мой id: %@. Я оставил отзыв, сейчас отправлю скрин.";
 "kaspi_donate" = "или можете отправить деньги на Kaspi Gold:";
 "kaspiIsAvailable" = "Теперь Вы можете совершать оплату, благотворительность через Kaspi Gold";
 
 "reviewRequestTitle" = "Нравится наше приложение? Получите бесплатную неделю premium доступа за отзыв в App Store.";
-"reviewRequest" = "1. Оставьте отзыв ";
-"writeWhatsappTelegram" = "2. Напишите нам на Whatsapp/Telegram";
+"reviewRequest" = "Шаг 1. Оставьте отзыв ";
+"writeWhatsappTelegram" = "Шаг 2. Напишите нам на Whatsapp/Telegram";
 "writeWhatsapp" = "Написать на Whatsapp";
 "writeTelegram" = "Написать на Telegram";
 "leaveReview" = "Оставить отзыв";
@@ -412,6 +416,7 @@
 "today" = "Сегодня";
 "normalQaza" = "Каза";
 "safarQaza" = "Каза в сафаре";
+"resetQazas" = "Вы точно хотите сбросить каза намазы?";
 
 "manualFillOutTitle" = "Заполните каждый каза намаз и пост";
 "manualFillOutWarning" = "Сафар означает намаз, который был пропущен во время сафара";
@@ -517,6 +522,7 @@
 "trial3Days" = "БЕСПЛАТНЫЕ 3 ДНЯ";
 "trialWeek" = "БЕСПЛАТНАЯ НЕДЕЛЯ";
 "russiaPayment" = "Ресейден қалай төлесе болады?";
+"pay_with_beeline" = "Оплатить через Beeline";
 "" = "";
 "" = "";
 "" = "";

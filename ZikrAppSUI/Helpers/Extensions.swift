@@ -26,6 +26,7 @@ extension String {
     static let didTransferZikrs1 = "didTransferZikrs1" // add localized fields on zikr, like translation, transcription (KZ, RU, EN)
     static let didFixTextsInVersion1_8 = "didFixTextsInVersion1_8" // Dua of Yunus, arabic text mistake
     static let didFixTextsInVersion1_9 = "didFixTextsInVersion1_9" // La ilaaha illa antal Malikul Haqqul Mubeen
+    static let didFixTextsInVersion2_0_4 = "didFixTextsInVersion2_0_4" // Surah Falaq
     static let qonversionId = "qonversionId"
 
     static let didSetAppLang = "didSetAppLang"
@@ -34,6 +35,7 @@ extension String {
     static let didSeeOnboarding = "didSeeOnboarding_1_8_2"
     static let didSeeWelcome = "didSeeWelcome"
     static let didSeeRussiaPaymentAlert = "didSeeRussiaPaymentAlert"
+    static let didSeeRussiaBeelineOnboarding = "didSeeRussiaBeelineOnboarding"
     static let didSeePalestineOnboarding = "didSeePalestineOnboarding"
     static let didSeeKaspiOnboarding = "didSeeKaspiOnboarding"
     static let didSeeDailyAmountToolTip = "didSeeDailyAmountToolTip"

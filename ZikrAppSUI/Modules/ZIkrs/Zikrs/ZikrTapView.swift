@@ -109,16 +109,25 @@ struct ZikrTapView: View {
         }
         .ignoresSafeArea(.keyboard)
         .onAppear(perform: viewModel.onAppear)
-        .alert(
-            "enterDailyZikrAmount".localized(language),
-            isPresented: $isAmountAlertPresented
-        ) {
-            TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
-                .keyboardType(.decimalPad)
-            Button("ok".localized(language), action: {
+        .textFieldAlert(
+            isPresented: $isAmountAlertPresented,
+            title: "enterDailyZikrAmount".localized(language),
+            text: $viewModel.dailyAmount,
+            placeholder: "dailyZikrPlaceholder".localized(language),
+            action: { _ in
                 viewModel.setAmount()
-            })
-        } message: {}
+            }
+        )
+//        .alert(
+//            "enterDailyZikrAmount".localized(language),
+//            isPresented: $isAmountAlertPresented
+//        ) {
+//            TextField("dailyZikrPlaceholder".localized(language), text: $viewModel.dailyAmount)
+//                .keyboardType(.decimalPad)
+//            Button("ok".localized(language), action: {
+//                viewModel.setAmount()
+//            })
+//        } message: {}
             .sheet(isPresented: $isPresentingShareSheet) {
                 if #available(iOS 16.0, *) {
                     ZikrSharePreviewView(image: image!)

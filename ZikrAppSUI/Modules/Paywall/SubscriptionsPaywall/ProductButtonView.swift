@@ -36,24 +36,26 @@ struct ProductButtonView: View {
                         }
                     }
                     Spacer()
-                    if let fullPrice = product.fullPrice {
-                        Text(fullPrice)
-                            .foregroundColor(isSelected ? .white : .secondary)
-                            .overlay(
-                                GeometryReader { g in
-                                    Path { path in
-                                        path.move(to: CGPoint(x: 0, y: g.size.height - 2))
-                                        path.addLine(to: CGPoint(x: g.size.width, y: 2))
+                    VStack {
+                        Text(product.prettyPrice)
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(isSelected ? .white : .primary)
+                            .padding(.trailing)
+                        if let fullPrice = product.fullPrice {
+                            Text(fullPrice)
+                                .foregroundColor(isSelected ? .paleGray : .secondary)
+                                .overlay(
+                                    GeometryReader { g in
+                                        Path { path in
+                                            path.move(to: CGPoint(x: 0, y: g.size.height - 2))
+                                            path.addLine(to: CGPoint(x: g.size.width, y: 2))
+                                        }
+                                        .stroke(Color(hex: 0xFF476C), lineWidth: 2)
                                     }
-                                    .stroke(Color(hex: 0xFF476C), lineWidth: 2)
-                                }
-                            )
+                                )
+                        }
                     }
-                    Text(product.prettyPrice)
-                        .font(.title3)
-                        .bold()
-                        .foregroundColor(isSelected ? .white : .primary)
-                        .padding(.trailing)
                 }
             }
             .padding(EdgeInsets(top: 17, leading: 20, bottom: 16, trailing: 0))

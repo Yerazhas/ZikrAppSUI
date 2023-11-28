@@ -17,6 +17,7 @@ extension Color {
     static let kaspiRed = Color("KaspiRed")
     static let paleGray = Color("PaleGray")
     static let textGray = Color("TextGray")
+    static let beelineYellow = Color("BeelineYellow")
 }
 
 extension Color {

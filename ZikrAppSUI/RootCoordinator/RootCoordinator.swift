@@ -129,6 +129,8 @@ final class RootCoordinator {
                 }
             case .openRussiaPaymentTutorial:
                 self.openRussiaPaymentSafariVC()
+            case .delete(let action):
+                self.router.showAlert(message: "resetQazas".localized(self.language), action: action)
             }
         }
         if !appStatsService.didSetAppLang {
@@ -154,12 +156,23 @@ final class RootCoordinator {
             }
             appStatsService.didSeeWelcomePage()
         } else {
-            presentRussiaPaymentAlert()
+            presentRussiaBeelineOnboarding()
+        }
+    }
+
+    private func presentRussiaBeelineOnboarding() {
+        if Locale.current.isRussia && !appStatsService.didSeeRussiaBeelineOnboarding {
+            router.openRussiaBeelineOnboarding {
+                self.router.dismissPresentedVC {
+                    self.openPaywallIfNeeded()
+                }
+            }
+            appStatsService.didSeeRussiaBeelineOnboardingPage()
         }
     }
 
     private func presentRussiaPaymentAlert() {
-        if Locale.current.regionCode == "RU" && !appStatsService.didSeeRussiaPaymentAlert {
+        if Locale.current.isRussia && !appStatsService.didSeeRussiaPaymentAlert {
             router.openRussiaPaymentAlert { [weak self] in
                 self?.openRussiaPaymentSafariVC()
             }
@@ -195,3 +208,13 @@ final class RootCoordinator {
 }
 
 extension RootCoordinator: Hapticable {}
+
+extension Locale {
+    var isRussia: Bool {
+        regionCode == "RU"
+    }
+
+    var isKazakhstan: Bool {
+        regionCode == "KZ"
+    }
+}
